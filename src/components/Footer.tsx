@@ -17,6 +17,7 @@ export const Footer = () => {
           >
             Blog powered by wisp
           </Link>
+          <br />
           <AuthNav />
         </div>
         <Link href="/rss" title="RSS feed">
