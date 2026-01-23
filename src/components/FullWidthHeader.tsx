@@ -23,7 +23,8 @@ export const FullWidthHeader: FunctionComponent<{
   className?: string;
 }> = ({ title, description, breadcrumb }) => {
   return (
-    <div
+    <header
+      role="banner"
       className={cn(
         "pb-8 lg:pb-16 pt-4",
         "bg-gradient-to-r from-blue-900 to-gray-900 text-white"
@@ -65,6 +66,6 @@ export const FullWidthHeader: FunctionComponent<{
         </div>
         <div className="my-6 text-lg text-center max-w-2xl mx-auto">{description}</div>
       </div>
-    </div>
+    </header>
   );
 };

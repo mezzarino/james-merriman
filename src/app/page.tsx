@@ -37,7 +37,7 @@ export default async function Page(
   return (
     <>
       <FullWidthHeader title={title} description={description} />
-      <div className="container mx-auto max-w-6xl">
+      <main className="container mx-auto max-w-6xl" role="main">
         <FilterBar active="latest" className="my-8" />
         <BlogPostList posts={result.posts} />
         <PostPagination
@@ -45,7 +45,7 @@ export default async function Page(
           className="my-16"
           query={searchParams?.query}
         />
-      </div>
+      </main>
     </>
   );
 }

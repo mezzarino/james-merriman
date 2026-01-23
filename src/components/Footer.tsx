@@ -5,19 +5,19 @@ import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <div className="container mx-auto my-4 px-4 max-w-6xl">
+    <footer className="container mx-auto my-4 px-4 max-w-6xl" role="contentinfo">
       <div className="flex justify-between items-center">
         <div className="text-sm mt-4">
           © {config.organization} {new Date().getFullYear()}
         </div>
         <div className="text-xs text-muted-foreground hidden lg:block">
         </div>
-        <Link href="/rss">
-          <Button variant="ghost">
+        <Link href="/rss" title="RSS feed">
+          <Button variant="ghost" role="button" aria-label="RSS feed">
             <Rss className="w-4 h-4" />
           </Button>
         </Link>
       </div>
-    </div>
+    </footer>
   );
 };

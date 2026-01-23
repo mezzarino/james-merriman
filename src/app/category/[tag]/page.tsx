@@ -68,7 +68,7 @@ export default async function Page(
           { label, href: `/category/${tag}` },
         ]}
       />
-      <div className="container mx-auto max-w-6xl">
+      <main className="container mx-auto max-w-6xl" role="main">
         <FilterBar active={tag} className="my-8" />
         <BlogPostList posts={result.posts} />
         <PostPagination
@@ -77,7 +77,7 @@ export default async function Page(
           query={searchParams?.query}
           basePath={`/category/${tag}`}
         />
-      </div>
+      </main>
     </>
   );
 }

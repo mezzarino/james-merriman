@@ -229,7 +229,7 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
         )}
 
         <div className="flex items-center justify-between pt-2">
-          <Button type="submit" disabled={form.formState.isSubmitting}>
+          <Button type="submit" role="button" aria-label="Post Comment" disabled={form.formState.isSubmitting}>
             Post Comment
           </Button>
         </div>

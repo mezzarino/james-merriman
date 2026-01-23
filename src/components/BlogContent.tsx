@@ -55,7 +55,7 @@ export const BlogContent = ({
           { label: title, href: "" },
         ]}
       />
-      <div className="container mx-auto mt-8 px-4 max-w-6xl">
+      <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
         <div className="flex items-center gap-2">
           <Image
             src={author.image || ""}
@@ -106,7 +106,7 @@ export const BlogContent = ({
         </div>
         <CommentSection slug={slug} />
         <RelatedPosts posts={relatedPosts} />
-      </div>
+      </main>
     </>
   );
 };

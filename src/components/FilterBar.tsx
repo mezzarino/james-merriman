@@ -70,13 +70,13 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button onClick={onClearSearch} className="ml-4">
+          <button onClick={onClearSearch} className="ml-4" role="button" aria-label="Clear search">
             <X className="h-5 w-5" />
           </button>
         </div>
       ) : (
         <div className="flex w-full items-center justify-between">
-          <div className="flex gap-2 whitespace-nowrap  overflow-x-auto">
+          <div className="flex gap-4 whitespace-nowrap  overflow-x-auto">
             {categories.map((category) => (
               <Link
                 href={
@@ -85,8 +85,10 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                 key={category.tag}
               >
                 <button
+                  role="button"
+                  aria-label={`View all ${category.tag} posts`}
                   className={cn(
-                    "py-1 px-2",
+                    "py-2 px-3 min-h-[44px]",
                     active === category.tag &&
                       "border-b-2 border-black font-semibold"
                   )}
@@ -97,7 +99,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             ))}
           </div>
           <div className="flex-shrink-0">
-            <button onClick={() => setIsSearchActive(true)}>
+            <button onClick={() => setIsSearchActive(true)} role="button" aria-label="Search posts">
               <Search className="bg-primary-foreground m-2 h-5 w-5 rounded" />
             </button>
           </div>
