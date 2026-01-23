@@ -11,6 +11,11 @@ export const Footer = () => {
           © {config.organization} {new Date().getFullYear()}
         </div>
         <div className="text-xs text-muted-foreground hidden lg:block">
+          <Link
+            href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
+          >
+            Blog powered by wisp
+          </Link>
         </div>
         <Link href="/rss" title="RSS feed">
           <Button variant="ghost" role="button" aria-label="RSS feed">
