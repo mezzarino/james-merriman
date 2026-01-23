@@ -1,9 +1,9 @@
 {
-  "name": "nextjs-corporate-blog",
+  "name": "james-merriman",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -26,10 +26,10 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.451.0",
-    "next": "^15.5.9",
+    "next": "16.1.4",
     "node-html-parser": "^6.1.13",
-    "react": "^19",
-    "react-dom": "^19",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-hook-form": "^7.54.2",
     "rss": "^1.2.2",
     "schema-dts": "^1.1.2",
@@ -42,17 +42,17 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20",
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@types/react": "19.2.9",
+    "@types/react-dom": "19.2.3",
     "dotenv": "^16.4.5",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.5",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
   "overrides": {
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    "@types/react": "19.2.9",
+    "@types/react-dom": "19.2.3"
   }
 }
