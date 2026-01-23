@@ -2,6 +2,7 @@ import { config } from "@/config";
 import { Button } from "./ui/button";
 import { Rss } from "lucide-react";
 import Link from "next/link";
+import AuthNav from "./ui/auth-nav";
 
 export const Footer = () => {
   return (
@@ -16,6 +17,7 @@ export const Footer = () => {
           >
             Blog powered by wisp
           </Link>
+          <AuthNav />
         </div>
         <Link href="/rss" title="RSS feed">
           <Button variant="ghost" role="button" aria-label="RSS feed">

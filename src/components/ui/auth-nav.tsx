@@ -1,0 +1,39 @@
+"use client";
+
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+export default function AuthNav() {
+  const { data: session, status } = useSession();
+  const pathname = usePathname();
+
+  if (pathname === "/login") {
+    return null;
+  }
+
+  // Prevent flicker while session loads
+  if (status === "loading") {
+    return null;
+  }
+
+  if (!session) {
+    return (
+      <Link
+        href="/login"
+        className="text-sm underline hover:opacity-70"
+      >
+        Login
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      onClick={() => signOut({ callbackUrl: "/login" })}
+      className="text-sm underline hover:opacity-70"
+    >
+      Sign out
+    </button>
+  );
+}
