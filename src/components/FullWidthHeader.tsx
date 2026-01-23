@@ -21,7 +21,7 @@ export const FullWidthHeader: FunctionComponent<{
   description: string;
   breadcrumb?: BreadcrumbProps[];
   className?: string;
-}> = ({ title, description, breadcrumb, className }) => {
+}> = ({ title, description, breadcrumb }) => {
   return (
     <div
       className={cn(
