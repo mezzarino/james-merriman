@@ -11,13 +11,14 @@ export const Footer = () => {
         <div className="text-sm mt-4">
           © {config.organization} {new Date().getFullYear()}
         </div>
-        <div className="text-xs text-muted-foreground hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3 text-xs text-muted-foreground">
           <Link
             href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
+            className="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            Blog powered by wisp
+            Blog powered by Wisp
           </Link>
-          <br />
+
           <AuthNav />
         </div>
         <Link href="/rss" title="RSS feed">
