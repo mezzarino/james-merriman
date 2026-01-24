@@ -72,6 +72,7 @@ export default async function BlogPost(
       "@type": "Person",
       name: author.name ?? undefined,
       image: author.image ?? undefined,
+      url: config.baseUrl ?? undefined,
     },
     publisher: {
       "@type": "Organization",
