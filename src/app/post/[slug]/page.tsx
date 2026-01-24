@@ -6,6 +6,7 @@ import { BlogContent } from "@/components/BlogContent";
 import type { BlogPosting, WithContext } from "schema-dts";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
+import { getReadingTimeFromHtml } from "@/lib/readingTime";
 
 interface Params {
   slug: string;
@@ -27,6 +28,7 @@ export async function generateMetadata(
       title: "Page not found!",
     };
   }
+
   return {
     title: result.post.title,
     description: result.post.description,
@@ -56,6 +58,7 @@ export default async function BlogPost(
 
   if (!result.post) return null;
 
+  const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, author, image } = result.post;
 
   const jsonLd: WithContext<BlogPosting> = {
@@ -87,7 +90,7 @@ export default async function BlogPost(
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <BlogContent post={result.post} relatedPosts={related.posts} />
+      <BlogContent post={result.post} relatedPosts={related.posts} readingTime={readingTime} />
     </>
   );
 }

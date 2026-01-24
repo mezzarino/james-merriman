@@ -19,6 +19,7 @@ import { CommentSection } from "./CommentSection";
 export const BlogContent = ({
   post: { title, content, author, publishedAt, tags, slug },
   relatedPosts,
+  readingTime,
 }: {
   post: {
     id: string;
@@ -36,6 +37,7 @@ export const BlogContent = ({
     author: Author;
   };
   relatedPosts: GetRelatedPostsResult["posts"];
+  readingTime: string;
 }) => {
   const { modifiedHtml, tableOfContents } = processTableOfContents(content, {
     h1: true,
@@ -66,7 +68,7 @@ export const BlogContent = ({
           />
           <div className="font-medium">{author.name}</div> |
           <div>
-            Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"}
+            Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"} | {readingTime}
           </div>
         </div>
         <div className="flex">
