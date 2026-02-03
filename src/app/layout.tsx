@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Providers } from "./providers";
 import ReadingProgress from "@/components/ui/readingProgress";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
           <ReadingProgress />
           {children}
           <Footer />
+          <SpeedInsights />
         </Providers>
       </body>
     </html>
