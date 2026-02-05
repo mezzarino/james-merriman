@@ -79,7 +79,7 @@ export const BlogContent = ({
               className="w-full not-prose my-6 block lg:hidden"
             >
               <AccordionItem value="toc" className="border-none">
-                <AccordionTrigger>Table of Content</AccordionTrigger>
+                <AccordionTrigger>Table of Contents</AccordionTrigger>
                 <AccordionContent>
                   <TableOfContents items={tableOfContents} />
                 </AccordionContent>
