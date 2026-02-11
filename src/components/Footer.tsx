@@ -22,6 +22,7 @@ export const Footer = () => {
           <Link
             href="/about"
             className="text-sm underline hover:opacity-70"
+            aria-label="Find out more about James Merriman"
           >
             About
           </Link>
