@@ -28,7 +28,7 @@ const Page = async () => {
           ]}
         />
         <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
-          <div className="flex">
+          <div className="flex flex-col-reverse lg:flex-row">
             <div className="w-full lg:w-3/4 prose prose-lg max-w-none break-words blog-content">
               <h2>Welcome to my travel writing blog</h2>
               <p>
