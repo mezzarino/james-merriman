@@ -1,6 +1,7 @@
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { Metadata } from "next";
+import { FilterBar } from "@/components/FilterBar";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import Markdown from "react-markdown";
 
@@ -43,7 +44,14 @@ const Page = async () => {
       <>
         <FullWidthHeader title={title} description={description} />
         <main className="container mx-auto max-w-6xl" role="main">
-          <Markdown>{content}</Markdown>
+          <FilterBar active="about" className="my-8" />
+          <div className="flex">
+            <div className="lg:w-3/4 prose prose-lg max-w-none w-full break-words blog-content">
+              <Markdown>{content}</Markdown>
+            </div>
+            <div className="w-1/4 hidden lg:block">
+            </div>
+            </div>
         </main>
       </>
     );
