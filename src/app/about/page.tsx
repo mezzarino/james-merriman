@@ -41,7 +41,6 @@ const Page = async () => {
               <Image
                 src="https://avatars.githubusercontent.com/u/20318951?v=4&size=435"
                 className="object-cover"
-                fill
                 alt="James Merriman"
               />
             </div>
