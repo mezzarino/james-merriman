@@ -29,13 +29,7 @@ const Page = async () => {
         />
         <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
           <div className="flex">
-            <div className="lg:w-3/4 prose prose-lg max-w-none w-full break-words blog-content">
-              <Image
-                src="https://avatars.githubusercontent.com/u/20318951?v=4&size=435"
-                width={435}
-                height={435}
-                alt="James Merriman"
-              />
+            <div className="w-full lg:w-3/4 prose prose-lg max-w-none break-words blog-content">
               <h2>Welcome to my travel writing blog</h2>
               <p>
                 I am a Fellow of the Royal Geographical Society and traveller to over 150 countries, who lives in Devon.
@@ -44,9 +38,15 @@ const Page = async () => {
                 I love exploring and writing about the world's landscapes, cuisines and cultures.
               </p>
             </div>
-            <div className="w-1/4 hidden lg:block">
+            <div className="w-full lg:w-1/4 pl-4">
+              <Image
+                src="https://avatars.githubusercontent.com/u/20318951?v=4&size=435"
+                width={435}
+                height={435}
+                alt="James Merriman"
+              />
             </div>
-            </div>
+          </div>
         </main>
       </>
     );
