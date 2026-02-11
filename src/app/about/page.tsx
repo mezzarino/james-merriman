@@ -37,8 +37,8 @@ const Page = async () => {
             <div className="lg:w-3/4 prose prose-lg max-w-none w-full break-words blog-content">
               <Image
                 src="https://avatars.githubusercontent.com/u/20318951?v=4&size=435"
-                className="object-cover"
-                fill
+                width={435}
+                height={435}
                 alt="James Merriman"
               />
               <Markdown>{content}</Markdown>
