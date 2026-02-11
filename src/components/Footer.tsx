@@ -20,6 +20,13 @@ export const Footer = () => {
           </Link>
 
           <AuthNav />
+
+          <Link
+            href="/about"
+            className="text-sm underline hover:opacity-70"
+          >
+            About
+          </Link>
         </div>
         <Link href="/rss" title="RSS feed">
           <Button variant="ghost" role="button" aria-label="RSS feed">
