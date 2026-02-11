@@ -3,13 +3,8 @@ import { getOgImageUrl } from "@/lib/ogImage";
 import { Metadata } from "next";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import Image from 'next/image'
-import Markdown from "react-markdown";
 
 const { title, description } = config;
-
-const content = `I am a Fellow of the Royal Geographical Society and traveller to over 150 countries, who lives in Devon.
-
-I love exploring and writing about the world's landscapes, cuisines and cultures.`;
 
 export const metadata: Metadata = {
   title: `${title} - Blog`,
@@ -41,7 +36,13 @@ const Page = async () => {
                 height={435}
                 alt="James Merriman"
               />
-              <Markdown>{content}</Markdown>
+              <h2>Welcome to my travel writing blog</h2>
+              <p>
+                I am a Fellow of the Royal Geographical Society and traveller to over 150 countries, who lives in Devon.
+              </p>
+              <p>
+                I love exploring and writing about the world's landscapes, cuisines and cultures.
+              </p>
             </div>
             <div className="w-1/4 hidden lg:block">
             </div>
