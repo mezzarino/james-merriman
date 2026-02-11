@@ -19,14 +19,14 @@ export const Footer = () => {
             Blog powered by Wisp
           </Link>
 
-          <AuthNav />
-
           <Link
             href="/about"
             className="text-sm underline hover:opacity-70"
           >
             About
           </Link>
+
+          <AuthNav />
         </div>
         <Link href="/rss" title="RSS feed">
           <Button variant="ghost" role="button" aria-label="RSS feed">

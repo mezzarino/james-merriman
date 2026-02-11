@@ -6,23 +6,9 @@ import Markdown from "react-markdown";
 
 const { title, description } = config;
 
-const content = `Hey there! I'm Samantha, a 28-year-old former corporate warrior who decided to ditch the 9-to-5 grind and embark on an adventure of a lifetime. After years of hustling in a high-pressure job, I realized that life is too short to be stuck in an office, staring at spreadsheets all day.
+const content = `I am a Fellow of the Royal Geographical Society and traveller to over 150 countries, who lives in Devon.
 
-So I took a leap of faith, quit my cushy job in Singapore, and decided to see the world on my own terms. No more stuffy meetings or rigid schedules – just me, my backpack, and an open road ahead.
-
-![Samantha](https://imagedelivery.net/lLmNeOP7HXG0OqaG97wimw/clvlugru90000o4g8ahxp069s/6b080e65-2329-4a36-ad5c-0a6af8d9aeb1.png/public)
-
-This blog is where I'll be documenting my travels, sharing my experiences, and hopefully inspiring others to follow their wanderlust. From trekking through remote villages to savoring local cuisines, I'm on a mission to immerse myself in different cultures and create memories that will last a lifetime.
-
-But this journey isn't just about checking off destinations from a bucket list. It's about self-discovery, personal growth, and finding the courage to live life on my own terms. I'll be honest and raw, sharing the highs and lows, the moments of pure bliss and the inevitable challenges that come with solo travel.
-
-So join me on this adventure, and let's explore the world together! Who knows, maybe my stories will inspire you to take that leap of faith and pursue your own dreams, whatever they may be.
-
-Let's go on an adventure!
-
-Love,
-
-Samantha`;
+I love exploring and writing about the world's landscapes, cuisines and cultures.`;
 
 export const metadata: Metadata = {
   title: `${title} - Blog`,
@@ -45,7 +31,7 @@ const Page = async () => {
             { label: "About", href: "/about" },
           ]}
         />
-        <main className="container mx-auto max-w-6xl" role="main">
+        <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
           <div className="flex">
             <div className="lg:w-3/4 prose prose-lg max-w-none w-full break-words blog-content">
 
