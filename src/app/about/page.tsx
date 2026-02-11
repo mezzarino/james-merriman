@@ -2,6 +2,7 @@ import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { Metadata } from "next";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
+import Image from 'next/image'
 import Markdown from "react-markdown";
 
 const { title, description } = config;
@@ -34,7 +35,12 @@ const Page = async () => {
         <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
           <div className="flex">
             <div className="lg:w-3/4 prose prose-lg max-w-none w-full break-words blog-content">
-
+              <Image
+                src="https://avatars.githubusercontent.com/u/20318951?v=4&size=435"
+                className="object-cover"
+                fill
+                alt="James Merriman"
+              />
               <Markdown>{content}</Markdown>
             </div>
             <div className="w-1/4 hidden lg:block">
