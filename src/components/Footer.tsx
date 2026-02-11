@@ -8,13 +8,13 @@ export const Footer = () => {
   return (
     <footer className="container mx-auto my-4 px-4 max-w-6xl" role="contentinfo">
       <div className="flex justify-between items-center">
-        <div className="text-sm mt-4">
+        <div className="text-sm lg:mt-4">
           © {config.organization} {new Date().getFullYear()}
         </div>
-        <div className="hidden lg:flex items-center gap-3 text-xs text-muted-foreground">
+        <div className="lg:flex items-center gap-3 text-xs text-muted-foreground">
           <Link
             href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
-            className="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="hidden lg:block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             Blog powered by Wisp
           </Link>

@@ -21,7 +21,7 @@ export default function AuthNav() {
     return (
       <Link
         href="/login"
-        className="text-sm underline hover:opacity-70"
+        className="hidden lg:block text-sm underline hover:opacity-70"
       >
         Login
       </Link>
@@ -31,7 +31,7 @@ export default function AuthNav() {
   return (
     <button
       onClick={() => signOut({ callbackUrl: "/login" })}
-      className="text-sm underline hover:opacity-70"
+      className="hidden lg:block text-sm underline hover:opacity-70"
     >
       Sign out
     </button>
