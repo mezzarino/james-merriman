@@ -46,8 +46,12 @@ const Page = async () => {
             <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
               <Image
                 src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
-                className="w-full"
                 alt="James Merriman"
+                width={1200}
+                height={1600}
+                className="w-full h-auto rounded-lg"
+                sizes="(max-width: 1024px) 100vw, 384px"
+                priority
               />
             </div>
           </div>
