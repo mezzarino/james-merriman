@@ -51,7 +51,7 @@ const Page = async () => {
                 height={1600}
                 className="w-full h-auto rounded-lg"
                 sizes="(max-width: 1024px) 100vw, 384px"
-                priority
+                preload={true}
               />
             </div>
           </div>
