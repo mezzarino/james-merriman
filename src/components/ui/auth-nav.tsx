@@ -29,11 +29,20 @@ export default function AuthNav() {
   }
 
   return (
-    <button
-      onClick={() => signOut({ callbackUrl: "/login" })}
-      className="hidden lg:block text-sm underline hover:opacity-70"
-    >
-      Sign out
-    </button>
+    <>
+      <Link
+        href="/about"
+        className="text-sm underline hover:opacity-70"
+        aria-label="Find out more about James Merriman"
+      >
+          About
+      </Link>
+      <button
+        onClick={() => signOut({ callbackUrl: "/login" })}
+        className="hidden lg:block text-sm underline hover:opacity-70"
+      >
+        Sign out
+      </button>
+    </>
   );
 }

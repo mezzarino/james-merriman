@@ -19,14 +19,6 @@ export const Footer = () => {
             Blog powered by Wisp
           </Link>
 
-          <Link
-            href="/about"
-            className="text-sm underline hover:opacity-70"
-            aria-label="Find out more about James Merriman"
-          >
-            About
-          </Link>
-
           <AuthNav />
         </div>
         <Link href="/rss" title="RSS feed">
