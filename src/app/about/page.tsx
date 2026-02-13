@@ -2,6 +2,7 @@ import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { Metadata } from "next";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
+import { SocialLinks } from "@/components/ui/social-links";
 import Image from 'next/image'
 
 const { title, description } = config;
@@ -42,6 +43,8 @@ const Page = async () => {
               <p>
                 Based in beautiful countryside, I continue to explore the world — and the evolving landscape of technology — with the same enduring curiosity.
               </p>
+
+               <SocialLinks />
             </div>
             <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
               <Image
