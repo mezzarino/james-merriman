@@ -32,7 +32,7 @@ const Page = async () => {
           <div className="flex flex-col-reverse lg:flex-row">
             <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
               <p>
-                I am a British traveller, writer and lead web developer based in Devon, England. I am a Fellow of the Royal Geographical Society, and have visited 164 countries across six continents, driven by a deep curiosity for landscape, culture and the stories that shape place.
+                I am a British traveller, award winning writer and lead web developer based in Devon, England. I am a Fellow of the Royal Geographical Society, and have visited 164 countries across six continents, driven by a deep curiosity for landscape, culture and the stories that shape place.
               </p>
               <p>
                 My journeys have taken me from remote island nations to post-conflict regions, exploring how geography, history and community intersect. Through my writing, I reflect on the textures of travel — the light, the language, the food, the quiet human moments that define a destination beyond its map coordinates.
@@ -43,7 +43,8 @@ const Page = async () => {
               <p>
                 Based in beautiful countryside, I continue to explore the world — and the evolving landscape of technology — with the same enduring curiosity.
               </p>
-
+              <h2>Awards</h2>
+              <p>Longlisted - Bradt Guides New Travel Writer of the Year 2026</p>
                <SocialLinks />
             </div>
             <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
