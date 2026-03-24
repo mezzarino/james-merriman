@@ -9,37 +9,37 @@ const categories: Category[] = [
   {
     label: "Church",
     tag: "church",
-    description: "Articles with a category of church",
+    description: "Travel writing exploring churches and cathedrals—architecture, history, and quiet moments of reflection from sacred spaces across the UK and beyond.",
   },
   {
     label: "Coastal",
     tag: "coastal",
-    description: "Articles with a category of coastal",
+    description: "Coastal travel writing from rugged cliffs to sandy shores—walks, seascapes, and stories from the UK coastline and beyond.",
   },
   {
     label: "Food",
     tag: "food",
-    description: "Articles with a category of food",
+    description: "Food-focused travel stories exploring local dishes, markets, and culinary traditions from destinations across the world.",
   },
   {
     label: "History",
     tag: "history",
-    description: "Articles with a category of history",
+    description: "Travel writing rooted in history—exploring ancient sites, historic landmarks, and the stories that shape places around the world.",
   },
   {
     label: "Pilgrimage",
     tag: "pilgrimage",
-    description: "Articles with a category of pilgrimage",
+    description: "Reflective travel writing on pilgrimage—journeys of meaning, memory, and personal connection through landscapes and sacred places.",
   },
   {
     label: "Travel",
     tag: "travel",
-    description: "Articles with a category of travel",
+    description: "Travel writing from across the globe—stories, reflections, and experiences from remote, complex, and overlooked destinations.",
   },
   {
     label: "Walking",
     tag: "walking",
-    description: "Articles with a category of walking",
+    description: "Walking and hiking travel stories—trails, landscapes, and slow journeys through countryside, coast, and wilderness.",
   }
 ];
 

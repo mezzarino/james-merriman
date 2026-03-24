@@ -21,7 +21,7 @@ const Page = async () => {
   return (
       <>
         <FullWidthHeader
-          title="Welcome to my travel writing blog"
+          title="About James Merriman | Travel Writer & Photographer"
           description=""
           breadcrumb={[
             { label: "Home", href: "/" },

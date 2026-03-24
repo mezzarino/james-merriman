@@ -58,7 +58,7 @@ export const FullWidthHeader: FunctionComponent<{
         )}
         <div
           className={cn(
-            "prose lg:prose-lg text-balance mx-auto text-center px-4 text-inherit",
+            "prose lg:prose-lg text-balance mx-auto text-center px-4 text-inherit max-w-4xl",
             breadcrumb ? "pt-16 lg:pt-18" : "pt-16 lg:pt-28"
           )}
         >
