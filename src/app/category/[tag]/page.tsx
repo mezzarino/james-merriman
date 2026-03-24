@@ -64,7 +64,7 @@ export default async function Page(
       />
       <main className="container mx-auto px-4 max-w-6xl" role="main">
         {/* Intro paragraph for SEO */}
-        <p className="mb-6 text-base text-muted-foreground max-w-2xl">
+        <p className="text-base text-muted-foreground px-4 my-8">
           Browse all blog posts tagged with {label}. Discover travel writing,
           stories, and experiences covering walking, coastal, food, history,
           pilgrimage, and global adventures.
