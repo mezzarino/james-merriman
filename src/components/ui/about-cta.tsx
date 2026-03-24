@@ -20,9 +20,9 @@ export function AboutCta() {
         </AspectRatio>
 
         <div className="prose prose-sm dark:prose-invert p-4">
-          <h3 className="line-clamp-2">
+          <p className="line-clamp-2 font-bold">
             About James Merriman
-          </h3>
+          </p>
           <p className="line-clamp-3">
             A brief introduction to my work, travels, and perspective.
           </p>
