@@ -73,18 +73,6 @@ export const BlogContent = ({
         </div>
         <div className="flex">
           <div className="lg:w-3/4 prose prose-lg max-w-none w-full break-words blog-content">
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full not-prose my-6 block lg:hidden"
-            >
-              <AccordionItem value="toc" className="border-none">
-                <AccordionTrigger>Table of Contents</AccordionTrigger>
-                <AccordionContent>
-                  <TableOfContents items={tableOfContents} />
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
             <ContentWithCustomComponents
               content={modifiedHtml}
               customComponents={{
@@ -93,10 +81,6 @@ export const BlogContent = ({
             />
           </div>
           <div className="w-1/4 hidden lg:block">
-            <div className="sticky top-0 mt-4 p-4 max-h-screen overflow-y-auto">
-              <div className="text-lg font-semibold">Table of Contents</div>
-              <TableOfContents items={tableOfContents} />
-            </div>
           </div>
         </div>
         <div className="my-8 space-x-2">
