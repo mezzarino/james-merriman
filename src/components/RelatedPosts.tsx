@@ -4,43 +4,49 @@ import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import type { GetRelatedPostsResult } from "@wisp-cms/client";
 import Image from "next/image";
 import Link from "next/link";
-import type { FunctionComponent } from "react";
 
-export const RelatedPosts: FunctionComponent<{
+export function RelatedPosts({
+  posts,
+}: {
   posts: GetRelatedPostsResult["posts"];
-}> = ({ posts }) => {
-  if (posts.length === 0) {
-    return null;
-  }
+}) {
+  if (!posts?.length) return null;
 
   return (
-    <div className="my-8">
-      <div className="mb-6 text-lg font-semibold tracking-tight">
+    <section className="my-8">
+      <h2 className="mb-6 text-lg font-semibold tracking-tight">
         Related Posts
-      </div>
+      </h2>
+
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         {posts.slice(0, 4).map((post) => (
-          <div className=" bg-muted overflow-hidden rounded-lg" key={post.id}>
-            <Link href={`/post/${post.slug}`}>
-              <AspectRatio ratio={16 / 9} className="w-full">
+          <article
+            key={post.id}
+            className="bg-muted overflow-hidden rounded-lg group"
+          >
+            <Link href={`/post/${post.slug}`} className="block">
+              <AspectRatio ratio={16 / 9}>
                 <Image
                   src={post.image || "/placeholder.jpg"}
-                  alt={post.title}
+                  alt={`${post.title} – travel writing by James Merriman`}
                   fill
-                  className="h -full min-h-full min-w-full object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
               </AspectRatio>
+
+              <div className="prose prose-sm dark:prose-invert p-4">
+                <h3 className="line-clamp-2">{post.title}</h3>
+                <p className="line-clamp-3">{post.description}</p>
+
+                <span className="font-semibold inline-block mt-2">
+                  Read full story
+                </span>
+              </div>
             </Link>
-            <div className="prose prose-sm dark:prose-invert p-4">
-              <h3 className="line-clamp-2">{post.title}</h3>
-              <p className="line-clamp-3">{post.description}</p>
-              <Link href={`/post/${post.slug}`}>
-                <strong>Read Full Story</strong>
-              </Link>
-            </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
-};
+}

@@ -1,3 +1,6 @@
+"use client";
+
+import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import Image from "next/image";
 import Link from "next/link";
 import type { GetPostsResult } from "@wisp-cms/client";
@@ -7,43 +10,55 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
   return (
     <div className="grid grid-cols-1 gap-16 md:grid-cols-2 px-4">
       {posts.map((post) => (
-        <div className="break-words" key={post.id}>
-          <Link href={`/post/${post.slug}`}>
-            <div className="aspect-[16/9] relative">
+        <article key={post.id} className="break-words group">
+          {/* Featured image */}
+          <Link href={`/post/${post.slug}`} aria-label={`Read full post: ${post.title}`}>
+            <AspectRatio ratio={16 / 9} className="relative w-full rounded-lg overflow-hidden">
               {post.image ? (
                 <Image
                   alt={post.title}
-                  className="object-cover"
                   src={post.image}
                   fill
+                  className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
               ) : (
-                <Image src="/placeholder.jpg" alt="placeholder" fill />
+                <Image
+                  src="/placeholder.jpg"
+                  alt="Placeholder image"
+                  fill
+                  className="object-cover object-center"
+                />
               )}
-            </div>
+            </AspectRatio>
           </Link>
-          <div className="grid grid-cols-1 gap-3 md:col-span-2 mt-4">
+
+          {/* Post content */}
+          <div className="grid grid-cols-1 gap-3 mt-4">
             <h2 className="font-sans font-semibold tracking-tighter text-primary text-2xl md:text-3xl">
-              <Link href={`/post/${post.slug}`}>{post.title}</Link>
+              <Link href={`/post/${post.slug}`} aria-label={`Read full post: ${post.title}`}>
+                {post.title}
+              </Link>
             </h2>
+
             <div className="prose lg:prose-lg leading-relaxed md:text-lg line-clamp-4 text-muted-foreground">
               {post.description}
             </div>
-            <div className="flex items-center gap-2">
+
+            <div className="flex items-center gap-2 mt-2">
               <Image
-                src={post.author.image || ""}
-                alt={post.author.name || ""}
+                src={post.author.image || "/placeholder-author.jpg"}
+                alt={post.author.name || "Author image"}
                 width={30}
                 height={30}
-                className="rounded-full"
+                className="rounded-full object-cover"
               />
-              <div className="font-medium">
-                {post.author.name} | Published on{" "}
+              <div className="font-medium text-sm md:text-base text-muted-foreground">
+                {post.author.name || "Unknown author"} | Published on{" "}
                 {formatFullDate(post.publishedAt || post.createdAt)}
               </div>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   );
