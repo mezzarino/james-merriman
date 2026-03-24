@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export function AboutCta() {
   return (
-    <article className="bg-muted overflow-hidden rounded-lg sticky top-4 mt-4">
-      <Link href="/about" className="block">
+    <article className="sticky top-4 mt-4">
+      <Link href="/about" className="group block rounded-lg overflow-hidden bg-muted shadow-sm transition-shadow hover:shadow-lg hover:-translate-y-1 transform duration-300">
         <AspectRatio ratio={16 / 9} className="w-full">
           <Image
             src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
@@ -19,15 +19,15 @@ export function AboutCta() {
           />
         </AspectRatio>
 
-        <div className="prose prose-sm dark:prose-invert p-4">
+        <div className="prose prose-sm dark:prose-invert p-4 transition-colors duration-300 group-hover:text-primary">
           <p className="line-clamp-2 font-bold">
             About James Merriman
           </p>
           <p className="line-clamp-3">
             A brief introduction to my work, travels, and perspective.
           </p>
-          <span className="font-semibold inline-block mt-2">
-            Find out more →
+          <span className="font-semibold inline-block mt-2 group-hover:text-primary">
+            Find out more
           </span>
         </div>
       </Link>
