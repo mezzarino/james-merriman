@@ -7,13 +7,13 @@ import Link from "next/link";
 export function AboutCta() {
   return (
     <article className="sticky top-4 mt-4">
-      <Link href="/about" className="group block rounded-lg overflow-hidden bg-muted shadow-sm transition-shadow hover:shadow-lg hover:-translate-y-1 transform duration-300">
+      <Link href="/about" className="block rounded-lg group">
         <AspectRatio ratio={16 / 9} className="w-full">
           <Image
             src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
             alt="James Merriman, travel writer and photographer"
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 25vw"
             className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
             priority={false}
           />
