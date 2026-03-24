@@ -14,8 +14,8 @@ const fontSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "James Merriman Travel Writer",
-  description: "James Merriman Travel Writer - blog",
+  title: "James Merriman | Travel Writer & Documentary Photographer",
+  description: "Award-longlisted travel writer and photographer documenting remote, complex, and overlooked destinations across 160+ countries.",
 };
 
 export default function RootLayout({

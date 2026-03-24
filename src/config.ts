@@ -7,9 +7,39 @@ interface Category {
 
 const categories: Category[] = [
   {
+    label: "Church",
+    tag: "church",
+    description: "Articles with a category of church",
+  },
+  {
+    label: "Coastal",
+    tag: "coastal",
+    description: "Articles with a category of coastal",
+  },
+  {
+    label: "Food",
+    tag: "food",
+    description: "Articles with a category of food",
+  },
+  {
+    label: "History",
+    tag: "history",
+    description: "Articles with a category of history",
+  },
+  {
+    label: "Pilgrimage",
+    tag: "pilgrimage",
+    description: "Articles with a category of pilgrimage",
+  },
+  {
     label: "Travel",
     tag: "travel",
-    description: "Travel blog category",
+    description: "Articles with a category of travel",
+  },
+  {
+    label: "Walking",
+    tag: "walking",
+    description: "Articles with a category of walking",
   }
 ];
 

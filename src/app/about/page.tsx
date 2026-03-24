@@ -8,8 +8,8 @@ import Image from 'next/image'
 const { title, description } = config;
 
 export const metadata: Metadata = {
-  title: `${title} - Blog`,
-  description,
+  title: `About James Merriman | Travel Writer & Photographer`,
+  description: `James Merriman is a UK-based travel writer and photographer covering remote regions, conflict zones, and cultural frontiers worldwide.`,
   openGraph: {
     title: `${title} - Blog`,
     description,
