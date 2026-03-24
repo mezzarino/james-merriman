@@ -75,7 +75,7 @@ export const BlogContent = ({
               }}
             />
           </div>
-          <div className="w-1/4 hidden lg:block">
+          <div className="w-1/4 hidden lg:block px-4">
               <AboutCta />
           </div>
         </div>
