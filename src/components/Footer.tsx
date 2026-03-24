@@ -22,6 +22,8 @@ export const Footer = () => {
           <Link
             href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
             className="hidden lg:block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Blog powered by Wisp
           </Link>
