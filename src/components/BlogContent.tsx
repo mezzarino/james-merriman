@@ -1,20 +1,15 @@
 "use client";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
 import Image from "next/image";
 import Link from "next/link";
 import { FullWidthHeader } from "./FullWidthHeader";
 import { RelatedPosts } from "./RelatedPosts";
-import { processTableOfContents, TableOfContents } from "./TOC";
+import { processTableOfContents } from "./TOC";
 import { ContentWithCustomComponents } from "@wisp-cms/react-custom-component";
 import { FAQ } from "./WispComponents/FAQ";
 import { formatFullDate } from "@/lib/date";
 import { CommentSection } from "./CommentSection";
+import { AboutCta } from "./ui/about-cta";
 
 export const BlogContent = ({
   post: { title, content, author, publishedAt, tags, slug },
@@ -39,7 +34,7 @@ export const BlogContent = ({
   relatedPosts: GetRelatedPostsResult["posts"];
   readingTime: string;
 }) => {
-  const { modifiedHtml, tableOfContents } = processTableOfContents(content, {
+  const { modifiedHtml } = processTableOfContents(content, {
     h1: true,
     h2: true,
     h3: true,
@@ -81,6 +76,7 @@ export const BlogContent = ({
             />
           </div>
           <div className="w-1/4 hidden lg:block">
+              <AboutCta />
           </div>
         </div>
         <div className="my-8 space-x-2">
