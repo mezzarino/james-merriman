@@ -12,9 +12,19 @@ import { config } from "../config";
 export const metadata: Metadata = {
   title: `James Merriman Blog | Travel Writing & Photography`,
   description: `Explore travel stories, photography, and insights from James Merriman, covering remote destinations and cultural journeys worldwide.`,
+   alternates: {
+    canonical: config.baseUrl,
+  },
   openGraph: {
     title: `James Merriman Blog | Travel Writing & Photography`,
     description: `Explore travel stories, photography, and insights from James Merriman.`,
+    images: [getOgImageUrl("James Merriman Blog")],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `James Merriman Blog | Travel Writing & Photography`,
+    description: `Travel writing and photography from remote, complex, and overlooked destinations across 160+ countries.`,
     images: [getOgImageUrl("James Merriman Blog")],
   },
 };
@@ -32,8 +42,25 @@ export default async function Page(
     page,
   });
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `James Merriman Blog | Travel Writing & Photography`,
+    url: config.baseUrl,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${config.baseUrl}/?query={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <>
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <FullWidthHeader title={config.title} description={config.description} />
       <main className="container mx-auto max-w-6xl" role="main">
         <FilterBar active="latest" className="my-8" />

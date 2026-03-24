@@ -1,6 +1,7 @@
 export const revalidate = 60; // 1 minute
 
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { wisp } from "@/lib/wisp";
 import { BlogContent } from "@/components/BlogContent";
 import type { BlogPosting, WithContext } from "schema-dts";
@@ -20,7 +21,7 @@ export async function generateMetadata(
 
   const result = await wisp.getPost(slug);
   if (!result.post) {
-    return { title: "Page not found!" };
+    return { title: "Page not found" };
   }
 
   return {
@@ -45,7 +46,9 @@ export default async function BlogPost(
     wisp.getRelatedPosts({ slug, limit: 4 }),
   ]);
 
-  if (!result.post) return null;
+  if (!result.post) {
+    notFound();
+  }
 
   const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, author, image } = result.post;
@@ -59,6 +62,8 @@ export default async function BlogPost(
     dateModified: updatedAt.toString(),
     author: { "@type": "Person", name: author.name ?? undefined, image: author.image ?? undefined, url: config.baseUrl ?? undefined },
     publisher: { "@type": "Organization", name: config.organization, url: config.baseUrl, logo: { "@type": "ImageObject", url: config.logoUrl } },
+    mainEntityOfPage: `${config.baseUrl}/post/${slug}`,
+    timeRequired: `${readingTime} min read`,
   };
 
   return (

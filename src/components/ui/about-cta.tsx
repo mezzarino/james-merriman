@@ -7,7 +7,7 @@ import Link from "next/link";
 export function AboutCta() {
   return (
     <article className="sticky top-4 mt-4">
-      <Link href="/about" className="block rounded-lg group">
+      <Link href="/about" className="block rounded-lg group overflow-hidden bg-muted">
         <AspectRatio ratio={16 / 9} className="w-full">
           <Image
             src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"

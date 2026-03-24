@@ -8,6 +8,9 @@ import Image from 'next/image'
 export const metadata: Metadata = {
   title: `About James Merriman | Travel Writer & Photographer`,
   description: `Learn about James Merriman, UK-based travel writer and photographer documenting remote regions and cultural frontiers worldwide.`,
+  alternates: {
+    canonical: `${config.baseUrl}/about`,
+  },
   openGraph: {
     title: `About James Merriman | Travel Writer & Photographer`,
     description: `Learn about James Merriman, UK-based travel writer and photographer.`,

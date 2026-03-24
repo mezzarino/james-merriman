@@ -11,6 +11,9 @@ import { getOgImageUrl } from "@/lib/ogImage";
 export const metadata: Metadata = {
   title: `Browse Travel Blog Categories | James Merriman`,
   description: `Explore travel writing by category: walking, food, coastal, history, and more.`,
+   alternates: {
+    canonical: `${config.baseUrl}/category`,
+  },
   openGraph: {
     title: `Browse Travel Blog Categories | James Merriman`,
     description: `Explore travel writing by category: walking, food, coastal, history, and more.`,
