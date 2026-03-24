@@ -1,7 +1,6 @@
 export const revalidate = 60; // 1 minute
 
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { wisp } from "@/lib/wisp";
 import { BlogContent } from "@/components/BlogContent";
 import type { BlogPosting, WithContext } from "schema-dts";
@@ -14,44 +13,31 @@ interface Params {
 }
 
 export async function generateMetadata(
-  { params }: { params: Params }
+  props: { params: Promise<Params> }
 ): Promise<Metadata> {
+  const params = await props.params;
   const { slug } = params;
 
   const result = await wisp.getPost(slug);
-
   if (!result.post) {
-    return {
-      title: "Page not found",
-    };
+    return { title: "Page not found!" };
   }
 
-  const image = result.post.image || getOgImageUrl(result.post.title);
-
   return {
-    title: result.post.title,
-    description: result.post.description,
-    alternates: {
-      canonical: `${config.baseUrl}/post/${slug}`,
-    },
+    title: `${result.post.title} | James Merriman`,
+    description: result.post.description ?? `Read travel insights from James Merriman about ${result.post.title}`,
     openGraph: {
-      title: result.post.title,
+      title: `${result.post.title} | James Merriman`,
       description: result.post.description ?? "",
-      images: [image],
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: result.post.title,
-      description: result.post.description ?? "",
-      images: [image],
+      images: [result.post.image || getOgImageUrl(result.post.title)],
     },
   };
 }
 
 export default async function BlogPost(
-  { params }: { params: Params }
+  props: { params: Promise<Params> }
 ) {
+  const params = await props.params;
   const { slug } = params;
 
   const [result, related] = await Promise.all([
@@ -59,14 +45,10 @@ export default async function BlogPost(
     wisp.getRelatedPosts({ slug, limit: 4 }),
   ]);
 
-  if (!result.post) {
-    notFound();
-  }
+  if (!result.post) return null;
 
-  const post = result.post;
-
-  const readingTime = getReadingTimeFromHtml(post.content);
-  const { title, publishedAt, updatedAt, author, image } = post;
+  const readingTime = getReadingTimeFromHtml(result.post.content);
+  const { title, publishedAt, updatedAt, author, image } = result.post;
 
   const jsonLd: WithContext<BlogPosting> = {
     "@context": "https://schema.org",
@@ -74,37 +56,15 @@ export default async function BlogPost(
     headline: title,
     image: image || undefined,
     datePublished: publishedAt?.toString(),
-    dateModified: updatedAt?.toString(),
-    mainEntityOfPage: `${config.baseUrl}/post/${slug}`,
-    timeRequired: `${readingTime} min read`,
-    author: {
-      "@type": "Person",
-      name: author?.name || undefined,
-      image: author?.image || undefined,
-      url: config.baseUrl || undefined,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: config.organization,
-      url: config.baseUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: config.logoUrl,
-      },
-    },
+    dateModified: updatedAt.toString(),
+    author: { "@type": "Person", name: author.name ?? undefined, image: author.image ?? undefined, url: config.baseUrl ?? undefined },
+    publisher: { "@type": "Organization", name: config.organization, url: config.baseUrl, logo: { "@type": "ImageObject", url: config.logoUrl } },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <BlogContent
-        post={post}
-        relatedPosts={related.posts}
-        readingTime={readingTime}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BlogContent post={result.post} relatedPosts={related.posts} readingTime={readingTime} />
     </>
   );
 }

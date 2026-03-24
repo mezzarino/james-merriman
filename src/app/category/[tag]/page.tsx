@@ -17,28 +17,12 @@ export async function generateMetadata(
   const params = await props.params;
   const { tag } = params;
 
-  const category = config.categories.find((c) => c.tag === tag);
-  const label = category?.label || `#${tag}`;
-  const description =
-    category?.description ||
-    `Explore all blog posts tagged with ${label} on ${config.organization}.`;
-
   return {
-    title: `Blog posts tagged with ${label} | James Merriman`,
-    description,
-    alternates: {
-      canonical: `${config.baseUrl}/category/${tag}`,
-    },
+    title: `Blog posts tagged with #${tag} | James Merriman`,
+    description: `Browse all travel blog posts tagged with #${tag} by James Merriman.`,
     openGraph: {
-      title: `Blog posts tagged with ${label}`,
-      description,
-      images: [getOgImageUrl(`#${tag}`)],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `Blog posts tagged with ${label}`,
-      description,
+      title: `Blog posts tagged with #${tag} | James Merriman`,
+      description: `Browse all travel blog posts tagged with #${tag}.`,
       images: [getOgImageUrl(`#${tag}`)],
     },
   };
@@ -54,14 +38,12 @@ export default async function Page(
   const { tag } = params;
 
   const searchParams = await props.searchParams;
-  const page = searchParams?.page ? parseInt(searchParams.page) : 1;
-
   const category = config.categories.find((c) => c.tag === tag);
-  const label = category?.label || `#${tag}`;
-  const description =
-    category?.description ||
-    `Explore all blog posts tagged with ${label} on ${config.organization}.`;
-
+  const { label, description } = category || {
+    label: `#${tag}`,
+    description: `Blog posts tagged with #${tag}`,
+  };
+  const page = searchParams?.page ? parseInt(searchParams.page) : 1;
   const result = await wisp.getPosts({
     limit: 6,
     tags: [tag],
@@ -76,11 +58,10 @@ export default async function Page(
         description={description}
         breadcrumb={[
           { label: "Home", href: "/" },
-          { label: "Categories", href: `/category/` },
+          { label: "Category", href: `/category/` },
           { label, href: `/category/${tag}` },
         ]}
       />
-
       <main className="container mx-auto px-4 max-w-6xl" role="main">
         {/* Intro paragraph for SEO */}
         <p className="mb-6 text-base text-muted-foreground max-w-2xl">
