@@ -24,8 +24,8 @@ export default async function Page() {
   return (
     <>
       <FullWidthHeader
-        title="Categories"
-        description="Browse blog posts by category"
+        title="Browse Travel Writing by Category | James Merriman"
+        description="Explore travel writing by category, including walking, food, coastal, and historical stories."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Category", href: `/category/` },
