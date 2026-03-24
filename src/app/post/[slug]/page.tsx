@@ -63,7 +63,7 @@ export default async function BlogPost(
     author: { "@type": "Person", name: author.name ?? undefined, image: author.image ?? undefined, url: config.baseUrl ?? undefined },
     publisher: { "@type": "Organization", name: config.organization, url: config.baseUrl, logo: { "@type": "ImageObject", url: config.logoUrl } },
     mainEntityOfPage: `${config.baseUrl}/post/${slug}`,
-    timeRequired: `${readingTime} min read`,
+    timeRequired: `${readingTime}`,
   };
 
   return (
