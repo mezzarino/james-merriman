@@ -70,7 +70,7 @@ export default async function Page(
           pilgrimage, and global adventures.
         </p>
 
-        <FilterBar active={tag} className="my-8" />
+        <FilterBar active={tag} className="my-8 px-0" />
         <BlogPostList posts={result.posts} />
         <PostPagination
           pagination={result.pagination}
