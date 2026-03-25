@@ -34,6 +34,13 @@ export const metadata: Metadata = {
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex, and overlooked destinations across 160+ countries.",
   },
+  other: {
+    "sameAs": JSON.stringify([
+      "https://x.com/mezzarino",
+      "https://linkedin.com/in/jamesmerriman",
+      "https://instagram.com/mezzarino",
+    ]),
+  },
 };
 
 export default function RootLayout({

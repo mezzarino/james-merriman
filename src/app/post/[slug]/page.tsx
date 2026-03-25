@@ -56,14 +56,54 @@ export default async function BlogPost(
   const jsonLd: WithContext<BlogPosting> = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+
+    "@id": `${config.baseUrl}/post/${slug}#article`,
+
     headline: title,
-    image: image || undefined,
-    datePublished: publishedAt?.toString(),
-    dateModified: updatedAt.toString(),
-    author: { "@type": "Person", name: author.name ?? undefined, image: author.image ?? undefined, url: config.baseUrl ?? undefined },
-    publisher: { "@type": "Organization", name: config.organization, url: config.baseUrl, logo: { "@type": "ImageObject", url: config.logoUrl } },
-    mainEntityOfPage: `${config.baseUrl}/post/${slug}`,
-    timeRequired: `${readingTime}`,
+    image: image ? image : undefined,
+
+    datePublished: publishedAt ? publishedAt.toISOString() : undefined,
+    dateModified: updatedAt.toISOString(),
+
+    author: {
+      "@type": "Person",
+      "@id": `${config.baseUrl}/about#author`,
+      name: "James Merriman",
+      url: `${config.baseUrl}/about`,
+      image: author.image ?? undefined,
+    },
+
+    publisher: {
+      "@type": "Organization",
+      name: config.organization,
+      url: config.baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: config.logoUrl,
+      },
+    },
+
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${config.baseUrl}/post/${slug}`,
+    },
+
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${config.baseUrl}#website`,
+    },
+
+    inLanguage: "en-GB",
+
+    timeRequired: `PT${readingTime}M`,
+
+    wordCount: result.post.content
+      ? result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length
+      : undefined,
+
+    keywords: result.post.tags?.map((t) => t.name).join(", "),
+
+    articleSection: result.post.tags?.[0]?.name,
   };
 
   return (

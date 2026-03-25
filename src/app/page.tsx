@@ -42,17 +42,48 @@ export default async function Page(
     page,
   });
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: `James Merriman Blog | Travel Writing & Photography`,
-    url: config.baseUrl,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${config.baseUrl}/?query={search_term_string}`,
-      "query-input": "required name=search_term_string",
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${config.baseUrl}#website`,
+      name: "James Merriman | Travel Writing & Photography",
+      url: config.baseUrl,
+
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${config.baseUrl}/?query={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
     },
-  };
+
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${config.baseUrl}/about#author`,
+      name: "James Merriman",
+      url: `${config.baseUrl}/about`,
+      image:
+        "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+
+      sameAs: [
+        "https://x.com/mezzarino",
+        "https://linkedin.com/in/jamesmerriman",
+        "https://instagram.com/mezzarino",
+      ],
+
+      jobTitle: "Travel Writer & Photographer",
+
+      knowsAbout: [
+        "Travel Writing",
+        "Documentary Photography",
+        "Remote Travel",
+        "Conflict Zones",
+        "Cultural Geography",
+        "Walking",
+      ],
+    },
+  ];
 
   return (
     <>
