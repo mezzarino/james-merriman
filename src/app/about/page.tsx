@@ -84,7 +84,7 @@ const Page = async () => {
               <p>
                 Based in beautiful countryside, I continue to explore the world — and the evolving landscape of technology — with the same enduring curiosity.
               </p>
-              <h2>Awards</h2>
+              <h2>Awards &amp; Nominations</h2>
               <p>Longlisted - Bradt Guides New Travel Writer of the Year 2026.</p>
               <h3>Contact me</h3>
               <p>Please get in touch through any of the below channels.</p>
