@@ -10,7 +10,7 @@ import { getOgImageUrl } from "@/lib/ogImage";
 
 export const metadata: Metadata = {
   title: `Browse Travel Blog Categories | James Merriman`,
-  description: `Browse travel writing by category, including walking, coastal journeys, food experiences, history, and pilgrimage stories from the UK and beyond.`,
+  description: `Browse travel writing by category, including walking, coastal journeys, food experiences, history and pilgrimage stories from the UK and beyond.`,
   keywords: [
     "travel writing",
     "travel blog categories",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: `Browse Travel Blog Categories | James Merriman`,
-    description: `Browse travel writing by category, including walking, coastal journeys, food experiences, history, and pilgrimage stories.`,
+    description: `Browse travel writing by category, including walking, coastal journeys, food experiences, history and pilgrimage stories.`,
     images: [getOgImageUrl("Blog Categories")],
   },
 };
@@ -52,7 +52,7 @@ export default async function Page() {
 
       <FullWidthHeader
         title="Browse Travel Writing by Category | James Merriman"
-        description="Explore travel writing by category, including walking, food, coastal, and historical stories."
+        description="Explore travel writing by category, including walking, food, coastal and historical stories."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Category", href: `/category/` },
@@ -61,7 +61,7 @@ export default async function Page() {
       <div className="container mx-auto text-xl px-4 mb-10 max-w-6xl">
         <div className="w-full max-w-full prose prose-lg break-words blog-content mt-8">
           <p className="text-base text-muted-foreground">
-            Browse travel writing by category, from coastal walks and countryside villages to food, history, and personal reflections. These pieces are drawn from journeys across the UK and further afield, each grounded in first-hand experience and a strong sense of place.
+            Browse travel writing by category, from coastal walks and countryside villages to food, history and personal reflections. These pieces are drawn from journeys across the UK and further afield, each grounded in first-hand experience and a strong sense of place.
           </p>
 
           <ul className="mt-4 flex flex-wrap gap-3 list-none p-0">

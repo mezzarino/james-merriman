@@ -19,16 +19,16 @@ export async function generateMetadata(
 
   return {
     title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
-    description: `Discover James Merriman's immersive travel stories, photography, and tips featuring ${tag}.`,
+    description: `Discover James Merriman's immersive travel stories, photography and tips featuring ${tag}.`,
     openGraph: {
       title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
-      description: `Immersive travel stories, tips, and photography featuring ${tag}.`,
+      description: `Immersive travel stories, tips and photography featuring ${tag}.`,
       images: [getOgImageUrl(`${tag} travel`)],
     },
     twitter: {
       card: "summary_large_image",
       title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
-      description: `Discover travel stories, photography, and tips from James Merriman on ${tag}.`,
+      description: `Discover travel stories, photography and tips from James Merriman on ${tag}.`,
       images: [getOgImageUrl(`${tag} travel`)],
     },
   };
@@ -47,7 +47,7 @@ export default async function Page(
   const category = config.categories.find((c) => c.tag === tag);
   const { label, description } = category || {
     label: `#${tag}`,
-    description: `Immersive travel stories, tips, and photography featuring ${tag}.`,
+    description: `Immersive travel stories, tips and photography featuring ${tag}.`,
   };
   const page = searchParams?.page ? parseInt(searchParams.page) : 1;
   const result = await wisp.getPosts({
@@ -72,8 +72,8 @@ export default async function Page(
         {/* Intro paragraph for SEO */}
         <p className="text-base text-muted-foreground px-4 my-8">
           Browse all blog posts tagged with {label}. Discover travel writing,
-          stories, and experiences covering walking, coastal, food, history,
-          pilgrimage, and global adventures.
+          stories and experiences covering walking, coastal, food, history,
+          pilgrimage and global adventures.
         </p>
 
         <FilterBar active={tag} className="my-8 px-0" />

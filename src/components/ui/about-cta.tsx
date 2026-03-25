@@ -24,7 +24,7 @@ export function AboutCta() {
             About James Merriman
           </p>
           <p className="line-clamp-3">
-            A brief introduction to my work, travels, and perspective.
+            A brief introduction to my work, travels and perspective.
           </p>
           <span className="font-semibold inline-block mt-2 group-hover:text-primary">
             Find out more

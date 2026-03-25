@@ -7,14 +7,14 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: `About James Merriman | Travel Writer & Photographer`,
-  description: `Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones, and cultural frontiers across 160+ countries.`,
+  description: `Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones and cultural frontiers across 160+ countries.`,
   alternates: {
     canonical: `${config.baseUrl}/about`,
   },
   openGraph: {
     type: "profile",
     title: `About James Merriman | Travel Writer & Photographer`,
-    description: `Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones, and cultural frontiers across 160+ countries.`,
+    description: `Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones and cultural frontiers across 160+ countries.`,
     images: [getOgImageUrl("About James Merriman")],
   },
 };
@@ -34,7 +34,7 @@ const Page = async () => {
               image:
                 "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
               description:
-                "UK-based travel writer and photographer documenting remote regions, conflict zones, and cultural frontiers worldwide.",
+                "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
               jobTitle: "Travel Writer & Photographer",
               worksFor: {
                 "@type": "Organization",
@@ -73,7 +73,7 @@ const Page = async () => {
           <div className="flex flex-col-reverse lg:flex-row">
             <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
               <p>
-                I am a British traveller, award-longlisted writer and lead web developer based in Devon, England. I am a Fellow of the Royal Geographical Society, and have visited 164 countries across six continents, driven by a deep curiosity for landscape, culture and the stories that shape place.
+                I am a British traveller, award-longlisted writer and lead web developer based in Devon, England. I am a Fellow of the Royal Geographical Society and have visited 164 countries across six continents, driven by a deep curiosity for landscape, culture and the stories that shape place.
               </p>
               <p>
                 My journeys have taken me from remote island nations to post-conflict regions, exploring how geography, history and community intersect. Through my writing, I reflect on the textures of travel — the light, the language, the food, the quiet human moments that define a destination beyond its map coordinates.
