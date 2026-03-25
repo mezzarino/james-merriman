@@ -60,7 +60,7 @@ export default async function Page() {
       />
       <div className="container mx-auto text-xl px-4 mb-10 max-w-6xl">
         <div className="w-full max-w-full prose prose-lg break-words blog-content mt-8">
-          <p>
+          <p className="text-base text-muted-foreground">
             Browse travel writing by category, from coastal walks and countryside villages to food, history, and personal reflections. These pieces are drawn from journeys across the UK and further afield, each grounded in first-hand experience and a strong sense of place.
           </p>
 
