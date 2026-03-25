@@ -1,7 +1,7 @@
 export const revalidate = 60; // 1 minute
 
 import { BlogPostList } from "@/components/BlogPostList";
-import { PostPagination, getPaginationJsonLd } from "@/components/PostPagination";
+import { PostPagination } from "@/components/PostPagination";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { wisp } from "@/lib/wisp";
 import { Metadata } from "next";
@@ -78,12 +78,42 @@ export default async function Page(
         "Walking",
       ],
     },
-    // ✅ Pagination structured data
-    getPaginationJsonLd({
-      pagination: result.pagination,
-      basePath: "/",
-      query: searchParams?.query,
-    }),
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: result.posts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${config.baseUrl}/post/${post.slug}`,
+        item: {
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.description,
+          url: `${config.baseUrl}/post/${post.slug}`,
+          datePublished: post.publishedAt || post.createdAt,
+          dateModified:
+            post.updatedAt || post.publishedAt || post.createdAt,
+          author: {
+            "@type": "Person",
+            name: post.author?.name || "James Merriman",
+          },
+          image: post.image
+            ? [post.image]
+            : [`${config.baseUrl}/placeholder.jpg`],
+          mainEntityOfPage: `${config.baseUrl}/post/${post.slug}`,
+        },
+      })),
+      numberOfItems: result.posts.length,
+      mainEntityOfPage: `${config.baseUrl}${
+        page > 1 ? `?page=${page}` : ""
+      }`,
+      ...(result.pagination.nextPage && {
+        nextPage: `${config.baseUrl}?page=${result.pagination.nextPage}`,
+      }),
+      ...(result.pagination.prevPage && {
+        previousPage: `${config.baseUrl}?page=${result.pagination.prevPage}`,
+      }),
+    },
   ];
 
   return (

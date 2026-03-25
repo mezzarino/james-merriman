@@ -58,9 +58,19 @@ export default async function BlogPost(
     "@type": "BlogPosting",
 
     "@id": `${config.baseUrl}/post/${slug}#article`,
+    url: `${config.baseUrl}/post/${slug}`,
 
     headline: title,
-    image: image || undefined,
+    description: result.post.description || undefined,
+
+    image: image
+      ? [
+          {
+            "@type": "ImageObject",
+            url: image,
+          },
+        ]
+      : undefined,
 
     datePublished: publishedAt
       ? new Date(publishedAt).toISOString()
@@ -68,6 +78,8 @@ export default async function BlogPost(
 
     dateModified: updatedAt
       ? new Date(updatedAt).toISOString()
+      : publishedAt
+      ? new Date(publishedAt).toISOString()
       : undefined,
 
     author: {
@@ -76,6 +88,11 @@ export default async function BlogPost(
       name: "James Merriman",
       url: `${config.baseUrl}/about`,
       image: author?.image ?? undefined,
+      sameAs: [
+        "https://x.com/mezzarino",
+        "https://linkedin.com/in/jamesmerriman",
+        "https://instagram.com/mezzarino",
+      ],
     },
 
     publisher: {
@@ -113,6 +130,17 @@ export default async function BlogPost(
       : undefined,
 
     articleSection: result.post.tags?.[0]?.name,
+
+    articleBody: result.post.content
+      ? result.post.content
+          .replace(/<[^>]+>/g, "")
+          .slice(0, 5000)
+      : undefined,
+
+    about: result.post.tags?.map((tag) => ({
+      "@type": "Thing",
+      name: tag.name,
+    })),
   };
 
   return (
