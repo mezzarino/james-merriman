@@ -27,6 +27,11 @@ const categories: Category[] = [
     description: "Travel writing rooted in history—exploring ancient sites, historic landmarks, and the stories that shape places around the world.",
   },
   {
+    label: "People",
+    tag: "people",
+    description: "Explore inspiring stories of people from around the world. Discover their kindness, culture, and unique perspectives through personal encounters.",
+  },
+  {
     label: "Pilgrimage",
     tag: "pilgrimage",
     description: "Reflective travel writing on pilgrimage—journeys of meaning, memory, and personal connection through landscapes and sacred places.",

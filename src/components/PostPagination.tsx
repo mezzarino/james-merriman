@@ -45,6 +45,7 @@ export const PostPagination = ({
 }) => {
   const buildPath = (page: number) =>
     constructPath({ basePath, page: page.toString(), query });
+
   return (
     <Pagination className={cn("overflow-x-auto", className)}>
       <PaginationContent>
@@ -53,6 +54,7 @@ export const PostPagination = ({
             <PaginationPrevious href={buildPath(pagination.prevPage)} />
           </PaginationItem>
         )}
+
         {pagination.page > 3 && (
           <>
             <PaginationItem>
@@ -61,6 +63,7 @@ export const PostPagination = ({
             <PaginationEllipsis />
           </>
         )}
+
         {Array.from({ length: pagination.totalPages }, (_, index) => index + 1)
           .filter(
             (pageNumber) =>
@@ -76,6 +79,7 @@ export const PostPagination = ({
               </PaginationLink>
             </PaginationItem>
           ))}
+
         {pagination.page < pagination.totalPages - 2 && (
           <>
             <PaginationEllipsis />
@@ -86,6 +90,7 @@ export const PostPagination = ({
             </PaginationItem>
           </>
         )}
+
         {pagination.nextPage && (
           <PaginationItem>
             <PaginationNext href={buildPath(pagination.nextPage)} />
@@ -94,4 +99,54 @@ export const PostPagination = ({
       </PaginationContent>
     </Pagination>
   );
+};
+
+// ✅ JSON-LD helper for structured data
+export const getPaginationJsonLd = ({
+  pagination,
+  basePath,
+  query,
+  numSiblingPages = 2,
+}: {
+  pagination: {
+    page: number;
+    totalPages: number;
+    nextPage: number | null;
+    prevPage: number | null;
+  };
+  basePath: string;
+  query?: string;
+  numSiblingPages?: number;
+}) => {
+  const pages = Array.from({ length: pagination.totalPages }, (_, i) => i + 1)
+    .filter((pageNumber) => Math.abs(pagination.page - pageNumber) <= numSiblingPages)
+    .map((pageNumber, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: `Page ${pageNumber}`,
+      item: `${basePath}?page=${pageNumber}${query ? `&query=${query}` : ""}`,
+    }));
+
+  const json: any = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: pages,
+    numberOfItems: pages.length,
+    mainEntityOfPage: `${basePath}?page=${pagination.page}${
+      query ? `&query=${query}` : ""
+    }`,
+  };
+
+  if (pagination.nextPage) {
+    json.nextPage = `${basePath}?page=${pagination.nextPage}${
+      query ? `&query=${query}` : ""
+    }`;
+  }
+  if (pagination.prevPage) {
+    json.previousPage = `${basePath}?page=${pagination.prevPage}${
+      query ? `&query=${query}` : ""
+    }`;
+  }
+
+  return json;
 };

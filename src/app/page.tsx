@@ -1,7 +1,7 @@
 export const revalidate = 60; // 1 minute
 
 import { BlogPostList } from "@/components/BlogPostList";
-import { PostPagination } from "@/components/PostPagination";
+import { PostPagination, getPaginationJsonLd } from "@/components/PostPagination";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { wisp } from "@/lib/wisp";
 import { Metadata } from "next";
@@ -12,7 +12,7 @@ import { config } from "../config";
 export const metadata: Metadata = {
   title: `James Merriman Blog | Travel Writing & Photography`,
   description: `Explore travel stories, photography, and insights from James Merriman, covering remote destinations and cultural journeys worldwide.`,
-   alternates: {
+  alternates: {
     canonical: config.baseUrl,
   },
   openGraph: {
@@ -49,14 +49,12 @@ export default async function Page(
       "@id": `${config.baseUrl}#website`,
       name: "James Merriman | Travel Writing & Photography",
       url: config.baseUrl,
-
       potentialAction: {
         "@type": "SearchAction",
         target: `${config.baseUrl}/?query={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },
-
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -65,15 +63,12 @@ export default async function Page(
       url: `${config.baseUrl}/about`,
       image:
         "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
-
       sameAs: [
         "https://x.com/mezzarino",
         "https://linkedin.com/in/jamesmerriman",
         "https://instagram.com/mezzarino",
       ],
-
       jobTitle: "Travel Writer & Photographer",
-
       knowsAbout: [
         "Travel Writing",
         "Documentary Photography",
@@ -83,11 +78,17 @@ export default async function Page(
         "Walking",
       ],
     },
+    // ✅ Pagination structured data
+    getPaginationJsonLd({
+      pagination: result.pagination,
+      basePath: "/",
+      query: searchParams?.query,
+    }),
   ];
 
   return (
     <>
-       <script
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
