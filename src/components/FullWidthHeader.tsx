@@ -12,6 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
+import { config } from "../config";
 
 interface BreadcrumbProps {
   label: string;
@@ -66,7 +67,6 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
               </BreadcrumbList>
             </Breadcrumb>
 
-            {/* JSON-LD structured data */}
             <Script id="breadcrumb-jsonld" type="application/ld+json">
               {JSON.stringify({
                 "@context": "https://schema.org",
@@ -75,7 +75,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
                   "@type": "ListItem",
                   position: index + 1,
                   name: crumb.label,
-                  ...(index < updatedBreadcrumb.length - 1 && { item: crumb.href }),
+                  item: `${config.baseUrl}${crumb.href}`,
                 })),
               })}
             </Script>
