@@ -18,12 +18,18 @@ export async function generateMetadata(
   const { tag } = params;
 
   return {
-    title: `Blog posts tagged with #${tag} | James Merriman`,
-    description: `Browse all travel blog posts tagged with #${tag} by James Merriman.`,
+    title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
+    description: `Discover James Merriman's immersive travel stories, photography, and tips featuring ${tag}.`,
     openGraph: {
-      title: `Blog posts tagged with #${tag} | James Merriman`,
-      description: `Browse all travel blog posts tagged with #${tag}.`,
-      images: [getOgImageUrl(`#${tag}`)],
+      title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
+      description: `Immersive travel stories, tips, and photography featuring ${tag}.`,
+      images: [getOgImageUrl(`${tag} travel`)],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
+      description: `Discover travel stories, photography, and tips from James Merriman on ${tag}.`,
+      images: [getOgImageUrl(`${tag} travel`)],
     },
   };
 }
@@ -41,7 +47,7 @@ export default async function Page(
   const category = config.categories.find((c) => c.tag === tag);
   const { label, description } = category || {
     label: `#${tag}`,
-    description: `Blog posts tagged with #${tag}`,
+    description: `Immersive travel stories, tips, and photography featuring ${tag}.`,
   };
   const page = searchParams?.page ? parseInt(searchParams.page) : 1;
   const result = await wisp.getPosts({
