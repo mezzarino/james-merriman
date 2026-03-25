@@ -67,18 +67,21 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
               </BreadcrumbList>
             </Breadcrumb>
 
-            <Script id="breadcrumb-jsonld" type="application/ld+json">
-              {JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                itemListElement: updatedBreadcrumb.map((crumb, index) => ({
-                  "@type": "ListItem",
-                  position: index + 1,
-                  name: crumb.label,
-                  item: `${config.baseUrl}${crumb.href}`,
-                })),
-              })}
-            </Script>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "BreadcrumbList",
+                  itemListElement: updatedBreadcrumb.map((crumb, index) => ({
+                    "@type": "ListItem",
+                    position: index + 1,
+                    name: crumb.label,
+                    item: `${config.baseUrl}${crumb.href}`,
+                  })),
+                }),
+              }}
+            />
           </>
         )}
 
