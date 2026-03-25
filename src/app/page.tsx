@@ -47,7 +47,6 @@ export default async function Page(props: {
     { label: "Latest", href: page > 1 ? `?page=${page}` : "/" },
   ];
 
-  // JSON-LD structured data
   const jsonLd = [
     // WebSite
     {
