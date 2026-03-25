@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation"; // Next.js 13+ app router
-import Script from "next/script";
 import React, { FunctionComponent } from "react";
 import {
   Breadcrumb,
@@ -12,7 +11,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
-import { config } from "../config";
 
 interface BreadcrumbProps {
   label: string;
@@ -66,22 +64,6 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
                 ))}
               </BreadcrumbList>
             </Breadcrumb>
-
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{
-                __html: JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "BreadcrumbList",
-                  itemListElement: updatedBreadcrumb.map((crumb, index) => ({
-                    "@type": "ListItem",
-                    position: index + 1,
-                    name: crumb.label,
-                    item: `${config.baseUrl}${crumb.href}`,
-                  })),
-                }),
-              }}
-            />
           </>
         )}
 
