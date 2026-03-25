@@ -60,17 +60,22 @@ export default async function BlogPost(
     "@id": `${config.baseUrl}/post/${slug}#article`,
 
     headline: title,
-    image: image ? image : undefined,
+    image: image || undefined,
 
-    datePublished: publishedAt ? publishedAt.toISOString() : undefined,
-    dateModified: updatedAt.toISOString(),
+    datePublished: publishedAt
+      ? new Date(publishedAt).toISOString()
+      : undefined,
+
+    dateModified: updatedAt
+      ? new Date(updatedAt).toISOString()
+      : undefined,
 
     author: {
       "@type": "Person",
       "@id": `${config.baseUrl}/about#author`,
       name: "James Merriman",
       url: `${config.baseUrl}/about`,
-      image: author.image ?? undefined,
+      image: author?.image ?? undefined,
     },
 
     publisher: {
@@ -95,13 +100,17 @@ export default async function BlogPost(
 
     inLanguage: "en-GB",
 
-    timeRequired: `PT${readingTime}M`,
+    timeRequired: Number.isFinite(readingTime)
+      ? `PT${readingTime}M`
+      : undefined,
 
     wordCount: result.post.content
       ? result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length
       : undefined,
 
-    keywords: result.post.tags?.map((t) => t.name).join(", "),
+    keywords: result.post.tags?.length
+      ? result.post.tags.map((t) => t.name).join(", ")
+      : undefined,
 
     articleSection: result.post.tags?.[0]?.name,
   };
