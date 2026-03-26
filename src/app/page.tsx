@@ -60,6 +60,9 @@ export default async function Page(props: {
         target: `${config.baseUrl}/?query={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
+      breadcrumb: {
+        "@id": `${config.baseUrl}#breadcrumb`,
+      }
     },
     // Person
     {
@@ -89,11 +92,14 @@ export default async function Page(props: {
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${config.baseUrl}#breadcrumb`,
       itemListElement: breadcrumb.map((crumb, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: crumb.label,
-        item: `${config.baseUrl}${crumb.href}`,
+        item: {
+          "@id": `${config.baseUrl}${crumb.href}`,
+        },
       })),
     },
     // ItemList + BlogPosting + Pagination
