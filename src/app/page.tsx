@@ -103,9 +103,9 @@ export default async function Page(props: {
       itemListElement: result.posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        url: `${config.baseUrl}/post/${post.slug}`,
         item: {
           "@type": "BlogPosting",
+          "@id": `${config.baseUrl}/post/${post.slug}#article`,
           headline: post.title,
           description: post.description,
           url: `${config.baseUrl}/post/${post.slug}`,
@@ -114,12 +114,19 @@ export default async function Page(props: {
             post.updatedAt || post.publishedAt || post.createdAt,
           author: {
             "@type": "Person",
+            "@id": `${config.baseUrl}/about#author`,
             name: post.author?.name || "James Merriman",
           },
           image: post.image
             ? [post.image]
             : [`${config.baseUrl}/placeholder.jpg`],
-          mainEntityOfPage: `${config.baseUrl}/post/${post.slug}`,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${config.baseUrl}/post/${post.slug}`,
+          },
+          isPartOf: {
+            "@id": `${config.baseUrl}#website`,
+          },
         },
       })),
       numberOfItems: result.posts.length,
