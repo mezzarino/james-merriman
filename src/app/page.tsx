@@ -60,9 +60,6 @@ export default async function Page(props: {
         target: `${config.baseUrl}/?query={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
-      breadcrumb: {
-        "@id": `${config.baseUrl}#breadcrumb`,
-      }
     },
     // Person
     {
@@ -140,12 +137,6 @@ export default async function Page(props: {
       })),
       numberOfItems: result.posts.length,
       mainEntityOfPage: `${config.baseUrl}${page > 1 ? `?page=${page}` : ""}`,
-      ...(result.pagination.nextPage && {
-        nextPage: `${config.baseUrl}?page=${result.pagination.nextPage}`,
-      }),
-      ...(result.pagination.prevPage && {
-        previousPage: `${config.baseUrl}?page=${result.pagination.prevPage}`,
-      }),
     },
   ];
 
