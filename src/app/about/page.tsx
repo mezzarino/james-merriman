@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { SocialLinks } from "@/components/ui/social-links";
 import Image from 'next/image'
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: `About James Merriman | Travel Writer & Photographer`,
@@ -22,8 +23,10 @@ export const metadata: Metadata = {
 const Page = async () => {
   return (
       <>
-        <script
+        <Script
+          id="person-schema"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -36,6 +39,10 @@ const Page = async () => {
               description:
                 "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
               jobTitle: "Travel Writer & Photographer",
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": `${config.baseUrl}/about`,
+              },
               worksFor: {
                 "@type": "Organization",
                 name: config.organization,
@@ -55,7 +62,7 @@ const Page = async () => {
                 "Walking and Exploration",
               ],
               award: [
-                "Longlisted – Bradt Guides New Travel Writer of the Year 2026",
+                "Longlisted for Bradt Guides New Travel Writer of the Year 2026",
               ],
             }),
           }}
