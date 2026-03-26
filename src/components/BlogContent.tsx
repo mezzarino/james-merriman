@@ -67,7 +67,7 @@ export const BlogContent = ({
           </div>
         </div>
         <div className="flex">
-          <div className="lg:w-3/4 prose prose-lg max-w-none w-full my-6 break-words blog-content">
+          <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
             <ContentWithCustomComponents
               content={modifiedHtml}
               customComponents={{
@@ -75,7 +75,7 @@ export const BlogContent = ({
               }}
             />
           </div>
-          <div className="w-1/4 hidden lg:block px-4">
+          <div className="w-full lg:w-1/4 lg:px-4">
               <AboutCta />
           </div>
         </div>

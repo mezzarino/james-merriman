@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function AboutCta() {
   return (
-    <article className="sticky top-4 mt-4">
+    <article className="lg:sticky lg:top-4 mt-4">
       <Link href="/about" className="block rounded-lg group overflow-hidden bg-muted">
         <AspectRatio ratio={16 / 9} className="w-full">
           <Image
