@@ -24,45 +24,97 @@ const Page = async () => {
   return (
       <>
         <Script
-          id="person-schema"
+          id="about-schema"
           type="application/ld+json"
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              "@id": `${config.baseUrl}/about#author`,
-              name: "James Merriman",
-              url: `${config.baseUrl}/about`,
-              image:
-                "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
-              description:
-                "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
-              jobTitle: "Travel Writer & Photographer",
-              mainEntityOfPage: {
-                "@type": "WebPage",
-                "@id": `${config.baseUrl}/about`,
-              },
-              worksFor: {
-                "@type": "Organization",
-                name: config.organization,
-                url: config.baseUrl,
-              },
-              sameAs: [
-                "https://x.com/mezzarino",
-                "https://linkedin.com/in/jamesmerriman",
-                "https://instagram.com/mezzarino",
-              ],
-              knowsAbout: [
-                "Travel Writing",
-                "Documentary Photography",
-                "Remote Travel",
-                "Conflict Zones",
-                "Cultural Geography",
-                "Walking and Exploration",
-              ],
-              award: [
-                "Longlisted for Bradt Guides New Travel Writer of the Year 2026",
+              "@graph": [
+                // WebPage
+                {
+                  "@type": "WebPage",
+                  "@id": `${config.baseUrl}/about`,
+                  url: `${config.baseUrl}/about`,
+                  name: "About James Merriman",
+                  description:
+                    "Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones and cultural frontiers across 160+ countries.",
+                  isPartOf: {
+                    "@id": `${config.baseUrl}#website`,
+                  },
+                  about: {
+                    "@id": `${config.baseUrl}/about#author`,
+                  },
+                  mainEntity: {
+                    "@id": `${config.baseUrl}/about#author`,
+                  },
+                },
+
+                // Person
+                {
+                  "@type": "Person",
+                  "@id": `${config.baseUrl}/about#author`,
+                  name: "James Merriman",
+                  url: `${config.baseUrl}/about`,
+                  image:
+                    "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+                  description:
+                    "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
+                  jobTitle: "Travel Writer & Photographer",
+                  worksFor: {
+                    "@id": `${config.baseUrl}#organization`,
+                  },
+                  alumniOf: {
+                    "@type": "Organization",
+                    name: "Royal Geographical Society",
+                  },
+                  sameAs: [
+                    "https://x.com/mezzarino",
+                    "https://linkedin.com/in/jamesmerriman",
+                    "https://instagram.com/mezzarino",
+                  ],
+                  knowsAbout: [
+                    "Travel Writing",
+                    "Documentary Photography",
+                    "Remote Travel",
+                    "Conflict Zones",
+                    "Cultural Geography",
+                    "Walking and Exploration",
+                  ],
+                  award: [
+                    "Longlisted – Bradt Guides New Travel Writer of the Year 2026",
+                  ],
+                },
+
+                // Organization
+                {
+                  "@type": "Organization",
+                  "@id": `${config.baseUrl}#organization`,
+                  name: config.organization || "James Merriman",
+                  url: config.baseUrl,
+
+                  logo: {
+                    "@type": "ImageObject",
+                    url: `${config.baseUrl}/logo.png`
+                  },
+
+                  sameAs: [
+                    "https://x.com/mezzarino",
+                    "https://linkedin.com/in/jamesmerriman",
+                    "https://instagram.com/mezzarino"
+                  ]
+                },
+
+                // WebSite (ties everything together)
+                {
+                  "@type": "WebSite",
+                  "@id": `${config.baseUrl}#website`,
+                  url: config.baseUrl,
+                  name: "James Merriman",
+                  publisher: {
+                    "@id": `${config.baseUrl}#organization`,
+                  },
+                },
               ],
             }),
           }}
