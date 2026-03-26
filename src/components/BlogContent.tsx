@@ -66,7 +66,7 @@ export const BlogContent = ({
             Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"} | {readingTime}
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
             <ContentWithCustomComponents
               content={modifiedHtml}
