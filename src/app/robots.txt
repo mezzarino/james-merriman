@@ -1,0 +1,56 @@
+# ============================================================
+# Robots.txt for jamesmerriman.co.uk
+# Fully Optimised for Next.js + Wisp CMS
+# SEO-Boosted Version
+# ============================================================
+
+# =======================
+# UNIVERSAL DIRECTIVES
+# =======================
+User-agent: *
+Allow: /
+
+# --- BLOCK INTERNAL NEXT.JS AND CMS ROUTES ---
+Disallow: /_next/                         # Build assets (not indexable)
+Disallow: /api/                           # API routes, serverless functions
+Disallow: /server/                        # Potential internal component paths
+Disallow: /admin/                         # Admin panels shouldn't be indexed
+Disallow: /cms/                           # Wisp CMS API or admin endpoints
+Disallow: /dashboard/                     # Generic private area
+
+# --- BLOCK COMMON DUPLICATE / NON-CONTENT URLS ---
+Disallow: /*?*utm_*                       # UTM tracking parameters
+Disallow: /*?*fbclid=*                    # FB click tracking
+Disallow: /*?*ref=*                        # Referral URLs
+Disallow: /*?*source=*                     # Generic tracking param
+Disallow: /*?*preview=true                 # Next.js preview mode
+Disallow: /*?*draft=true                   # Wisp CMS draft content
+Disallow: /*?*amp=true                     # AMP variants (if not used)
+
+# --- BLOCK SEARCH PAGES (if using client-side search) ---
+Disallow: /search                         # Avoid thin auto-generated content
+
+# =======================
+# CRAWL BUDGET OPTIMISATION
+# =======================
+# Slows down "aggressive" bots (Google ignores Crawl-delay)
+Crawl-delay: 5
+
+# =======================
+# INDEXING / SEO SIGNALS
+# =======================
+# Preferred canonical host
+Host: jamesmerriman.co.uk
+
+# Encourage full crawl of essential assets
+Allow: /*.js$
+Allow: /*.css$
+Allow: /fonts/
+Allow: /images/
+Allow: /public/
+
+# =======================
+# SITEMAPS
+# =======================
+# Primary sitemap
+Sitemap: https://jamesmerriman.co.uk/sitemap.xml
