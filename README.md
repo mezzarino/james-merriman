@@ -142,9 +142,3 @@ eslint.config.mjs
 pnpm build
 pnpm start
 ```
-
----
-
-## 📄 License
-
-MIT — feel free to use this as inspiration.
