@@ -20,12 +20,8 @@ export function AboutCta() {
         </AspectRatio>
 
         <div className="prose prose-sm dark:prose-invert p-4 transition-colors duration-300 group-hover:text-primary">
-          <p className="line-clamp-2 font-bold">
-            About James Merriman
-          </p>
-          <p className="line-clamp-3">
-            A brief introduction to my work, travels and perspective.
-          </p>
+          <p className="line-clamp-2 font-bold">About James Merriman</p>
+          <p className="line-clamp-3">A brief introduction to my work, travels and perspective.</p>
           <span className="font-semibold inline-block mt-2 group-hover:text-primary">
             Find out more
           </span>

@@ -74,9 +74,7 @@ export function CommentList({ comments, config, isLoading }: CommentListProps) {
                 {format(new Date(comment.createdAt), "PPp")}
               </div>
             </div>
-            <div className="mt-2 whitespace-pre-line text-sm">
-              {comment.content}
-            </div>
+            <div className="mt-2 whitespace-pre-line text-sm">{comment.content}</div>
           </div>
         </div>
       ))}

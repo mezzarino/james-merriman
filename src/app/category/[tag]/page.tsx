@@ -9,11 +9,9 @@ import { config } from "../../../config";
 import { Metadata } from "next";
 import { getOgImageUrl } from "@/lib/ogImage";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ tag: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ tag: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const { tag } = params;
 
@@ -34,12 +32,10 @@ export async function generateMetadata(
   };
 }
 
-export default async function Page(
-  props: {
-    searchParams?: Promise<{ query: string; page: string }>;
-    params: Promise<{ tag: string }>;
-  }
-) {
+export default async function Page(props: {
+  searchParams?: Promise<{ query: string; page: string }>;
+  params: Promise<{ tag: string }>;
+}) {
   const params = await props.params;
   const { tag } = params;
 
@@ -71,9 +67,8 @@ export default async function Page(
       <main className="container mx-auto px-4 max-w-6xl" role="main">
         {/* Intro paragraph for SEO */}
         <p className="text-base text-muted-foreground px-4 my-8">
-          Browse all blog posts tagged with {label}. Discover travel writing,
-          stories and experiences covering walking, coastal, food, history,
-          pilgrimage and global adventures.
+          Browse all blog posts tagged with {label}. Discover travel writing, stories and
+          experiences covering walking, coastal, food, history, pilgrimage and global adventures.
         </p>
 
         <FilterBar active={tag} className="my-8 px-0" />

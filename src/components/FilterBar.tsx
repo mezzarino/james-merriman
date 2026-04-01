@@ -17,11 +17,9 @@ export interface BlogNavigationBarProps {
 
 export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
   const param = useSearchParams();
-  const [searchText, setSearchText] = useState<string>(
-    param.get("query") || ""
-  );
+  const [searchText, setSearchText] = useState<string>(param.get("query") || "");
   const [isSearchActive, setIsSearchActive] = useState(
-    param.get("query") !== null && param.get("query") !== ""
+    param.get("query") !== null && param.get("query") !== "",
   );
   const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
@@ -48,10 +46,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
 
   const onClearSearch = () => {
     setIsSearchActive(false);
-    if (
-      searchText === "" &&
-      !(param.get("query") === "" || param.get("query") === null)
-    ) {
+    if (searchText === "" && !(param.get("query") === "" || param.get("query") === null)) {
       router.push("/");
     }
   };
@@ -79,9 +74,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
           <div className="flex gap-4 whitespace-nowrap  overflow-x-auto">
             {categories.map((category) => (
               <Link
-                href={
-                  category.tag === "latest" ? `/` : `/category/${category.tag}`
-                }
+                href={category.tag === "latest" ? `/` : `/category/${category.tag}`}
                 key={category.tag}
               >
                 <button
@@ -89,8 +82,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                   aria-label={`View all ${category.tag} posts`}
                   className={cn(
                     "py-2 px-3 min-h-[44px]",
-                    active === category.tag &&
-                      "border-b-2 border-black font-semibold"
+                    active === category.tag && "border-b-2 border-black font-semibold",
                   )}
                 >
                   {category.label}

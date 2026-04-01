@@ -25,9 +25,7 @@ import { wisp } from "../lib/wisp";
 const formSchema = z.object({
   author: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  url: z
-    .union([z.string().url("Please enter a valid URL"), z.string().max(0)])
-    .optional(),
+  url: z.union([z.string().url("Please enter a valid URL"), z.string().max(0)]).optional(),
   content: z.string().min(1, "Comment cannot be empty"),
   allowEmailUsage: z.boolean(),
 });
@@ -70,7 +68,9 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
         if (e instanceof AxiosError) {
           const errorData = e.response?.data as ErrorResponse | undefined;
           if (errorData?.error?.message) {
-            throw new Error(errorData.error.message);
+            throw new Error(errorData.error.message, {
+              cause: e,
+            });
           }
         }
         throw e;
@@ -117,9 +117,8 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
           <Shield className="text-muted-foreground mx-auto h-10 w-10" />
           <div className="font-medium">Pending email verification</div>
           <div className="text-muted-foreground m-auto max-w-lg text-balance text-sm">
-            Thanks for your comment! Please check your email to verify your
-            email and post your comment. If you don&apos;t see it in your inbox,
-            please check your spam folder.
+            Thanks for your comment! Please check your email to verify your email and post your
+            comment. If you don&apos;t see it in your inbox, please check your spam folder.
           </div>
         </AlertDescription>
       </Alert>
@@ -137,11 +136,7 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Your name"
-                    {...field}
-                    className="focus-visible:ring-inset"
-                  />
+                  <Input placeholder="Your name" {...field} className="focus-visible:ring-inset" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -213,15 +208,10 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
             render={({ field }) => (
               <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md">
                 <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
+                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel className="text-sm font-normal">
-                    {config.signUpMessage}
-                  </FormLabel>
+                  <FormLabel className="text-sm font-normal">{config.signUpMessage}</FormLabel>
                 </div>
               </FormItem>
             )}
@@ -229,7 +219,12 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
         )}
 
         <div className="flex items-center justify-between pt-2">
-          <Button type="submit" role="button" aria-label="Post Comment" disabled={form.formState.isSubmitting}>
+          <Button
+            type="submit"
+            role="button"
+            aria-label="Post Comment"
+            disabled={form.formState.isSubmitting}
+          >
             Post Comment
           </Button>
         </div>

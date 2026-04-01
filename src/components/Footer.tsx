@@ -16,7 +16,7 @@ export const Footer = () => {
             className="text-sm underline hover:opacity-70"
             aria-label="Find out more about James Merriman"
           >
-              About
+            About
           </Link>
 
           <Link
@@ -27,7 +27,6 @@ export const Footer = () => {
           >
             Blog powered by Wisp
           </Link>
-
         </div>
         <Link href="/rss" title="RSS feed">
           <Button variant="ghost" role="button" aria-label="RSS feed">

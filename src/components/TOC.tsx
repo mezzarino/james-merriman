@@ -26,7 +26,7 @@ interface ProcessedContent {
 
 export const processTableOfContents = (
   rawHtml: string,
-  headerConfig: HeaderConfig
+  headerConfig: HeaderConfig,
 ): ProcessedContent => {
   // Using node-html-parser to parse the HTML
   const root = parse(rawHtml);

@@ -13,9 +13,7 @@ interface Params {
   slug: string;
 }
 
-export async function generateMetadata(
-  props: { params: Promise<Params> }
-): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const params = await props.params;
   const { slug } = params;
 
@@ -26,7 +24,9 @@ export async function generateMetadata(
 
   return {
     title: `${result.post.title} | James Merriman`,
-    description: result.post.description ?? `Read travel insights from James Merriman about ${result.post.title}`,
+    description:
+      result.post.description ??
+      `Read travel insights from James Merriman about ${result.post.title}`,
     openGraph: {
       title: `${result.post.title} | James Merriman`,
       description: result.post.description ?? "",
@@ -35,9 +35,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function BlogPost(
-  props: { params: Promise<Params> }
-) {
+export default async function BlogPost(props: { params: Promise<Params> }) {
   const params = await props.params;
   const { slug } = params;
 
@@ -72,15 +70,13 @@ export default async function BlogPost(
         ]
       : undefined,
 
-    datePublished: publishedAt
-      ? new Date(publishedAt).toISOString()
-      : undefined,
+    datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
 
     dateModified: updatedAt
       ? new Date(updatedAt).toISOString()
       : publishedAt
-      ? new Date(publishedAt).toISOString()
-      : undefined,
+        ? new Date(publishedAt).toISOString()
+        : undefined,
 
     author: {
       "@type": "Person",
@@ -117,24 +113,18 @@ export default async function BlogPost(
 
     inLanguage: "en-GB",
 
-    timeRequired: Number.isFinite(readingTime)
-      ? `PT${readingTime}M`
-      : undefined,
+    timeRequired: Number.isFinite(readingTime) ? `PT${readingTime}M` : undefined,
 
     wordCount: result.post.content
       ? result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length
       : undefined,
 
-    keywords: result.post.tags?.length
-      ? result.post.tags.map((t) => t.name).join(", ")
-      : undefined,
+    keywords: result.post.tags?.length ? result.post.tags.map((t) => t.name).join(", ") : undefined,
 
     articleSection: result.post.tags?.[0]?.name,
 
     articleBody: result.post.content
-      ? result.post.content
-          .replace(/<[^>]+>/g, "")
-          .slice(0, 5000)
+      ? result.post.content.replace(/<[^>]+>/g, "").slice(0, 5000)
       : undefined,
 
     about: result.post.tags?.map((tag) => ({
@@ -145,7 +135,10 @@ export default async function BlogPost(
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BlogContent post={result.post} relatedPosts={related.posts} readingTime={readingTime} />
     </>
   );

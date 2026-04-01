@@ -68,8 +68,7 @@ export default async function Page(props: {
       "@id": `${config.baseUrl}/about#author`,
       name: "James Merriman",
       url: `${config.baseUrl}/about`,
-      image:
-        "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+      image: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
       sameAs: [
         "https://x.com/mezzarino",
         "https://linkedin.com/in/jamesmerriman",
@@ -113,8 +112,7 @@ export default async function Page(props: {
           description: post.description,
           url: `${config.baseUrl}/post/${post.slug}`,
           datePublished: post.publishedAt || post.createdAt,
-          dateModified:
-            post.updatedAt || post.publishedAt || post.createdAt,
+          dateModified: post.updatedAt || post.publishedAt || post.createdAt,
           author: {
             "@type": "Person",
             "@id": `${config.baseUrl}/about#author`,
@@ -123,9 +121,7 @@ export default async function Page(props: {
           publisher: {
             "@id": `${config.baseUrl}#organization`,
           },
-          image: post.image
-            ? [post.image]
-            : [`${config.baseUrl}/placeholder.jpg`],
+          image: post.image ? [post.image] : [`${config.baseUrl}/placeholder.jpg`],
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${config.baseUrl}/post/${post.slug}`,

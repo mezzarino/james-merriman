@@ -43,8 +43,7 @@ export const PostPagination = ({
     prevPage: number | null;
   };
 }) => {
-  const buildPath = (page: number) =>
-    constructPath({ basePath, page: page.toString(), query });
+  const buildPath = (page: number) => constructPath({ basePath, page: page.toString(), query });
 
   return (
     <Pagination className={cn("overflow-x-auto", className)}>
@@ -65,10 +64,7 @@ export const PostPagination = ({
         )}
 
         {Array.from({ length: pagination.totalPages }, (_, index) => index + 1)
-          .filter(
-            (pageNumber) =>
-              Math.abs(pagination.page - pageNumber) <= numSiblingPages
-          )
+          .filter((pageNumber) => Math.abs(pagination.page - pageNumber) <= numSiblingPages)
           .map((pageNumber) => (
             <PaginationItem key={pageNumber}>
               <PaginationLink

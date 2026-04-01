@@ -5,25 +5,16 @@ import type { GetRelatedPostsResult } from "@wisp-cms/client";
 import Image from "next/image";
 import Link from "next/link";
 
-export function RelatedPosts({
-  posts,
-}: {
-  posts: GetRelatedPostsResult["posts"];
-}) {
+export function RelatedPosts({ posts }: { posts: GetRelatedPostsResult["posts"] }) {
   if (!posts?.length) return null;
 
   return (
     <section className="my-8">
-      <h2 className="mb-6 text-lg font-semibold tracking-tight">
-        Related Posts
-      </h2>
+      <h2 className="mb-6 text-lg font-semibold tracking-tight">Related Posts</h2>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         {posts.slice(0, 4).map((post) => (
-          <article
-            key={post.id}
-            className="bg-muted overflow-hidden rounded-lg group"
-          >
+          <article key={post.id} className="bg-muted overflow-hidden rounded-lg group">
             <Link href={`/post/${post.slug}`} className="block">
               <AspectRatio ratio={16 / 9}>
                 <Image
@@ -39,9 +30,7 @@ export function RelatedPosts({
                 <h3 className="line-clamp-2">{post.title}</h3>
                 <p className="line-clamp-3">{post.description}</p>
 
-                <span className="font-semibold inline-block mt-2">
-                  Read full story
-                </span>
+                <span className="font-semibold inline-block mt-2">Read full story</span>
               </div>
             </Link>
           </article>

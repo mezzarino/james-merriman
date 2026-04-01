@@ -76,7 +76,7 @@ export const BlogContent = ({
             />
           </div>
           <div className="w-full lg:w-1/4 lg:px-4">
-              <AboutCta />
+            <AboutCta />
           </div>
         </div>
         <div className="my-8 space-x-2">

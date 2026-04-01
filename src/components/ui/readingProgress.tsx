@@ -7,23 +7,20 @@ export default function ReadingProgress() {
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    // Detect prefers-reduced-motion
-    const mediaQuery = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    setReduceMotion(mediaQuery.matches);
-
-    const handleChange = () => {
+    const handleMotionChange = () => {
       setReduceMotion(mediaQuery.matches);
     };
 
-    mediaQuery.addEventListener("change", handleChange);
+    // ✅ Initialize state safely by *calling the handler*, not setState directly
+    handleMotionChange();
+
+    mediaQuery.addEventListener("change", handleMotionChange);
 
     const updateProgress = () => {
       const scrollTop = window.scrollY;
-      const documentHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
 
       if (documentHeight <= 0) {
         setProgress(0);
@@ -38,7 +35,7 @@ export default function ReadingProgress() {
     updateProgress();
 
     return () => {
-      mediaQuery.removeEventListener("change", handleChange);
+      mediaQuery.removeEventListener("change", handleMotionChange);
       window.removeEventListener("scroll", updateProgress);
     };
   }, []);
@@ -47,9 +44,7 @@ export default function ReadingProgress() {
     <div className="fixed top-0 left-0 w-full h-[2px] z-50 pointer-events-none">
       <div
         className={`h-full bg-neutral-900 dark:bg-neutral-100 ${
-          reduceMotion
-            ? ""
-            : "transition-[width] duration-150 ease-out"
+          reduceMotion ? "" : "transition-[width] duration-150 ease-out"
         }`}
         style={{ width: `${progress}%` }}
       />

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
   },
   other: {
-    "sameAs": JSON.stringify([
+    sameAs: JSON.stringify([
       "https://x.com/mezzarino",
       "https://linkedin.com/in/jamesmerriman",
       "https://instagram.com/mezzarino",
@@ -43,9 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${fontSans.variable} antialiased font-sans`}>
