@@ -1,21 +1,51 @@
-MIT License
+Source-Available License Agreement
+Version 1.0
 
-Copyright (c) 2024 Wisp CMS
+Copyright (c) 2024–2026 James Merriman
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense and/or sell
-copies of the Software and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software ("Software") is provided under a Source-Available License.
+You are permitted to view the source code of the Software, but this
+license does not grant you any rights to copy, modify, merge, publish,
+redistribute, sublicense, or create derivative works from the Software,
+in whole or in part.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Permission to Use
+You are granted a non-exclusive, non-transferable, revocable license to
+use the Software for personal or internal evaluation purposes only.
+No commercial use is permitted without explicit written permission from
+the copyright holder.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+2. Restrictions
+You may NOT:
+  • Reproduce, distribute, or publicly share the Software.
+  • Modify, translate, or create derivative works based on the Software.
+  • Use the Software in any commercial product, SaaS offering,
+    or paid service.
+  • Remove or alter copyright notices or attribution.
+  • Use the Software to compete with the copyright holder.
+
+3. Source Viewing
+You may view the Software’s source code solely for personal learning or
+security review. Viewing does not grant any rights for reuse.
+
+4. Ownership
+The Software is owned exclusively by the copyright holder. No transfer
+of ownership is granted in this license.
+
+5. API Notice
+This project communicates with the Wisp CMS API. Wisp CMS is a separate
+product with its own terms, which apply independently from this
+Software. This Software is not affiliated with, endorsed by, or
+sponsored by Wisp CMS.
+
+6. Disclaimer
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE
+FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE
 SOFTWARE.
+
+7. Termination
+Any violation of this license immediately terminates your right to use
+the Software.
+
+For commercial licensing or extended rights, please contact James Merriman.
