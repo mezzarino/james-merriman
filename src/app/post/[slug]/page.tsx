@@ -2,12 +2,13 @@ export const revalidate = 60; // 1 minute
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { wisp } from "@/lib/wisp";
-import { BlogContent } from "@/components/BlogContent";
 import type { BlogPosting, WithContext } from "schema-dts";
+
+import { BlogContent } from "@/components/BlogContent";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
+import { wisp } from "@/lib/wisp";
 
 interface Params {
   slug: string;

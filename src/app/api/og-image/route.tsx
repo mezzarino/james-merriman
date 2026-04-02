@@ -1,6 +1,7 @@
-import { config } from "@/config";
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
+
+import { config } from "@/config";
 
 const generateOpenGraphImage = async ({
   title,

@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/Footer";
-import { Providers } from "./providers";
-import ReadingProgress from "@/components/ui/readingProgress";
+
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata } from "next";
+import { IBM_Plex_Sans } from "next/font/google";
+
+import { Footer } from "@/components/Footer";
+import ReadingProgress from "@/components/ui/readingProgress";
+
+import { Providers } from "./providers";
 
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],

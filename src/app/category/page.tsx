@@ -1,12 +1,14 @@
 export const dynamic = "force-dynamic";
 export const revalidate = 60;
 
-import { wisp } from "@/lib/wisp";
-import Link from "next/link";
-import { FullWidthHeader } from "../../components/FullWidthHeader";
 import { Metadata } from "next";
+import Link from "next/link";
+
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
+import { wisp } from "@/lib/wisp";
+
+import { FullWidthHeader } from "../../components/FullWidthHeader";
 
 export const metadata: Metadata = {
   title: `Browse Travel Blog Categories | James Merriman`,

@@ -1,7 +1,9 @@
-import { config } from "@/config";
-import { Button } from "./ui/button";
 import { Rss } from "lucide-react";
 import Link from "next/link";
+
+import { config } from "@/config";
+
+import { Button } from "./ui/button";
 
 export const Footer = () => {
   return (

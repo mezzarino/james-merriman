@@ -1,10 +1,11 @@
-import { config } from "@/config";
-import { getOgImageUrl } from "@/lib/ogImage";
 import { Metadata } from "next";
-import { FullWidthHeader } from "@/components/FullWidthHeader";
-import { SocialLinks } from "@/components/ui/social-links";
 import Image from "next/image";
 import Script from "next/script";
+
+import { FullWidthHeader } from "@/components/FullWidthHeader";
+import { SocialLinks } from "@/components/ui/social-links";
+import { config } from "@/config";
+import { getOgImageUrl } from "@/lib/ogImage";
 
 export const metadata: Metadata = {
   title: `About James Merriman | Travel Writer & Photographer`,

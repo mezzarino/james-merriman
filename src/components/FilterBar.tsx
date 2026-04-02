@@ -1,12 +1,13 @@
 "use client";
 
 import { Search, X } from "lucide-react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { KeyboardEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+
 import { config } from "../config";
 import { cn } from "../lib/utils";
-import Link from "next/link";
 
 const categories = [{ label: "Latest", tag: "latest" }, ...config.categories];
 
@@ -65,7 +66,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button onClick={onClearSearch} className="ml-4" role="button" aria-label="Clear search">
+          <button onClick={onClearSearch} className="ml-4" aria-label="Clear search">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -78,7 +79,6 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                 key={category.tag}
               >
                 <button
-                  role="button"
                   aria-label={`View all ${category.tag} posts`}
                   className={cn(
                     "py-2 px-3 min-h-[44px]",
@@ -91,7 +91,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             ))}
           </div>
           <div className="flex-shrink-0">
-            <button onClick={() => setIsSearchActive(true)} role="button" aria-label="Search posts">
+            <button onClick={() => setIsSearchActive(true)} aria-label="Search posts">
               <Search className="bg-primary-foreground m-2 h-5 w-5 rounded" />
             </button>
           </div>

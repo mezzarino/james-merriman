@@ -1,15 +1,17 @@
 "use client";
 import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
+import { ContentWithCustomComponents } from "@wisp-cms/react-custom-component";
 import Image from "next/image";
 import Link from "next/link";
+
+import { formatFullDate } from "@/lib/date";
+
+import { CommentSection } from "./CommentSection";
 import { FullWidthHeader } from "./FullWidthHeader";
 import { RelatedPosts } from "./RelatedPosts";
 import { processTableOfContents } from "./TOC";
-import { ContentWithCustomComponents } from "@wisp-cms/react-custom-component";
-import { FAQ } from "./WispComponents/FAQ";
-import { formatFullDate } from "@/lib/date";
-import { CommentSection } from "./CommentSection";
 import { AboutCta } from "./ui/about-cta";
+import { FAQ } from "./WispComponents/FAQ";
 
 export const BlogContent = ({
   post: { title, content, author, publishedAt, tags, slug },
