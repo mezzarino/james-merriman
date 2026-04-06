@@ -28,7 +28,6 @@ export const processTableOfContents = (
   rawHtml: string,
   headerConfig: HeaderConfig,
 ): ProcessedContent => {
-  // Using node-html-parser to parse the HTML
   const root = parse(rawHtml);
   const headers = root.querySelectorAll("h1, h2, h3, h4, h5, h6");
   const tableOfContents: TableOfContentsItem[] = [];
@@ -37,10 +36,9 @@ export const processTableOfContents = (
   headers.forEach((header) => {
     const level = parseInt(header.tagName.charAt(1));
     if (headerConfig[`h${level}` as keyof HeaderConfig]) {
-      const text = header.rawText || ""; // Changed to rawText for node-html-parser
+      const text = header.rawText || "";
       const id = slugify(text, { lower: true, strict: true });
 
-      // Ensure unique IDs
       let uniqueId = id;
       let counter = 1;
       while (usedIds.has(uniqueId)) {
@@ -49,7 +47,7 @@ export const processTableOfContents = (
       }
       usedIds.add(uniqueId);
 
-      header.setAttribute("id", uniqueId); // Changed to setAttribute for node-html-parser
+      header.setAttribute("id", uniqueId);
       tableOfContents.push({
         id: uniqueId,
         text,
@@ -59,7 +57,7 @@ export const processTableOfContents = (
   });
 
   return {
-    modifiedHtml: root.toString(), // Changed to toString() for node-html-parser
+    modifiedHtml: root.toString(),
     tableOfContents,
   };
 };
