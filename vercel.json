@@ -1,4 +1,26 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install"
+  "installCommand": "pnpm install",
+  "redirects": [
+    {
+      "source": "http://jamesmerriman.co.uk/:path*",
+      "destination": "https://www.jamesmerriman.co.uk/:path*",
+      "permanent": true
+    },
+    {
+      "source": "https://jamesmerriman.co.uk/:path*",
+      "destination": "https://www.jamesmerriman.co.uk/:path*",
+      "permanent": true
+    },
+    {
+      "source": "http://www.jamesmerriman.co.uk/:path*",
+      "destination": "https://www.jamesmerriman.co.uk/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/login",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
 }
