@@ -18,6 +18,8 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                   alt={post.title}
                   src={post.image}
                   fill
+                  quality={65}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
               ) : (

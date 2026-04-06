@@ -1,11 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*",
+        hostname: "imagedelivery.net",
       },
+      {
+        protocol: "https",
+        hostname: "assets.about.me",
+      }
     ],
   },
   redirects: async () => {

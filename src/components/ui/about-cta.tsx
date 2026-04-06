@@ -13,6 +13,7 @@ export function AboutCta() {
             src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
             alt="James Merriman, travel writer and photographer"
             fill
+            quality={65}
             sizes="(max-width: 1024px) 100vw, 25vw"
             className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
             priority={false}

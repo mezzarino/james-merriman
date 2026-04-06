@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
     connect-src 'self' https://www.wisp.blog;
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https:;
+    img-src 'self' data: https://imagedelivery.net https://assets.about.me;
     font-src 'self' data:;
     object-src 'none';
     base-uri 'self';

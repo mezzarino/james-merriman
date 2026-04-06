@@ -21,6 +21,7 @@ export function RelatedPosts({ posts }: { posts: GetRelatedPostsResult["posts"] 
                   src={post.image || "/placeholder.jpg"}
                   alt={`${post.title} – travel writing by James Merriman`}
                   fill
+                  quality={65}
                   sizes="(max-width: 1024px) 100vw, 25vw"
                   className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
