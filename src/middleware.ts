@@ -6,19 +6,20 @@ export function middleware(request: NextRequest) {
 
   // Define the strict CSP including the Wisp connection and nonce
   const cspHeader = `
-    default-src 'self';
-    connect-src 'self' https://www.wisp.blog;
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self';
-    img-src 'self' https://imagedelivery.net https://assets.about.me;
-    font-src 'self';
-    frame-src 'none';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-  `
+  default-src 'self';
+  connect-src 'self' https://www.wisp.blog;
+  script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
+  style-src 'self';
+  img-src 'self' https://imagedelivery.net https://assets.about.me;
+  font-src 'self';
+  frame-src 'none';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+  report-to csp-endpoint;
+`
     .replace(/\s{2,}/g, " ")
     .trim();
 
@@ -46,6 +47,20 @@ export function middleware(request: NextRequest) {
   response.headers.set("X-DNS-Prefetch-Control", "on");
   response.headers.set("Cross-Origin-Resource-Policy", "same-origin");
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
+
+  response.headers.set(
+    "Report-To",
+    JSON.stringify({
+      group: "csp-endpoint",
+      max_age: 10886400, // 18 weeks
+      endpoints: [{ url: "https://www.jamesmerriman.co.uk/api/csp-report" }],
+    }),
+  );
+
+  response.headers.set(
+    "Reporting-Endpoints",
+    "csp-endpoint='https://www.jamesmerriman.co.uk/api/csp-report'",
+  );
 
   return response;
 }
