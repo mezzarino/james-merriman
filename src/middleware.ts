@@ -9,9 +9,10 @@ export function middleware(request: NextRequest) {
     default-src 'self';
     connect-src 'self' https://www.wisp.blog;
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://imagedelivery.net https://assets.about.me;
-    font-src 'self' data:;
+    style-src 'self';
+    img-src 'self' https://imagedelivery.net https://assets.about.me;
+    font-src 'self';
+    frame-src 'none';
     object-src 'none';
     base-uri 'self';
     form-action 'self';
