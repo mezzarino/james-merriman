@@ -74,7 +74,7 @@ export const BlogContent = ({
               content={modifiedHtml}
               customComponents={{
                 FAQ,
-                NextImage: ({ src, alt }: { src: string; alt?: string }) => (
+                nextimage: ({ src, alt }: { src: string; alt?: string }) => (
                   <figure className="my-6">
                     <Image
                       src={src}
