@@ -33,7 +33,7 @@ export function middleware(request: NextRequest) {
     },
   });
 
-  // Apply all security headers to the response
+  // Apply security headers to the response
   response.headers.set("Content-Security-Policy", cspHeader);
   response.headers.set(
     "Permissions-Policy",
