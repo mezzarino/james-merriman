@@ -165,15 +165,20 @@ const Page = async () => {
             <SocialLinks />
           </div>
           <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
-            <Image
-              src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
-              alt="James Merriman, UK travel writer and documentary photographer"
-              width={1200}
-              height={1600}
-              className="w-full h-auto rounded-lg"
-              sizes="(max-width: 1024px) 100vw, 384px"
-              preload={true}
-            />
+            <figure>
+              <Image
+                src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
+                alt="James Merriman, UK travel writer and documentary photographer"
+                width={1200}
+                height={1600}
+                className="w-full h-auto rounded-lg"
+                sizes="(max-width: 1024px) 100vw, 384px"
+                preload={true}
+              />
+              <figcaption className="mt-2 text-sm text-gray-500 text-center">
+                James Merriman, UK travel writer and documentary photographer
+              </figcaption>
+            </figure>
           </div>
         </div>
       </main>
