@@ -20,7 +20,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                   width={528}
                   height={297}
                   quality={65}
-                  sizes="(max-width: 640px) 380px, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 264px, (max-width: 1024px) 50vw, 33vw"
                   placeholder="blur"
                   blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTI4IiBoZWlnaHQ9IjI5NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNTI4IiBoZWlnaHQ9IjI5NyIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
                   className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
