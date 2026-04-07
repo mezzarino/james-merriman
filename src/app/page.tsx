@@ -121,7 +121,7 @@ export default async function Page(props: {
             name: post.author?.name || "James Merriman",
           },
           publisher: {
-            "@id": `${config.baseUrl}#organization`,
+            "@id": `${config.baseUrl}/about#author`,
           },
           image: post.image ? [post.image] : [`${config.baseUrl}/placeholder.jpg`],
           mainEntityOfPage: {

@@ -63,7 +63,7 @@ const Page = async () => {
                   "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
                 jobTitle: "Travel Writer & Photographer",
                 worksFor: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": `${config.baseUrl}/about#author`,
                 },
                 alumniOf: {
                   "@type": "Organization",
@@ -88,7 +88,7 @@ const Page = async () => {
               // Organization
               {
                 "@type": "Organization",
-                "@id": `${config.baseUrl}#organization`,
+                "@id": `${config.baseUrl}/about#author`,
                 name: config.organization || "James Merriman",
                 url: config.baseUrl,
 
@@ -111,7 +111,7 @@ const Page = async () => {
                 url: config.baseUrl,
                 name: "James Merriman",
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": `${config.baseUrl}/about#author`,
                 },
               },
             ],
