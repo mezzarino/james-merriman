@@ -40,7 +40,7 @@ Crawl-delay: 5
 # INDEXING / SEO SIGNALS
 # =======================
 # Preferred canonical host
-Host: jamesmerriman.co.uk
+Host: www.jamesmerriman.co.uk
 
 # Encourage full crawl of essential assets
 Allow: /*.js$
@@ -53,4 +53,4 @@ Allow: /public/
 # SITEMAPS
 # =======================
 # Primary sitemap
-Sitemap: https://jamesmerriman.co.uk/sitemap.xml
+Sitemap: https://www.jamesmerriman.co.uk/sitemap.xml
