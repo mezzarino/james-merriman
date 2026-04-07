@@ -23,11 +23,16 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
     return { title: "Page not found" };
   }
 
+  const canonicalUrl = `${config.baseUrl}/post/${slug}`;
+
   return {
     title: `${result.post.title} | James Merriman`,
     description:
       result.post.description ??
       `Read travel insights from James Merriman about ${result.post.title}`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${result.post.title} | James Merriman`,
       description: result.post.description ?? "",

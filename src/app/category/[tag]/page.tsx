@@ -16,10 +16,14 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
   const { tag } = params;
+  const canonicalUrl = `${config.baseUrl}/category/${tag}`;
 
   return {
     title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
     description: `Discover James Merriman's immersive travel stories, photography and tips featuring ${tag}.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
       description: `Immersive travel stories, tips and photography featuring ${tag}.`,
