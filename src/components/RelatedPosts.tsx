@@ -22,7 +22,7 @@ export function RelatedPosts({ posts }: { posts: GetRelatedPostsResult["posts"] 
                   alt={`${post.title} – travel writing by James Merriman`}
                   fill
                   quality={65}
-                  sizes="(max-width: 1024px) 100vw, 25vw"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 33vw"
                   className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                 />
               </AspectRatio>

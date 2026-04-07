@@ -82,9 +82,12 @@ export const BlogContent = ({
                         alt={alt ?? ""}
                         width={840}
                         height={630}
-                        sizes="(max-width: 640px) 100vw,
-                              (max-width: 1024px) 90vw,
-                              840px"
+                        quality={70}
+                        sizes="
+                          (max-width: 640px) 90vw,
+                          (max-width: 1024px) 640px,
+                          840px
+                        "
                         className="rounded-lg mx-auto"
                       />
                       {alt && (
