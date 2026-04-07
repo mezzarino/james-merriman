@@ -74,6 +74,25 @@ export const BlogContent = ({
               content={modifiedHtml}
               customComponents={{
                 FAQ,
+                NextImage: ({ src, alt }: { src: string; alt?: string }) => (
+                  <figure className="my-6">
+                    <Image
+                      src={src}
+                      alt={alt ?? ""}
+                      width={840}
+                      height={630}
+                      sizes="(max-width: 640px) 100vw,
+                 (max-width: 1024px) 90vw,
+                 840px"
+                      className="rounded-lg mx-auto"
+                    />
+                    {alt && (
+                      <figcaption className="mt-2 text-sm italic text-gray-500 text-center">
+                        {alt}
+                      </figcaption>
+                    )}
+                  </figure>
+                ),
               }}
             />
           </div>

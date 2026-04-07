@@ -56,6 +56,17 @@ export const processTableOfContents = (
     }
   });
 
+  const images = root.querySelectorAll("img");
+
+  images.forEach((img) => {
+    const src = img.getAttribute("src");
+    const alt = img.getAttribute("alt") ?? "";
+
+    if (!src) return;
+
+    img.replaceWith(parse(`<NextImage src="${src}" alt="${alt.replace(/"/g, "&quot;")}" />`));
+  });
+
   return {
     modifiedHtml: root.toString(),
     tableOfContents,
