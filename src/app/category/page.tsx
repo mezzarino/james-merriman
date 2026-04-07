@@ -33,6 +33,37 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${config.baseUrl}/category`,
+    url: `${config.baseUrl}/category`,
+    name: "Categories | James Merriman",
+    description:
+      "Browse travel writing categories by James Merriman, including pilgrimage, walking, photography, culture and remote travel.",
+    isPartOf: {
+      "@id": `${config.baseUrl}#website`,
+    },
+    about: {
+      "@type": "Blog",
+      "@id": `${config.baseUrl}#blog`,
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: config.categories.map((category, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Thing",
+          name: category.label,
+          url: `${config.baseUrl}/category/${category.tag}`,
+        },
+      })),
+    },
+  },
+];
+
 export default async function Page() {
   const result = await wisp.getTags();
 
@@ -40,16 +71,7 @@ export default async function Page() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "Travel Blog Categories",
-            description:
-              "Browse travel writing by category including walking, food, coastal and historical journeys.",
-            url: `${config.baseUrl}/category`,
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <FullWidthHeader

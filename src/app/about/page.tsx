@@ -51,29 +51,52 @@ const Page = async () => {
                 },
               },
 
-              // Person
+              // Person (Author)
               {
                 "@type": "Person",
                 "@id": `${config.baseUrl}/about#author`,
                 name: "James Merriman",
                 url: `${config.baseUrl}/about`,
+
                 image:
                   "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+
                 description:
                   "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
-                jobTitle: "Travel Writer & Photographer",
-                worksFor: {
-                  "@id": `${config.baseUrl}/about#author`,
+
+                jobTitle: "Travel Writer and Photographer",
+
+                hasOccupation: {
+                  "@type": "Occupation",
+                  name: "Travel Writer",
+                  occupationLocation: {
+                    "@type": "Country",
+                    name: "Worldwide",
+                  },
                 },
+
+                worksFor: {
+                  "@id": `${config.baseUrl}#website`,
+                },
+
                 alumniOf: {
                   "@type": "Organization",
                   name: "Royal Geographical Society",
                 },
+
+                nationality: {
+                  "@type": "Country",
+                  name: "United Kingdom",
+                },
+
+                knowsLanguage: ["en-GB"],
+
                 sameAs: [
                   "https://x.com/mezzarino",
                   "https://linkedin.com/in/jamesmerriman",
                   "https://instagram.com/mezzarino",
                 ],
+
                 knowsAbout: [
                   "Travel Writing",
                   "Documentary Photography",
@@ -82,34 +105,16 @@ const Page = async () => {
                   "Cultural Geography",
                   "Walking and Exploration",
                 ],
+
                 award: ["Longlisted – Bradt Guides New Travel Writer of the Year 2026"],
               },
 
-              // Organization
-              {
-                "@type": "Organization",
-                "@id": `${config.baseUrl}/about#author`,
-                name: config.organization || "James Merriman",
-                url: config.baseUrl,
-
-                logo: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/logo.png`,
-                },
-
-                sameAs: [
-                  "https://x.com/mezzarino",
-                  "https://linkedin.com/in/jamesmerriman",
-                  "https://instagram.com/mezzarino",
-                ],
-              },
-
-              // WebSite (ties everything together)
+              // WebSite
               {
                 "@type": "WebSite",
                 "@id": `${config.baseUrl}#website`,
                 url: config.baseUrl,
-                name: "James Merriman",
+                name: "James Merriman | Travel Writing and Photography",
                 publisher: {
                   "@id": `${config.baseUrl}/about#author`,
                 },
