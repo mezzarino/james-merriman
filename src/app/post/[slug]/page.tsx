@@ -23,11 +23,16 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
     return { title: "Page not found" };
   }
 
+  const canonicalUrl = `${config.baseUrl}/post/${slug}`;
+
   return {
     title: `${result.post.title} | James Merriman`,
     description:
       result.post.description ??
       `Read travel insights from James Merriman about ${result.post.title}`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${result.post.title} | James Merriman`,
       description: result.post.description ?? "",
@@ -93,13 +98,9 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     },
 
     publisher: {
-      "@type": "Organization",
-      name: config.organization,
-      url: config.baseUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: config.logoUrl,
-      },
+      "@type": "Person",
+      "@id": `${config.baseUrl}/about#author`,
+      name: "James Merriman",
     },
 
     mainEntityOfPage: {
@@ -134,11 +135,41 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     })),
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${config.baseUrl}/post/${slug}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: config.baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${config.baseUrl}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: `${config.baseUrl}/post/${slug}`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <BlogContent post={result.post} relatedPosts={related.posts} readingTime={readingTime} />
     </>

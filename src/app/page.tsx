@@ -55,7 +55,7 @@ export default async function Page(props: {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": `${config.baseUrl}#website`,
-      name: "James Merriman | Travel Writing & Photography",
+      name: "James Merriman | Travel Writing and Photography",
       url: config.baseUrl,
       potentialAction: {
         "@type": "SearchAction",
@@ -63,7 +63,8 @@ export default async function Page(props: {
         "query-input": "required name=search_term_string",
       },
     },
-    // Person
+
+    // Person (Author / Publisher)
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -85,25 +86,33 @@ export default async function Page(props: {
         "Cultural Geography",
         "Walking",
       ],
+      worksFor: {
+        "@id": `${config.baseUrl}#website`,
+      },
     },
-    // BreadcrumbList
+
+    // Blog (content collection wrapper)
     {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "@id": `${config.baseUrl}#breadcrumb`,
-      itemListElement: breadcrumb.map((crumb, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: crumb.label,
-        item: {
-          "@id": `${config.baseUrl}${crumb.href}`,
-        },
+      "@type": "Blog",
+      "@id": `${config.baseUrl}#blog`,
+      name: "James Merriman – Travel Writing",
+      url: config.baseUrl,
+      publisher: {
+        "@type": "Person",
+        "@id": `${config.baseUrl}/about#author`,
+        name: "James Merriman",
+      },
+      blogPost: result.posts.map((post) => ({
+        "@id": `${config.baseUrl}/post/${post.slug}#article`,
       })),
     },
-    // ItemList + BlogPosting + Pagination
+
+    // ItemList of recent BlogPosts
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
+      "@id": `${config.baseUrl}#latest-posts`,
       itemListElement: result.posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
@@ -115,26 +124,40 @@ export default async function Page(props: {
           url: `${config.baseUrl}/post/${post.slug}`,
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
+
           author: {
             "@type": "Person",
             "@id": `${config.baseUrl}/about#author`,
             name: post.author?.name || "James Merriman",
           },
+
           publisher: {
-            "@id": `${config.baseUrl}#organization`,
+            "@type": "Person",
+            "@id": `${config.baseUrl}/about#author`,
+            name: "James Merriman",
           },
-          image: post.image ? [post.image] : [`${config.baseUrl}/placeholder.jpg`],
+
+          image: post.image ? [post.image] : undefined,
+
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${config.baseUrl}/post/${post.slug}`,
           },
-          isPartOf: {
-            "@id": `${config.baseUrl}#website`,
-          },
+
+          isPartOf: [
+            {
+              "@type": "Blog",
+              "@id": `${config.baseUrl}#blog`,
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${config.baseUrl}#website`,
+            },
+          ],
         },
       })),
       numberOfItems: result.posts.length,
-      mainEntityOfPage: `${config.baseUrl}${page > 1 ? `?page=${page}` : ""}`,
+      mainEntityOfPage: config.baseUrl,
     },
   ];
 

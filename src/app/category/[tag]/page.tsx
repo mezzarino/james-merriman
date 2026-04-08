@@ -16,10 +16,14 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
   const { tag } = params;
+  const canonicalUrl = `${config.baseUrl}/category/${tag}`;
 
   return {
     title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
     description: `Discover James Merriman's immersive travel stories, photography and tips featuring ${tag}.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
       description: `Immersive travel stories, tips and photography featuring ${tag}.`,
@@ -55,8 +59,105 @@ export default async function Page(props: {
     page,
   });
 
+  const categoryJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${config.baseUrl}/category/${tag}`,
+    url: `${config.baseUrl}/category/${tag}`,
+    name: `${label} | James Merriman`,
+    description,
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${config.baseUrl}#blog`,
+    },
+    about: {
+      "@type": "Thing",
+      name: label.replace(/^#/, ""),
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: result.posts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "BlogPosting",
+          "@id": `${config.baseUrl}/post/${post.slug}#article`,
+          headline: post.title,
+          url: `${config.baseUrl}/post/${post.slug}`,
+          datePublished: post.publishedAt || post.createdAt,
+          dateModified: post.updatedAt || post.publishedAt || post.createdAt,
+
+          author: {
+            "@type": "Person",
+            "@id": `${config.baseUrl}/about#author`,
+            name: "James Merriman",
+          },
+
+          publisher: {
+            "@type": "Person",
+            "@id": `${config.baseUrl}/about#author`,
+            name: "James Merriman",
+          },
+
+          image: post.image ? [post.image] : undefined,
+
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${config.baseUrl}/post/${post.slug}`,
+          },
+
+          isPartOf: [
+            {
+              "@type": "Blog",
+              "@id": `${config.baseUrl}#blog`,
+            },
+            {
+              "@type": "CollectionPage",
+              "@id": `${config.baseUrl}/category/${tag}`,
+            },
+          ],
+        },
+      })),
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${config.baseUrl}/category/${tag}#breadcrumb`,
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: config.baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Categories",
+        item: `${config.baseUrl}/category`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: label,
+        item: `${config.baseUrl}/category/${tag}`,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <FullWidthHeader
         title={label}
         description={description}

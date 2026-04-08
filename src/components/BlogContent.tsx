@@ -1,6 +1,6 @@
 "use client";
 import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
-import { ContentWithCustomComponents } from "@wisp-cms/react-custom-component";
+import parse, { DOMNode, Element } from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +11,6 @@ import { FullWidthHeader } from "./FullWidthHeader";
 import { RelatedPosts } from "./RelatedPosts";
 import { processTableOfContents } from "./TOC";
 import { AboutCta } from "./ui/about-cta";
-import { FAQ } from "./WispComponents/FAQ";
 
 export const BlogContent = ({
   post: { title, content, author, publishedAt, tags, slug },
@@ -70,12 +69,39 @@ export const BlogContent = ({
         </div>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
-            <ContentWithCustomComponents
-              content={modifiedHtml}
-              customComponents={{
-                FAQ,
-              }}
-            />
+            {parse(modifiedHtml, {
+              replace: (node: DOMNode) => {
+                if (node.type === "tag" && (node as Element).name === "img") {
+                  const { src, alt } = (node as Element).attribs ?? {};
+                  if (!src) return;
+
+                  return (
+                    <figure className="my-6">
+                      <Image
+                        src={src}
+                        alt={alt ?? ""}
+                        width={840}
+                        height={630}
+                        quality={70}
+                        sizes="
+                          (max-width: 640px) 90vw,
+                          (max-width: 1024px) 640px,
+                          840px
+                        "
+                        placeholder="blur"
+                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
+                        className="rounded-lg mx-auto"
+                      />
+                      {alt && (
+                        <figcaption className="mt-2 text-sm text-gray-500 text-center">
+                          {alt}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ) as unknown as Element;
+                }
+              },
+            })}
           </div>
           <div className="w-full lg:w-1/4 lg:px-4">
             <AboutCta />

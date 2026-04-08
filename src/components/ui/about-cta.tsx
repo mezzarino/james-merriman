@@ -15,6 +15,8 @@ export function AboutCta() {
             fill
             quality={65}
             sizes="(max-width: 1024px) 100vw, 25vw"
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
             className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
             priority={false}
           />
