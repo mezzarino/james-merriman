@@ -7,6 +7,17 @@
       "source": "/login",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "jamesmerriman.co.uk"
+        }
+      ],
+      "destination": "https://www.jamesmerriman.co.uk/$1",
+      "permanent": true
     }
   ]
 }
