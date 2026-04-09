@@ -19,19 +19,19 @@ export async function generateMetadata(props: {
   const canonicalUrl = `${config.baseUrl}/category/${tag}`;
 
   return {
-    title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
+    title: `Explore ${tag} Adventures | Travel Writing by James Merriman`,
     description: `Discover James Merriman's immersive travel stories, photography and tips featuring ${tag}.`,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
+      title: `Explore ${tag} Adventures | Travel Writing by James Merriman`,
       description: `Immersive travel stories, tips and photography featuring ${tag}.`,
       images: [getOgImageUrl(`${tag} travel`)],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Explore ${tag} Adventures | Travel Blog by James Merriman`,
+      title: `Explore ${tag} Adventures | Travel Writing by James Merriman`,
       description: `Discover travel stories, photography and tips from James Merriman on ${tag}.`,
       images: [getOgImageUrl(`${tag} travel`)],
     },
@@ -170,7 +170,7 @@ export default async function Page(props: {
       <main className="container mx-auto px-4 max-w-6xl" role="main">
         {/* Intro paragraph for SEO */}
         <p className="text-base text-muted-foreground px-4 my-8">
-          Browse all blog posts tagged with {label}. Discover travel writing, stories and
+          Browse all writing posts tagged with {label}. Discover travel writing, stories and
           experiences covering walking, coastal, food, history, pilgrimage and global adventures.
         </p>
 

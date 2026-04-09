@@ -12,22 +12,22 @@ import { FullWidthHeader } from "../components/FullWidthHeader";
 import { config } from "../config";
 
 export const metadata: Metadata = {
-  title: `James Merriman Blog | Travel Writing & Photography`,
+  title: `James Merriman | Travel Writing & Photography`,
   description: `Explore travel stories, photography and insights from James Merriman, covering remote destinations and cultural journeys worldwide.`,
   alternates: {
     canonical: config.baseUrl,
   },
   openGraph: {
-    title: `James Merriman Blog | Travel Writing & Photography`,
+    title: `James Merriman | Travel Writing & Photography`,
     description: `Explore travel stories, photography and insights from James Merriman.`,
-    images: [getOgImageUrl("James Merriman Blog")],
+    images: [getOgImageUrl("James Merriman")],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `James Merriman Blog | Travel Writing & Photography`,
+    title: `James Merriman | Travel Writing & Photography`,
     description: `Travel writing and photography from remote, complex and overlooked destinations across 160+ countries.`,
-    images: [getOgImageUrl("James Merriman Blog")],
+    images: [getOgImageUrl("James Merriman")],
   },
 };
 

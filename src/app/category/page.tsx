@@ -11,11 +11,11 @@ import { wisp } from "@/lib/wisp";
 import { FullWidthHeader } from "../../components/FullWidthHeader";
 
 export const metadata: Metadata = {
-  title: `Browse Travel Blog Categories | James Merriman`,
+  title: `Browse Travel Writing Categories | James Merriman`,
   description: `Browse travel writing by category, including walking, coastal journeys, food experiences, history and pilgrimage stories from the UK and beyond.`,
   keywords: [
     "travel writing",
-    "travel blog categories",
+    "travel writing categories",
     "walking routes UK",
     "coastal travel UK",
     "food travel writing",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: `Browse Travel Blog Categories | James Merriman`,
+    title: `Browse Travel Writing Categories | James Merriman`,
     description: `Browse travel writing by category, including walking, coastal journeys, food experiences, history and pilgrimage stories.`,
-    images: [getOgImageUrl("Blog Categories")],
+    images: [getOgImageUrl("Writing Categories")],
   },
 };
 
