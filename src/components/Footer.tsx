@@ -27,7 +27,7 @@ export const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            CMS powered by Wisp
+            Powered by Wisp
           </Link>
         </div>
         <Link href="/rss" title="RSS feed">
