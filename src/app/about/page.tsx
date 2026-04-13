@@ -197,6 +197,17 @@ const Page = async () => {
               <li>
                 <strong>Member</strong> -{" "}
                 <a
+                  href="https://travmedia.com/Client/MyProfile/363286"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View the profile of James Merriman on the TravMedia UK website"
+                >
+                  TravMedia - United Kingdom
+                </a>
+              </li>
+              <li>
+                <strong>Member</strong> -{" "}
+                <a
                   href="https://www.theibns.org"
                   target="_blank"
                   rel="noopener noreferrer"
