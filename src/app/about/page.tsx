@@ -136,7 +136,7 @@ const Page = async () => {
         <div className="flex flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
-              I am a British traveller, award‑longlisted travel writer based in Devon, England. A
+              I am a British traveller and award‑longlisted travel writer based in Devon, England. A
               Fellow of the Royal Geographical Society, I have travelled to{" "}
               <strong>164 countries across six continents</strong>, driven by a deep curiosity for
               landscape, culture and the stories that shape the world around us.
