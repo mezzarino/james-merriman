@@ -153,54 +153,59 @@ const Page = async () => {
             </p>
             <h2>Awards, Nominations &amp; Professional Affiliations</h2>
             <h3>Awards &amp; Nominations</h3>
-            <p>
-              <strong>Longlisted</strong> - <em>Bradt Guides New Travel Writer of the Year 2026</em>
-            </p>
+            <ul>
+              <li>
+                <strong>Longlisted</strong> -{" "}
+                <em>Bradt Guides New Travel Writer of the Year 2026</em>
+              </li>
+            </ul>
             <h3>Professional Memberships &amp; Fellowships</h3>
-            <p>
-              <strong>Fellow</strong> —{" "}
-              <a
-                href="https://www.rgs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View The Royal Geographical Society website"
-              >
-                The Royal Geographical Society <em>(FRGS)</em>
-              </a>
-            </p>
-            <p>
-              <strong>Member</strong> —{" "}
-              <a
-                href="https://www.internationaltravelwritersalliance.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View the International Travel Writers Alliance website"
-              >
-                International Travel Writers Alliance
-              </a>
-            </p>
-            <p>
-              <strong>Member</strong> —{" "}
-              <a
-                href="https://globetrotters.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View The Globetrotters Club website"
-              >
-                The Globetrotters Club
-              </a>
-            </p>
-            <p>
-              <strong>Member</strong> —{" "}
-              <a
-                href="https://www.theibns.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View the International Bank Note Society website"
-              >
-                International Bank Note Society
-              </a>
-            </p>
+            <ul>
+              <li>
+                <strong>Fellow</strong> —{" "}
+                <a
+                  href="https://www.rgs.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View The Royal Geographical Society website"
+                >
+                  The Royal Geographical Society <em>(FRGS)</em>
+                </a>
+              </li>
+              <li>
+                <strong>Member</strong> —{" "}
+                <a
+                  href="https://www.internationaltravelwritersalliance.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View the International Travel Writers Alliance website"
+                >
+                  International Travel Writers Alliance
+                </a>
+              </li>
+              <li>
+                <strong>Member</strong> —{" "}
+                <a
+                  href="https://globetrotters.co.uk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View The Globetrotters Club website"
+                >
+                  The Globetrotters Club
+                </a>
+              </li>
+              <li>
+                <strong>Member</strong> —{" "}
+                <a
+                  href="https://www.theibns.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View the International Bank Note Society website"
+                >
+                  International Bank Note Society
+                </a>
+              </li>
+            </ul>
             <h4>Contact me</h4>
             <p>Please get in touch through any of the below channels.</p>
             <SocialLinks />
@@ -217,7 +222,7 @@ const Page = async () => {
                 preload={true}
               />
               <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                James Merriman - travel writer and photographer
+                James Merriman - travel writer &amp; photographer
               </figcaption>
             </figure>
           </div>
