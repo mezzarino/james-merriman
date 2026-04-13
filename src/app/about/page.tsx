@@ -136,19 +136,19 @@ const Page = async () => {
         <div className="flex flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
-              I am a British traveller, award-longlisted writer and lead web developer based in
-              Devon, England. I am a Fellow of the Royal Geographical Society and have visited 164
-              countries across six continents, driven by a deep curiosity for landscape, culture and
-              the stories that shape place.
+              I am a British traveller, award‑longlisted travel writer based in Devon, England. A
+              Fellow of the Royal Geographical Society, I have travelled to{" "}
+              <strong>164 countries across six continents</strong>, driven by a deep curiosity for
+              landscape, culture and the stories that shape the world around us.
             </p>
             <p>
-              My journeys have taken me from remote island nations to post-conflict regions,
+              My journeys have taken me from remote island nations to post‑conflict regions,
               exploring how geography, history and community intersect. Through my writing, I
-              reflect on the textures of travel — the light, the language, the food, the quiet human
-              moments that define a destination beyond its map coordinates.
+              reflect on the textures of travel — the light, the language, the food, and the quiet
+              human moments that define a destination beyond its map coordinates.
             </p>
             <p>
-              Based in beautiful countryside, I continue to explore the world — and the evolving
+              Based in the Devon countryside, I continue to explore the world — and the evolving
               landscape of technology — with the same enduring curiosity.
             </p>
             <h2>Awards, Nominations &amp; Professional Affiliations</h2>
