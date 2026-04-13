@@ -144,12 +144,12 @@ const Page = async () => {
             <p>
               My journeys have taken me from remote island nations to post‑conflict regions,
               exploring how geography, history and community intersect. Through my writing, I
-              reflect on the textures of travel — the light, the language, the food, and the quiet
+              reflect on the textures of travel - the light, the language, the food, and the quiet
               human moments that define a destination beyond its map coordinates.
             </p>
             <p>
-              Based in the Devon countryside, I continue to explore the world — and the evolving
-              landscape of technology — with the same enduring curiosity.
+              Based in the Devon countryside, I continue to explore the world with the same enduring
+              curiosity that shapes both my journeys and my writing.
             </p>
             <h2>Awards, Nominations &amp; Professional Affiliations</h2>
             <h3>Awards &amp; Nominations</h3>
@@ -162,7 +162,7 @@ const Page = async () => {
             <h3>Professional Memberships &amp; Fellowships</h3>
             <ul>
               <li>
-                <strong>Fellow</strong> —{" "}
+                <strong>Fellow</strong> -{" "}
                 <a
                   href="https://www.rgs.org"
                   target="_blank"
@@ -173,7 +173,7 @@ const Page = async () => {
                 </a>
               </li>
               <li>
-                <strong>Member</strong> —{" "}
+                <strong>Member</strong> -{" "}
                 <a
                   href="https://www.internationaltravelwritersalliance.com"
                   target="_blank"
@@ -184,7 +184,7 @@ const Page = async () => {
                 </a>
               </li>
               <li>
-                <strong>Member</strong> —{" "}
+                <strong>Member</strong> -{" "}
                 <a
                   href="https://globetrotters.co.uk"
                   target="_blank"
@@ -195,7 +195,7 @@ const Page = async () => {
                 </a>
               </li>
               <li>
-                <strong>Member</strong> —{" "}
+                <strong>Member</strong> -{" "}
                 <a
                   href="https://www.theibns.org"
                   target="_blank"
@@ -207,7 +207,7 @@ const Page = async () => {
               </li>
             </ul>
             <h4>Contact me</h4>
-            <p>Please get in touch through any of the below channels.</p>
+            <p>Please get in touch through any of the channels below.</p>
             <SocialLinks />
           </div>
           <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
