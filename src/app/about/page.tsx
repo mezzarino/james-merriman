@@ -148,19 +148,60 @@ const Page = async () => {
               moments that define a destination beyond its map coordinates.
             </p>
             <p>
-              Alongside my work in travel and writing, I bring 20 years of experience as a web
-              developer, delivering digital projects for global brands including BP, Castrol, Legal
-              & General, Wrigley, Thatchers, Freederm and holidaycottages.co.uk. My technical
-              background underpins my storytelling, combining structure and creativity in equal
-              measure.
-            </p>
-            <p>
               Based in beautiful countryside, I continue to explore the world — and the evolving
               landscape of technology — with the same enduring curiosity.
             </p>
-            <h2>Awards &amp; Nominations</h2>
-            <p>Longlisted - Bradt Guides New Travel Writer of the Year 2026.</p>
-            <h3>Contact me</h3>
+            <h2>Awards, Nominations &amp; Professional Affiliations</h2>
+            <h3>Awards &amp; Nominations</h3>
+            <p>
+              <strong>Longlisted</strong> - <em>Bradt Guides New Travel Writer of the Year 2026</em>
+            </p>
+            <h3>Professional Memberships &amp; Fellowships</h3>
+            <p>
+              <strong>Fellow</strong> —{" "}
+              <a
+                href="https://www.rgs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View The Royal Geographical Society website"
+              >
+                The Royal Geographical Society <em>(FRGS)</em>
+              </a>
+            </p>
+            <p>
+              <strong>Member</strong> —{" "}
+              <a
+                href="https://www.internationaltravelwritersalliance.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View the International Travel Writers Alliance website"
+              >
+                International Travel Writers Alliance
+              </a>
+            </p>
+            <p>
+              <strong>Member</strong> —{" "}
+              <a
+                href="https://globetrotters.co.uk"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View The Globetrotters Club website"
+              >
+                The Globetrotters Club
+              </a>
+            </p>
+            <p>
+              <strong>Member</strong> —{" "}
+              <a
+                href="https://www.theibns.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View the International Bank Note Society website"
+              >
+                International Bank Note Society
+              </a>
+            </p>
+            <h4>Contact me</h4>
             <p>Please get in touch through any of the below channels.</p>
             <SocialLinks />
           </div>
@@ -168,7 +209,7 @@ const Page = async () => {
             <figure>
               <Image
                 src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
-                alt="James Merriman, UK travel writer and documentary photographer"
+                alt="James Merriman, UK travel writer and photographer"
                 width={1200}
                 height={1600}
                 className="w-full h-auto rounded-lg"
@@ -176,7 +217,7 @@ const Page = async () => {
                 preload={true}
               />
               <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                James Merriman, UK travel writer and documentary photographer
+                James Merriman - travel writer and photographer
               </figcaption>
             </figure>
           </div>

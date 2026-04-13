@@ -23,10 +23,14 @@ export function AboutCta() {
         </AspectRatio>
 
         <div className="prose prose-sm dark:prose-invert p-4 transition-colors duration-300 group-hover:text-primary">
-          <p className="line-clamp-2 font-bold">About James Merriman</p>
-          <p className="line-clamp-3">A brief introduction to my work, travels and perspective.</p>
+          <p className="font-bold">Meet James Merriman, Travel Writer & Storyteller</p>
+          <p>
+            James Merriman writes narrative travel stories exploring landscapes and communities
+            across the world, capturing the quieter stories of remote and often overlooked
+            destinations.
+          </p>
           <span className="font-semibold inline-block mt-2 group-hover:text-primary">
-            Find out more
+            Learn more about James Merriman’s travel writing
           </span>
         </div>
       </Link>

@@ -17,14 +17,14 @@ const fontSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "James Merriman | Travel Writer & Documentary Photographer",
+  title: "James Merriman | Travel Writer & Photographer",
   description:
     "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
   alternates: {
     canonical: "https://www.jamesmerriman.co.uk",
   },
   openGraph: {
-    title: "James Merriman | Travel Writer & Documentary Photographer",
+    title: "James Merriman | Travel Writer & Photographer",
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
     url: "https://www.jamesmerriman.co.uk",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "James Merriman | Travel Writer & Documentary Photographer",
+    title: "James Merriman | Travel Writer & Photographer",
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
   },
