@@ -9,6 +9,9 @@ import { wisp } from "@/lib/wisp";
 
 import { FullWidthHeader } from "../../components/FullWidthHeader";
 
+const ogImage =
+  "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg?width=1200&height=630&fit=cover";
+
 export const metadata: Metadata = {
   title: "Browse Travel Writing Categories | James Merriman",
   description:
@@ -21,14 +24,26 @@ export const metadata: Metadata = {
     title: "Browse Travel Writing Categories | James Merriman",
     description:
       "Browse travel writing by category, including walking, coastal journeys, food experiences, history and pilgrimage stories.",
-    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Browse Travel Writing Categories | James Merriman",
     description:
       "Explore long-form travel writing organised by theme, including walking, food, coastal journeys and pilgrimage.",
-    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 

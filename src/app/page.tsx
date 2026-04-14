@@ -13,6 +13,10 @@ import { config } from "../config";
 /**
  * SEO‑optimised homepage metadata
  */
+
+const ogImage =
+  "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg?width=1200&height=630&fit=cover";
+
 export const metadata: Metadata = {
   title: "Travel Writing & Documentary Photography | James Merriman",
   description:
@@ -24,7 +28,13 @@ export const metadata: Metadata = {
     title: "Travel Writing & Documentary Photography | James Merriman",
     description:
       "Explore travel stories, documentary photography and cultural journeys from remote and overlooked places worldwide.",
-    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+      },
+    ],
     type: "website",
   },
   twitter: {
@@ -32,7 +42,13 @@ export const metadata: Metadata = {
     title: "Travel Writing & Documentary Photography | James Merriman",
     description:
       "Travel writing and photography from remote, complex and overlooked destinations across 160+ countries.",
-    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
 };
 

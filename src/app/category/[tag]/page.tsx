@@ -18,6 +18,9 @@ const capitalise = (value: string) => value.charAt(0).toUpperCase() + value.slic
 /**
  * Metadata per category
  */
+const ogImage =
+  "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg?width=1200&height=630&fit=cover";
+
 export async function generateMetadata(props: {
   params: Promise<{ tag: string }>;
 }): Promise<Metadata> {
@@ -40,13 +43,25 @@ export async function generateMetadata(props: {
       type: "website",
       title: `${label} Travel Writing | James Merriman`,
       description,
-      images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${label} Travel Writing | James Merriman`,
       description,
-      images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }
