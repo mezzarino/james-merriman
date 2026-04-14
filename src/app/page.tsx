@@ -4,7 +4,6 @@ import { Metadata } from "next";
 
 import { BlogPostList } from "@/components/BlogPostList";
 import { PostPagination } from "@/components/PostPagination";
-import { getOgImageUrl } from "@/lib/ogImage";
 import { wisp } from "@/lib/wisp";
 
 import { FilterBar } from "../components/FilterBar";
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
     title: "Travel Writing & Documentary Photography | James Merriman",
     description:
       "Explore travel stories, documentary photography and cultural journeys from remote and overlooked places worldwide.",
-    images: [getOgImageUrl("James Merriman")],
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
     type: "website",
   },
   twitter: {
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
     title: "Travel Writing & Documentary Photography | James Merriman",
     description:
       "Travel writing and photography from remote, complex and overlooked destinations across 160+ countries.",
-    images: [getOgImageUrl("James Merriman")],
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
   },
 };
 

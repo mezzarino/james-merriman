@@ -5,7 +5,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 import { config } from "@/config";
-import { getOgImageUrl } from "@/lib/ogImage";
 import { wisp } from "@/lib/wisp";
 
 import { FullWidthHeader } from "../../components/FullWidthHeader";
@@ -22,14 +21,14 @@ export const metadata: Metadata = {
     title: "Browse Travel Writing Categories | James Merriman",
     description:
       "Browse travel writing by category, including walking, coastal journeys, food experiences, history and pilgrimage stories.",
-    images: [getOgImageUrl("Writing Categories")],
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Browse Travel Writing Categories | James Merriman",
     description:
       "Explore long-form travel writing organised by theme, including walking, food, coastal journeys and pilgrimage.",
-    images: [getOgImageUrl("Writing Categories")],
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
   },
 };
 

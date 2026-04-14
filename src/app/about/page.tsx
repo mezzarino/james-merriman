@@ -5,7 +5,6 @@ import Script from "next/script";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { SocialLinks } from "@/components/ui/social-links";
 import { config } from "@/config";
-import { getOgImageUrl } from "@/lib/ogImage";
 
 /**
  * About page metadata
@@ -22,14 +21,14 @@ export const metadata: Metadata = {
     title: "About James Merriman, Travel Writer & Photographer",
     description:
       "Biography, awards and professional background of UK-based travel writer and photographer James Merriman.",
-    images: [getOgImageUrl("About James Merriman")],
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "About James Merriman – Travel Writer & Photographer",
     description:
       "Biography, awards and professional background of UK-based travel writer and photographer James Merriman.",
-    images: [getOgImageUrl("About James Merriman")],
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
   },
 };
 
