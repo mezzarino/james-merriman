@@ -7,16 +7,28 @@ import { SocialLinks } from "@/components/ui/social-links";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 
+/**
+ * About page metadata
+ */
 export const metadata: Metadata = {
-  title: `About James Merriman | Travel Writer & Photographer`,
-  description: `Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones and cultural frontiers across 160+ countries.`,
+  title: "About James Merriman, Travel Writer & Photographer",
+  description:
+    "Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones and cultural frontiers across 160+ countries.",
   alternates: {
     canonical: `${config.baseUrl}/about`,
   },
   openGraph: {
     type: "profile",
-    title: `About James Merriman | Travel Writer & Photographer`,
-    description: `Learn about James Merriman, UK-based travel writer and photographer covering remote regions, conflict zones and cultural frontiers across 160+ countries.`,
+    title: "About James Merriman, Travel Writer & Photographer",
+    description:
+      "Biography, awards and professional background of UK-based travel writer and photographer James Merriman.",
+    images: [getOgImageUrl("About James Merriman")],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About James Merriman – Travel Writer & Photographer",
+    description:
+      "Biography, awards and professional background of UK-based travel writer and photographer James Merriman.",
     images: [getOgImageUrl("About James Merriman")],
   },
 };
@@ -24,15 +36,15 @@ export const metadata: Metadata = {
 const Page = async () => {
   return (
     <>
+      {/* Structured data */}
       <Script
         id="about-schema"
         type="application/ld+json"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
-              // WebPage
               {
                 "@type": "WebPage",
                 "@id": `${config.baseUrl}/about`,
@@ -51,21 +63,24 @@ const Page = async () => {
                 },
               },
 
-              // Person (Author)
               {
                 "@type": "Person",
                 "@id": `${config.baseUrl}/about#author`,
                 name: "James Merriman",
                 url: `${config.baseUrl}/about`,
-
-                image:
-                  "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
-
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `${config.baseUrl}/about`,
+                },
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+                  width: 1200,
+                  height: 1600,
+                },
                 description:
                   "UK-based travel writer and photographer documenting remote regions, conflict zones and cultural frontiers worldwide.",
-
                 jobTitle: "Travel Writer and Photographer",
-
                 hasOccupation: {
                   "@type": "Occupation",
                   name: "Travel Writer",
@@ -74,29 +89,25 @@ const Page = async () => {
                     name: "Worldwide",
                   },
                 },
-
                 worksFor: {
                   "@id": `${config.baseUrl}#website`,
                 },
-
-                alumniOf: {
-                  "@type": "Organization",
-                  name: "Royal Geographical Society",
-                },
-
+                memberOf: [
+                  {
+                    "@type": "Organization",
+                    name: "Royal Geographical Society",
+                  },
+                ],
                 nationality: {
                   "@type": "Country",
                   name: "United Kingdom",
                 },
-
                 knowsLanguage: ["en-GB"],
-
                 sameAs: [
                   "https://x.com/mezzarino",
                   "https://linkedin.com/in/jamesmerriman",
                   "https://instagram.com/mezzarino",
                 ],
-
                 knowsAbout: [
                   "Travel Writing",
                   "Documentary Photography",
@@ -105,11 +116,13 @@ const Page = async () => {
                   "Cultural Geography",
                   "Walking and Exploration",
                 ],
-
-                award: ["Longlisted – Bradt Guides New Travel Writer of the Year 2026"],
+                award: {
+                  "@type": "Award",
+                  name: "Longlisted - Bradt Guides New Travel Writer of the Year",
+                  awardDate: "2026",
+                },
               },
 
-              // WebSite
               {
                 "@type": "WebSite",
                 "@id": `${config.baseUrl}#website`,
@@ -119,19 +132,38 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/about#author`,
                 },
               },
+
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: `${config.baseUrl}/`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "About",
+                    item: `${config.baseUrl}/about`,
+                  },
+                ],
+              },
             ],
           }),
         }}
       />
 
       <FullWidthHeader
-        title="About James Merriman | Travel Writer & Photographer"
-        description=""
+        title="About James Merriman, Travel Writer & Photographer"
+        description="Biography, awards and professional background"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
         ]}
       />
+
       <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
         <div className="flex flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">

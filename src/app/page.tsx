@@ -11,22 +11,28 @@ import { FilterBar } from "../components/FilterBar";
 import { FullWidthHeader } from "../components/FullWidthHeader";
 import { config } from "../config";
 
+/**
+ * SEO‑optimised homepage metadata
+ */
 export const metadata: Metadata = {
-  title: `James Merriman | Travel Writing and Photography`,
-  description: `Explore travel stories, photography and insights from James Merriman, covering remote destinations and cultural journeys worldwide.`,
+  title: "Travel Writing & Documentary Photography | James Merriman",
+  description:
+    "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
   alternates: {
     canonical: config.baseUrl,
   },
   openGraph: {
-    title: `James Merriman | Travel Writing and Photography`,
-    description: `Explore travel stories, photography and insights from James Merriman.`,
+    title: "Travel Writing & Documentary Photography | James Merriman",
+    description:
+      "Explore travel stories, documentary photography and cultural journeys from remote and overlooked places worldwide.",
     images: [getOgImageUrl("James Merriman")],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `James Merriman | Travel Writing and Photography`,
-    description: `Travel writing and photography from remote, complex and overlooked destinations across 160+ countries.`,
+    title: "Travel Writing & Documentary Photography | James Merriman",
+    description:
+      "Travel writing and photography from remote, complex and overlooked destinations across 160+ countries.",
     images: [getOgImageUrl("James Merriman")],
   },
 };
@@ -43,12 +49,17 @@ export default async function Page(props: {
     page,
   });
 
-  // Breadcrumb array for UI & JSON-LD — only Home + Latest
+  /**
+   * Breadcrumbs (UI + schema)
+   */
   const breadcrumb = [
     { label: "Home", href: "/" },
     { label: "Latest", href: page > 1 ? `?page=${page}` : "/" },
   ];
 
+  /**
+   * Structured data (JSON‑LD)
+   */
   const jsonLd = [
     // WebSite
     {
@@ -91,7 +102,7 @@ export default async function Page(props: {
       },
     },
 
-    // Blog (content collection wrapper)
+    // Blog wrapper
     {
       "@context": "https://schema.org",
       "@type": "Blog",
@@ -108,7 +119,7 @@ export default async function Page(props: {
       })),
     },
 
-    // ItemList of recent BlogPosts
+    // ItemList (latest posts)
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
@@ -124,40 +135,41 @@ export default async function Page(props: {
           url: `${config.baseUrl}/post/${post.slug}`,
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
-
           author: {
             "@type": "Person",
             "@id": `${config.baseUrl}/about#author`,
             name: post.author?.name || "James Merriman",
           },
-
           publisher: {
             "@type": "Person",
             "@id": `${config.baseUrl}/about#author`,
             name: "James Merriman",
           },
-
           image: post.image ? [post.image] : undefined,
-
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${config.baseUrl}/post/${post.slug}`,
           },
-
           isPartOf: [
-            {
-              "@type": "Blog",
-              "@id": `${config.baseUrl}#blog`,
-            },
-            {
-              "@type": "WebSite",
-              "@id": `${config.baseUrl}#website`,
-            },
+            { "@type": "Blog", "@id": `${config.baseUrl}#blog` },
+            { "@type": "WebSite", "@id": `${config.baseUrl}#website` },
           ],
         },
       })),
       numberOfItems: result.posts.length,
       mainEntityOfPage: config.baseUrl,
+    },
+
+    // ✅ BreadcrumbList schema
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumb.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.label,
+        item: `${config.baseUrl}${item.href}`,
+      })),
     },
   ];
 
@@ -169,8 +181,8 @@ export default async function Page(props: {
       />
 
       <FullWidthHeader
-        title={config.title}
-        description={config.description}
+        title="Travel Writing and Photography from Remote & Overlooked Places"
+        description="Award‑longlisted travel writer and photographer documenting culture, history and landscapes across 160+ countries."
         breadcrumb={breadcrumb}
       />
 

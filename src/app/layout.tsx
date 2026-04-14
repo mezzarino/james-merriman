@@ -17,38 +17,57 @@ const fontSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.jamesmerriman.co.uk"),
+
   title: "James Merriman | Travel Writer & Photographer",
   description:
     "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-  alternates: {
-    canonical: "https://www.jamesmerriman.co.uk",
+
+  robots: {
+    index: true,
+    follow: true,
   },
+
+  alternates: {
+    canonical: "/",
+  },
+
+  authors: [
+    {
+      name: "James Merriman",
+      url: "/about",
+    },
+  ],
+
   openGraph: {
     title: "James Merriman | Travel Writer & Photographer",
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-    url: "https://www.jamesmerriman.co.uk",
+    url: "/",
     siteName: "James Merriman",
     type: "website",
+    images: [
+      {
+        url: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+        width: 1200,
+        height: 630,
+        alt: "James Merriman – Travel Writer and Photographer",
+      },
+    ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: "James Merriman | Travel Writer & Photographer",
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-  },
-  other: {
-    sameAs: JSON.stringify([
-      "https://x.com/mezzarino",
-      "https://linkedin.com/in/jamesmerriman",
-      "https://instagram.com/mezzarino",
-    ]),
+    images: ["https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <body className={`${fontSans.variable} antialiased font-sans`}>
         <Providers>
           {/* Reading progress bar */}

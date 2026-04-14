@@ -12,31 +12,38 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postsResult = await wisp.getPosts({
     limit: "all",
   });
+
   const tagsResult = await wisp.getTags();
+
   return [
     {
       url: config.baseUrl,
-      lastModified: new Date(),
-      priority: 1,
+      lastModified: new Date("2026-01-01"),
+      priority: 1.0,
     },
+
     {
       url: urlJoin(config.baseUrl, "about"),
       lastModified: new Date("2026-02-10"),
       priority: 0.8,
     },
-    ...postsResult.posts.map((post) => {
-      return {
-        url: urlJoin(config.baseUrl, "post", post.slug),
-        lastModified: new Date(post.updatedAt),
-        priority: 0.8,
-      };
-    }),
-    ...tagsResult.tags.map((tag) => {
-      return {
-        url: urlJoin(config.baseUrl, "category", tag.name),
-        lastModified: new Date(),
-        priority: 0.5,
-      };
-    }),
+
+    {
+      url: urlJoin(config.baseUrl, "category"),
+      lastModified: new Date("2026-01-01"),
+      priority: 0.6,
+    },
+
+    ...postsResult.posts.map((post) => ({
+      url: urlJoin(config.baseUrl, "post", post.slug),
+      lastModified: new Date(post.updatedAt || post.publishedAt || post.createdAt),
+      priority: 0.7,
+    })),
+
+    ...tagsResult.tags.map((tag) => ({
+      url: urlJoin(config.baseUrl, "category", tag.name),
+      lastModified: new Date("2026-01-01"),
+      priority: 0.5,
+    })),
   ];
 }
