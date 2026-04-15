@@ -14,8 +14,7 @@ import { config } from "../config";
  * SEO‑optimised homepage metadata
  */
 
-const ogImage =
-  "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg?width=1200&height=630&fit=cover";
+const ogImage = "/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
   title: "Travel Writing & Documentary Photography | James Merriman",
@@ -97,7 +96,7 @@ export default async function Page(props: {
       "@id": `${config.baseUrl}/about#author`,
       name: "James Merriman",
       url: `${config.baseUrl}/about`,
-      image: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+      image: "/james-merriman-travel-writer.jpg",
       sameAs: [
         "https://x.com/mezzarino",
         "https://linkedin.com/in/jamesmerriman",
