@@ -87,7 +87,7 @@ const Page = async () => {
                 },
                 image: {
                   "@type": "ImageObject",
-                  url: "/james-merriman-travel-writer.jpg",
+                  url: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
                   width: 1200,
                   height: 1600,
                 },
