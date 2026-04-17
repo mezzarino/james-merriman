@@ -262,6 +262,24 @@ const Page = async () => {
                 </a>
               </li>
             </ul>
+            <h3>Selected Publications & Contributions</h3>
+            <p>
+              Alongside my long‑form travel writing, I contribute to published travel
+              literature that explores curiosity, connection and human experience on the road.
+            </p>
+            <ul>
+              <li>
+                <strong>Contributor</strong> –{" "}
+                <a
+                  href="https://www.bradtguides.com/product/the-kindness-of-strangers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View The Kindness of Strangers by Bradt Guides"
+                >
+                  <em>The Kindness of Strangers</em>, Bradt Guides
+                </a>
+              </li>
+            </ul>
             <h4>Contact me</h4>
             <p>Please get in touch through any of the channels below.</p>
             <SocialLinks />
