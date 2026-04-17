@@ -39,7 +39,7 @@ export async function generateMetadata(props: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      type: "website",
+      type: "article",
       title: `${label} Travel Writing | James Merriman`,
       description,
       images: [
