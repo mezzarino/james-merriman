@@ -264,8 +264,8 @@ const Page = async () => {
             </ul>
             <h3>Selected Publications & Contributions</h3>
             <p>
-              Alongside my long‑form travel writing, I contribute to published travel
-              literature that explores curiosity, connection and human experience on the road.
+              Alongside my long‑form travel writing, I contribute to published travel literature
+              that explores curiosity, connection and human experience on the road.
             </p>
             <ul>
               <li>
