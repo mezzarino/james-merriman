@@ -4,24 +4,25 @@ import Link from "next/link";
 import Script from "next/script";
 
 import { FullWidthHeader } from "@/components/FullWidthHeader";
+import { SocialLinks } from "@/components/ui/social-links";
 import { config } from "@/config";
 
 /**
- * About page metadata
+ * Contact page metadata
  */
 const ogImage = "/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
-  title: "About James Merriman, Travel Writer & Photographer",
+  title: "Contact James Merriman – Travel Writer & Photographer",
   description:
-    "Biography and personal background of James Merriman, a UK-based travel writer exploring culture, geography and human experience across the world.",
+    "Contact details and social channels for James Merriman, a UK-based travel writer and photographer.",
   alternates: {
-    canonical: `${config.baseUrl}/about`,
+    canonical: `${config.baseUrl}/contact`,
   },
   openGraph: {
     type: "profile",
-    title: "About James Merriman, Travel Writer & Photographer",
-    description: "Biography and personal background of UK-based travel writer James Merriman.",
+    title: "Contact James Merriman – Travel Writer & Photographer",
+    description: "Get in touch with UK-based travel writer and photographer James Merriman.",
     images: [
       {
         url: ogImage,
@@ -32,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About James Merriman – Travel Writer & Photographer",
-    description: "Biography and personal background of UK-based travel writer James Merriman.",
+    title: "Contact James Merriman – Travel Writer & Photographer",
+    description: "Get in touch with UK-based travel writer and photographer James Merriman.",
     images: [
       {
         url: ogImage,
@@ -49,7 +50,7 @@ const Page = async () => {
     <>
       {/* Structured data */}
       <Script
-        id="about-schema"
+        id="contact-schema"
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
@@ -57,16 +58,16 @@ const Page = async () => {
             "@context": "https://schema.org",
             "@graph": [
               {
-                "@type": "ProfilePage",
-                "@id": `${config.baseUrl}/about`,
-                url: `${config.baseUrl}/about`,
-                name: "About James Merriman",
+                "@type": "WebPage",
+                "@id": `${config.baseUrl}/contact`,
+                url: `${config.baseUrl}/contact`,
+                name: "Contact James Merriman",
                 description:
-                  "Biography and personal background of James Merriman, a UK-based travel writer exploring culture, geography and human experience worldwide.",
+                  "Contact details and social channels for UK-based travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
-                mainEntity: {
+                about: {
                   "@id": `${config.baseUrl}#person`,
                 },
               },
@@ -75,30 +76,13 @@ const Page = async () => {
                 "@id": `${config.baseUrl}#person`,
                 name: "James Merriman",
                 url: config.baseUrl,
-                mainEntityOfPage: {
-                  "@type": "ProfilePage",
-                  "@id": `${config.baseUrl}/about`,
-                },
                 image: {
                   "@type": "ImageObject",
                   url: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
                   width: 1200,
                   height: 1600,
                 },
-                description:
-                  "UK-based travel writer and photographer documenting remote regions, cultural frontiers and human experience worldwide.",
                 jobTitle: "Travel Writer and Photographer",
-                hasOccupation: {
-                  "@type": "Occupation",
-                  name: "Travel Writer",
-                  occupationLocation: {
-                    "@type": "Country",
-                    name: "Worldwide",
-                  },
-                },
-                worksFor: {
-                  "@id": `${config.baseUrl}#website`,
-                },
                 nationality: {
                   "@type": "Country",
                   name: "United Kingdom",
@@ -109,13 +93,16 @@ const Page = async () => {
                   "https://linkedin.com/in/jamesmerriman",
                   "https://instagram.com/mezzarino",
                 ],
-                knowsAbout: [
-                  "Travel Writing",
-                  "Documentary Photography",
-                  "Remote Travel",
-                  "Cultural Geography",
-                  "Walking and Exploration",
-                ],
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "Professional enquiries",
+                  availableLanguage: ["en-GB"],
+                  sameAs: [
+                    "https://x.com/mezzarino",
+                    "https://linkedin.com/in/jamesmerriman",
+                    "https://instagram.com/mezzarino",
+                  ],
+                },
               },
               {
                 "@type": "WebSite",
@@ -138,8 +125,8 @@ const Page = async () => {
                   {
                     "@type": "ListItem",
                     position: 2,
-                    name: "About",
-                    item: `${config.baseUrl}/about`,
+                    name: "Contact",
+                    item: `${config.baseUrl}/contact`,
                   },
                 ],
               },
@@ -149,11 +136,11 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="About James Merriman, Travel Writer & Photographer"
-        description="Biography and personal background"
+        title="Contact"
+        description="Get in touch with James Merriman"
         breadcrumb={[
           { label: "Home", href: "/" },
-          { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
         ]}
       />
 
@@ -161,22 +148,13 @@ const Page = async () => {
         <div className="flex flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
-              I am a British traveller and travel writer based in Devon, England. A Fellow of the
-              Royal Geographical Society, I have travelled to{" "}
-              <strong>164 countries across six continents</strong>, driven by a deep curiosity for
-              landscape, culture and the stories that shape the world around us.{" "}
-              <Link href="/credentials">View my professional credentials</Link>.
+              If you’d like more background on my work and travels, you can read{" "}
+              <Link href="/about">My biography</Link> or view{" "}
+              <Link href="/credentials">my professional credentials</Link>.
             </p>
-            <p>
-              My journeys have taken me from remote island nations to post‑conflict regions,
-              exploring how geography, history and community intersect. Through my writing, I
-              reflect on the textures of travel - the light, the language, the food, and the quiet
-              human moments that define a destination beyond its map coordinates.
-            </p>
-            <p>
-              Based in the Devon countryside, I continue to explore the world with the same enduring
-              curiosity that shapes both my journeys and my writing.
-            </p>
+
+            <p>Please get in touch through any of the channels below.</p>
+            <SocialLinks />
           </div>
           <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
             <figure>

@@ -24,7 +24,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-02-10"),
+      lastModified: new Date("2026-04-21"),
+      priority: 0.8,
+    },
+
+    {
+      url: urlJoin(config.baseUrl, "credentials"),
+      lastModified: new Date("2026-04-21"),
+      priority: 0.8,
+    },
+
+    {
+      url: urlJoin(config.baseUrl, "contact"),
+      lastModified: new Date("2026-04-21"),
       priority: 0.8,
     },
 
