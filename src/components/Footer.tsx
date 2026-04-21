@@ -8,9 +8,12 @@ import { Button } from "./ui/button";
 
 export const Footer = () => {
   return (
-    <footer className="container mx-auto my-8 max-w-6xl px-4" role="contentinfo">
+    <footer
+      className="container mx-auto my-8 max-w-6xl px-4 border-t border-border/50"
+      role="contentinfo"
+    >
       {/* ✅ Context / trust sentence */}
-      <p className="mb-6 max-w-xl text-sm text-muted-foreground text-center sm:text-left">
+      <p className="mb-6 pt-6 text-sm text-muted-foreground text-center">
         James Merriman is a British travel writer and photographer documenting culture, history and
         remote places worldwide.
       </p>
