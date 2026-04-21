@@ -138,7 +138,7 @@ const Page = async () => {
 
       <FullWidthHeader
         title="Credentials"
-        description="Awards, nominations, professional memberships and selected publications"
+        description="Awards, nominations, professional memberships and selected publications of James Merriman"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Credentials", href: "/credentials" },
@@ -152,7 +152,7 @@ const Page = async () => {
               This page outlines my professional credentials as a travel writer, including awards
               and nominations, selected publications, and affiliations with industry and academic
               organisations. If you’re looking for a more personal background and an overview of my
-              travels and interests, you can read more <Link href="/about">About me</Link>.
+              travels and interests, you can read more <Link href="/about">about me</Link>.
             </p>
 
             <h2>Awards &amp; Nominations</h2>
