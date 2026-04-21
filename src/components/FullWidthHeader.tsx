@@ -22,7 +22,7 @@ interface BreadcrumbProps {
 
 interface FullWidthHeaderProps {
   title: string;
-  description: string;
+  description?: string;
   breadcrumb?: BreadcrumbProps[];
   className?: string;
 }
@@ -35,8 +35,9 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
 }) => {
   const pathname = usePathname();
 
+  // Ensure the last breadcrumb always points to the current URL
   const updatedBreadcrumb = breadcrumb?.map((crumb, index) => {
-    if (index === breadcrumb.length - 1) {
+    if (breadcrumb && index === breadcrumb.length - 1) {
       return { ...crumb, href: pathname };
     }
     return crumb;
@@ -46,36 +47,12 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
     <header
       role="banner"
       className={cn(
-        "pb-8 lg:pb-16 pt-4 bg-gradient-to-r from-blue-900 to-gray-900 text-white",
+        "bg-gradient-to-r from-blue-900 to-gray-900 text-white pb-8 lg:pb-16 pt-4",
         className,
       )}
     >
-      <div className="container mx-auto px-4 max-w-6xl">
-        {/* ✅ Primary navigation */}
-        <nav aria-label="Primary navigation" className="mt-4 flex justify-center">
-          <ul className="flex gap-6 text-sm font-medium">
-            {MAIN_NAV.map((item) => {
-              const isActive = pathname === item.href;
-
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "transition-colors",
-                      isActive ? "text-white underline" : "text-white/70 hover:text-white",
-                    )}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {/* ✅ Breadcrumb navigation */}
+      <div className="container mx-auto max-w-6xl px-4">
+        {/* Breadcrumb navigation */}
         {updatedBreadcrumb && updatedBreadcrumb.length > 0 && (
           <Breadcrumb className="mt-8 text-inherit">
             <BreadcrumbList className="text-inherit">
@@ -83,14 +60,13 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
                 <React.Fragment key={index}>
                   <BreadcrumbItem className="text-inherit">
                     {index === updatedBreadcrumb.length - 1 ? (
-                      <BreadcrumbPage aria-current="page" className="text-inherit line-clamp-1">
+                      <BreadcrumbPage aria-current="page" className="line-clamp-1 text-inherit">
                         {crumb.label}
                       </BreadcrumbPage>
                     ) : (
                       <BreadcrumbLink
                         href={crumb.href}
-                        title={crumb.label}
-                        className="text-inherit opacity-60 line-clamp-1"
+                        className="line-clamp-1 text-inherit opacity-60"
                       >
                         {crumb.label}
                       </BreadcrumbLink>
@@ -103,20 +79,49 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
           </Breadcrumb>
         )}
 
-        {/* ✅ Header title */}
+        {/* Title */}
         <div
           className={cn(
-            "prose lg:prose-lg text-balance mx-auto text-center px-4 text-inherit max-w-4xl",
+            "prose mx-auto max-w-4xl px-4 text-center text-balance text-inherit lg:prose-lg",
             updatedBreadcrumb ? "pt-16 lg:pt-18" : "pt-16 lg:pt-28",
           )}
         >
           <h1 className="text-inherit">{title}</h1>
         </div>
 
-        {/* ✅ Description */}
+        {/* Description */}
         {description && (
-          <div className="my-6 text-lg text-center max-w-2xl mx-auto">{description}</div>
+          <div className="mx-auto my-6 max-w-2xl text-center text-lg">{description}</div>
         )}
+
+        {/* Primary navigation */}
+        <nav
+          aria-label="Primary navigation"
+          className="mx-auto mt-10 max-w-3xl border-t border-white/10 pt-6 flex justify-center"
+        >
+          <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium">
+            {MAIN_NAV.map((item) => {
+              const isActive = pathname === item.href;
+
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={cn(
+                      "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
+                      isActive
+                        ? "text-white underline underline-offset-4"
+                        : "text-white/70 hover:text-white",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
     </header>
   );
