@@ -15,6 +15,12 @@ export const Footer = () => {
           © {config.organization} {new Date().getFullYear()}
         </div>
 
+        {/* ✅ NEW: Footer context / trust sentence */}
+        <p className="text-sm text-muted-foreground max-w-md text-center sm:text-left">
+          James Merriman is a British travel writer and photographer documenting culture, history
+          and remote places worldwide.
+        </p>
+
         {/* Footer navigation */}
         <nav aria-label="Footer navigation">
           <ul className="flex flex-col items-center gap-3 text-sm text-muted-foreground sm:flex-row sm:gap-4">
@@ -22,7 +28,7 @@ export const Footer = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded"
+                  className="rounded hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   {item.label}
                 </Link>

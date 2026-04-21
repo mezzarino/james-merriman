@@ -1,6 +1,7 @@
 export const revalidate = 60; // 1 minute
 
 import { Metadata } from "next";
+import Link from "next/link";
 
 import { BlogPostList } from "@/components/BlogPostList";
 import { PostPagination } from "@/components/PostPagination";
@@ -199,6 +200,21 @@ export default async function Page(props: {
         description="Award‑longlisted travel writer and photographer documenting culture, history and landscapes across 160+ countries"
         breadcrumb={breadcrumb}
       />
+
+      <section className="container mx-auto my-8 max-w-6xl px-4">
+        <p className="mx-auto max-w-2xl text-center text-lg text-muted-foreground">
+          This site presents the writing and photographic work of travel writer James Merriman. For
+          a personal background, visit{" "}
+          <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
+            my biography
+          </Link>
+          , or view{" "}
+          <Link href="/credentials" className="underline underline-offset-4 hover:text-foreground">
+            my professional credentials
+          </Link>
+          .
+        </p>
+      </section>
 
       <main className="container mx-auto max-w-6xl" role="main">
         <FilterBar active="latest" className="my-8" />
