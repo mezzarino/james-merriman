@@ -52,18 +52,28 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
       <div className="container mx-auto max-w-6xl px-4">
         {/* Breadcrumb */}
         {updatedBreadcrumb && updatedBreadcrumb.length > 0 && (
-          <Breadcrumb className="mt-8 text-inherit">
+          <Breadcrumb className="mt-8 rounded-md bg-black/20 backdrop-blur px-3 py-1">
             <BreadcrumbList>
               {updatedBreadcrumb.map((crumb, index) => (
                 <React.Fragment key={index}>
                   <BreadcrumbItem>
                     {index === updatedBreadcrumb.length - 1 ? (
-                      <BreadcrumbPage aria-current="page">{crumb.label}</BreadcrumbPage>
+                      <BreadcrumbPage aria-current="page" className="text-white font-medium">
+                        {crumb.label}
+                      </BreadcrumbPage>
                     ) : (
-                      <BreadcrumbLink href={crumb.href}>{crumb.label}</BreadcrumbLink>
+                      <BreadcrumbLink
+                        href={crumb.href}
+                        className="text-white/80 hover:text-white focus-visible:text-white"
+                      >
+                        {crumb.label}
+                      </BreadcrumbLink>
                     )}
                   </BreadcrumbItem>
-                  {index < updatedBreadcrumb.length - 1 && <BreadcrumbSeparator />}
+
+                  {index < updatedBreadcrumb.length - 1 && (
+                    <BreadcrumbSeparator className="text-white/40" />
+                  )}
                 </React.Fragment>
               ))}
             </BreadcrumbList>
