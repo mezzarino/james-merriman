@@ -116,14 +116,14 @@ export default async function Page() {
       />
 
       <div className="container mx-auto text-xl px-4 mb-10 max-w-6xl">
-        <div className="w-full max-w-full prose prose-lg break-words blog-content mt-8">
-          <p className="text-base text-muted-foreground">
+        <div className="w-full max-w-full prose prose-lg break-words blog-content">
+          <p className="mx-auto max-w-4xl text-center text-lg text-muted-foreground mt-8">
             These categories organise long-form travel writing drawn from first-hand journeys across
             the UK, Europe and further afield. Themes range from walking and pilgrimage to food,
             culture and local history, reflecting a slow, place-focused approach to travel.
           </p>
 
-          <ul className="mt-4 flex flex-wrap gap-3 list-none p-0">
+          <ul className="mt-4 flex flex-wrap gap-3 list-none p-0 justify-center">
             {result.tags.map((tag) => {
               const label = tag.name.charAt(0).toUpperCase() + tag.name.slice(1);
 

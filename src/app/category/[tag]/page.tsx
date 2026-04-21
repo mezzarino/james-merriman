@@ -200,7 +200,7 @@ export default async function Page(props: {
 
       <main className="container mx-auto px-4 max-w-6xl" role="main">
         {/* Editorial intro for SEO */}
-        <p className="text-base text-muted-foreground px-4 my-8">
+        <p className="mx-auto max-w-4xl text-center text-lg text-muted-foreground my-8">
           These {capitalise(tag)}‑related travel stories explore how place, culture and everyday
           life intersect on the road — from landscapes and local encounters to the quieter moments
           that reveal a destination beyond its surface.
