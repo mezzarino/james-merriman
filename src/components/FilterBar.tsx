@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { config } from "../config";
 import { cn } from "../lib/utils";
 
-const categories = [{ label: "Latest", tag: "latest" }, ...config.categories];
+const categories = [{ label: "Latest Writing", tag: "latest" }, ...config.categories];
 
 export interface BlogNavigationBarProps {
   className?: string;

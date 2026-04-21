@@ -69,7 +69,7 @@ export default async function Page(props: {
    */
   const breadcrumb = [
     { label: "Home", href: "/" },
-    { label: "Latest", href: page > 1 ? `?page=${page}` : "/" },
+    { label: "Latest Writing", href: page > 1 ? `?page=${page}` : "/" },
   ];
 
   /**
@@ -134,11 +134,11 @@ export default async function Page(props: {
       })),
     },
 
-    // ItemList (latest posts)
+    // ItemList (latest writing)
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "@id": `${config.baseUrl}#latest-posts`,
+      "@id": `${config.baseUrl}#latest-writing`,
       itemListElement: result.posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
