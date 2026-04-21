@@ -117,7 +117,7 @@ export default async function Page() {
 
       <div className="container mx-auto text-xl px-4 mb-10 max-w-6xl">
         <div className="w-full max-w-full prose prose-lg break-words blog-content">
-          <p className="mx-auto max-w-4xl text-center text-lg text-muted-foreground mt-8">
+          <p className="mx-auto max-w-4xl text-center text-lg mt-8">
             These categories organise long-form travel writing drawn from first-hand journeys across
             the UK, Europe and further afield. Themes range from walking and pilgrimage to food,
             culture and local history, reflecting a slow, place-focused approach to travel.

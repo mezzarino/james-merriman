@@ -202,7 +202,7 @@ export default async function Page(props: {
       />
 
       <section className="container mx-auto my-8 max-w-6xl px-4">
-        <p className="mx-auto max-w-4xl text-center text-lg text-muted-foreground">
+        <p className="mx-auto max-w-4xl text-center text-lg">
           This site presents the writing and photographic work of travel writer James Merriman. For
           a personal background, visit{" "}
           <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
