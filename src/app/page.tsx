@@ -196,7 +196,7 @@ export default async function Page(props: {
 
       <FullWidthHeader
         title="Travel Writing and Photography from Remote & Overlooked Places"
-        description="Award‑longlisted travel writer and photographer documenting culture, history and landscapes across 160+ countries."
+        description="Award‑longlisted travel writer and photographer documenting culture, history and landscapes across 160+ countries"
         breadcrumb={breadcrumb}
       />
 

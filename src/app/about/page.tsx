@@ -149,8 +149,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="About James Merriman, Travel Writer & Photographer"
-        description="Biography and personal background"
+        title="About James Merriman — Travel Writer & Photographer"
+        description="Biography and personal background of a British travel writer exploring culture, geography and human experience"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },

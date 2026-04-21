@@ -136,8 +136,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Contact"
-        description="Get in touch with James Merriman"
+        title="Contact James Merriman"
+        description="Enquiries, collaborations and professional contact with a travel writer and photographer"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Contact", href: "/contact" },
