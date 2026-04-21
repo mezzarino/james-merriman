@@ -149,7 +149,7 @@ const Page = async () => {
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
               If you’d like more background on my work and travels, you can read{" "}
-              <Link href="/about">My biography</Link> or view{" "}
+              <Link href="/about">my biography</Link> or view{" "}
               <Link href="/credentials">my professional credentials</Link>.
             </p>
 
