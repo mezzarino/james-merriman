@@ -157,7 +157,7 @@ const Page = async () => {
             </article>
 
             <p>
-              For detailed background on my work, see the <Link href="/about">About page</Link> or
+              For detailed background on my work, see the <Link href="/about">about page</Link> or
               explore my <Link href="/publications">published writing</Link>.
             </p>
           </div>
