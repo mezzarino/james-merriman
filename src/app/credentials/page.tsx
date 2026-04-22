@@ -150,11 +150,10 @@ const Page = async () => {
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
               This page outlines my professional credentials as a travel writer, including awards,
-              nominations and affiliations with industry and academic organisations. For a more
-              personal background, you can read more <Link href="/about">about me</Link>, or explore
-              a selection of{" "}
-              <Link href="/publications">published work and commissioned writing</Link> that has
-              appeared in magazines, books and external platforms.
+              nominations, and affiliations with industry and academic organisations. You can also
+              explore a selection of <Link href="/publications">published work</Link> and{" "}
+              <Link href="/talks">talks and presentations</Link> delivered to specialist and
+              regional audiences.
             </p>
 
             <h2>Awards &amp; Nominations</h2>

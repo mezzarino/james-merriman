@@ -165,9 +165,9 @@ const Page = async () => {
               Royal Geographical Society, I have travelled to{" "}
               <strong>164 countries across six continents</strong>, driven by a deep curiosity for
               landscape, culture and the stories that shape the world around us.{" "}
-              <Link href="/credentials">View my professional credentials</Link>, or explore a
-              selection of my{" "}
-              <Link href="/publications">published writing and external publications</Link>.
+              <Link href="/credentials">View my professional credentials</Link>, read a selection of{" "}
+              <Link href="/publications">published writing</Link>, or learn more about{" "}
+              <Link href="/talks">talks and presentations</Link> drawn from field experience.
             </p>
 
             <p>

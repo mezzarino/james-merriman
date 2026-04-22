@@ -212,11 +212,15 @@ export default async function Page(props: {
           <Link href="/credentials" className="underline underline-offset-4 hover:text-foreground">
             my professional credentials
           </Link>
-          , or view a selection of{" "}
+          , view selected{" "}
           <Link href="/publications" className="underline underline-offset-4 hover:text-foreground">
-            publications and commissioned work
+            publications
           </Link>
-          published beyond this site.
+          , or read about{" "}
+          <Link href="/talks" className="underline underline-offset-4 hover:text-foreground">
+            talks and presentations
+          </Link>{" "}
+          delivered to specialist audiences.
         </p>
       </section>
 

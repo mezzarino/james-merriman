@@ -9,5 +9,6 @@ export const MAIN_NAV: NavItem[] = [
   { label: "Publications", href: "/publications" },
   { label: "About", href: "/about" },
   { label: "Credentials", href: "/credentials" },
+  { label: "Talks & Presentations", href: "/talks-presentations" },
   { label: "Contact", href: "/contact" },
 ];
