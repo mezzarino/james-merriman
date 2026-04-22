@@ -26,12 +26,23 @@ export const Footer = () => {
 
         {/* Footer navigation */}
         <nav aria-label="Footer navigation">
-          <ul className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground sm:justify-start">
+          <ul
+            className="
+      flex flex-col items-stretch
+      gap-2 text-sm text-muted-foreground
+      sm:flex-row sm:justify-start sm:gap-4
+    "
+          >
             {MAIN_NAV.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="w-full sm:w-auto">
                 <Link
                   href={item.href}
-                  className="hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring rounded"
+                  className="
+            block w-full rounded px-3 py-2 text-center
+            hover:text-foreground hover:bg-muted
+            focus-visible:ring-2 focus-visible:ring-ring
+            sm:inline-block sm:w-auto sm:px-0 sm:py-0 sm:text-left sm:hover:bg-transparent
+          "
                 >
                   {item.label}
                 </Link>

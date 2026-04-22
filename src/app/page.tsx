@@ -201,7 +201,7 @@ export default async function Page(props: {
         breadcrumb={breadcrumb}
       />
 
-      <section className="container mx-auto my-8 max-w-6xl px-4">
+      <section className="container mx-auto my-8 max-w-6xl px-4 prose">
         <p className="mx-auto max-w-4xl text-center text-lg">
           This site presents the writing and photographic work of travel writer James Merriman. For
           a personal background, visit{" "}
