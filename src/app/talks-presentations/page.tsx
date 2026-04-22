@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Talks and presentations by travel writer James Merriman, drawing on first-hand travel experience, geography, and field research.",
   alternates: {
-    canonical: `${config.baseUrl}/talks`,
+    canonical: `${config.baseUrl}/talks-presentations`,
   },
   openGraph: {
     type: "website",
@@ -58,8 +58,8 @@ const Page = async () => {
             "@graph": [
               {
                 "@type": "CollectionPage",
-                "@id": `${config.baseUrl}/talks`,
-                url: `${config.baseUrl}/talks`,
+                "@id": `${config.baseUrl}/talks-presentations`,
+                url: `${config.baseUrl}/talks-presentations`,
                 name: "Talks & Presentations | James Merriman",
                 description:
                   "Talks and presentations by travel writer James Merriman, based on first-hand travel and field research.",
@@ -118,7 +118,7 @@ const Page = async () => {
                     "@type": "ListItem",
                     position: 2,
                     name: "Talks & Presentations",
-                    item: `${config.baseUrl}/talks`,
+                    item: `${config.baseUrl}/talks-presentations`,
                   },
                 ],
               },
