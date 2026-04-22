@@ -165,8 +165,11 @@ const Page = async () => {
               Royal Geographical Society, I have travelled to{" "}
               <strong>164 countries across six continents</strong>, driven by a deep curiosity for
               landscape, culture and the stories that shape the world around us.{" "}
-              <Link href="/credentials">View my professional credentials</Link>.
+              <Link href="/credentials">View my professional credentials</Link>, or explore a
+              selection of my{" "}
+              <Link href="/publications">published writing and external publications</Link>.
             </p>
+
             <p>
               My journeys have taken me from remote island nations to post‑conflict regions,
               exploring how geography, history and community intersect. Through my writing, I

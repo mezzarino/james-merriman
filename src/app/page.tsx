@@ -208,11 +208,15 @@ export default async function Page(props: {
           <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
             my biography
           </Link>
-          , or view{" "}
+          , explore{" "}
           <Link href="/credentials" className="underline underline-offset-4 hover:text-foreground">
             my professional credentials
           </Link>
-          .
+          , or view a selection of{" "}
+          <Link href="/publications" className="underline underline-offset-4 hover:text-foreground">
+            publications and commissioned work
+          </Link>
+          published beyond this site.
         </p>
       </section>
 
