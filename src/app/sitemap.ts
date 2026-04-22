@@ -23,6 +23,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     {
+      url: urlJoin(config.baseUrl, "publications"),
+      lastModified: new Date("2026-04-22"),
+      priority: 0.8,
+    },
+
+    {
       url: urlJoin(config.baseUrl, "about"),
       lastModified: new Date("2026-04-21"),
       priority: 0.8,
