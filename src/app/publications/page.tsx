@@ -297,7 +297,7 @@ const Page = async () => {
               </p>
 
               <p className="mt-3">
-                A culinary journey through Nice, France—Cours Saleya market, socca, pan bagnat and
+                A culinary journey through Nice, France — Cours Saleya market, socca, pan bagnat and
                 classic Niçoise flavours along the Côte d’Azur.
               </p>
 
