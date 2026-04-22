@@ -164,6 +164,36 @@ const Page = async () => {
                   encodingFormat: "application/pdf",
                 },
               },
+
+              {
+                "@type": "CreativeWork",
+                "@id":
+                  "https://www.jamesmerriman.co.uk/publications#my-tehran-beyond-the-headlines",
+                name: "My Tehran: Beyond the Headlines",
+                author: {
+                  "@id": "https://www.jamesmerriman.co.uk#person",
+                },
+                isPartOf: {
+                  "@type": "Book",
+                  name: "The Kindness of Strangers",
+                  publisher: {
+                    "@type": "Organization",
+                    name: "Bradt Guides",
+                    url: "https://www.bradtguides.com/",
+                  },
+                  url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
+                },
+                genre: ["Travel writing", "City travel", "Culture"],
+                about: {
+                  "@type": "Place",
+                  name: "Tehran",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "IR",
+                  },
+                },
+                url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
+              },
             ],
           }),
         }}
@@ -195,8 +225,43 @@ const Page = async () => {
               theme on the <Link href="/category">categories page</Link>.
             </p>
 
+            <h2 className="mt-12 text-2xl font-semibold">Books &amp; anthologies</h2>
+
             <article className="mb-10">
-              <h2 className="text-xl font-semibold">The Awakening of Leptis Magna</h2>
+              <h3 className="text-xl font-semibold">The Kindness of Strangers</h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                Published by <em>Bradt Guides</em> · Travel anthology
+              </p>
+
+              <p className="mt-3">
+                A collection of travel writing exploring encounters with generosity and hospitality
+                around the world. The book includes my piece,
+                <em>“My Tehran: Beyond the Headlines”</em>, a street‑level portrait of the city
+                shaped by walking, conversation, and everyday life in Tehran.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://www.bradtguides.com/product/the-kindness-of-strangers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Purchase the book The Kindness of Strangers from Bradt Guides"
+                >
+                  Purchase the book from Bradt Guides
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                This work appears as part of a commercially published anthology. All rights are
+                retained by the publisher and respective authors.
+              </p>
+            </article>
+
+            <h2 className="mt-12 text-2xl font-semibold">Magazine writing</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">The Awakening of Leptis Magna</h3>
 
               <p className="text-sm text-gray-600 mt-1">
                 <em>Globe Magazine</em> · Spring 2026 · Commissioned feature
@@ -214,7 +279,7 @@ const Page = async () => {
                   rel="noopener noreferrer"
                   aria-label="Download PDF excerpt of The Awakening of Leptis Magna"
                 >
-                  Download PDF excerpt
+                  Download PDF excerpt (Leptis Magna)
                 </a>
               </p>
 
@@ -225,7 +290,7 @@ const Page = async () => {
             </article>
 
             <article className="mb-10">
-              <h2 className="text-xl font-semibold">Eating My Way Around Nice</h2>
+              <h3 className="text-xl font-semibold">Eating My Way Around Nice</h3>
 
               <p className="text-sm text-gray-600 mt-1">
                 <em>Globe Magazine</em> · Winter 2025 · Commissioned feature
@@ -243,7 +308,7 @@ const Page = async () => {
                   rel="noopener noreferrer"
                   aria-label="Download PDF excerpt of Eating My Way Around Nice"
                 >
-                  Download PDF excerpt
+                  Download PDF excerpt (Nice)
                 </a>
               </p>
 
