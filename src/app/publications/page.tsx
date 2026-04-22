@@ -200,8 +200,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Selected Publications"
-        description="A selection of travel writing published in magazines and on external platforms."
+        title="Selected Publications by James Merriman"
+        description="A curated selection of travel writing published in magazines, books, and external platforms."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Publications", href: "/publications" },
