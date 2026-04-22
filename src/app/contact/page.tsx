@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
 import { FullWidthHeader } from "@/components/FullWidthHeader";
+import { AuthorPortrait } from "@/components/ui/author-portrait";
 import { SocialLinks } from "@/components/ui/social-links";
 import { config } from "@/config";
 
@@ -157,20 +157,7 @@ const Page = async () => {
             <SocialLinks />
           </div>
           <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
-            <figure>
-              <Image
-                src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
-                alt="James Merriman, UK travel writer and photographer"
-                width={1200}
-                height={1600}
-                className="w-full h-auto rounded-lg"
-                sizes="(max-width: 1024px) 100vw, 384px"
-                preload={true}
-              />
-              <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                James Merriman - travel writer &amp; photographer
-              </figcaption>
-            </figure>
+            <AuthorPortrait />
           </div>
         </div>
       </main>

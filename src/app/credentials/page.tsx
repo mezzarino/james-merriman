@@ -1,9 +1,9 @@
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
 import { FullWidthHeader } from "@/components/FullWidthHeader";
+import { AuthorPortrait } from "@/components/ui/author-portrait";
 import { config } from "@/config";
 
 /**
@@ -12,9 +12,9 @@ import { config } from "@/config";
 const ogImage = "/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
-  title: "Credentials of James Merriman – Awards, Memberships & Publications",
+  title: "Credentials of James Merriman – Awards & Memberships",
   description:
-    "Professional credentials of James Merriman, including awards, nominations, fellowships, professional memberships and selected contributions to published travel literature.",
+    "Professional credentials of James Merriman, including awards, nominations, fellowships and professional memberships to published travel literature.",
   alternates: {
     canonical: `${config.baseUrl}/credentials`,
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: "Credentials of James Merriman – Travel Writer",
     description:
-      "Awards, professional memberships, fellowships and selected publications of UK-based travel writer James Merriman.",
+      "Awards, professional memberships and fellowships of UK-based travel writer James Merriman.",
     images: [
       {
         url: ogImage,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Credentials of James Merriman – Travel Writer",
     description:
-      "Awards, professional memberships, fellowships and selected publications of UK-based travel writer James Merriman.",
+      "Awards, professional memberships and fellowships of UK-based travel writer James Merriman.",
     images: [
       {
         url: ogImage,
@@ -64,7 +64,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/credentials`,
                 name: "Credentials of James Merriman",
                 description:
-                  "Awards, professional memberships, fellowships and selected publications of UK-based travel writer James Merriman.",
+                  "Awards, professional memberships and fellowships of UK-based travel writer James Merriman.",
                 mainEntity: {
                   "@id": `${config.baseUrl}#person`,
                 },
@@ -138,7 +138,7 @@ const Page = async () => {
 
       <FullWidthHeader
         title="Credentials of James Merriman"
-        description="Awards, nominations, professional memberships and selected publications as a travel writer and photographer"
+        description="Awards, nominations and professional memberships as a travel writer and photographer"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Credentials", href: "/credentials" },
@@ -149,10 +149,10 @@ const Page = async () => {
         <div className="flex flex-col-reverse lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
-              This page outlines my professional credentials as a travel writer, including awards
-              and nominations, selected publications, and affiliations with industry and academic
-              organisations. If you’re looking for a more personal background and an overview of my
-              travels and interests, you can read more <Link href="/about">about me</Link>.
+              This page outlines my professional credentials as a travel writer, including awards,
+              nominations and affiliations with industry and academic organisations. If you’re
+              looking for a more personal background and an overview of my travels and interests,
+              you can read more <Link href="/about">about me</Link>.
             </p>
 
             <h2>Awards &amp; Nominations</h2>
@@ -220,40 +220,9 @@ const Page = async () => {
                 </a>
               </li>
             </ul>
-            <h2>Selected Publications & Contributions</h2>
-            <p>
-              Alongside my long‑form travel writing, I contribute to published travel literature
-              that explores curiosity, connection and human experience on the road.
-            </p>
-            <ul>
-              <li>
-                <strong>Contributor</strong> –{" "}
-                <a
-                  href="https://www.bradtguides.com/product/the-kindness-of-strangers/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="View The Kindness of Strangers by Bradt Guides"
-                >
-                  <em>The Kindness of Strangers</em>, Bradt Guides
-                </a>
-              </li>
-            </ul>
           </div>
           <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
-            <figure>
-              <Image
-                src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
-                alt="James Merriman, UK travel writer and photographer"
-                width={1200}
-                height={1600}
-                className="w-full h-auto rounded-lg"
-                sizes="(max-width: 1024px) 100vw, 384px"
-                preload={true}
-              />
-              <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                James Merriman - travel writer &amp; photographer
-              </figcaption>
-            </figure>
+            <AuthorPortrait />
           </div>
         </div>
       </main>
