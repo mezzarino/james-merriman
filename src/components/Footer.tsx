@@ -29,8 +29,9 @@ export const Footer = () => {
           <ul
             className="
       flex flex-col items-stretch
-      gap-2 text-sm text-muted-foreground
-      sm:flex-row sm:justify-start sm:gap-4
+      divide-y divide-muted
+      text-sm text-muted-foreground
+      sm:flex-row sm:justify-start gap-0 sm:gap-4 sm:divide-y-0 py-3 sm:py-0
     "
           >
             {MAIN_NAV.map((item) => (
