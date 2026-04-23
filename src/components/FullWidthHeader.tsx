@@ -32,17 +32,17 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
         role="banner"
         className={cn("bg-gradient-to-r from-blue-900 to-gray-900 text-white", className)}
       >
-        <div className="container mx-auto max-w-6xl px-4 pb-8 lg:pb-10">
+        <div className="container mx-auto max-w-6xl px-4 py-8 lg:py-10">
           {/* Logo (CLS-safe, visually balanced) */}
           <div className="mx-auto mb-3 flex justify-center">
             <Link href="/" aria-label="James Merriman home">
-              <div className="relative w-[180px] sm:w-[220px] lg:w-[260px] aspect-[100/59]">
+              <div className="relative w-[180px] sm:w-[220px] lg:w-[220px] aspect-[100/59]">
                 <Image
                   src="/james-merriman-travel-writer-logo.png"
                   alt="James Merriman – Travel Writer logo"
                   fill
                   priority
-                  sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 260px"
+                  sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 220px"
                   className="object-contain"
                 />
               </div>
