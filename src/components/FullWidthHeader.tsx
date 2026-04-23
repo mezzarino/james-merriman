@@ -32,9 +32,9 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
         role="banner"
         className={cn("bg-gradient-to-r from-blue-900 to-gray-900 text-white", className)}
       >
-        <div className="container mx-auto max-w-6xl px-4 pt-6 pb-8 lg:pt-8 lg:pb-10">
+        <div className="container mx-auto max-w-6xl px-4 pb-8 lg:pb-10">
           {/* Logo (CLS-safe with reserved space) */}
-          <div className="mx-auto mb-3 flex justify-center">
+          <div className="mx-auto flex justify-center">
             <Link href="/" aria-label="James Merriman home">
               <div className="relative w-[220px] sm:w-[260px] lg:w-[300px] aspect-[3/2]">
                 <Image
