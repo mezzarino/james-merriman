@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { FunctionComponent } from "react";
 
@@ -58,7 +60,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
                 <React.Fragment key={index}>
                   <BreadcrumbItem>
                     {index === updatedBreadcrumb.length - 1 ? (
-                      <BreadcrumbPage aria-current="page" className="text-white font-medium">
+                      <BreadcrumbPage aria-current="page" className="font-medium text-white">
                         {crumb.label}
                       </BreadcrumbPage>
                     ) : (
@@ -80,8 +82,22 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
           </Breadcrumb>
         )}
 
+        {/* Logo */}
+        <div className="mx-auto mt-12 mb-6 flex justify-center">
+          <Link href="/" aria-label="James Merriman homepage">
+            <Image
+              src="/james-merriman-travel-writer-logo.png"
+              alt="James Merriman – Travel Writer logo"
+              width={440}
+              height={440}
+              priority
+              className="h-auto w-[160px] sm:w-[180px] lg:w-[220px]"
+            />
+          </Link>
+        </div>
+
         {/* Title */}
-        <div className="prose mx-auto max-w-4xl text-center text-inherit pt-16">
+        <div className="prose mx-auto max-w-4xl text-center text-inherit">
           <h1 className="text-inherit">{title}</h1>
         </div>
 
@@ -90,7 +106,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
           <div className="mx-auto my-6 max-w-2xl text-center text-lg">{description}</div>
         )}
 
-        {/* ✅ Extracted navigation */}
+        {/* Primary navigation */}
         <div className="mt-10 border-t border-white/10 pt-6">
           <PrimaryNav />
         </div>
