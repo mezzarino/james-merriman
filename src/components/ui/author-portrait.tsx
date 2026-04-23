@@ -10,6 +10,9 @@ interface AuthorPortraitProps {
   caption?: string;
 }
 
+const BLUR_DATA_URL =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg==";
+
 export function AuthorPortrait({
   className,
   caption = "James Merriman – travel writer & photographer",
@@ -26,7 +29,8 @@ export function AuthorPortrait({
           height={1600}
           className="w-full h-auto rounded-lg"
           sizes="(max-width: 1024px) 100vw, 384px"
-          /* ✅ allow native lazy loading */
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
         />
 
         <figcaption className="mt-2 text-sm text-muted-foreground text-center">
