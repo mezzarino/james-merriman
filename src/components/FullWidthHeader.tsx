@@ -33,10 +33,10 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
         className={cn("bg-gradient-to-r from-blue-900 to-gray-900 text-white", className)}
       >
         <div className="container mx-auto max-w-6xl px-4 pb-8 lg:pb-10">
-          {/* Logo (CLS-safe with reserved space) */}
-          <div className="mx-auto flex justify-center">
+          {/* Logo (CLS-safe, updated for 500×295) */}
+          <div className="mx-auto mb-3 flex justify-center">
             <Link href="/" aria-label="James Merriman home">
-              <div className="relative w-[220px] sm:w-[260px] lg:w-[300px] aspect-[3/2]">
+              <div className="relative w-[220px] sm:w-[260px] lg:w-[300px] aspect-[100/59]">
                 <Image
                   src="/james-merriman-travel-writer-logo.png"
                   alt="James Merriman – Travel Writer logo"

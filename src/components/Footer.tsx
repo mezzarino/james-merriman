@@ -1,4 +1,5 @@
 import { Rss } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { config } from "@/config";
@@ -9,11 +10,26 @@ import { Button } from "./ui/button";
 export const Footer = () => {
   return (
     <footer
-      className="container mx-auto my-8 max-w-6xl px-4 border-t border-border/50"
       role="contentinfo"
+      className="container mx-auto my-8 max-w-6xl px-4 border-t border-border/50"
     >
-      {/* ✅ Context / trust sentence */}
-      <p className="mb-6 pt-6 text-sm text-muted-foreground text-center">
+      {/* Footer logo */}
+      <div className="mx-auto pt-8 mb-6 flex justify-center">
+        <Link href="/" aria-label="James Merriman home">
+          <div className="relative w-[140px] aspect-[18/10]">
+            <Image
+              src="/james-merriman-travel-writer-logo-grey.png"
+              alt="James Merriman – Travel Writer"
+              fill
+              className="object-contain"
+              sizes="140px"
+            />
+          </div>
+        </Link>
+      </div>
+
+      {/* Context / trust sentence */}
+      <p className="mb-6 text-sm text-muted-foreground text-center">
         James Merriman is a British travel writer and photographer documenting culture, history and
         remote places worldwide.
       </p>
@@ -28,22 +44,24 @@ export const Footer = () => {
         <nav aria-label="Footer navigation">
           <ul
             className="
-      flex flex-col items-stretch
-      divide-y divide-muted
-      text-sm text-muted-foreground
-      sm:flex-row sm:justify-start gap-0 sm:gap-4 sm:divide-y-0 py-3 sm:py-0
-    "
+              flex flex-col items-stretch
+              divide-y divide-muted
+              text-sm text-muted-foreground
+              sm:flex-row sm:justify-start sm:gap-4 sm:divide-y-0
+              py-3 sm:py-0
+            "
           >
             {MAIN_NAV.map((item) => (
               <li key={item.href} className="w-full sm:w-auto">
                 <Link
                   href={item.href}
                   className="
-            block w-full rounded px-3 py-2 text-center
-            hover:text-foreground hover:bg-muted
-            focus-visible:ring-2 focus-visible:ring-ring
-            sm:inline-block sm:w-auto sm:px-0 sm:py-0 sm:text-left sm:hover:bg-transparent
-          "
+                    block w-full rounded px-3 py-2 text-center
+                    hover:text-foreground hover:bg-muted
+                    focus-visible:ring-2 focus-visible:ring-ring
+                    sm:inline-block sm:w-auto sm:px-0 sm:py-0 sm:text-left
+                    sm:hover:bg-transparent
+                  "
                 >
                   {item.label}
                 </Link>
