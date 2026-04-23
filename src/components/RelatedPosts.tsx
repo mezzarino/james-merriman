@@ -18,7 +18,7 @@ export function RelatedPosts({ posts }: { posts: GetRelatedPostsResult["posts"] 
             <Link href={`/post/${post.slug}`} className="block">
               <AspectRatio ratio={16 / 9}>
                 <Image
-                  src={post.image || "/placeholder.jpg"}
+                  src={post.image || "/james-merriman-travel-writer-placeholder.jpg"}
                   alt={`${post.title} – travel writing by James Merriman`}
                   width={358}
                   height={201}

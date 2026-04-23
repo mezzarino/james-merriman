@@ -27,8 +27,8 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                 />
               ) : (
                 <Image
-                  src="/placeholder.jpg"
-                  alt="Placeholder image"
+                  src="/james-merriman-travel-writer-placeholder.jpg"
+                  alt="James Merriman Travel Writer - Placeholder image"
                   fill
                   className="object-cover object-center"
                 />
