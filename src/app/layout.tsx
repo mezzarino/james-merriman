@@ -19,7 +19,11 @@ const fontSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jamesmerriman.co.uk"),
 
-  title: "James Merriman | Travel Writer & Photographer",
+  title: {
+    default: "James Merriman | Travel Writer & Photographer",
+    template: "%s | James Merriman",
+  },
+
   description:
     "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
 
@@ -38,6 +42,21 @@ export const metadata: Metadata = {
       url: "/about",
     },
   ],
+
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.ico", type: "image/x-icon" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+
+  manifest: "/site.webmanifest",
+
+  appleWebApp: {
+    title: "James Merriman Travel Writer",
+  },
 
   openGraph: {
     title: "James Merriman | Travel Writer & Photographer",
