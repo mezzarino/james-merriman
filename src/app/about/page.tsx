@@ -167,7 +167,8 @@ const Page = async () => {
               landscape, culture and the stories that shape the world around us.{" "}
               <Link href="/credentials">View my professional credentials</Link>, read a selection of{" "}
               <Link href="/publications">published writing</Link>, or learn more about{" "}
-              <Link href="/talks">talks and presentations</Link> drawn from field experience.
+              <Link href="/talks-presentations">talks and presentations</Link> drawn from field
+              experience.
             </p>
 
             <p>

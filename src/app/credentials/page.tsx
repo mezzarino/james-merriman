@@ -152,8 +152,8 @@ const Page = async () => {
               This page outlines my professional credentials as a travel writer, including awards,
               nominations, and affiliations with industry and academic organisations. You can also
               explore a selection of <Link href="/publications">published work</Link> and{" "}
-              <Link href="/talks">talks and presentations</Link> delivered to specialist and
-              regional audiences.
+              <Link href="/talks-presentations">talks and presentations</Link> delivered to
+              specialist and regional audiences.
             </p>
 
             <h2>Awards &amp; Nominations</h2>

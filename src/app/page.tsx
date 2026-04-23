@@ -217,7 +217,10 @@ export default async function Page(props: {
             publications
           </Link>
           , or read about{" "}
-          <Link href="/talks" className="underline underline-offset-4 hover:text-foreground">
+          <Link
+            href="/talks-presentations"
+            className="underline underline-offset-4 hover:text-foreground"
+          >
             talks and presentations
           </Link>{" "}
           delivered to specialist audiences.

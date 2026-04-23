@@ -152,7 +152,7 @@ const Page = async () => {
               <Link href="/about">my biography</Link>, view{" "}
               <Link href="/credentials">my professional credentials</Link>, explore{" "}
               <Link href="/publications">published writing</Link>, or learn more about{" "}
-              <Link href="/talks">talks and presentations</Link>.
+              <Link href="/talks-presentations">talks and presentations</Link>.
             </p>
 
             <p>Please get in touch through any of the channels below.</p>
