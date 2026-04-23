@@ -146,7 +146,7 @@ const Page = async () => {
       />
 
       <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
-        <div className="flex flex-col-reverse lg:flex-row">
+        <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>
               This page outlines my professional credentials as a travel writer, including awards,
@@ -222,7 +222,7 @@ const Page = async () => {
               </li>
             </ul>
           </div>
-          <div className="w-full lg:w-1/3 pb-4 lg:pb-0 lg:pl-8">
+          <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <AuthorPortrait />
           </div>
         </div>
