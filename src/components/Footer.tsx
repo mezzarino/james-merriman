@@ -36,7 +36,7 @@ export const Footer = () => {
 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         {/* Copyright */}
-        <div className="text-sm text-center sm:text-left">
+        <div className="text-sm text-center sm:text-left text-muted-foreground">
           © {config.organization} {new Date().getFullYear()}
         </div>
 
