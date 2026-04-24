@@ -236,7 +236,7 @@ const Page = async () => {
 
               <p className="mt-3">
                 A collection of travel writing exploring encounters with generosity and hospitality
-                around the world. The book includes my piece,
+                around the world. The book includes my piece,{" "}
                 <Link href="/post/my-tehran-beyond-the-headlines">
                   <em>“My Tehran: Beyond the Headlines”</em>
                 </Link>
