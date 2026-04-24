@@ -280,15 +280,25 @@ const Page = async () => {
                   href="/publications/globe-magazine-spring-2026.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="block"
                   aria-label="Download PDF excerpt of The Awakening of Leptis Magna"
                 >
                   Download PDF excerpt (Leptis Magna)
                 </a>
+
+                <Link
+                  href="/post/the-awakening-of-leptis-magna"
+                  aria-label="Read The Awakening of Leptis Magna on the blog"
+                  className="block"
+                >
+                  Read my Leptis Magna feature
+                </Link>
               </p>
 
               <p className="text-xs text-gray-500 mt-2">
                 © Original publication and layout remain the copyright of <em>Globe Magazine</em>.
-                This edited excerpt is shared here for illustrative and portfolio purposes only.
+                The PDF excerpt is shared for portfolio purposes. The blog version is an adapted
+                author’s cut.
               </p>
             </article>
 
@@ -309,15 +319,24 @@ const Page = async () => {
                   href="/publications/globe-magazine-winter-2025.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="block"
                   aria-label="Download PDF excerpt of Eating My Way Around Nice"
                 >
                   Download PDF excerpt (Nice)
                 </a>
+                <Link
+                  href="/post/eating-my-way-through-nice"
+                  aria-label="Read Eating My Way Around Nice on the blog"
+                  className="block"
+                >
+                  Read my culinary journey through Nice
+                </Link>
               </p>
 
               <p className="text-xs text-gray-500 mt-2">
                 © Original publication and layout remain the copyright of <em>Globe Magazine</em>.
-                This edited excerpt is shared here for illustrative and portfolio purposes only.
+                The PDF excerpt is shared for portfolio purposes. The blog version is an adapted
+                author’s cut.
               </p>
             </article>
           </div>
