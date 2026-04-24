@@ -237,8 +237,11 @@ const Page = async () => {
               <p className="mt-3">
                 A collection of travel writing exploring encounters with generosity and hospitality
                 around the world. The book includes my piece,
-                <em>“My Tehran: Beyond the Headlines”</em>, a street‑level portrait of the city
-                shaped by walking, conversation, and everyday life in Tehran.
+                <Link href="/post/my-tehran-beyond-the-headlines">
+                  <em>“My Tehran: Beyond the Headlines”</em>
+                </Link>
+                , a street‑level portrait of the city shaped by walking, conversation, and everyday
+                life in Tehran.
               </p>
 
               <p className="mt-3">

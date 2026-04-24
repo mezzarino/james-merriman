@@ -81,9 +81,7 @@ body {
   @apply w-full;
 }
 
-
 .content-visibility-auto {
   content-visibility: auto;
   contain-intrinsic-size: 350px;
 }
-
