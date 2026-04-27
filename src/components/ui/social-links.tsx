@@ -7,7 +7,7 @@ export function SocialLinks() {
   return (
     <div className="not-prose flex gap-4 mt-8">
       <a
-        href="mailto:mezzarino@outlook.com"
+        href="mailto:info@jamesmerriman.co.uk"
         aria-label="Email James Merriman"
         className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
