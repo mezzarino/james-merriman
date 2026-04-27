@@ -2,6 +2,7 @@ import { Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ConsentPreferencesLink } from "@/components/analytics/ConsentPreferencesLink";
 import { config } from "@/config";
 import { MAIN_NAV } from "@/lib/navigation";
 
@@ -35,7 +36,7 @@ export const Footer = () => {
         remote places worldwide.
       </p>
 
-      {/* ✅ Social links */}
+      {/* Social links */}
       <div className="flex justify-center mb-4">
         <SocialLinks />
       </div>
@@ -86,6 +87,8 @@ export const Footer = () => {
           >
             Powered by Wisp
           </Link>
+
+          <ConsentPreferencesLink />
 
           <Link href="/rss">
             <Button variant="ghost" aria-label="RSS feed">
