@@ -1,27 +1,12 @@
 "use client";
 
-import { useState } from "react";
-
-import { getStoredConsent, setStoredConsent } from "./consent";
+import { useConsent } from "./ConsentContext";
 
 export function ConsentBanner() {
-  const [visible, setVisible] = useState(() => {
-    const consent = getStoredConsent();
-    return !consent;
-  });
+  const { consent, setConsent } = useConsent();
 
-  function acceptAnalytics() {
-    setStoredConsent("granted");
-    setVisible(false);
-    window.location.reload();
-  }
-
-  function rejectAnalytics() {
-    setStoredConsent("denied");
-    setVisible(false);
-  }
-
-  if (!visible) return null;
+  // ✅ Banner goes away immediately after choice
+  if (consent !== "unknown") return null;
 
   return (
     <div
@@ -36,13 +21,16 @@ export function ConsentBanner() {
 
       <div className="flex gap-3">
         <button
-          onClick={acceptAnalytics}
+          onClick={() => setConsent("granted")}
           className="rounded-md bg-black px-4 py-2 text-sm text-white"
         >
           Accept analytics
         </button>
 
-        <button onClick={rejectAnalytics} className="rounded-md border px-4 py-2 text-sm">
+        <button
+          onClick={() => setConsent("denied")}
+          className="rounded-md border px-4 py-2 text-sm"
+        >
           Reject
         </button>
       </div>

@@ -2,12 +2,14 @@
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-import { getStoredConsent } from "./consent";
+import { useConsent } from "./ConsentContext";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!;
 
 export function GoogleAnalyticsConsent() {
-  if (getStoredConsent() !== "granted") {
+  const { consent } = useConsent();
+
+  if (consent !== "granted") {
     return null;
   }
 

@@ -11,6 +11,7 @@ import { Footer } from "@/components/Footer";
 import ReadingProgress from "@/components/ui/readingProgress";
 
 import { Providers } from "./providers";
+import { ConsentProvider } from "@/components/analytics/ConsentContext";
 
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -91,20 +92,22 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en-GB">
       <body className={`${fontSans.variable} antialiased font-sans`}>
         <Providers>
-          {/* Reading progress bar */}
-          <ReadingProgress />
+          <ConsentProvider>
+            {/* Reading progress bar */}
+            <ReadingProgress />
 
-          {/* Main content */}
-          {children}
+            {/* Main content */}
+            {children}
 
-          {/* Footer */}
-          <Footer />
+            {/* Footer */}
+            <Footer />
 
-          {/* Performance and analytics */}
-          <SpeedInsights />
-          <Analytics />
-          <ConsentBanner />
-          <GoogleAnalyticsConsent />
+            {/* Performance and analytics */}
+            <SpeedInsights />
+            <Analytics />
+            <ConsentBanner />
+            <GoogleAnalyticsConsent />
+          </ConsentProvider>
         </Providers>
       </body>
     </html>
