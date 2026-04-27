@@ -70,7 +70,6 @@ export const BlogContent = ({
             Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"} | {readingTime}
           </div>
         </div>
-        <PostShare url={postUrl} />
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
             {parse(modifiedHtml, {
@@ -114,7 +113,7 @@ export const BlogContent = ({
             <AboutCta />
           </div>
         </div>
-        <div className="my-8 space-x-2">
+        <div className="mt-4 mb-8 space-x-2">
           {tags.map((tag) => (
             <Link href={`/category/${tag.name}`} key={tag.id}>
               #{tag.name}

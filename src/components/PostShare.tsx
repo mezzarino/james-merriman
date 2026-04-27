@@ -19,7 +19,7 @@ export function PostShare({ url }: PostShareProps) {
 
   return (
     <div className="not-prose flex items-center gap-3">
-      <span className="text-sm font-medium text-gray-500">Share:</span>
+      <span className="text-sm font-medium">Share this story:</span>
 
       <a
         href={facebookUrl}
