@@ -9,6 +9,7 @@ on:
 jobs:
   indexnow:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Submit IndexNow after deploy
         run: |
