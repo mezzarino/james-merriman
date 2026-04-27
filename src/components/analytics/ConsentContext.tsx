@@ -1,23 +1,25 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-export type AnalyticsConsent = "granted" | "denied" | "unknown";
+export type AnalyticsConsent = "granted" | "denied";
 
 type ConsentContextValue = {
-  consent: AnalyticsConsent;
+  consent: AnalyticsConsent | null; // null = not hydrated yet
   setConsent: (value: AnalyticsConsent) => void;
 };
 
 const ConsentContext = createContext<ConsentContextValue | null>(null);
 
 export function ConsentProvider({ children }: { children: React.ReactNode }) {
-  const [consent, setConsentState] = useState<AnalyticsConsent>(() => {
-    if (typeof window === "undefined") {
-      return "unknown";
-    }
-    return (localStorage.getItem("analyticsConsent") as AnalyticsConsent) ?? "unknown";
-  });
+  const [consent, setConsentState] = useState<AnalyticsConsent | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("analyticsConsent") as AnalyticsConsent | null;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setConsentState((current) => (current === stored ? current : stored));
+  }, []);
 
   function setConsent(value: AnalyticsConsent) {
     localStorage.setItem("analyticsConsent", value);

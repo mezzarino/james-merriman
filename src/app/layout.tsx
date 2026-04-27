@@ -6,12 +6,12 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
+import { ConsentProvider } from "@/components/analytics/ConsentContext";
 import { GoogleAnalyticsConsent } from "@/components/analytics/GoogleAnalyticsConsent";
 import { Footer } from "@/components/Footer";
 import ReadingProgress from "@/components/ui/readingProgress";
 
 import { Providers } from "./providers";
-import { ConsentProvider } from "@/components/analytics/ConsentContext";
 
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],

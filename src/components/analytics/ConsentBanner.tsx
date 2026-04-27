@@ -5,8 +5,8 @@ import { useConsent } from "./ConsentContext";
 export function ConsentBanner() {
   const { consent, setConsent } = useConsent();
 
-  // ✅ Banner goes away immediately after choice
-  if (consent !== "unknown") return null;
+  // ✅ Don't show anything until hydrated
+  if (consent !== null) return null;
 
   return (
     <div
