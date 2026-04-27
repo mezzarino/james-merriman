@@ -3,8 +3,6 @@ export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-import { EmailTemplate } from "@/lib/emails/EmailTemplate";
-
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
@@ -37,22 +35,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
   }
 
-  const safeCompany = company || "";
-  const safeTelephone = telephone || "";
-
   try {
     await resend.emails.send({
       from: "Website Contact <no-reply@mail.jamesmerriman.co.uk>",
       to: ["info@jamesmerriman.co.uk"],
       replyTo: email,
       subject: `Contact form message from ${name}`,
-      react: EmailTemplate({
-        name,
-        email,
-        company: safeCompany,
-        telephone: safeTelephone,
-        message,
-      }),
+      html: `
+        <h1>Website contact form submission</h1>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Company:</strong> ${company || "—"}</p>
+        <p><strong>Telephone:</strong> ${telephone || "—"}</p>
+        <p><strong>Message:</strong><br />${message}</p>
+      `,
     });
 
     return NextResponse.json({ success: true });
