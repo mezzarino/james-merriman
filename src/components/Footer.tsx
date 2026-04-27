@@ -36,7 +36,7 @@ export const Footer = () => {
       </p>
 
       {/* ✅ Social links */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-4">
         <SocialLinks />
       </div>
 

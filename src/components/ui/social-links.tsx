@@ -11,9 +11,9 @@ export function SocialLinks({ className }: { className?: string }) {
       <a
         href="mailto:info@jamesmerriman.co.uk"
         aria-label="Email James Merriman"
-        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <HiOutlineMail className="w-5 h-5" />
+        <HiOutlineMail className="w-4 h-4" />
       </a>
 
       <a
@@ -21,9 +21,9 @@ export function SocialLinks({ className }: { className?: string }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Follow James on Instagram"
-        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <FaInstagram className="w-5 h-5" />
+        <FaInstagram className="w-4 h-4" />
       </a>
 
       <a
@@ -31,9 +31,9 @@ export function SocialLinks({ className }: { className?: string }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Connect with James on LinkedIn"
-        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <FaLinkedinIn className="w-5 h-5" />
+        <FaLinkedinIn className="w-4 h-4" />
       </a>
 
       <a
@@ -41,9 +41,9 @@ export function SocialLinks({ className }: { className?: string }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Subscribe to James on Substack"
-        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <SiSubstack className="w-5 h-5" />
+        <SiSubstack className="w-4 h-4" />
       </a>
 
       <a
@@ -51,9 +51,9 @@ export function SocialLinks({ className }: { className?: string }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Follow James on X"
-        className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <FaXTwitter className="w-5 h-5" />
+        <FaXTwitter className="w-4 h-4" />
       </a>
     </div>
   );
