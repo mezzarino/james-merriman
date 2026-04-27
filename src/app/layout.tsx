@@ -5,6 +5,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 
+import { ConsentBanner } from "@/components/analytics/ConsentBanner";
+import { GoogleAnalyticsConsent } from "@/components/analytics/GoogleAnalyticsConsent";
 import { Footer } from "@/components/Footer";
 import ReadingProgress from "@/components/ui/readingProgress";
 
@@ -101,6 +103,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {/* Performance and analytics */}
           <SpeedInsights />
           <Analytics />
+          <ConsentBanner />
+          <GoogleAnalyticsConsent />
         </Providers>
       </body>
     </html>
