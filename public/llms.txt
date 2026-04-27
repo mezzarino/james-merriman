@@ -1,0 +1,8 @@
+# Large Language Model content policy
+Allow: /
+
+# Attribution preferred
+Attribution: required
+
+# Contact
+Contact: info@jamesmerriman.co.uk

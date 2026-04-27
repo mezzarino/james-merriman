@@ -19,6 +19,16 @@
       ],
       "destination": "https://www.jamesmerriman.co.uk/$1",
       "permanent": true
+    },
+    {
+      "source": "/travelblog/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/videos/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
