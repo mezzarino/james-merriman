@@ -4,10 +4,12 @@ import parse, { DOMNode, Element } from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
 
+import { config } from "@/config";
 import { formatFullDate } from "@/lib/date";
 
 import { CommentSection } from "./CommentSection";
 import { FullWidthHeader } from "./FullWidthHeader";
+import { PostShare } from "./PostShare";
 import { RelatedPosts } from "./RelatedPosts";
 import { processTableOfContents } from "./TOC";
 import { AboutCta } from "./ui/about-cta";
@@ -43,6 +45,7 @@ export const BlogContent = ({
     h5: true,
     h6: true,
   });
+  const postUrl = `${config.baseUrl}/post/${slug}`;
   return (
     <>
       <FullWidthHeader
@@ -66,6 +69,7 @@ export const BlogContent = ({
           <div>
             Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"} | {readingTime}
           </div>
+          <PostShare url={postUrl} />
         </div>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
@@ -113,6 +117,9 @@ export const BlogContent = ({
               #{tag.name}
             </Link>
           ))}
+        </div>
+        <div className="mt-12 border-t pt-6">
+          <PostShare url={postUrl} />
         </div>
         <CommentSection slug={slug} />
         <RelatedPosts posts={relatedPosts} />
