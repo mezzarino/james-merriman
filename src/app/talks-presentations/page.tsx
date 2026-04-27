@@ -9,7 +9,7 @@ import { config } from "@/config";
 /**
  * Talks & Presentations page metadata
  */
-const ogImage = "/james-merriman-travel-writer.jpg";
+const ogImage = "/images/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
   title: "Talks & Presentations | James Merriman – Travel Writer",

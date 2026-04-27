@@ -9,7 +9,7 @@ import { wisp } from "@/lib/wisp";
 
 import { FullWidthHeader } from "../../components/FullWidthHeader";
 
-const ogImage = "/james-merriman-travel-writer.jpg";
+const ogImage = "/images/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
   title: "Browse Travel Writing Categories | James Merriman",

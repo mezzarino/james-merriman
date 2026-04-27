@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
     connect-src 'self' https://www.wisp.blog https://www.google-analytics.com https://region1.google-analytics.com;
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://imagedelivery.net https://assets.about.me;
+    img-src 'self' data: https://imagedelivery.net;
     font-src 'self';
     frame-src 'none';
     object-src 'none';

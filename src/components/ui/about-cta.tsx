@@ -10,7 +10,7 @@ export function AboutCta() {
       <Link href="/about" className="block rounded-lg group overflow-hidden bg-muted">
         <AspectRatio ratio={16 / 9} className="w-full">
           <Image
-            src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
+            src="/images/james-merriman.jpg"
             alt="James Merriman, travel writer and photographer"
             fill
             quality={65}

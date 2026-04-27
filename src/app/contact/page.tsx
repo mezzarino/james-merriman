@@ -10,7 +10,7 @@ import { config } from "@/config";
 /**
  * Contact page metadata
  */
-const ogImage = "/james-merriman-travel-writer.jpg";
+const ogImage = "/images/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
   title: "Contact James Merriman – Travel Writer & Photographer",
@@ -78,7 +78,7 @@ const Page = async () => {
                 url: config.baseUrl,
                 image: {
                   "@type": "ImageObject",
-                  url: "https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg",
+                  url: "/images/james-merriman.jpg",
                   width: 1200,
                   height: 1600,
                 },

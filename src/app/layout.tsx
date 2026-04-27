@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/james-merriman-travel-writer.jpg",
+        url: "/images/james-merriman-travel-writer.jpg",
         width: 1200,
         height: 630,
         alt: "James Merriman – Travel Writer and Photographer",
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     title: "James Merriman | Travel Writer & Photographer",
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-    images: ["/james-merriman-travel-writer.jpg"],
+    images: ["/images/james-merriman-travel-writer.jpg"],
   },
 };
 

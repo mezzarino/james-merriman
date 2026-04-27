@@ -14,7 +14,7 @@ export function AuthorPortrait({
   return (
     <figure className={cn("w-full", className)}>
       <Image
-        src="https://assets.about.me/background/users/j/a/m/jamesmerriman_1770896987_547.jpg"
+        src="/images/james-merriman.jpg"
         alt="James Merriman, UK travel writer and photographer"
         width={1200}
         height={1600}
