@@ -69,8 +69,8 @@ export const BlogContent = ({
           <div>
             Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"} | {readingTime}
           </div>
-          <PostShare url={postUrl} />
         </div>
+        <PostShare url={postUrl} />
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
             {parse(modifiedHtml, {
@@ -106,6 +106,9 @@ export const BlogContent = ({
                 }
               },
             })}
+            <div className="mt-12 border-t pt-6">
+              <PostShare url={postUrl} />
+            </div>
           </div>
           <div className="w-full lg:w-1/4 lg:px-4">
             <AboutCta />
@@ -117,9 +120,6 @@ export const BlogContent = ({
               #{tag.name}
             </Link>
           ))}
-        </div>
-        <div className="mt-12 border-t pt-6">
-          <PostShare url={postUrl} />
         </div>
         <CommentSection slug={slug} />
         <RelatedPosts posts={relatedPosts} />
