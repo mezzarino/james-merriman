@@ -41,17 +41,17 @@ export async function POST(req: Request) {
   try {
     await resend.emails.send({
       from: "Website Contact <no-reply@jamesmerriman.co.uk>",
-      to: ["info@jamesmerriman.co.uk"],
+      to: ["mezzarino@outlook.com"],
       replyTo: email,
       subject: `Contact form message from ${name}`,
       text: `
-Name: ${name}
-Email: ${email}
-Company: ${company || "—"}
-Telephone: ${telephone || "—"}
+              Name: ${name}
+              Email: ${email}
+              Company: ${company || "—"}
+              Telephone: ${telephone || "—"}
 
-Message:
-${message}
+              Message:
+              ${message}
     `.trim(),
     });
 
