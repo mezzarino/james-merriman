@@ -15,10 +15,3 @@ jobs:
         run: |
           curl -X POST https://www.jamesmerriman.co.uk/api/indexnow/deploy \
             -H "Authorization: Bearer ${{ secrets.INDEXNOW_DEPLOY_TOKEN }}"
-      - name: Debug secret presence
-        run: |
-          if [ -z "${{ secrets.INDEXNOW_DEPLOY_TOKEN }}" ]; then
-            echo "SECRET IS EMPTY"
-          else
-            echo "SECRET IS PRESENT"
-          fi
