@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+import { EmailTemplate } from "@/components/EmailTemplate";
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
@@ -44,15 +46,7 @@ export async function POST(req: Request) {
       to: ["mezzarino@outlook.com"],
       replyTo: email,
       subject: `Contact form message from ${name}`,
-      text: `
-              Name: ${name}
-              Email: ${email}
-              Company: ${company || "—"}
-              Telephone: ${telephone || "—"}
-
-              Message:
-              ${message}
-    `.trim(),
+      react: EmailTemplate({ name, email, company, telephone, message }),
     });
 
     return NextResponse.json({ success: true });
