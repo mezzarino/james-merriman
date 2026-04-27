@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
   title: {
     default: "James Merriman | Travel Writer & Photographer",
-    template: "%s | James Merriman",
+    template: "%s",
   },
 
   description:
