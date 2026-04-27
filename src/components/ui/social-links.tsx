@@ -3,9 +3,11 @@ import { FaXTwitter } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { SiSubstack } from "react-icons/si";
 
-export function SocialLinks() {
+import { cn } from "@/lib/utils";
+
+export function SocialLinks({ className }: { className?: string }) {
   return (
-    <div className="not-prose flex gap-4 mt-8">
+    <div className={cn("not-prose flex gap-4", className)}>
       <a
         href="mailto:info@jamesmerriman.co.uk"
         aria-label="Email James Merriman"

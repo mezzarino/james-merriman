@@ -6,6 +6,7 @@ import { config } from "@/config";
 import { MAIN_NAV } from "@/lib/navigation";
 
 import { Button } from "./ui/button";
+import { SocialLinks } from "./ui/social-links";
 
 export const Footer = () => {
   return (
@@ -33,6 +34,11 @@ export const Footer = () => {
         James Merriman is a British travel writer and photographer documenting culture, history and
         remote places worldwide.
       </p>
+
+      {/* ✅ Social links */}
+      <div className="flex justify-center mb-8">
+        <SocialLinks />
+      </div>
 
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         {/* Copyright */}
