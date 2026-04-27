@@ -19,14 +19,12 @@
       ],
       "destination": "https://www.jamesmerriman.co.uk/$1",
       "permanent": true
-    },
+    }
+  ],
+  "crons": [
     {
-      "crons": [
-        {
-          "path": "/api/cron/indexnow",
-          "schedule": "0 * * * *"
-        }
-      ]
+      "path": "/api/cron/indexnow",
+      "schedule": "0 * * * *"
     }
   ]
 }

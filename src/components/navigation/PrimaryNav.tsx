@@ -64,10 +64,13 @@ export function PrimaryNav() {
   /* ------------------------------------------------------------
    * Focus management on open / close
    * ------------------------------------------------------------ */
+  const hasOpenedRef = useRef(false);
+
   useEffect(() => {
     if (open) {
+      hasOpenedRef.current = true;
       closeButtonRef.current?.focus();
-    } else {
+    } else if (hasOpenedRef.current) {
       openButtonRef.current?.focus();
     }
   }, [open]);
