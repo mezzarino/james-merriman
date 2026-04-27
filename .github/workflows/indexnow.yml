@@ -1,0 +1,16 @@
+name: IndexNow after production deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit IndexNow after deploy
+        run: |
+          curl -X POST https://www.jamesmerriman.co.uk/api/indexnow/deploy \
+            -H "Authorization: Bearer ${{ secrets.INDEXNOW_DEPLOY_TOKEN }}"
