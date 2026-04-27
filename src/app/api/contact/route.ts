@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -42,7 +44,7 @@ export async function POST(req: Request) {
 
   try {
     await resend.emails.send({
-      from: "Website Contact <no-reply@jamesmerriman.co.uk>",
+      from: "Website Contact <no-reply@mail.jamesmerriman.co.uk>",
       to: ["mezzarino@outlook.com"],
       replyTo: email,
       subject: `Contact form message from ${name}`,
