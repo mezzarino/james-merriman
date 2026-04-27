@@ -1,6 +1,6 @@
 {
   "name": "james-merriman",
-  "version": "4.5.0",
+  "version": "4.6.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -39,6 +39,7 @@
     "react-hook-form": "^7.73.1",
     "react-icons": "^5.6.0",
     "reading-time": "^1.5.0",
+    "resend": "^6.12.2",
     "rss": "^1.2.2",
     "schema-dts": "^1.1.5",
     "slugify": "^1.6.9",

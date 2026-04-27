@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 
+import { ContactForm } from "@/components/ContactForm";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { AuthorPortrait } from "@/components/ui/author-portrait";
 import { SocialLinks } from "@/components/ui/social-links";
@@ -157,6 +158,7 @@ const Page = async () => {
 
             <p>Please get in touch through any of the channels below.</p>
             <SocialLinks />
+            <ContactForm />
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <AuthorPortrait />
