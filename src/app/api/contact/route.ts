@@ -3,18 +3,17 @@ export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-//import { EmailTemplate } from "@/lib/emails/EmailTemplate";
+import { EmailTemplate } from "@/lib/emails/EmailTemplate";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
-  if (!process.env.RESEND_API_KEY) {
-    return NextResponse.json({ error: "Missing RESEND_API_KEY" }, { status: 500 });
-  }
-
   const data = await req.json();
 
-  const { name, email, company, message, botField } = data as Record<string, string | undefined>;
+  const { name, email, company, telephone, message, botField } = data as Record<
+    string,
+    string | undefined
+  >;
 
   // Honeypot
   if (botField) {
@@ -38,16 +37,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
   }
 
-  //const safeCompany = company || "";
-  //const safeTelephone = telephone || "";
+  const safeCompany = company || "";
+  const safeTelephone = telephone || "";
 
   try {
     await resend.emails.send({
       from: "Website Contact <no-reply@mail.jamesmerriman.co.uk>",
-      to: ["mezzarino@outlook.com"],
+      to: ["info@jamesmerriman.co.uk"],
       replyTo: email,
       subject: `Contact form message from ${name}`,
-      html: `<p>Test message from ${name}</p>`,
+      react: EmailTemplate({
+        name,
+        email,
+        company: safeCompany,
+        telephone: safeTelephone,
+        message,
+      }),
     });
 
     return NextResponse.json({ success: true });
