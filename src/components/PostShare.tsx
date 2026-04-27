@@ -25,7 +25,7 @@ export function PostShare({ url }: PostShareProps) {
         href={facebookUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on Facebook"
+        aria-label="Share this story on Facebook"
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
         <FaFacebookF className="w-4 h-4" />
@@ -35,7 +35,7 @@ export function PostShare({ url }: PostShareProps) {
         href={linkedinUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Share on LinkedIn"
+        aria-label="Share this story on LinkedIn"
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
         <FaLinkedinIn className="w-4 h-4" />
