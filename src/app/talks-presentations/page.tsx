@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 
+import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
-import { AuthorPortraitRgs } from "@/components/ui/author-portrait-presenting";
 import { config } from "@/config";
 
 /**
@@ -163,7 +163,13 @@ const Page = async () => {
           </div>
 
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
-            <AuthorPortraitRgs />
+            <FigureImage
+              src="/images/james-merriman-rgs-exeter.jpg"
+              alt="James Merriman presenting to the Royal Geographical Society in Exeter"
+              caption="James Merriman presenting to the Royal Geographical Society in Exeter"
+              width={1200}
+              height={1600}
+            />
           </div>
         </div>
       </main>

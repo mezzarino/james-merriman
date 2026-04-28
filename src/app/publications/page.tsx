@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 
+import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
-import { AuthorPortraitAfghanistan } from "@/components/ui/author-portrait-afghanistan";
 import { config } from "@/config";
 
 /**
@@ -341,7 +341,13 @@ const Page = async () => {
             </article>
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
-            <AuthorPortraitAfghanistan />
+            <FigureImage
+              src="/images/james-merriman-afghanistan.jpg"
+              alt="James Merriman in Afghanistan, near Mazar-e-Sharif"
+              caption="James Merriman in Afghanistan, near Mazar-e-Sharif"
+              width={1200}
+              height={1600}
+            />
           </div>
         </div>
       </main>

@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 
+import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
-import { AuthorPortraitStanfords } from "@/components/ui/author-portrait-stanfords";
 import { config } from "@/config";
 
 /**
@@ -223,7 +223,13 @@ const Page = async () => {
             </ul>
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
-            <AuthorPortraitStanfords />
+            <FigureImage
+              src="/images/james-merriman-at-stanfords.jpg"
+              alt="James Merriman holding a copy of 'The Kindness of Strangers' outside Stanfords in London"
+              caption="James Merriman holding a copy of 'The Kindness of Strangers' outside Stanfords in London"
+              width={1200}
+              height={1600}
+            />
           </div>
         </div>
       </main>
