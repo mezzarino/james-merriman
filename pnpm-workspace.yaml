@@ -3,6 +3,10 @@ packages:
   - packages/**
 ignoredBuiltDependencies:
   - sharp
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - webpack
+  - react
 overrides:
   next@>=15.6.0-canary.0 <16.1.5: ">=16.1.5"
   next@>=16.0.0-beta.0 <16.1.5: ">=16.1.5"
@@ -18,7 +22,5 @@ overrides:
   picomatch@<2.3.2: ">=2.3.2"
   picomatch@>=4.0.0 <4.0.4: ">=4.0.4"
   yaml@>=2.0.0 <2.8.3: ">=2.8.3"
-minimumReleaseAge: 1440
-minimumReleaseAgeExclude:
-  - webpack
-  - react
+  uuid@<14.0.0: ">=14.0.0"
+  postcss@<8.5.10: ">=8.5.10"
