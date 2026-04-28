@@ -9,13 +9,13 @@ interface AuthorPortraitProps {
 
 export function AuthorPortraitStanfords({
   className,
-  caption = "James Merriman holding a copy of The Kindness of Strangers outside Stanfords in London",
+  caption = "James Merriman holding a copy of 'The Kindness of Strangers' outside Stanfords in London",
 }: AuthorPortraitProps) {
   return (
     <figure className={cn("w-full", className)}>
       <Image
         src="/images/james-merriman-at-stanfords.jpg"
-        alt="James Merriman holding a copy of The Kindness of Strangers outside Stanfords in London"
+        alt="James Merriman holding a copy of 'The Kindness of Strangers' outside Stanfords in London"
         width={1200}
         height={1600}
         className="w-full h-auto rounded-lg"

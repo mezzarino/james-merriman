@@ -14,7 +14,7 @@ export function AuthorPortraitNorway({
   return (
     <figure className={cn("w-full", className)}>
       <Image
-        src="/images/james-merriman.jpg"
+        src="/images/james-merriman-norway.jpg"
         alt="James Merriman in a Norwegian winter"
         width={1200}
         height={1600}
