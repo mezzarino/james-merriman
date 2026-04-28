@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 export const revalidate = 60; // 1 minute
 
 import { Metadata } from "next";
