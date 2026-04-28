@@ -3,7 +3,7 @@ import Link from "next/link";
 import Script from "next/script";
 
 import { FullWidthHeader } from "@/components/FullWidthHeader";
-import { AuthorPortrait } from "@/components/ui/author-portrait";
+import { AuthorPortraitAfghanistan } from "@/components/ui/author-portrait-afghanistan";
 import { config } from "@/config";
 
 /**
@@ -341,7 +341,7 @@ const Page = async () => {
             </article>
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
-            <AuthorPortrait />
+            <AuthorPortraitAfghanistan />
           </div>
         </div>
       </main>

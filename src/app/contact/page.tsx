@@ -4,7 +4,7 @@ import Script from "next/script";
 
 import { ContactForm } from "@/components/ContactForm";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
-import { AuthorPortrait } from "@/components/ui/author-portrait";
+import { AuthorPortraitNorway } from "@/components/ui/author-portrait-norway";
 import { config } from "@/config";
 
 /**
@@ -159,7 +159,7 @@ const Page = async () => {
             <ContactForm />
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
-            <AuthorPortrait />
+            <AuthorPortraitNorway />
           </div>
         </div>
       </main>
