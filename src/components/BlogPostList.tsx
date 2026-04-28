@@ -8,7 +8,7 @@ import { formatFullDate } from "@/lib/date";
 
 export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
   return (
-    <div className="grid grid-cols-1 gap-16 md:grid-cols-2 px-4">
+    <div className="grid grid-cols-1 gap-16 md:grid-cols-2 px-4 lg:px-0">
       {posts.map((post, index) => (
         <LazyRender
           key={post.id}

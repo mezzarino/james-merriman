@@ -172,7 +172,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
    * Render
    * -----------------------------------------*/
   return (
-    <div className={cn("w-full px-4", className)}>
+    <div className={cn("w-full px-4 lg:px-0", className)}>
       {isSearchActive ? (
         /* SEARCH MODE */
         <div className="flex items-center gap-2 rounded-md border px-3 py-2">
