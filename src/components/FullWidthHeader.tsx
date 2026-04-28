@@ -68,7 +68,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
 
       {/* Breadcrumb (outside header) */}
       {breadcrumb && breadcrumb.length > 0 && (
-        <nav aria-label="Breadcrumb" className="container mx-auto max-w-6xl px-4 pt-4">
+        <nav aria-label="Breadcrumb" className="container mx-auto max-w-6xl px-4 lg:px-0 pt-4">
           <ol className="flex flex-wrap text-sm text-muted-foreground">
             {breadcrumb.map((crumb, index) => {
               const isLast = index === breadcrumb.length - 1;

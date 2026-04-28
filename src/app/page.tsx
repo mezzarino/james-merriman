@@ -214,7 +214,7 @@ export default async function Page(props: {
         breadcrumb={breadcrumb}
       />
 
-      <section className="container mx-auto my-8 max-w-6xl px-4 lg:px-0 prose">
+      <section className="container mx-auto my-6 max-w-6xl px-4 lg:px-0 prose">
         <p className="text-lg">
           This site presents the writing and photographic work of travel writer James Merriman. For
           a personal background, visit{" "}
@@ -241,17 +241,17 @@ export default async function Page(props: {
       </section>
 
       <main className="container mx-auto max-w-6xl" role="main">
-        <h2 className="my-8 text-3xl font-semibold">Latest Travel Writing</h2>
-        <FilterBar active="latest" className="my-8" />
+        <h2 className="my-6 text-3xl font-semibold">Latest Travel Writing</h2>
+        <FilterBar active="latest" className="my-6" />
         <BlogPostList posts={result.posts} />
         <PostPagination
           pagination={result.pagination}
-          className="my-16"
+          className="mt-6 pb-6 border-b border-border/50"
           query={searchParams?.query}
         />
 
-        <section className="prose max-w-full">
-          <h2>Travel Writing and Cultural History</h2>
+        <section className="prose max-w-full px-4 lg:px-0">
+          <h2 className="pt-6">Travel Writing and Cultural History</h2>
 
           <p>
             I write about travel through sustained time spent in places. Much of my work focuses on

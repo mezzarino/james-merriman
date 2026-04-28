@@ -26,8 +26,8 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                   <Image
                     alt={post.title}
                     src={post.image}
-                    width={528}
-                    height={297}
+                    width={544}
+                    height={306}
                     quality={65}
                     sizes="(max-width: 640px) 264px, (max-width: 1024px) 50vw, 33vw"
                     placeholder="blur"
@@ -51,7 +51,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
 
             {/* Post content */}
             <div className="grid grid-cols-1 gap-3 mt-4">
-              <h2 className="font-sans font-semibold tracking-tighter text-primary text-2xl md:text-3xl">
+              <h3 className="font-sans font-semibold tracking-tighter text-primary text-2xl md:text-3xl">
                 <Link
                   href={`/post/${post.slug}`}
                   aria-label={`Read full post: ${post.title}`}
@@ -59,7 +59,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                 >
                   {post.title}
                 </Link>
-              </h2>
+              </h3>
 
               <div className="prose lg:prose-lg leading-relaxed md:text-lg line-clamp-4 text-muted-foreground">
                 {post.description}
