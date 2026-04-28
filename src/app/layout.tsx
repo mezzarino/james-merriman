@@ -13,8 +13,6 @@ import ReadingProgress from "@/components/ui/readingProgress";
 
 import { Providers } from "./providers";
 
-export const dynamic = "force-dynamic";
-
 const fontSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
