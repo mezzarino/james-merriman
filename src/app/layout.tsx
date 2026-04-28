@@ -22,6 +22,7 @@ const fontSans = IBM_Plex_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jamesmerriman.co.uk"),
 
+  // ✅ Branding defaults only (pages control full titles)
   title: {
     default: "James Merriman | Travel Writer & Photographer",
     template: "%s",
@@ -33,10 +34,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-
-  alternates: {
-    canonical: "/",
   },
 
   authors: [
@@ -60,49 +57,17 @@ export const metadata: Metadata = {
   appleWebApp: {
     title: "James Merriman Travel Writer",
   },
-
-  openGraph: {
-    title: "James Merriman | Travel Writer & Photographer",
-    description:
-      "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-    url: "/",
-    siteName: "James Merriman",
-    type: "website",
-    images: [
-      {
-        url: "/images/james-merriman-travel-writer.jpg",
-        width: 1200,
-        height: 630,
-        alt: "James Merriman – Travel Writer and Photographer",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "James Merriman | Travel Writer & Photographer",
-    description:
-      "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-    images: ["/images/james-merriman-travel-writer.jpg"],
-  },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB">
       <body className={`${fontSans.variable} antialiased font-sans`}>
         <Providers>
           <ConsentProvider>
-            {/* Reading progress bar */}
             <ReadingProgress />
-
-            {/* Main content */}
             {children}
-
-            {/* Footer */}
             <Footer />
-
-            {/* Performance and analytics */}
             <SpeedInsights />
             <Analytics />
             <ConsentBanner />
