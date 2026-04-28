@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(request: NextRequest) {
+  const url = request.nextUrl;
+
+  if (url.pathname === "/" && url.searchParams.get("page") === "1") {
+    url.searchParams.delete("page");
+    return NextResponse.redirect(url, 308);
+  }
+
   // Generate a random nonce for the strict CSP
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
@@ -29,7 +36,7 @@ export function middleware(request: NextRequest) {
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", cspHeader);
 
-  // Return the response with the headers applied
+  // Continue the request with CSP applied
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
@@ -68,13 +75,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimisation files)
-     * - favicon.ico (favicon file)
-     */
     {
       source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
       missing: [

@@ -18,37 +18,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       url: config.baseUrl,
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-28"),
       priority: 1.0,
     },
 
     {
       url: urlJoin(config.baseUrl, "publications"),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-28"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-28"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-28"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "credentials"),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-28"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "contact"),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-28"),
       priority: 0.8,
     },
 

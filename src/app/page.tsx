@@ -12,56 +12,72 @@ import { FullWidthHeader } from "../components/FullWidthHeader";
 import { config } from "../config";
 
 /**
- * SEO‑optimised homepage metadata
+ * Dynamic SEO metadata
  */
+export function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: { page?: string; query?: string };
+}): Metadata {
+  const page = searchParams?.page;
+  const query = searchParams?.query;
 
-const ogImage = "/images/james-merriman-travel-writer.jpg";
+  // Internal search results → noindex
+  if (query) {
+    return {
+      robots: {
+        index: false,
+        follow: true,
+      },
+    };
+  }
 
-export const metadata: Metadata = {
-  title: "Travel Writing & Documentary Photography | James Merriman",
-  description:
-    "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
-  alternates: {
-    canonical: config.baseUrl,
-  },
-  openGraph: {
-    title: "Travel Writing & Documentary Photography | James Merriman",
-    description:
-      "Explore travel stories, documentary photography and cultural journeys from remote and overlooked places worldwide.",
-    images: [
-      {
-        url: ogImage,
-        width: 1200,
-        height: 630,
-      },
-    ],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Travel Writing & Documentary Photography | James Merriman",
-    description:
-      "Travel writing and photography from remote, complex and overlooked destinations across 160+ countries.",
-    images: [
-      {
-        url: ogImage,
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
-};
+  const canonicalUrl = !page || page === "1" ? config.baseUrl : `${config.baseUrl}/?page=${page}`;
+
+  const title =
+    page && page !== "1"
+      ? `Travel Writing & Documentary Photography | James Merriman – Page ${page}`
+      : "Travel Writing & Documentary Photography | James Merriman";
+
+  const description =
+    "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.";
+
+  const ogImage = "/images/james-merriman-travel-writer.jpg";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: "website",
+      images: [{ url: ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
 
 export default async function Page(props: {
-  searchParams?: Promise<{ query: string; page: string }>;
+  searchParams?: Promise<{ query?: string; page?: string }>;
 }) {
   const searchParams = await props.searchParams;
-  const page = searchParams?.page ? parseInt(searchParams.page) : 1;
+  const page = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
+
+  const currentPageUrl = page > 1 ? `${config.baseUrl}/?page=${page}` : config.baseUrl;
 
   const result = await wisp.getPosts({
     limit: 6,
-    query: searchParams?.query,
     page,
+    query: searchParams?.query,
   });
 
   /**
@@ -73,7 +89,7 @@ export default async function Page(props: {
   ];
 
   /**
-   * Structured data (JSON‑LD)
+   * JSON‑LD structured data
    */
   const jsonLd = [
     // WebSite
@@ -90,7 +106,7 @@ export default async function Page(props: {
       },
     },
 
-    // Person (Author / Publisher)
+    // Author
     {
       "@context": "https://schema.org",
       "@type": "Person",
@@ -104,47 +120,36 @@ export default async function Page(props: {
         "https://instagram.com/mezzarino",
       ],
       jobTitle: "Travel Writer & Photographer",
-      knowsAbout: [
-        "Travel Writing",
-        "Documentary Photography",
-        "Remote Travel",
-        "Conflict Zones",
-        "Cultural Geography",
-        "Walking",
-      ],
       worksFor: {
         "@id": `${config.baseUrl}#website`,
       },
     },
 
-    // Blog wrapper
+    // Blog
     {
       "@context": "https://schema.org",
       "@type": "Blog",
       "@id": `${config.baseUrl}#blog`,
       name: "James Merriman – Travel Writing",
-      url: config.baseUrl,
+      url: currentPageUrl,
       publisher: {
         "@type": "Person",
         "@id": `${config.baseUrl}/about#author`,
         name: "James Merriman",
       },
-      blogPost: result.posts.map((post) => ({
-        "@id": `${config.baseUrl}/post/${post.slug}#article`,
-      })),
     },
 
-    // ItemList (latest writing)
+    // ItemList (posts on this page)
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "@id": `${config.baseUrl}#latest-writing`,
+      "@id": `${currentPageUrl}#latest-writing`,
       itemListElement: result.posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
         item: {
           "@type": "BlogPosting",
-          "@id": `${config.baseUrl}/post/${post.slug}#article`,
+          "@id": `${config.baseUrl}/post/${post.slug}`,
           headline: post.title,
           description: post.description,
           url: `${config.baseUrl}/post/${post.slug}`,
@@ -155,27 +160,35 @@ export default async function Page(props: {
             "@id": `${config.baseUrl}/about#author`,
             name: post.author?.name || "James Merriman",
           },
-          publisher: {
-            "@type": "Person",
-            "@id": `${config.baseUrl}/about#author`,
-            name: "James Merriman",
-          },
-          image: post.image ? [post.image] : undefined,
-          mainEntityOfPage: {
-            "@type": "WebPage",
-            "@id": `${config.baseUrl}/post/${post.slug}`,
-          },
-          isPartOf: [
-            { "@type": "Blog", "@id": `${config.baseUrl}#blog` },
-            { "@type": "WebSite", "@id": `${config.baseUrl}#website` },
-          ],
         },
       })),
       numberOfItems: result.posts.length,
-      mainEntityOfPage: config.baseUrl,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": currentPageUrl,
+      },
     },
 
-    // ✅ BreadcrumbList schema
+    // ✅ CollectionPage (ONLY page 2+)
+    ...(page > 1
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "@id": `${currentPageUrl}#collection`,
+            name: `Latest Writing – Page ${page}`,
+            url: currentPageUrl,
+            isPartOf: {
+              "@id": `${config.baseUrl}#website`,
+            },
+            mainEntity: {
+              "@id": `${currentPageUrl}#latest-writing`,
+            },
+          },
+        ]
+      : []),
+
+    // Breadcrumbs
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -183,7 +196,7 @@ export default async function Page(props: {
         "@type": "ListItem",
         position: index + 1,
         name: item.label,
-        item: `${config.baseUrl}${item.href}`,
+        item: item.href === "/" ? config.baseUrl : currentPageUrl,
       })),
     },
   ];
