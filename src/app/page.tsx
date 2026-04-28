@@ -241,6 +241,7 @@ export default async function Page(props: {
       </section>
 
       <main className="container mx-auto max-w-6xl" role="main">
+        <h2 className="my-8 text-3xl font-semibold">Latest Travel Writing</h2>
         <FilterBar active="latest" className="my-8" />
         <BlogPostList posts={result.posts} />
         <PostPagination
@@ -248,6 +249,48 @@ export default async function Page(props: {
           className="my-16"
           query={searchParams?.query}
         />
+
+        <section className="prose mx-auto my-24 max-w-4xl">
+          <h2>Travel Writing and Cultural History</h2>
+
+          <p>
+            I write about travel through sustained time spent in places. Much of my work focuses on
+            regions that are overlooked or poorly understood, where travel involves borders,
+            infrastructure and history rather than straightforward movement from one location to
+            another.
+          </p>
+
+          <p>
+            I work slowly and on the ground, spending extended periods walking, observing and
+            reading around the places I visit. My writing is informed by historical research and my
+            own experience, with an emphasis on how people live within particular political and
+            geographical conditions.
+          </p>
+
+          <p>
+            My photography accompanies and supports my writing. It records landscape aswell as
+            ordinary moments, holding detail that the written work approaches from another angle.
+          </p>
+
+          <h3>Publications</h3>
+
+          <p>
+            My writing and photographic work has appeared in UK and international publications
+            covering travel, culture and history. These shorter pieces sit alongside longer projects
+            developed across repeated journeys and sustained research. A selection of published work
+            can be found on the <Link href="/publications">publications</Link> page.
+          </p>
+
+          <h3>Talks and Presentations</h3>
+
+          <p>
+            Alongside my writing, I give talks and presentations on travel writing, cultural history
+            and research‑led practice. These are drawn from fieldwork, long‑form projects and
+            archival sources and are delivered to specialist and academic audiences, cultural
+            organisations and literary events. Further details are available on the{" "}
+            <Link href="/talks-presentations">talks and presentations</Link> page.
+          </p>
+        </section>
       </main>
     </>
   );

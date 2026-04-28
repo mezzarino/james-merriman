@@ -204,9 +204,9 @@ export function PrimaryNav() {
           </p>
 
           <div className="flex items-center justify-between border-b border-white/10 p-4">
-            <h2 id="mobile-menu-title" className="text-sm font-semibold">
+            <p id="mobile-menu-title" className="text-sm font-semibold">
               Navigation
-            </h2>
+            </p>
             <button
               ref={closeButtonRef}
               onClick={() => setOpen(false)}
