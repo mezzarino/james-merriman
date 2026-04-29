@@ -1,10 +1,4 @@
-import {
-  FaLinkedinIn,
-  FaSquareEnvelope,
-  FaSquareInstagram,
-  FaXTwitter,
-  FaYoutube,
-} from "react-icons/fa6";
+import { FaEnvelope, FaInstagram, FaLinkedinIn, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { SiSubstack } from "react-icons/si";
 
 import { cn } from "@/lib/utils";
@@ -17,7 +11,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Email James Merriman"
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <FaSquareEnvelope className="w-4 h-4" />
+        <FaEnvelope className="w-4 h-4" />
       </a>
 
       <a
@@ -27,7 +21,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on Instagram"
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <FaSquareInstagram className="w-4 h-4" />
+        <FaInstagram className="w-4 h-4" />
       </a>
 
       <a
