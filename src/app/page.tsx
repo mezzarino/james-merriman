@@ -268,7 +268,7 @@ export default async function Page(props: {
           </p>
 
           <p>
-            My photography accompanies and supports my writing. It records landscape aswell as
+            My photography accompanies and supports my writing. It records landscape as well as
             ordinary moments, holding detail that the written work approaches from another angle.
           </p>
 
