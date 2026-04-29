@@ -55,7 +55,7 @@ export function SocialLinks({ className }: { className?: string }) {
       </a>
 
       <a
-        href="https://www.youtube.com/mezzarino1985"
+        href="https://www.youtube.com/jamesmerrimancouk"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Follow James on YouTube"
