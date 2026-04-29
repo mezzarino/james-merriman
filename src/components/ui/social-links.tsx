@@ -1,6 +1,10 @@
-import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { HiOutlineMail } from "react-icons/hi";
+import {
+  FaLinkedinIn,
+  FaSquareEnvelope,
+  FaSquareInstagram,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 import { SiSubstack } from "react-icons/si";
 
 import { cn } from "@/lib/utils";
@@ -13,7 +17,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Email James Merriman"
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <HiOutlineMail className="w-4 h-4" />
+        <FaSquareEnvelope className="w-4 h-4" />
       </a>
 
       <a
@@ -23,7 +27,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on Instagram"
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
-        <FaInstagram className="w-4 h-4" />
+        <FaSquareInstagram className="w-4 h-4" />
       </a>
 
       <a
@@ -54,6 +58,16 @@ export function SocialLinks({ className }: { className?: string }) {
         className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
       >
         <FaXTwitter className="w-4 h-4" />
+      </a>
+
+      <a
+        href="https://www.youtube.com/mezzarino1985"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Follow James on YouTube"
+        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+      >
+        <FaYoutube className="w-4 h-4" />
       </a>
     </div>
   );
