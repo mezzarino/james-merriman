@@ -95,7 +95,7 @@ export default async function Page(props: {
     "@type": "CollectionPage",
     "@id": `${config.baseUrl}/category/${tag}`,
     url: `${config.baseUrl}/category/${tag}`,
-    name: `${label} Travel Writing | James Merriman`,
+    name: `Travel writing articles with the category '${label}'| James Merriman`,
     description,
     isPartOf: {
       "@type": "Blog",

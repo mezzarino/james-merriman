@@ -72,8 +72,8 @@ const Page = async () => {
                 },
               },
               {
-                "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@type": ["Person", "Organization"],
+                "@id": `${config.baseUrl}#entity`,
                 name: "James Merriman",
                 url: config.baseUrl,
                 image: {
@@ -110,7 +110,7 @@ const Page = async () => {
                 url: config.baseUrl,
                 name: "James Merriman | Travel Writing and Photography",
                 publisher: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": `${config.baseUrl}#entity`,
                 },
               },
               {

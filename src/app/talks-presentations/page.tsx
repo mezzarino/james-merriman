@@ -72,8 +72,8 @@ const Page = async () => {
               },
 
               {
-                "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@type": ["Person", "Organization"],
+                "@id": `${config.baseUrl}#entity`,
                 name: "James Merriman",
                 url: config.baseUrl,
                 jobTitle: "Travel Writer",

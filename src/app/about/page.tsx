@@ -67,12 +67,12 @@ const Page = async () => {
                   "@id": `${config.baseUrl}#website`,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": `${config.baseUrl}#entity`,
                 },
               },
               {
-                "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@type": ["Person", "Organization"],
+                "@id": `${config.baseUrl}#entity`,
                 name: "James Merriman",
                 url: config.baseUrl,
                 mainEntityOfPage: {
@@ -123,7 +123,7 @@ const Page = async () => {
                 url: config.baseUrl,
                 name: "James Merriman | Travel Writing and Photography",
                 publisher: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": `${config.baseUrl}#entity`,
                 },
               },
               {

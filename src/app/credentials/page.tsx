@@ -66,12 +66,12 @@ const Page = async () => {
                 description:
                   "Awards, professional memberships and fellowships of UK-based travel writer James Merriman.",
                 mainEntity: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": `${config.baseUrl}#entity`,
                 },
               },
               {
-                "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@type": ["Person", "Organization"],
+                "@id": `${config.baseUrl}#entity`,
                 name: "James Merriman",
                 url: config.baseUrl,
                 image: {
@@ -111,7 +111,7 @@ const Page = async () => {
                 url: config.baseUrl,
                 name: "James Merriman | Travel Writing and Photography",
                 publisher: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": `${config.baseUrl}#entity`,
                 },
               },
               {

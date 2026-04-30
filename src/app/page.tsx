@@ -92,6 +92,30 @@ export default async function Page(props: {
    * JSON‑LD structured data
    */
   const jsonLd = [
+    //Organisation
+    {
+      "@context": "https://schema.org",
+      "@type": ["Person", "Organization"],
+      "@id": "https://www.jamesmerriman.co.uk/#entity",
+      name: "James Merriman",
+      url: "https://www.jamesmerriman.co.uk/",
+      image: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+      logo: {
+        "@type": "ImageObject",
+        "@id": "https://www.jamesmerriman.co.uk/#logo",
+        url: "https://www.jamesmerriman.co.uk/logo.png",
+        contentUrl: "https://www.jamesmerriman.co.uk/logo.png",
+        width: 640,
+        height: 640,
+      },
+      jobTitle: "Travel Writer & Photographer",
+      sameAs: [
+        "https://x.com/mezzarino",
+        "https://linkedin.com/in/jamesmerriman",
+        "https://instagram.com/mezzarino",
+      ],
+    },
+
     // WebSite
     {
       "@context": "https://schema.org",
@@ -99,6 +123,11 @@ export default async function Page(props: {
       "@id": `${config.baseUrl}#website`,
       name: "James Merriman | Travel Writing and Photography",
       url: config.baseUrl,
+
+      publisher: {
+        "@id": "https://www.jamesmerriman.co.uk/#entity",
+      },
+
       potentialAction: {
         "@type": "SearchAction",
         target: `${config.baseUrl}/?query={search_term_string}`,
@@ -133,9 +162,7 @@ export default async function Page(props: {
       name: "James Merriman – Travel Writing",
       url: currentPageUrl,
       publisher: {
-        "@type": "Person",
-        "@id": `${config.baseUrl}/about#author`,
-        name: "James Merriman",
+        "@id": "https://www.jamesmerriman.co.uk/#entity",
       },
     },
 
@@ -156,9 +183,7 @@ export default async function Page(props: {
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
           author: {
-            "@type": "Person",
-            "@id": `${config.baseUrl}/about#author`,
-            name: post.author?.name || "James Merriman",
+            "@id": "https://www.jamesmerriman.co.uk/#entity",
           },
         },
       })),
