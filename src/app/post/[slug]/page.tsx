@@ -2,6 +2,7 @@ export const revalidate = 60; // 1 minute
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import type { BlogPosting, WithContext } from "schema-dts";
 
 import { BlogContent } from "@/components/BlogContent";
@@ -176,11 +177,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
 
   return (
     <>
-      <script
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <script
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd),

@@ -3,6 +3,7 @@ export const revalidate = 60;
 
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 import { config } from "@/config";
 import { wisp } from "@/lib/wisp";
@@ -101,7 +102,7 @@ export default async function Page() {
 
   return (
     <>
-      <script
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />

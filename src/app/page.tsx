@@ -2,6 +2,7 @@ export const revalidate = 60; // 1 minute
 
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
 import { PostPagination } from "@/components/PostPagination";
@@ -229,7 +230,7 @@ export default async function Page(props: {
 
   return (
     <>
-      <script
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
