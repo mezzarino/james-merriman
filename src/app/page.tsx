@@ -180,6 +180,7 @@ export default async function Page(props: {
           headline: post.title,
           description: post.description,
           url: `${config.baseUrl}/post/${post.slug}`,
+          image: [post.image],
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
           author: {
