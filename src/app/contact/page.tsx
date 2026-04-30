@@ -136,7 +136,7 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Contact and Professional Enquiries"
+        title="Contact and Professional Enquiries for Writing, Photography and Speaking"
         description="Enquiries, collaborations and professional contact relating to travel writing, photography and speaking work"
         breadcrumb={[
           { label: "Home", href: "/" },
