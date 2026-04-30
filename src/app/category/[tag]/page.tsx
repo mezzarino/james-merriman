@@ -190,7 +190,7 @@ export default async function Page(props: {
       />
 
       <FullWidthHeader
-        title={label}
+        title={`${label} Writing and Documentary Photography`}
         description={description}
         breadcrumb={[
           { label: "Home", href: "/" },

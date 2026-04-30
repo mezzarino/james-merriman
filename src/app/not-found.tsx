@@ -18,7 +18,7 @@ export default function NotFound() {
     <>
       <FullWidthHeader
         title="Page not found"
-        description="Sorry — the page you’re looking for doesn’t exist."
+        description="The page you’re looking for may have moved, no longer exists, or is temporarily unavailable"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "404", href: "" },

@@ -128,8 +128,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Talks & Presentations"
-        description="Talks and illustrated presentations by travel writer James Merriman, drawing on travel, geography, and first‑hand experience."
+        title="Talks and Illustrated Presentations on Travel and Geography"
+        description="llustrated talks and presentations by a travel writer, drawing on fieldwork, geography and first‑hand experience"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Talks & Presentations", href: "/talks-presentations" },

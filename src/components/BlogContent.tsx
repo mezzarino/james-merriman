@@ -15,7 +15,7 @@ import { processTableOfContents } from "./TOC";
 import { AboutCta } from "./ui/about-cta";
 
 export const BlogContent = ({
-  post: { title, content, author, publishedAt, tags, slug },
+  post: { title, description, content, author, publishedAt, tags, slug },
   relatedPosts,
   readingTime,
 }: {
@@ -50,7 +50,7 @@ export const BlogContent = ({
     <>
       <FullWidthHeader
         title={title}
-        description=""
+        description={description ?? undefined}
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: title, href: "" },

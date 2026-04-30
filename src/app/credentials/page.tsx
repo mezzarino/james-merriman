@@ -137,8 +137,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Credentials of James Merriman"
-        description="Awards, nominations and professional memberships as a travel writer and photographer"
+        title="Professional Credentials and Awards of James Merriman"
+        description="Awards, nominations and professional memberships recognising work as a travel writer and photographer"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Credentials", href: "/credentials" },

@@ -108,8 +108,8 @@ export default async function Page() {
       />
 
       <FullWidthHeader
-        title="Browse Travel Writing by Category | James Merriman"
-        description="Explore long-form travel writing organised by theme, including walking, food, coastal journeys and historical writing."
+        title="Travel Writing Organised by Theme and Subject"
+        description="Long‑form travel writing organised by theme, including walking, food, coastal journeys and historical writing"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Categories", href: "/category" },

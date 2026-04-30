@@ -24,37 +24,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     {
       url: urlJoin(config.baseUrl, "publications"),
-      lastModified: new Date("2026-04-28"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
-      lastModified: new Date("2026-04-28"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-04-28"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "credentials"),
-      lastModified: new Date("2026-04-28"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "contact"),
-      lastModified: new Date("2026-04-28"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
 
     {
       url: urlJoin(config.baseUrl, "category"),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.6,
     },
 
@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     ...tagsResult.tags.map((tag) => ({
       url: urlJoin(config.baseUrl, "category", tag.name),
-      lastModified: new Date("2026-04-26"),
+      lastModified: new Date("2026-04-30"),
       priority: 0.5,
     })),
   ];

@@ -200,8 +200,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Selected Publications by James Merriman"
-        description="A curated selection of travel writing published in magazines, books, and external platforms."
+        title="Travel Writing Published in Books, Magazines and Journals"
+        description="A selected body of travel writing published internationally across magazines, books and specialist platforms"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Publications", href: "/publications" },

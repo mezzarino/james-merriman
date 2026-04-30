@@ -51,12 +51,14 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
 
           {/* H1 */}
           <div className="prose mx-auto max-w-4xl text-center text-inherit">
-            <h1 className="text-inherit">{title}</h1>
+            <h1 className="text-inherit lg:line-clamp-2">{title}</h1>
           </div>
 
           {/* Subtitle */}
           {description && (
-            <div className="mx-auto mt-3 max-w-2xl text-center text-lg">{description}</div>
+            <div className="mx-auto mt-3 max-w-2xl text-center text-lg lg:line-clamp-3">
+              {description}
+            </div>
           )}
 
           {/* Primary navigation */}
