@@ -50,7 +50,7 @@ export const BlogContent = ({
     <>
       <FullWidthHeader
         title={title}
-        description={description ?? undefined}
+        description={description?.trim().replace(/\.$/, "")}
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: title, href: "" },
