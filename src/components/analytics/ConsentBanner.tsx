@@ -11,6 +11,7 @@ export function ConsentBanner() {
   return (
     <div
       role="dialog"
+      aria-label="Google Analytics consent banner"
       aria-live="polite"
       className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-3xl rounded-lg border bg-white p-4 shadow"
     >
