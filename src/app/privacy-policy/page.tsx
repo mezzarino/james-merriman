@@ -78,9 +78,8 @@ const Page = async () => {
             </ul>
             <h2 className="mt-12 text-2xl font-semibold">Cookies and Analytics</h2>
             <p>
-              Our website uses cookies to distinguish you from other users. This helps us provide a good experience when you browse the site and allows us to improve our platform. We use Google Analytics to monitor and analyse web traffic. Google Analytics uses cookies to track user behaviour such as the time spent on pages and the links clicked. You can manage your cookie preferences at any time via our cookie consent banner.
+              Our website uses cookies to distinguish you from other users. This helps us provide a good experience when you browse the site and allows us to improve our platform. We use Google Analytics to monitor and analyse web traffic. Google Analytics uses cookies to track user behaviour such as the time spent on pages and the links clicked. You can <ConsentPreferencesLink /> at any time via our cookie consent banner.
             </p>
-            <p><ConsentPreferencesLink /></p>
             <h2 className="mt-12 text-2xl font-semibold">Sharing Your Data</h2>
             <p>
               We do not sell your personal information to third parties. Because your contact form submission is sent directly via email, it is not processed or stored by third party website plugins. We only share anonymised usage data with Google for our website analytics.

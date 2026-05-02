@@ -12,9 +12,9 @@ export function ConsentPreferencesLink() {
     <button
       type="button"
       onClick={resetConsent}
-      className="text-xs text-muted-foreground hover:text-foreground underline underline-offset-2"
+      className="text-foreground underline underline-offset-2"
     >
-      Analytics preferences
+      manage your Analytics preferences
     </button>
   );
 }
