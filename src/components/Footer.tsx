@@ -2,7 +2,6 @@ import { Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ConsentPreferencesLink } from "@/components/analytics/ConsentPreferencesLink";
 import { config } from "@/config";
 import { MAIN_NAV } from "@/lib/navigation";
 
@@ -88,7 +87,12 @@ export const Footer = () => {
             Powered by Wisp
           </Link>
 
-          <ConsentPreferencesLink />
+          <Link
+            href="/privacy-policy"
+            className="hover:text-foreground"
+          >
+            Privacy Policy
+          </Link>
 
           <Link href="/rss">
             <Button variant="ghost" aria-label="RSS feed">
