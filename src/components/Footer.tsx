@@ -87,10 +87,7 @@ export const Footer = () => {
             Powered by Wisp
           </Link>
 
-          <Link
-            href="/privacy-policy"
-            className="hover:text-foreground"
-          >
+          <Link href="/privacy-policy" className="hover:text-foreground">
             Privacy Policy
           </Link>
 

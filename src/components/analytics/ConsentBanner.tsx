@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useConsent } from "./ConsentContext";
 
 export function ConsentBanner() {
@@ -17,7 +19,8 @@ export function ConsentBanner() {
     >
       <p className="mb-3 text-sm text-gray-700">
         This site uses Google Analytics to understand readership. Analytics cookies are only used if
-        you choose to accept them.
+        you choose to accept them. You may update your preferences at any time as stated in our{" "}
+        <Link href="/privacy-policy">Privacy Policy</Link>.
       </p>
 
       <div className="flex gap-3">
