@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 export function ContactForm() {
@@ -149,7 +150,8 @@ export function ContactForm() {
         <strong>Privacy notice</strong>
         <br />
         By submitting this form, you consent to James Merriman using your information to respond to
-        your enquiry. Your details will not be used for marketing or shared with third parties.
+        your enquiry. Your details will not be used for marketing or shared with third parties. More
+        information can be found in our <Link href="/privacy-policy">Privacy Policy</Link>.
       </p>
     </form>
   );
