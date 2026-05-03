@@ -66,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     ...tagsResult.tags.map((tag) => ({
       url: urlJoin(config.baseUrl, "category", tag.name),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-03"),
       priority: 0.5,
     })),
 
