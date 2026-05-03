@@ -6,7 +6,7 @@ import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
 
 /**
- * Publications page metadata
+ * Privacy Policy page metadata
  */
 const ogImage = "/images/james-merriman-travel-writer.jpg";
 
