@@ -7,6 +7,36 @@ interface Category {
 
 const categories: Category[] = [
   {
+    label: "Africa",
+    tag: "africa",
+    description:
+      "Travel writing and documentary photography from Africa. Explore diverse landscapes, wildlife, vibrant cultures and untold stories from across the continent.",
+  },
+  {
+    label: "Asia",
+    tag: "asia",
+    description:
+      "Travel writing and stories from Asia. Discover ancient traditions, bustling cities, distinct culinary heritages and remote landscapes across the region.",
+  },
+  {
+    label: "Europe",
+    tag: "europe",
+    description:
+      "European travel writing exploring historic cities, hidden villages, diverse coastlines and cultural heritage across the continent.",
+  },
+  {
+    label: "Middle East",
+    tag: "middle-east",
+    description:
+      "Travel writing from the Middle East focusing on rich history, ancient architecture, desert landscapes and the deep hospitality of local communities.",
+  },
+  {
+    label: "UK",
+    tag: "uk",
+    description:
+      "Travel writing from across the United Kingdom. Discover coastal walks, historic landmarks, rolling countryside and local stories from Britain.",
+  },
+  {
     label: "Church",
     tag: "church",
     description:
