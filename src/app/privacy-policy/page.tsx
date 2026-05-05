@@ -62,9 +62,10 @@ const Page = async () => {
           <div className="w-full prose prose-lg max-w-none break-words blog-content">
             <h2 className="mt-12 text-2xl font-semibold">Introduction</h2>
             <p>
-              This Privacy Policy explains how James Merriman ("we", "us" or "our") collects, uses
-              and protects your personal data when you visit jamesmerriman.co.uk. We are committed
-              to ensuring your privacy is protected and compliant with UK data protection laws.
+              This Privacy Policy explains how James Merriman (&quot;we&quot;, &quot;us&quot; or
+              &quot;our&quot;) collects, uses and protects your personal data when you visit
+              jamesmerriman.co.uk. We are committed to ensuring your privacy is protected and
+              compliant with UK data protection laws.
             </p>
             <h2 className="mt-12 text-2xl font-semibold">Information We Collect</h2>
             <p>We may collect and process the following data about you:</p>
