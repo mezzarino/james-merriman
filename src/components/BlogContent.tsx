@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { config } from "@/config";
+import { useScrollTracking } from "@/hooks/useScrollTracking";
+import { useShareAttribution } from "@/hooks/useShareAttribute";
 import { formatFullDate } from "@/lib/date";
 
 import { CommentSection } from "./CommentSection";
@@ -46,6 +48,10 @@ export const BlogContent = ({
     h6: true,
   });
   const postUrl = `${config.baseUrl}/post/${slug}`;
+
+  useScrollTracking();
+  useShareAttribution();
+
   return (
     <>
       <FullWidthHeader
