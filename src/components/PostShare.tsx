@@ -98,8 +98,7 @@ export function PostShare({ url }: PostShareProps) {
             onClick={handleNativeShare}
             aria-label="Share this article"
             className="
-              p-3 sm:w-9 sm:h-9
-              flex-shrink-0 flex items-center justify-center
+              p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center
               rounded-full border border-gray-300 text-gray-600
               hover:bg-black hover:text-white hover:border-black
               transition
@@ -122,8 +121,7 @@ export function PostShare({ url }: PostShareProps) {
           onClick={() => trackShare("facebook")}
           aria-label="Share this story on Facebook"
           className="
-              p-3 sm:w-9 sm:h-9
-              flex-shrink-0 flex items-center justify-center
+              p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center
               rounded-full border border-gray-300 text-gray-600
               hover:bg-black hover:text-white hover:border-black
               transition
@@ -145,8 +143,7 @@ export function PostShare({ url }: PostShareProps) {
           onClick={() => trackShare("linkedin")}
           aria-label="Share this story on LinkedIn"
           className="
-              p-3 sm:w-9 sm:h-9
-              flex-shrink-0 flex items-center justify-center
+              p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center
               rounded-full border border-gray-300 text-gray-600
               hover:bg-black hover:text-white hover:border-black
               transition
@@ -168,8 +165,7 @@ export function PostShare({ url }: PostShareProps) {
           onClick={() => trackShare("whatsapp")}
           aria-label="Share this story on WhatsApp"
           className="
-              p-3 sm:w-9 sm:h-9
-              flex-shrink-0 flex items-center justify-center
+              p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center
               rounded-full border border-gray-300 text-gray-600
               hover:bg-black hover:text-white hover:border-black
               transition
@@ -191,8 +187,7 @@ export function PostShare({ url }: PostShareProps) {
           onClick={() => trackShare("x")}
           aria-label="Share this story on X"
           className="
-              p-3 sm:w-9 sm:h-9
-              flex-shrink-0 flex items-center justify-center
+              p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center
               rounded-full border border-gray-300 text-gray-600
               hover:bg-black hover:text-white hover:border-black
               transition
@@ -211,8 +206,7 @@ export function PostShare({ url }: PostShareProps) {
           onClick={handleCopy}
           aria-label="Copy link to clipboard"
           className="
-              p-3 sm:w-9 sm:h-9
-              flex-shrink-0 flex items-center justify-center
+              p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center
               rounded-full border border-gray-300 text-gray-600
               hover:bg-black hover:text-white hover:border-black
               transition
