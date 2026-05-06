@@ -10,6 +10,8 @@ const linkClass =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " +
   "transition motion-reduce:transition-none";
 
+const iconClass = "w-5 h-5 sm:w-6 sm:h-6";
+
 export function SocialLinks({ className }: { className?: string }) {
   return (
     <div className={cn("not-prose flex gap-4", className)}>
@@ -18,7 +20,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Email James Merriman"
         className={linkClass}
       >
-        <FaEnvelope className="w-5 h-5 sm:w-4 sm:h-4" />
+        <FaEnvelope className={iconClass} />
       </a>
 
       <a
@@ -28,7 +30,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on Instagram"
         className={linkClass}
       >
-        <FaInstagram className="w-5 h-5 sm:w-4 sm:h-4" />
+        <FaInstagram className={iconClass} />
       </a>
 
       <a
@@ -38,7 +40,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Connect with James on LinkedIn"
         className={linkClass}
       >
-        <FaLinkedinIn className="w-5 h-5 sm:w-4 sm:h-4" />
+        <FaLinkedinIn className={iconClass} />
       </a>
 
       <a
@@ -48,7 +50,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Subscribe to James on Substack"
         className={linkClass}
       >
-        <SiSubstack className="w-5 h-5 sm:w-4 sm:h-4" />
+        <SiSubstack className={iconClass} />
       </a>
 
       <a
@@ -58,7 +60,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on X"
         className={linkClass}
       >
-        <FaXTwitter className="w-5 h-5 sm:w-4 sm:h-4" />
+        <FaXTwitter className={iconClass} />
       </a>
 
       <a
@@ -68,7 +70,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on YouTube"
         className={linkClass}
       >
-        <FaYoutube className="w-5 h-5 sm:w-4 sm:h-4" />
+        <FaYoutube className={iconClass} />
       </a>
     </div>
   );
