@@ -35,21 +35,29 @@ export function PostShare({ url }: PostShareProps) {
 
   const { linkedinUrl, facebookUrl, whatsappUrl, xUrl } = useMemo(() => {
     const shareId = crypto.randomUUID();
-    const baseParams = `utm_source=share&utm_campaign=post_share&utm_content=${shareId}`;
-    const trackedUrl = `${url}?${baseParams}`;
 
-    const encodedUrl = encodeURIComponent(trackedUrl);
-    const whatsappShareText = encodeURIComponent("Loved this travel story — worth checking out:");
+    const baseParams = `utm_source=share&utm_campaign=post_share&utm_content=${shareId}`;
+
+    const linkedinTracked = `${url}?${baseParams}&utm_medium=linkedin`;
+    const facebookTracked = `${url}?${baseParams}&utm_medium=facebook`;
+    const whatsappTracked = `${url}?${baseParams}&utm_medium=whatsapp`;
+    const xTracked = `${url}?${baseParams}&utm_medium=x`;
+
+    const whatsappText = encodeURIComponent("Loved this travel story — worth checking out:");
 
     return {
-      linkedinUrl: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&utm_medium=linkedin`,
-      facebookUrl: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&utm_medium=facebook`,
-      whatsappUrl: `https://wa.me/?text=${whatsappShareText}%20{encodedUrl}&utm_medium=whatsapp`,
-      xUrl: `https://twitter.com/intent/tweet?url=${encodedUrl}&utm_medium=twitter`,
+      linkedinUrl: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        linkedinTracked,
+      )}`,
+      facebookUrl: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        facebookTracked,
+      )}`,
+      whatsappUrl: `https://wa.me/?text=${whatsappText}%20${encodeURIComponent(whatsappTracked)}`,
+      xUrl: `https://twitter.com/intent/tweet?url=${encodeURIComponent(xTracked)}`,
     };
   }, [url]);
 
-  // ✅ Native share handler
+  // ✅ Native share
   async function handleNativeShare() {
     try {
       await navigator.share({
@@ -60,7 +68,7 @@ export function PostShare({ url }: PostShareProps) {
 
       trackShare("native", "web_share_api");
     } catch {
-      // user cancelled → do nothing
+      // user cancelled
     }
   }
 
@@ -68,7 +76,8 @@ export function PostShare({ url }: PostShareProps) {
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText(url);
-      trackShare("copy_link"); // ✅ tracked
+      trackShare("copy_link", "clipboard");
+
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -77,17 +86,17 @@ export function PostShare({ url }: PostShareProps) {
   }
 
   return (
-    <div className="not-prose flex items-center gap-3">
+    <div className="not-prose flex flex-wrap items-center gap-3 sm:gap-2">
       <span className="text-sm font-medium">Enjoyed this article? Share it:</span>
 
-      {/* ✅ Native share (mobile-first) */}
+      {/* ✅ Native share */}
       {canNativeShare && (
         <button
           onClick={handleNativeShare}
           aria-label="Share this article"
-          className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+          className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
         >
-          <FaShare className="w-4 h-4" />
+          <FaShare className="w-5 h-5 sm:w-4 sm:h-4" />
         </button>
       )}
 
@@ -98,9 +107,9 @@ export function PostShare({ url }: PostShareProps) {
         rel="noopener noreferrer"
         onClick={() => trackShare("facebook")}
         aria-label="Share this story on Facebook"
-        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
       >
-        <FaFacebookF className="w-4 h-4" />
+        <FaFacebookF className="w-5 h-5 sm:w-4 sm:h-4" />
       </a>
 
       {/* LinkedIn */}
@@ -110,9 +119,9 @@ export function PostShare({ url }: PostShareProps) {
         rel="noopener noreferrer"
         onClick={() => trackShare("linkedin")}
         aria-label="Share this story on LinkedIn"
-        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
       >
-        <FaLinkedinIn className="w-4 h-4" />
+        <FaLinkedinIn className="w-5 h-5 sm:w-4 sm:h-4" />
       </a>
 
       {/* WhatsApp */}
@@ -122,9 +131,9 @@ export function PostShare({ url }: PostShareProps) {
         rel="noopener noreferrer"
         onClick={() => trackShare("whatsapp")}
         aria-label="Share this story on WhatsApp"
-        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
       >
-        <FaWhatsapp className="w-4 h-4" />
+        <FaWhatsapp className="w-5 h-5 sm:w-4 sm:h-4" />
       </a>
 
       {/* X */}
@@ -134,22 +143,22 @@ export function PostShare({ url }: PostShareProps) {
         rel="noopener noreferrer"
         onClick={() => trackShare("x")}
         aria-label="Share this story on X"
-        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
       >
-        <FaXTwitter className="w-4 h-4" />
+        <FaXTwitter className="w-5 h-5 sm:w-4 sm:h-4" />
       </a>
 
-      {/* Copy link ✅ */}
+      {/* Copy link */}
       <button
         onClick={handleCopy}
         aria-label="Copy link to clipboard"
-        className="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black transition"
+        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
       >
-        <FaRegCopy className="w-4 h-4" />
+        <FaRegCopy className="w-5 h-5 sm:w-4 sm:h-4" />
       </button>
 
-      {/* Accessible feedback */}
-      <span aria-live="polite" className="text-xs text-gray-500 min-w-[80px]">
+      {/* Feedback */}
+      <span aria-live="polite" className="text-xs text-gray-500 min-w-[90px]">
         {copied ? "Link copied" : ""}
       </span>
     </div>
