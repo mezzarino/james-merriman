@@ -10,10 +10,7 @@ import { SocialLinks } from "./ui/social-links";
 
 export const Footer = () => {
   return (
-    <footer
-      role="contentinfo"
-      className="container mx-auto my-8 max-w-6xl px-4 border-t border-border/50"
-    >
+    <footer className="container mx-auto my-8 max-w-6xl px-4 border-t border-border/50">
       {/* Footer logo */}
       <div className="mx-auto pt-8 mb-6 flex justify-center">
         <Link href="/" aria-label="James Merriman home">
@@ -89,6 +86,14 @@ export const Footer = () => {
 
           <Link href="/privacy-policy" className="hover:text-foreground">
             Privacy Policy
+          </Link>
+
+          <Link
+            href="/accessibility"
+            className="hover:text-foreground"
+            aria-label="Accessibility statement"
+          >
+            Accessibility
           </Link>
 
           <Link href="/rss">

@@ -63,6 +63,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-GB">
       <body className={`${fontSans.variable} antialiased font-sans`}>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-white text-black px-4 py-2 rounded shadow"
+        >
+          Skip to main content
+        </a>
         <Providers>
           <ConsentProvider>
             <ReadingProgress />

@@ -24,20 +24,21 @@ export default function NotFound() {
           { label: "404", href: "" },
         ]}
       />
+      <main id="main" tabIndex={-1}>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+          <Link href="/" className="font-medium underline">
+            Go to homepage
+          </Link>
 
-      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
-        <Link href="/" className="font-medium underline">
-          Go to homepage
-        </Link>
+          <Link href="/category" className="font-medium underline">
+            Browse travel writing categories
+          </Link>
 
-        <Link href="/category" className="font-medium underline">
-          Browse travel writing categories
-        </Link>
-
-        <Link href="/about" className="font-medium underline">
-          About James Merriman
-        </Link>
-      </div>
+          <Link href="/about" className="font-medium underline">
+            About James Merriman
+          </Link>
+        </div>
+      </main>
     </>
   );
 }

@@ -46,53 +46,55 @@ export const PostPagination = ({
   const buildPath = (page: number) => constructPath({ basePath, page: page.toString(), query });
 
   return (
-    <Pagination className={cn("overflow-x-auto", className)}>
-      <PaginationContent>
-        {pagination.prevPage && (
-          <PaginationItem>
-            <PaginationPrevious href={buildPath(pagination.prevPage)} />
-          </PaginationItem>
-        )}
-
-        {pagination.page > 3 && (
-          <>
+    <nav aria-label="Pagination">
+      <Pagination className={cn("overflow-x-auto", className)}>
+        <PaginationContent>
+          {pagination.prevPage && (
             <PaginationItem>
-              <PaginationLink href={buildPath(1)}>1</PaginationLink>
+              <PaginationPrevious href={buildPath(pagination.prevPage)} />
             </PaginationItem>
-            <PaginationEllipsis />
-          </>
-        )}
+          )}
 
-        {Array.from({ length: pagination.totalPages }, (_, index) => index + 1)
-          .filter((pageNumber) => Math.abs(pagination.page - pageNumber) <= numSiblingPages)
-          .map((pageNumber) => (
-            <PaginationItem key={pageNumber}>
-              <PaginationLink
-                href={buildPath(pageNumber)}
-                isActive={pageNumber === pagination.page}
-              >
-                {pageNumber}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
+          {pagination.page > 3 && (
+            <>
+              <PaginationItem>
+                <PaginationLink href={buildPath(1)}>1</PaginationLink>
+              </PaginationItem>
+              <PaginationEllipsis />
+            </>
+          )}
 
-        {pagination.page < pagination.totalPages - 2 && (
-          <>
-            <PaginationEllipsis />
+          {Array.from({ length: pagination.totalPages }, (_, index) => index + 1)
+            .filter((pageNumber) => Math.abs(pagination.page - pageNumber) <= numSiblingPages)
+            .map((pageNumber) => (
+              <PaginationItem key={pageNumber}>
+                <PaginationLink
+                  href={buildPath(pageNumber)}
+                  isActive={pageNumber === pagination.page}
+                >
+                  {pageNumber}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+          {pagination.page < pagination.totalPages - 2 && (
+            <>
+              <PaginationEllipsis />
+              <PaginationItem>
+                <PaginationLink href={buildPath(pagination.totalPages)}>
+                  {pagination.totalPages}
+                </PaginationLink>
+              </PaginationItem>
+            </>
+          )}
+
+          {pagination.nextPage && (
             <PaginationItem>
-              <PaginationLink href={buildPath(pagination.totalPages)}>
-                {pagination.totalPages}
-              </PaginationLink>
+              <PaginationNext href={buildPath(pagination.nextPage)} />
             </PaginationItem>
-          </>
-        )}
-
-        {pagination.nextPage && (
-          <PaginationItem>
-            <PaginationNext href={buildPath(pagination.nextPage)} />
-          </PaginationItem>
-        )}
-      </PaginationContent>
-    </Pagination>
+          )}
+        </PaginationContent>
+      </Pagination>
+    </nav>
   );
 };

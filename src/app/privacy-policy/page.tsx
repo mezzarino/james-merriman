@@ -57,9 +57,12 @@ const Page = async () => {
         ]}
       />
 
-      <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
+      <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full prose prose-lg max-w-none break-words blog-content">
+            <p>
+              <strong>Last updated:</strong> 6th May 2026
+            </p>
             <h2 className="mt-12 text-2xl font-semibold">Introduction</h2>
             <p>
               This Privacy Policy explains how James Merriman (&quot;we&quot;, &quot;us&quot; or

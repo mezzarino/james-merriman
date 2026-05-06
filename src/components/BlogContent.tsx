@@ -62,7 +62,7 @@ export const BlogContent = ({
           { label: title, href: "" },
         ]}
       />
-      <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
+      <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex items-center gap-2">
           <Image
             src={author.image || ""}

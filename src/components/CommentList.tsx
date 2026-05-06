@@ -34,7 +34,7 @@ interface CommentListProps {
 
 export function CommentList({ comments, config, isLoading }: CommentListProps) {
   if (isLoading) {
-    return <div className="animate-pulse">Loading comments...</div>;
+    return <div className="animate-pulse motion-reduce:animate-none">Loading comments...</div>;
   }
 
   if (comments.length === 0) {

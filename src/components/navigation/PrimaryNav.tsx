@@ -15,9 +15,10 @@ export function PrimaryNav() {
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const touchStartX = useRef<number | null>(null);
+  const hasOpenedRef = useRef(false);
 
   /* ------------------------------------------------------------
-   * Focus trap logic (stable + declared before use)
+   * Focus trap
    * ------------------------------------------------------------ */
   const trapFocus = useCallback((event: KeyboardEvent) => {
     if (!dialogRef.current) return;
@@ -41,7 +42,7 @@ export function PrimaryNav() {
   }, []);
 
   /* ------------------------------------------------------------
-   * Escape key + focus trapping
+   * Escape + focus trapping
    * ------------------------------------------------------------ */
   useEffect(() => {
     if (!open) return;
@@ -62,21 +63,21 @@ export function PrimaryNav() {
   }, [open, trapFocus]);
 
   /* ------------------------------------------------------------
-   * Focus management on open / close
+   * Focus management
    * ------------------------------------------------------------ */
-  const hasOpenedRef = useRef(false);
-
   useEffect(() => {
     if (open) {
       hasOpenedRef.current = true;
-      closeButtonRef.current?.focus();
+      requestAnimationFrame(() => {
+        closeButtonRef.current?.focus();
+      });
     } else if (hasOpenedRef.current) {
       openButtonRef.current?.focus();
     }
   }, [open]);
 
   /* ------------------------------------------------------------
-   * Body scroll locking (iOS‑safe)
+   * Body scroll locking
    * ------------------------------------------------------------ */
   useEffect(() => {
     if (!open) return;
@@ -85,35 +86,33 @@ export function PrimaryNav() {
 
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = "0";
-    document.body.style.right = "0";
     document.body.style.width = "100%";
 
     return () => {
       document.body.style.position = "";
       document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
       document.body.style.width = "";
-
       window.scrollTo(0, scrollY);
     };
   }, [open]);
 
   /* ------------------------------------------------------------
-   * Touch swipe‑to‑close (mobile only)
+   * Touch swipe to close (disabled if reduced motion)
    * ------------------------------------------------------------ */
   function handleTouchStart(e: React.TouchEvent) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     touchStartX.current = e.touches[0].clientX;
   }
 
   function handleTouchEnd(e: React.TouchEvent) {
-    if (touchStartX.current === null) return;
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      touchStartX.current === null
+    )
+      return;
 
     const diff = e.changedTouches[0].clientX - touchStartX.current;
-    if (diff > 80) {
-      setOpen(false);
-    }
+    if (diff > 80) setOpen(false);
 
     touchStartX.current = null;
   }
@@ -132,7 +131,7 @@ export function PrimaryNav() {
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
+                    "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
                     isActive
                       ? "text-white underline underline-offset-4"
                       : "text-white/70 hover:text-white",
@@ -151,11 +150,12 @@ export function PrimaryNav() {
         <button
           ref={openButtonRef}
           type="button"
+          aria-label="Open navigation menu"
           aria-haspopup="dialog"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen(true)}
-          className="mt-4 rounded-md border border-white/30 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white/80"
+          className="mt-4 rounded-md border border-white/30 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
         >
           Menu
         </button>
@@ -169,15 +169,16 @@ export function PrimaryNav() {
         )}
         aria-hidden={!open}
       >
-        {/* Backdrop (button for a11y+lint) */}
+        {/* Backdrop */}
         <button
           type="button"
+          tabIndex={-1}
           aria-label="Close navigation menu"
           onClick={() => setOpen(false)}
           className={cn(
-            "absolute inset-0 bg-black/60 transition-opacity",
+            "absolute inset-0 bg-black/60",
+            "transition-opacity motion-reduce:transition-none",
             open ? "opacity-100" : "opacity-0",
-            "motion-reduce:transition-none",
           )}
         />
 
@@ -194,13 +195,12 @@ export function PrimaryNav() {
           className={cn(
             "absolute right-0 top-0 h-full w-72 bg-gray-900 text-white shadow-lg",
             "transform transition-transform duration-300 ease-out",
+            "motion-reduce:transition-none motion-reduce:transform-none",
             open ? "translate-x-0" : "translate-x-full",
-            "motion-reduce:transition-none",
           )}
         >
           <p id="mobile-menu-description" className="sr-only">
-            Primary site navigation. Swipe right, press Escape, or activate the Close button to
-            dismiss this menu.
+            Primary site navigation. Press Escape or activate the Close button to dismiss this menu.
           </p>
 
           <div className="flex items-center justify-between border-b border-white/10 p-4">
@@ -210,7 +210,7 @@ export function PrimaryNav() {
             <button
               ref={closeButtonRef}
               onClick={() => setOpen(false)}
-              className="text-sm text-white/70 hover:text-white focus-visible:ring-2 focus-visible:ring-white/80"
+              className="text-sm text-white/70 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
             >
               Close
             </button>
@@ -229,6 +229,7 @@ export function PrimaryNav() {
                       onClick={() => setOpen(false)}
                       className={cn(
                         "block text-sm font-medium transition-colors",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
                         isActive
                           ? "text-white underline underline-offset-4"
                           : "text-white/80 hover:text-white",

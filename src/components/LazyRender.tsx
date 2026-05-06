@@ -4,14 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 type LazyRenderProps = {
   children: React.ReactNode;
-  /**
-   * Starts loading before entering viewport.
-   * 200–300px is a good editorial default.
-   */
   rootMargin?: string;
-  /**
-   * Optional placeholder to preserve layout.
-   */
   placeholder?: React.ReactNode;
 };
 
@@ -33,9 +26,12 @@ export function LazyRender({ children, rootMargin = "250px", placeholder }: Lazy
     );
 
     observer.observe(ref.current);
-
     return () => observer.disconnect();
   }, [rootMargin]);
 
-  return <div ref={ref}>{isVisible ? children : (placeholder ?? null)}</div>;
+  return (
+    <div ref={ref} aria-live="polite">
+      {isVisible ? children : (placeholder ?? null)}
+    </div>
+  );
 }

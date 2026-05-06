@@ -12,15 +12,13 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
       {posts.map((post, index) => (
         <LazyRender
           key={post.id}
-          placeholder={<div className="aspect-video rounded-lg bg-muted animate-pulse" />}
+          placeholder={
+            <div className="aspect-video rounded-lg bg-muted animate-pulse motion-reduce:animate-none" />
+          }
         >
           <article className="break-words group content-visibility-auto">
             {/* Featured image */}
-            <Link
-              href={`/post/${post.slug}`}
-              aria-label={`Read full post: ${post.title}`}
-              prefetch={false}
-            >
+            <Link href={`/post/${post.slug}`} prefetch={false}>
               <AspectRatio ratio={16 / 9} className="relative w-full rounded-lg overflow-hidden">
                 {post.image ? (
                   <Image
@@ -31,17 +29,20 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                     quality={65}
                     sizes="(max-width: 640px) 264px, (max-width: 1024px) 50vw, 33vw"
                     placeholder="blur"
-                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTI4IiBoZWlnaHQ9IjI5NyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNTI4IiBoZWlnaHQ9IjI5NyIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
-                    className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                    /**
-                     * Only the first card is truly above-the-fold.
-                     */
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTI4IiBoZWlnaHQ9IjI5NyIgZmlsbD0iI2VlZWVlZSIvPg=="
+                    className="
+                      object-cover object-center
+                      transition-transform duration-300
+                      group-hover:scale-105
+                      motion-reduce:transform-none
+                      motion-reduce:transition-none
+                    "
                     priority={index === 0}
                   />
                 ) : (
                   <Image
                     src="/james-merriman-travel-writer-placeholder.jpg"
-                    alt="James Merriman Travel Writer"
+                    alt="James Merriman"
                     fill
                     className="object-cover object-center"
                   />
@@ -52,11 +53,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
             {/* Post content */}
             <div className="grid grid-cols-1 gap-3 mt-4">
               <h3 className="font-sans font-semibold tracking-tighter text-primary text-2xl md:text-3xl">
-                <Link
-                  href={`/post/${post.slug}`}
-                  aria-label={`Read full post: ${post.title}`}
-                  prefetch={false}
-                >
+                <Link href={`/post/${post.slug}`} prefetch={false}>
                   {post.title}
                 </Link>
               </h3>
@@ -68,7 +65,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
               <div className="flex items-center gap-2 mt-2">
                 <Image
                   src={post.author.image || "/placeholder-author.jpg"}
-                  alt={post.author.name || "Author image"}
+                  alt={post.author.name || "Author"}
                   width={30}
                   height={30}
                   loading="lazy"

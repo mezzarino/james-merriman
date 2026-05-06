@@ -27,19 +27,14 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
 }) => {
   return (
     <>
-      {/* Header */}
-      <header
-        role="banner"
-        className={cn("bg-gradient-to-r from-blue-900 to-gray-900 text-white", className)}
-      >
+      <header className={cn("bg-gradient-to-r from-blue-900 to-gray-900 text-white", className)}>
         <div className="container mx-auto max-w-6xl px-4 py-8 lg:py-10">
-          {/* Logo (CLS-safe, visually balanced) */}
           <div className="mx-auto mb-3 flex justify-center">
             <Link href="/" aria-label="James Merriman home">
               <div className="relative w-[180px] sm:w-[220px] lg:w-[220px] aspect-[100/59]">
                 <Image
                   src="/james-merriman-travel-writer-logo.png"
-                  alt="James Merriman – Travel Writer logo"
+                  alt="James Merriman"
                   fill
                   priority
                   sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 220px"
@@ -49,26 +44,22 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
             </Link>
           </div>
 
-          {/* H1 */}
           <div className="prose mx-auto max-w-4xl text-center text-inherit">
             <h1 className="text-inherit lg:line-clamp-2">{title}</h1>
           </div>
 
-          {/* Subtitle */}
           {description && (
             <div className="mx-auto mt-3 max-w-2xl text-center text-lg lg:line-clamp-3">
               {description}
             </div>
           )}
 
-          {/* Primary navigation */}
           <div className="mt-8 border-t border-white/10 pt-5">
             <PrimaryNav />
           </div>
         </div>
       </header>
 
-      {/* Breadcrumb (outside header) */}
       {breadcrumb && breadcrumb.length > 0 && (
         <nav aria-label="Breadcrumb" className="container mx-auto max-w-6xl px-4 lg:px-0 pt-4">
           <ol className="flex flex-wrap text-sm text-muted-foreground">
@@ -82,7 +73,10 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
                       {crumb.label}
                     </span>
                   ) : (
-                    <Link href={crumb.href} className="hover:text-foreground">
+                    <Link
+                      href={crumb.href}
+                      className="hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                    >
                       {crumb.label}
                     </Link>
                   )}

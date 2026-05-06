@@ -199,7 +199,7 @@ export default async function Page(props: {
         ]}
       />
 
-      <main className="container mx-auto px-4 max-w-6xl" role="main">
+      <main className="container mx-auto px-4 max-w-6xl" id="main" tabIndex={-1}>
         {/* Editorial intro for SEO */}
         <p className="mx-auto max-w-4xl text-center text-lg my-8 prose">
           These {capitalise(tag)}‑related travel stories explore how place, culture and everyday

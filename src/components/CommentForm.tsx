@@ -138,7 +138,12 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your name" {...field} className="focus-visible:ring-inset" />
+                  <Input
+                    placeholder="Your name"
+                    {...field}
+                    className="focus-visible:ring-inset"
+                    required
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -153,6 +158,7 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
                 <FormControl>
                   <Input
                     type="email"
+                    required
                     placeholder="you@example.com"
                     className="focus-visible:ring-inset"
                     {...field}
@@ -194,6 +200,7 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
               <FormControl>
                 <Textarea
                   placeholder="Share your thoughts..."
+                  required
                   className="min-h-[120px] resize-y focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-offset-0"
                   {...field}
                 />
@@ -223,9 +230,9 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
         <div className="flex items-center justify-between pt-2">
           <Button
             type="submit"
-            role="button"
-            aria-label="Post Comment"
+            aria-label="Post comment"
             disabled={form.formState.isSubmitting}
+            className="transition motion-reduce:transition-none"
           >
             Post Comment
           </Button>

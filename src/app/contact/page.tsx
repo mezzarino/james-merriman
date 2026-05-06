@@ -144,7 +144,7 @@ const Page = async () => {
         ]}
       />
 
-      <main className="container mx-auto mt-8 px-4 max-w-6xl" role="main">
+      <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
             <p>

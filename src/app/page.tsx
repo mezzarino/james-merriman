@@ -267,7 +267,7 @@ export default async function Page(props: {
         </p>
       </section>
 
-      <main className="container mx-auto max-w-6xl" role="main">
+      <main className="container mx-auto max-w-6xl" id="main" tabIndex={-1}>
         <h2 className="mt-12 mb-6 text-3xl font-semibold">Latest Travel Writing</h2>
         <FilterBar active="latest" className="my-6" />
         <BlogPostList posts={result.posts} />

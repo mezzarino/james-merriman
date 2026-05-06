@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 type Errors = Partial<{
   name: string;
@@ -16,6 +16,8 @@ export function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [formError, setFormError] = useState<string | null>(null);
 
+  const summaryRef = useRef<HTMLDivElement>(null);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErrors({});
@@ -24,7 +26,6 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Honeypot
     if (formData.get("botField")) return;
 
     const name = formData.get("name")?.toString().trim() || "";
@@ -50,10 +51,7 @@ export function ContactForm() {
 
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
-
-      // Focus first invalid field
-      const firstKey = Object.keys(nextErrors)[0];
-      document.getElementById(firstKey)?.focus();
+      requestAnimationFrame(() => summaryRef.current?.focus());
       return;
     }
 
@@ -96,12 +94,12 @@ export function ContactForm() {
 
   return (
     <form noValidate onSubmit={handleSubmit} className="space-y-4 max-w-xl">
-      {/* Honeypot */}
       <input type="text" name="botField" tabIndex={-1} autoComplete="off" className="hidden" />
 
-      {/* ✅ Accessible error summary */}
       {Object.keys(errors).length > 0 && (
         <div
+          ref={summaryRef}
+          tabIndex={-1}
           aria-live="polite"
           role="status"
           className="rounded border border-red-600 bg-red-50 p-4 text-red-700"
@@ -123,6 +121,7 @@ export function ContactForm() {
         <input
           id="name"
           name="name"
+          required
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "name-error" : undefined}
           className="w-full rounded border p-2"
@@ -143,6 +142,7 @@ export function ContactForm() {
           id="email"
           name="email"
           type="email"
+          required
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? "email-error" : undefined}
           className="w-full rounded border p-2"
@@ -189,6 +189,7 @@ export function ContactForm() {
         <textarea
           id="message"
           name="message"
+          required
           rows={5}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
@@ -210,7 +211,13 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="mt-2 inline-flex items-center justify-center rounded-full border border-gray-300 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-black hover:text-white hover:border-black transition disabled:opacity-50"
+        className="
+          mt-2 inline-flex items-center justify-center rounded-full
+          border border-gray-300 px-6 py-3 text-sm font-medium
+          text-gray-600 hover:bg-black hover:text-white hover:border-black
+          transition motion-reduce:transition-none
+          disabled:opacity-50
+        "
       >
         {loading ? "Sending…" : "Send message"}
       </button>

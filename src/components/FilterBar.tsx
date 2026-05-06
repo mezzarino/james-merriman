@@ -188,7 +188,6 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onKeyUp={onHandleKey}
-            onBlur={clearSearch}
           />
           <button onClick={clearSearch} aria-label="Clear search" className="p-1">
             <X className="h-5 w-5" />

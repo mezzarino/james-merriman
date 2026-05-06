@@ -32,7 +32,9 @@ export function FigureImage({
         className="relative w-full overflow-hidden rounded-lg bg-gray-200"
         style={{ aspectRatio: `${width} / ${height}` }}
       >
-        {!loaded && <div className="absolute inset-0 animate-pulse bg-gray-200" />}
+        {!loaded && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse motion-reduce:animate-none" />
+        )}
 
         <Image
           src={src}
@@ -42,7 +44,8 @@ export function FigureImage({
           sizes={sizes}
           loading="lazy"
           className={cn(
-            "h-auto w-full object-cover transition-opacity duration-300",
+            "h-auto w-full object-cover",
+            "transition-opacity duration-300 motion-reduce:transition-none",
             loaded ? "opacity-100" : "opacity-0",
           )}
           onLoadingComplete={() => setLoaded(true)}
