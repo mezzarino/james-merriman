@@ -86,81 +86,85 @@ export function PostShare({ url }: PostShareProps) {
   }
 
   return (
-    <div className="not-prose flex flex-wrap items-center gap-3 sm:gap-2">
-      <span className="text-sm font-medium">Enjoyed this article? Share it:</span>
+    <div className="not-prose flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-2">
+      <span className="text-sm font-medium text-center sm:text-left">
+        Enjoyed this article? Share it:
+      </span>
 
-      {/* ✅ Native share */}
-      {canNativeShare && (
-        <button
-          onClick={handleNativeShare}
-          aria-label="Share this article"
+      <div className="flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-2">
+        {/* ✅ Native share */}
+        {canNativeShare && (
+          <button
+            onClick={handleNativeShare}
+            aria-label="Share this article"
+            className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
+          >
+            <FaShare className="w-5 h-5 sm:w-4 sm:h-4" />
+          </button>
+        )}
+
+        {/* Facebook */}
+        <a
+          href={facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackShare("facebook")}
+          aria-label="Share this story on Facebook"
           className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
         >
-          <FaShare className="w-5 h-5 sm:w-4 sm:h-4" />
+          <FaFacebookF className="w-5 h-5 sm:w-4 sm:h-4" />
+        </a>
+
+        {/* LinkedIn */}
+        <a
+          href={linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackShare("linkedin")}
+          aria-label="Share this story on LinkedIn"
+          className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
+        >
+          <FaLinkedinIn className="w-5 h-5 sm:w-4 sm:h-4" />
+        </a>
+
+        {/* WhatsApp */}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackShare("whatsapp")}
+          aria-label="Share this story on WhatsApp"
+          className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
+        >
+          <FaWhatsapp className="w-5 h-5 sm:w-4 sm:h-4" />
+        </a>
+
+        {/* X */}
+        <a
+          href={xUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackShare("x")}
+          aria-label="Share this story on X"
+          className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
+        >
+          <FaXTwitter className="w-5 h-5 sm:w-4 sm:h-4" />
+        </a>
+
+        {/* Copy link */}
+        <button
+          onClick={handleCopy}
+          aria-label="Copy link to clipboard"
+          className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
+        >
+          <FaRegCopy className="w-5 h-5 sm:w-4 sm:h-4" />
         </button>
-      )}
 
-      {/* Facebook */}
-      <a
-        href={facebookUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackShare("facebook")}
-        aria-label="Share this story on Facebook"
-        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
-      >
-        <FaFacebookF className="w-5 h-5 sm:w-4 sm:h-4" />
-      </a>
-
-      {/* LinkedIn */}
-      <a
-        href={linkedinUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackShare("linkedin")}
-        aria-label="Share this story on LinkedIn"
-        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
-      >
-        <FaLinkedinIn className="w-5 h-5 sm:w-4 sm:h-4" />
-      </a>
-
-      {/* WhatsApp */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackShare("whatsapp")}
-        aria-label="Share this story on WhatsApp"
-        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
-      >
-        <FaWhatsapp className="w-5 h-5 sm:w-4 sm:h-4" />
-      </a>
-
-      {/* X */}
-      <a
-        href={xUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackShare("x")}
-        aria-label="Share this story on X"
-        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
-      >
-        <FaXTwitter className="w-5 h-5 sm:w-4 sm:h-4" />
-      </a>
-
-      {/* Copy link */}
-      <button
-        onClick={handleCopy}
-        aria-label="Copy link to clipboard"
-        className="p-3 sm:w-9 sm:h-9 flex-shrink-0 flex items-center justify-center rounded-full border border-gray-300 text-gray-600 hover:bg-black hover:text-white hover:border-black hover:scale-105 active:scale-95 transition touch-manipulation"
-      >
-        <FaRegCopy className="w-5 h-5 sm:w-4 sm:h-4" />
-      </button>
-
-      {/* Feedback */}
-      <span aria-live="polite" className="text-xs text-gray-500 min-w-[90px]">
-        {copied ? "Link copied" : ""}
-      </span>
+        {/* Feedback */}
+        <span aria-live="polite" className="text-xs text-gray-500 min-w-[90px]">
+          {copied ? "Link copied" : ""}
+        </span>
+      </div>
     </div>
   );
 }
