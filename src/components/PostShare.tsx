@@ -110,7 +110,7 @@ export function PostShare({ url }: PostShareProps) {
               touch-manipulation
             "
           >
-            <FaShare className="w-5 h-5 sm:w-4 sm:h-4" />
+            <FaShare aria-hidden="true" focusable="false" className="w-5 h-5 sm:w-4 sm:h-4" />
           </button>
         )}
 
@@ -134,7 +134,7 @@ export function PostShare({ url }: PostShareProps) {
               touch-manipulation
             "
         >
-          <FaFacebookF className="w-5 h-5 sm:w-4 sm:h-4" />
+          <FaFacebookF aria-hidden="true" focusable="false" className="w-5 h-5 sm:w-4 sm:h-4" />
         </a>
 
         {/* LinkedIn */}
@@ -157,7 +157,7 @@ export function PostShare({ url }: PostShareProps) {
               touch-manipulation
             "
         >
-          <FaLinkedinIn className="w-5 h-5 sm:w-4 sm:h-4" />
+          <FaLinkedinIn aria-hidden="true" focusable="false" className="w-5 h-5 sm:w-4 sm:h-4" />
         </a>
 
         {/* WhatsApp */}
@@ -180,7 +180,7 @@ export function PostShare({ url }: PostShareProps) {
               touch-manipulation
             "
         >
-          <FaWhatsapp className="w-5 h-5 sm:w-4 sm:h-4" />
+          <FaWhatsapp aria-hidden="true" focusable="false" className="w-5 h-5 sm:w-4 sm:h-4" />
         </a>
 
         {/* X */}
@@ -203,7 +203,7 @@ export function PostShare({ url }: PostShareProps) {
               touch-manipulation
             "
         >
-          <FaXTwitter className="w-5 h-5 sm:w-4 sm:h-4" />
+          <FaXTwitter aria-hidden="true" focusable="false" className="w-5 h-5 sm:w-4 sm:h-4" />
         </a>
 
         {/* Copy link */}
@@ -223,7 +223,7 @@ export function PostShare({ url }: PostShareProps) {
               touch-manipulation
             "
         >
-          <FaRegCopy className="w-5 h-5 sm:w-4 sm:h-4" />
+          <FaRegCopy aria-hidden="true" focusable="false" className="w-5 h-5 sm:w-4 sm:h-4" />
         </button>
 
         {/* Feedback */}

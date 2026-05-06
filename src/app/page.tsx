@@ -241,33 +241,39 @@ export default async function Page(props: {
         breadcrumb={breadcrumb}
       />
 
-      <section className="container mx-auto my-6 max-w-6xl px-4 lg:px-0 prose">
-        <p className="text-lg">
-          This site presents the writing and photographic work of travel writer James Merriman. For
-          a personal background, visit{" "}
-          <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
-            my biography
-          </Link>
-          , explore{" "}
-          <Link href="/credentials" className="underline underline-offset-4 hover:text-foreground">
-            my professional credentials
-          </Link>
-          , view selected{" "}
-          <Link href="/publications" className="underline underline-offset-4 hover:text-foreground">
-            publications
-          </Link>
-          , or read about{" "}
-          <Link
-            href="/talks-presentations"
-            className="underline underline-offset-4 hover:text-foreground"
-          >
-            talks and presentations
-          </Link>{" "}
-          delivered to specialist audiences.
-        </p>
-      </section>
-
       <main className="container mx-auto max-w-6xl" id="main" tabIndex={-1}>
+        <section className="container mx-auto my-6 max-w-6xl px-4 lg:px-0 prose">
+          <p className="text-lg">
+            This site presents the writing and photographic work of travel writer James Merriman.
+            For a personal background, visit{" "}
+            <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
+              my biography
+            </Link>
+            , explore{" "}
+            <Link
+              href="/credentials"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              my professional credentials
+            </Link>
+            , view selected{" "}
+            <Link
+              href="/publications"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              publications
+            </Link>
+            , or read about{" "}
+            <Link
+              href="/talks-presentations"
+              className="underline underline-offset-4 hover:text-foreground"
+            >
+              talks and presentations
+            </Link>{" "}
+            delivered to specialist audiences.
+          </p>
+        </section>
+
         <h2 className="mt-12 mb-6 text-3xl font-semibold">Latest Travel Writing</h2>
         <FilterBar active="latest" className="my-6" />
         <BlogPostList posts={result.posts} />

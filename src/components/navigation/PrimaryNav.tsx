@@ -134,7 +134,7 @@ export function PrimaryNav() {
                     "transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
                     isActive
                       ? "text-white underline underline-offset-4"
-                      : "text-white/70 hover:text-white",
+                      : "text-white/85 hover:text-white",
                   )}
                 >
                   {item.label}

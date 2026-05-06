@@ -52,6 +52,7 @@ export const Footer = () => {
               text-sm text-muted-foreground
               sm:flex-row sm:justify-start sm:gap-4 sm:divide-y-0
               py-3 sm:py-0
+              md:text-base
             "
           >
             {MAIN_NAV.map((item) => (

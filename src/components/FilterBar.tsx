@@ -256,7 +256,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
               aria-label="Search posts"
               className="rounded-md p-2 hover:bg-gray-100"
             >
-              <Search className="h-5 w-5" />
+              <Search aria-hidden="true" className="h-5 w-5" />
             </button>
           </div>
         </div>

@@ -20,7 +20,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Email James Merriman"
         className={linkClass}
       >
-        <FaEnvelope className={iconClass} />
+        <FaEnvelope aria-hidden="true" focusable="false" className={iconClass} />
       </a>
 
       <a
@@ -30,7 +30,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on Instagram"
         className={linkClass}
       >
-        <FaInstagram className={iconClass} />
+        <FaInstagram aria-hidden="true" focusable="false" className={iconClass} />
       </a>
 
       <a
@@ -40,7 +40,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Connect with James on LinkedIn"
         className={linkClass}
       >
-        <FaLinkedinIn className={iconClass} />
+        <FaLinkedinIn aria-hidden="true" focusable="false" className={iconClass} />
       </a>
 
       <a
@@ -60,7 +60,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on X"
         className={linkClass}
       >
-        <FaXTwitter className={iconClass} />
+        <FaXTwitter aria-hidden="true" focusable="false" className={iconClass} />
       </a>
 
       <a
@@ -70,7 +70,7 @@ export function SocialLinks({ className }: { className?: string }) {
         aria-label="Follow James on YouTube"
         className={linkClass}
       >
-        <FaYoutube className={iconClass} />
+        <FaYoutube aria-hidden="true" focusable="false" className={iconClass} />
       </a>
     </div>
   );
