@@ -10,6 +10,17 @@ type Errors = Partial<{
   message: string;
 }>;
 
+// ✅ Shared, WCAG-compliant input styles
+const inputClassName = `
+  w-full rounded
+  border border-gray-500
+  p-2
+  focus-visible:outline-none
+  focus-visible:ring-2
+  focus-visible:ring-black
+  focus-visible:ring-offset-2
+`;
+
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -94,6 +105,7 @@ export function ContactForm() {
 
   return (
     <form noValidate onSubmit={handleSubmit} className="space-y-4 max-w-xl">
+      {/* Honeypot */}
       <input
         type="text"
         name="botField"
@@ -103,6 +115,7 @@ export function ContactForm() {
         aria-hidden="true"
       />
 
+      {/* Error summary */}
       {Object.keys(errors).length > 0 && (
         <div
           ref={summaryRef}
@@ -129,9 +142,10 @@ export function ContactForm() {
           id="name"
           name="name"
           required
+          autoComplete="name"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "name-error" : undefined}
-          className="w-full rounded border p-2"
+          className={inputClassName}
         />
         {errors.name && (
           <p id="name-error" role="alert" className="mt-1 text-sm text-red-600">
@@ -150,9 +164,10 @@ export function ContactForm() {
           name="email"
           type="email"
           required
+          autoComplete="email"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? "email-error" : undefined}
-          className="w-full rounded border p-2"
+          className={inputClassName}
         />
         {errors.email && (
           <p id="email-error" role="alert" className="mt-1 text-sm text-red-600">
@@ -169,9 +184,10 @@ export function ContactForm() {
         <input
           id="company"
           name="company"
+          autoComplete="organization"
           aria-invalid={!!errors.company}
           aria-describedby={errors.company ? "company-error" : undefined}
-          className="w-full rounded border p-2"
+          className={inputClassName}
         />
         {errors.company && (
           <p id="company-error" role="alert" className="mt-1 text-sm text-red-600">
@@ -185,7 +201,13 @@ export function ContactForm() {
         <label htmlFor="telephone" className="block text-sm font-medium">
           Telephone
         </label>
-        <input id="telephone" name="telephone" type="tel" className="w-full rounded border p-2" />
+        <input
+          id="telephone"
+          name="telephone"
+          type="tel"
+          autoComplete="tel"
+          className={inputClassName}
+        />
       </div>
 
       {/* Message */}
@@ -198,9 +220,10 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
+          autoComplete="off"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className="w-full rounded border p-2"
+          className={inputClassName}
         />
         {errors.message && (
           <p id="message-error" role="alert" className="mt-1 text-sm text-red-600">

@@ -74,35 +74,39 @@ export const Footer = () => {
           </ul>
         </nav>
 
-        {/* Utilities */}
-        <div className="flex items-center justify-center gap-3 text-xs text-muted-foreground sm:justify-end">
-          <Link
-            href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-foreground"
-          >
-            Powered by Wisp
-          </Link>
+        {/* Footer utilities */}
+        <ul className="flex items-center justify-center gap-3 text-xs text-muted-foreground sm:justify-end">
+          <li>
+            <Link
+              href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground"
+            >
+              Powered by Wisp
+            </Link>
+          </li>
 
-          <Link href="/privacy-policy" className="hover:text-foreground">
-            Privacy Policy
-          </Link>
+          <li>
+            <Link href="/privacy-policy" className="hover:text-foreground">
+              Privacy Policy
+            </Link>
+          </li>
 
-          <Link
-            href="/accessibility"
-            className="hover:text-foreground"
-            aria-label="Accessibility statement"
-          >
-            Accessibility
-          </Link>
+          <li>
+            <Link href="/accessibility" className="hover:text-foreground">
+              Accessibility
+            </Link>
+          </li>
 
-          <Link href="/rss">
-            <Button variant="ghost" aria-label="RSS feed">
-              <Rss className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
+          <li>
+            <Link href="/rss">
+              <Button variant="ghost" aria-label="RSS feed">
+                <Rss className="h-4 w-4" />
+              </Button>
+            </Link>
+          </li>
+        </ul>
       </div>
     </footer>
   );

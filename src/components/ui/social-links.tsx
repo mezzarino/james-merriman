@@ -14,61 +14,73 @@ const iconClass = "w-5 h-5 md:w-6 md:h-6";
 
 export function SocialLinks({ className }: { className?: string }) {
   return (
-    <div className={cn("not-prose flex gap-4", className)}>
-      <a href="mailto:info@jamesmerriman.co.uk" className={linkClass}>
-        <span className="sr-only">Email James Merriman</span>
-        <FaEnvelope aria-hidden="true" focusable="false" className={iconClass} />
-      </a>
+    <ul className={cn("not-prose flex gap-4", className)}>
+      <li>
+        <a href="mailto:info@jamesmerriman.co.uk" className={linkClass}>
+          <span className="sr-only">Email James Merriman</span>
+          <FaEnvelope aria-hidden="true" focusable="false" className={iconClass} />
+        </a>
+      </li>
 
-      <a
-        href="https://instagram.com/mezzarino"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClass}
-      >
-        <span className="sr-only">Follow James on Instagram</span>
-        <FaInstagram aria-hidden="true" focusable="false" className={iconClass} />
-      </a>
+      <li>
+        <a
+          href="https://instagram.com/mezzarino"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClass}
+        >
+          <span className="sr-only">Follow James on Instagram</span>
+          <FaInstagram aria-hidden="true" focusable="false" className={iconClass} />
+        </a>
+      </li>
 
-      <a
-        href="https://linkedin.com/in/jamesmerriman"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClass}
-      >
-        <span className="sr-only">Connect with James on LinkedIn</span>
-        <FaLinkedinIn aria-hidden="true" focusable="false" className={iconClass} />
-      </a>
+      <li>
+        <a
+          href="https://linkedin.com/in/jamesmerriman"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClass}
+        >
+          <span className="sr-only">Connect with James on LinkedIn</span>
+          <FaLinkedinIn aria-hidden="true" focusable="false" className={iconClass} />
+        </a>
+      </li>
 
-      <a
-        href="https://mezzarino.substack.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClass}
-      >
-        <span className="sr-only">Subscribe to James on Substack</span>
-        <SiSubstack aria-hidden="true" focusable="false" className={iconClass} />
-      </a>
+      <li>
+        <a
+          href="https://mezzarino.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClass}
+        >
+          <span className="sr-only">Subscribe to James on Substack</span>
+          <SiSubstack aria-hidden="true" focusable="false" className={iconClass} />
+        </a>
+      </li>
 
-      <a
-        href="https://x.com/mezzarino"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClass}
-      >
-        <span className="sr-only">Follow James on X</span>
-        <FaXTwitter aria-hidden="true" focusable="false" className={iconClass} />
-      </a>
+      <li>
+        <a
+          href="https://x.com/mezzarino"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClass}
+        >
+          <span className="sr-only">Follow James on X</span>
+          <FaXTwitter aria-hidden="true" focusable="false" className={iconClass} />
+        </a>
+      </li>
 
-      <a
-        href="https://www.youtube.com/jamesmerrimancouk"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkClass}
-      >
-        <span className="sr-only">Follow James on YouTube</span>
-        <FaYoutube aria-hidden="true" focusable="false" className={iconClass} />
-      </a>
-    </div>
+      <li>
+        <a
+          href="https://www.youtube.com/jamesmerrimancouk"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={linkClass}
+        >
+          <span className="sr-only">Follow James on YouTube</span>
+          <FaYoutube aria-hidden="true" focusable="false" className={iconClass} />
+        </a>
+      </li>
+    </ul>
   );
 }
