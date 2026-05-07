@@ -14,7 +14,7 @@ export function ConsentPreferencesLink() {
       onClick={resetConsent}
       className="text-foreground underline underline-offset-2"
     >
-      manage your Analytics preferences
+      manage or withdraw your analytics consent
     </button>
   );
 }

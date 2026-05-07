@@ -61,7 +61,7 @@ const Page = async () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full prose prose-lg max-w-none break-words blog-content">
             <p>
-              <strong>Last updated:</strong> 6th May 2026
+              <strong>Last updated:</strong> 7th May 2026
             </p>
             <h2 className="mt-12 text-2xl font-semibold">Introduction</h2>
             <p>
@@ -94,11 +94,26 @@ const Page = async () => {
             </ul>
             <h2 className="mt-12 text-2xl font-semibold">Cookies and Analytics</h2>
             <p>
-              Our website uses cookies to distinguish you from other users. This helps us provide a
-              good experience when you browse the site and allows us to improve our platform. We use
-              Google Analytics to monitor and analyse web traffic. Google Analytics uses cookies to
-              track user behaviour such as the time spent on pages and the links clicked. You can{" "}
-              <ConsentPreferencesLink /> at any time via our cookie consent banner.
+              This website uses cookies to distinguish you from other users. This helps provide a
+              good experience when browsing the site and allows us to improve how the site works.
+            </p>
+            <p>
+              We use <strong>Google Analytics</strong> to monitor and analyse web traffic. Google
+              Analytics uses cookies to collect anonymised information such as pages visited, time
+              spent on pages, and interactions with links. This data does not directly identify you.
+            </p>
+            <p>
+              Google Analytics cookies are{" "}
+              <strong>only set after you have given explicit consent</strong> via the cookie consent
+              banner.
+            </p>
+            <p>
+              Google Analytics cookies may remain on your device for{" "}
+              <strong>up to two years</strong>.
+            </p>
+            <p>
+              You can <ConsentPreferencesLink /> at any time using the cookie consent banner or by
+              adjusting your browser’s cookie settings.
             </p>
             <h2 className="mt-12 text-2xl font-semibold">Sharing Your Data</h2>
             <p>

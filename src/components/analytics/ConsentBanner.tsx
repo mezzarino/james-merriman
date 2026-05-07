@@ -7,20 +7,23 @@ import { useConsent } from "./ConsentContext";
 export function ConsentBanner() {
   const { consent, setConsent } = useConsent();
 
-  // ✅ Don't show anything until hydrated
+  // Don't show once a choice has been made
   if (consent !== null) return null;
 
   return (
     <div
-      role="dialog"
-      aria-label="Google Analytics consent banner"
-      aria-live="polite"
+      role="region"
+      aria-labelledby="cookie-consent-title"
       className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-3xl rounded-lg border bg-white p-4 shadow"
     >
-      <p className="mb-3 text-sm text-gray-700">
-        This site uses Google Analytics to understand readership. Analytics cookies are only used if
-        you choose to accept them. You may update your preferences at any time as stated in our{" "}
-        <Link href="/privacy-policy">Privacy Policy</Link>.
+      <p id="cookie-consent-title" className="mb-3 text-sm text-gray-700">
+        This site uses Google Analytics to understand readership. Analytics cookies are only set
+        after you give explicit consent. You can update or withdraw your consent at any time as
+        described in our{" "}
+        <Link href="/privacy-policy" className="underline">
+          Privacy Policy
+        </Link>
+        .
       </p>
 
       <div className="flex gap-3">

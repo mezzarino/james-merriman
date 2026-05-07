@@ -72,13 +72,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     {
       url: urlJoin(config.baseUrl, "privacy-policy"),
-      lastModified: new Date("2026-05-02"),
+      lastModified: new Date("2026-05-07"),
       priority: 0.4,
     },
 
     {
       url: urlJoin(config.baseUrl, "accessibility"),
-      lastModified: new Date("2026-05-02"),
+      lastModified: new Date("2026-05-07"),
       priority: 0.4,
     },
   ];
