@@ -1,0 +1,27 @@
+import "@testing-library/jest-dom";
+import "jest-axe/extend-expect";
+
+import { vi } from "vitest";
+
+/* ✅ Mock next/font/google */
+vi.mock("next/font/google", () => ({
+  IBM_Plex_Sans: () => ({
+    className: "",
+    variable: "",
+  }),
+}));
+
+/* ✅ Mock matchMedia for JSDOM */
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});

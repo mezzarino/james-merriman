@@ -94,7 +94,14 @@ export function ContactForm() {
 
   return (
     <form noValidate onSubmit={handleSubmit} className="space-y-4 max-w-xl">
-      <input type="text" name="botField" tabIndex={-1} autoComplete="off" className="hidden" />
+      <input
+        type="text"
+        name="botField"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
 
       {Object.keys(errors).length > 0 && (
         <div
