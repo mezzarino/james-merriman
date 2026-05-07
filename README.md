@@ -1,14 +1,15 @@
 # James Merriman – Travel Writing Blog
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC)
-![ShadcnUI](https://img.shields.io/badge/shadcn-ui-000000)
+![shadcn/ui](https://img.shields.io/badge/shadcn--ui-000000)
 ![ESLint](https://img.shields.io/badge/ESLint-9-purple)
 ![pnpm](https://img.shields.io/badge/pnpm-latest-F69220)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A modern, fast, and fully type‑safe personal writing/blogging platform built with **Next.js 15**, **TypeScript**, and **Wisp** as the headless CMS. Designed for speed, accessibility, and excellent developer experience.
+A modern, fast, and accessibility‑focused personal travel writing platform built with **Next.js 16**, **TypeScript**, and **Wisp** as a headless CMS.  
+Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm developer experience.
 
 ---
 
@@ -16,6 +17,8 @@ A modern, fast, and fully type‑safe personal writing/blogging platform built w
 
 - [✨ Features](#-features)
 - [🛠️ Tech Stack](#️-tech-stack)
+- [♿ Accessibility](#-accessibility)
+- [🧪 Testing & Quality](#-testing--quality)
 - [📦 Installation](#-installation)
 - [🧪 Development](#-development)
 - [✅ Linting & Formatting](#-linting--formatting)
@@ -28,40 +31,81 @@ A modern, fast, and fully type‑safe personal writing/blogging platform built w
 
 ## ✨ Features
 
-- ⚡ **Next.js 15** with App Router & Turbopack
-- 📝 **Wisp CMS** for blog management
+- ⚡ **Next.js 16** with App Router
+- 📝 **Wisp CMS** for long‑form writing
 - 🎨 **Tailwind CSS** styling
-- 🧩 **Shadcn UI** component library
-- 🛡️ **TypeScript** for full type safety
-- 🔍 **ESLint (Flat Config)** for strict code analysis
-- 🅰️ **Optimized fonts** via `next/font`
+- 🧩 **shadcn/ui** component primitives
+- 🛡️ **TypeScript** end‑to‑end type safety
+- 🔍 **ESLint (Flat Config)** with strict rules
+- 🅰️ **Accessible by design** (WCAG 2.1 AA)
+- 📱 Fully responsive layout
 - 🌗 Dark mode support
-- 📱 Fully responsive UI
-- 🚀 SEO-friendly metadata
+- 🚀 SEO‑friendly metadata & structured data
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Framework
-
-- **Next.js 15**: App Router, Turbopack, TypeScript
+- **Next.js 16** – App Router, Server Components, Metadata API
 
 ### Content Management
-
-- **Wisp**: Markdown-friendly CMS
+- **Wisp** – Markdown‑first headless CMS
 
 ### Styling & UI
-
 - **Tailwind CSS**
-- **Shadcn UI**
-- **next/font** optimization
+- **shadcn/ui**
+- **next/font** for optimized fonts
 
 ### Tooling
-
 - **TypeScript**
 - **ESLint (Flat Config)**
 - **pnpm** package manager
+
+---
+
+## ♿ Accessibility
+
+Accessibility is treated as a first‑class concern:
+
+- Semantic HTML throughout (lists, landmarks, headings)
+- WCAG 2.1 AA–compliant forms
+- Proper programmatic field purpose (`autocomplete`)
+- Visible focus states and sufficient control contrast
+- Keyboard‑friendly navigation
+- Reduced‑motion support
+- Accessibility statement included
+
+Automated checks (axe, Silktide) are supplemented with manual review.
+
+---
+
+## 🧪 Testing & Quality
+
+The project uses **behaviour‑focused testing**, not snapshot testing.
+
+### Tooling
+- **Vitest**
+- **@testing-library/react**
+- **@testing-library/user-event**
+- **jest‑axe** (accessibility regression testing)
+
+### Coverage focus
+- Forms (validation, focus management)
+- Core content rendering
+- Layout & landmarks
+- Accessibility regressions at component and page level
+
+### CI
+GitHub Actions enforce:
+- ✅ Linting
+- ✅ Formatting
+- ✅ Tests
+- ✅ Production build
+
+Deployments to Vercel are **blocked if CI fails**.
+
+See `TESTING.md` for details.
 
 ---
 
@@ -77,7 +121,7 @@ pnpm install
 
 ## 🧪 Development
 
-Start development server:
+Start the development server:
 
 ```bash
 pnpm dev
@@ -99,10 +143,10 @@ Run ESLint:
 pnpm lint
 ```
 
-Fix issues:
+Check formatting:
 
 ```bash
-pnpm lint:fix
+pnpm format:check
 ```
 
 Format code:
@@ -115,9 +159,10 @@ pnpm format
 
 ## 📝 Content (Wisp CMS)
 
-Content is managed through **Wisp**, which exposes an API consumed by the blog.
+Content is managed via **Wisp**, exposed through a JSON API and rendered with custom components.
 
-Learn more: https://wisp.blog
+Learn more:  
+https://wisp.blog
 
 ---
 
@@ -125,13 +170,15 @@ Learn more: https://wisp.blog
 
 ```
 src/
-  app/
-  components/
-  lib/
-  styles/
+  app/            # App Router pages & layouts
+  components/     # UI and content components
+  hooks/          # Custom React hooks
+  lib/            # Utilities & helpers
+  styles/         # Global styles
 public/
-tailwind.config.ts
 eslint.config.mjs
+tailwind.config.ts
+vitest.config.ts
 ```
 
 ---
@@ -142,3 +189,9 @@ eslint.config.mjs
 pnpm build
 pnpm start
 ```
+
+---
+
+## 📄 License
+
+MIT
