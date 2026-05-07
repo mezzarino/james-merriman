@@ -24,6 +24,15 @@ import { useToast } from "@/hooks/use-toast";
 
 import { wisp } from "../lib/wisp";
 
+/* ✅ WCAG-compliant shared styles */
+const inputClassName = `
+  border border-gray-500
+  focus-visible:outline-none
+  focus-visible:ring-2
+  focus-visible:ring-black
+  focus-visible:ring-offset-2
+`;
+
 const formSchema = z.object({
   author: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
@@ -62,6 +71,7 @@ interface CreateCommentRequest {
 
 export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
   const { toast } = useToast();
+
   const { mutateAsync: createComment, data } = useMutation({
     mutationFn: async (input: CreateCommentRequest) => {
       try {
@@ -70,9 +80,7 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
         if (e instanceof AxiosError) {
           const errorData = e.response?.data as ErrorResponse | undefined;
           if (errorData?.error?.message) {
-            throw new Error(errorData.error.message, {
-              cause: e,
-            });
+            throw new Error(errorData.error.message, { cause: e });
           }
         }
         throw e;
@@ -93,13 +101,8 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await createComment({
-        ...values,
-        slug,
-      });
-      if (onSuccess) {
-        onSuccess();
-      }
+      await createComment({ ...values, slug });
+      onSuccess?.();
       form.reset();
     } catch (e) {
       if (e instanceof Error) {
@@ -112,15 +115,14 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
     }
   };
 
-  if (data && data.success) {
+  if (data?.success) {
     return (
       <Alert className="bg-muted border-none">
         <AlertDescription className="space-y-2 text-center">
           <Shield className="text-muted-foreground mx-auto h-10 w-10" />
           <div className="font-medium">Pending email verification</div>
           <div className="text-muted-foreground m-auto max-w-lg text-balance text-sm">
-            Thanks for your comment! Please check your email to verify your email and post your
-            comment. If you don&apos;t see it in your inbox, please check your spam folder.
+            Thanks for your comment! Please check your email to verify and post your comment.
           </div>
         </AlertDescription>
       </Alert>
@@ -129,114 +131,124 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid gap-4 sm:grid-cols-2">
+          {/* Name */}
           <FormField
             control={form.control}
             name="author"
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Your name"
                     {...field}
-                    className="focus-visible:ring-inset"
                     required
+                    autoComplete="name"
+                    aria-invalid={!!fieldState.error}
+                    aria-describedby={fieldState.error ? "author-error" : undefined}
+                    className={inputClassName}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage id="author-error" />
               </FormItem>
             )}
           />
+
+          {/* Email */}
           <FormField
             control={form.control}
             name="email"
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input
+                    {...field}
                     type="email"
                     required
-                    placeholder="you@example.com"
-                    className="focus-visible:ring-inset"
-                    {...field}
+                    autoComplete="email"
+                    aria-invalid={!!fieldState.error}
+                    aria-describedby={fieldState.error ? "email-error" : undefined}
+                    className={inputClassName}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage id="email-error" />
               </FormItem>
             )}
           />
         </div>
 
+        {/* Website */}
         {config.allowUrls && (
           <FormField
             control={form.control}
             name="url"
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>Website (optional)</FormLabel>
                 <FormControl>
                   <Input
-                    type="url"
-                    placeholder="https://example.com"
-                    className="focus-visible:ring-inset"
                     {...field}
+                    type="url"
+                    autoComplete="url"
+                    aria-invalid={!!fieldState.error}
+                    aria-describedby={fieldState.error ? "url-error" : undefined}
+                    className={inputClassName}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage id="url-error" />
               </FormItem>
             )}
           />
         )}
 
+        {/* Comment */}
         <FormField
           control={form.control}
           name="content"
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <FormItem>
               <FormLabel>Comment</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Share your thoughts..."
-                  required
-                  className="min-h-[120px] resize-y focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-offset-0"
                   {...field}
+                  required
+                  rows={5}
+                  autoComplete="off"
+                  aria-invalid={!!fieldState.error}
+                  aria-describedby={fieldState.error ? "content-error" : undefined}
+                  className={`${inputClassName} min-h-[120px] resize-y`}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage id="content-error" />
             </FormItem>
           )}
         />
 
+        {/* Consent */}
         {config.signUpMessage && (
           <FormField
             control={form.control}
             name="allowEmailUsage"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md">
+              <FormItem className="flex items-center space-x-3">
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
-                <div className="space-y-1 leading-none">
-                  <FormLabel className="text-sm font-normal">{config.signUpMessage}</FormLabel>
-                </div>
+                <FormLabel className="text-sm font-normal">{config.signUpMessage}</FormLabel>
               </FormItem>
             )}
           />
         )}
 
-        <div className="flex items-center justify-between pt-2">
-          <Button
-            type="submit"
-            aria-label="Post comment"
-            disabled={form.formState.isSubmitting}
-            className="transition motion-reduce:transition-none"
-          >
-            Post Comment
-          </Button>
-        </div>
+        <Button
+          type="submit"
+          disabled={form.formState.isSubmitting}
+          className="transition motion-reduce:transition-none"
+        >
+          Post Comment
+        </Button>
       </form>
     </Form>
   );

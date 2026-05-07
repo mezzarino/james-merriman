@@ -119,13 +119,18 @@ export const BlogContent = ({
             <AboutCta />
           </div>
         </div>
-        <div className="mt-4 mb-8 space-x-2">
+        <ul className="mt-4 mb-8 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <Link href={`/category/${tag.name}`} key={tag.id}>
-              #{tag.name}
-            </Link>
+            <li key={tag.id}>
+              <Link
+                href={`/category/${tag.name}`}
+                className="hover:underline"
+              >
+                #{tag.name}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
         <CommentSection slug={slug} />
         <RelatedPosts posts={relatedPosts} />
       </main>
