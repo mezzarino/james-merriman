@@ -122,10 +122,7 @@ export const BlogContent = ({
         <ul className="mt-4 mb-8 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <li key={tag.id}>
-              <Link
-                href={`/category/${tag.name}`}
-                className="hover:underline"
-              >
+              <Link href={`/category/${tag.name}`} className="hover:underline">
                 #{tag.name}
               </Link>
             </li>

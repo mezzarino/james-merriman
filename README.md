@@ -1,4 +1,4 @@
-# James Merriman – Travel Writing Blog
+# James Merriman – Travel Writer
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
@@ -47,17 +47,21 @@ Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm
 ## 🛠️ Tech Stack
 
 ### Framework
+
 - **Next.js 16** – App Router, Server Components, Metadata API
 
 ### Content Management
+
 - **Wisp** – Markdown‑first headless CMS
 
 ### Styling & UI
+
 - **Tailwind CSS**
 - **shadcn/ui**
 - **next/font** for optimized fonts
 
 ### Tooling
+
 - **TypeScript**
 - **ESLint (Flat Config)**
 - **pnpm** package manager
@@ -85,19 +89,23 @@ Automated checks (axe, Silktide) are supplemented with manual review.
 The project uses **behaviour‑focused testing**, not snapshot testing.
 
 ### Tooling
+
 - **Vitest**
 - **@testing-library/react**
 - **@testing-library/user-event**
 - **jest‑axe** (accessibility regression testing)
 
 ### Coverage focus
+
 - Forms (validation, focus management)
 - Core content rendering
 - Layout & landmarks
 - Accessibility regressions at component and page level
 
 ### CI
+
 GitHub Actions enforce:
+
 - ✅ Linting
 - ✅ Formatting
 - ✅ Tests
@@ -161,7 +169,7 @@ pnpm format
 
 Content is managed via **Wisp**, exposed through a JSON API and rendered with custom components.
 
-Learn more:  
+Learn more:
 https://wisp.blog
 
 ---

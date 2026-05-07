@@ -50,6 +50,21 @@ Playwright is optional and not required for core coverage.
   - Title, author, and parsed HTML appear
   - No accessibility violations
 
+### CommentForm
+
+The comment form intentionally has lighter test coverage than the main contact form.
+
+- Validation and submission logic are handled by well‑tested libraries
+  (react‑hook‑form, zod, shadcn/ui).
+- The form is rendered within blog pages that already have page‑level
+  accessibility regression tests.
+- Duplicating behavioural tests would mostly re‑test library behaviour
+  rather than project‑specific logic.
+
+As a safeguard, the CommentForm includes a single accessibility regression
+test using jest‑axe to ensure that labels, ARIA attributes, contrast, and
+programmatic field purpose remain compliant with WCAG 2.1 AA.
+
 ---
 
 ## What We Do NOT Test
