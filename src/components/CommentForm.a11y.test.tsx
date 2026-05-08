@@ -11,17 +11,13 @@ function renderWithQueryClient(ui: React.ReactElement) {
       queries: {
         retry: false,
       },
-        mutations: {
+      mutations: {
         retry: false,
       },
     },
   });
 
-  return render(
-    <QueryClientProvider client={queryClient}>
-      {ui}
-    </QueryClientProvider>
-  );
+  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
 }
 
 describe("CommentForm accessibility", () => {
@@ -35,7 +31,7 @@ describe("CommentForm accessibility", () => {
           allowNested: false,
           signUpMessage: null,
         }}
-      />
+      />,
     );
 
     const results = await axe(container);
