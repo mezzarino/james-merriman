@@ -12,7 +12,7 @@ import { config } from "@/config";
 const ogImage = "/images/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
-  title: "Publications | James Merriman – Travel Writer",
+  title: "Publications | James Merriman - Travel Writer",
   description:
     "A selection of travel writing by James Merriman published in magazines and on external websites, including downloadable excerpts and links to commissioned work.",
   alternates: {
@@ -102,8 +102,8 @@ const Page = async () => {
               },
 
               /* ---------------------------
-           Creative works
-        ---------------------------- */
+               Creative works
+            ---------------------------- */
 
               {
                 "@type": "CreativeWork",
@@ -194,6 +194,32 @@ const Page = async () => {
                 },
                 url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
               },
+
+              {
+                "@type": "CreativeWork",
+                "@id":
+                  "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe#james-merriman",
+                name: "Readers' favourite beach bars in Europe",
+                author: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                publisher: {
+                  "@type": "Organization",
+                  name: "The Guardian",
+                  url: "https://www.theguardian.com/",
+                },
+                datePublished: "2026-05-08",
+                genre: ["Travel writing", "Food", "Coastal"],
+                about: {
+                  "@type": "Place",
+                  name: "Matala, Crete",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "GR",
+                  },
+                },
+                url: "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe",
+              },
             ],
           }),
         }}
@@ -220,10 +246,44 @@ const Page = async () => {
 
             <p>
               The writing featured here reflects themes explored throughout my work, including
-              walking, landscape, history, food, and place. For further context, see the{" "}
+              walking, landscape, history, food and place. For further context, see the{" "}
               <Link href="/about">about page</Link>, or browse articles published on this site by
               theme on the <Link href="/category">categories page</Link>.
             </p>
+
+            <h2 className="mt-12 text-2xl font-semibold">Newspapers</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">
+                Readers&apos; favourite beach bars in Europe
+              </h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>The Guardian</em> · May 2026 · Featured contribution
+              </p>
+
+              <p className="mt-3">
+                A published contribution detailing the atmosphere, local food and sunset views at
+                Petra &amp; Votsalo taverna in Matala on the southern coast of Crete.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Read the article on The Guardian website"
+                >
+                  Read the feature on The Guardian
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication remains the copyright of{" "}
+                <em>Guardian News &amp; Media Limited</em>.
+              </p>
+            </article>
 
             <h2 className="mt-12 text-2xl font-semibold">Books &amp; anthologies</h2>
 
@@ -240,7 +300,7 @@ const Page = async () => {
                 <Link href="/post/my-tehran-beyond-the-headlines">
                   <em>“My Tehran: Beyond the Headlines”</em>
                 </Link>
-                , a street‑level portrait of the city shaped by walking, conversation, and everyday
+                , a street-level portrait of the city shaped by walking, conversation and everyday
                 life in Tehran.
               </p>
 
@@ -310,7 +370,7 @@ const Page = async () => {
               </p>
 
               <p className="mt-3">
-                A culinary journey through Nice, France — Cours Saleya market, socca, pan bagnat and
+                A culinary journey through Nice, France: Cours Saleya market, socca, pan bagnat and
                 classic Niçoise flavours along the Côte d’Azur.
               </p>
 
