@@ -1,7 +1,7 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render } from "@testing-library/react";
 import { axe } from "jest-axe";
-import { describe, it, expect } from "vitest";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { describe, expect, it } from "vitest";
 
 import { CommentForm } from "./CommentForm";
 
