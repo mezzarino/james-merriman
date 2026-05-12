@@ -17,7 +17,7 @@ export function proxy(request: NextRequest) {
   connect-src 'self' https://www.wisp.blog https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com;
   script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
   style-src 'self' 'unsafe-inline';
-  img-src 'self' data: https://imagedelivery.net https://res.cloudinary.com;
+  img-src 'self' data: https://imagedelivery.net https://*.cloudinary.com https://*.google-analytics.com https://*.google.com;
   font-src 'self';
   frame-src 'none';
   object-src 'none';
