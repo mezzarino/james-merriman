@@ -39,7 +39,7 @@ export const GalleryImage = ({ photo }: Props) => {
           overlays={[
             {
               publicId: "james-merriman-watermark",
-              width: "2",
+              width: "1.5",
               crop: "scale",
               effects: [{ name: "opacity", value: 40 }],
               position: { gravity: "center" },

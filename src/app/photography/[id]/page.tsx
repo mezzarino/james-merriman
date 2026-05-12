@@ -18,7 +18,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const photo = await getPhotoById(params.id);
+  const publicId = `photography/${params.id}`;
+  const photo = await getPhotoById(publicId);
 
   const canonicalUrl = `${config.baseUrl}/photography/${params.id}`;
   const ogImage = generateOGImage(photo!.public_id, photo!.alt);
@@ -56,7 +57,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const Page = async ({ params }: Props) => {
-  const photo = await getPhotoById(params.id);
+  const publicId = `photography/${params.id}`;
+  const photo = await getPhotoById(publicId);
 
   if (!photo) {
     notFound();
@@ -76,7 +78,7 @@ const Page = async ({ params }: Props) => {
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
-  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_1.2,g_center,o_40/v${mappedPhoto.version}/${mappedPhoto.public_id}.${mappedPhoto.format}`;
+  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_1.5,g_center,o_40/v${mappedPhoto.version}/${mappedPhoto.public_id}.${mappedPhoto.format}`;
 
   return (
     <main className="container mx-auto px-4 py-10 max-w-4xl">
