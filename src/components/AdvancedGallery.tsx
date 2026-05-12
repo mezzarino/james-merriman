@@ -91,6 +91,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
             photo={visible[activeIndex]}
             nextPhoto={visible[activeIndex + 1]}
             prevPhoto={visible[activeIndex - 1]}
+            nextNextPhoto={visible[activeIndex + 2]}
             onClose={() => setActiveIndex(null)}
             onNext={() => setActiveIndex((i) => (i !== null && i < visible.length - 1 ? i + 1 : i))}
             onPrev={() => setActiveIndex((i) => (i !== null && i > 0 ? i - 1 : i))}
