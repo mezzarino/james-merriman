@@ -144,7 +144,7 @@ export const Lightbox = ({
               {
                 publicId: "james-merriman-watermark",
 
-                width: "1.2",
+                width: "2",
                 crop: "scale",
 
                 effects: [

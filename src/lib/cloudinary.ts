@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
+import { cache } from "react";
 
 import { CloudinaryResource } from "@/types/cloudinary";
 import { Photo } from "@/types/photo";
@@ -32,3 +33,21 @@ export async function getPhotos(): Promise<Photo[]> {
     version: img.version,
   }));
 }
+
+export const getPhotoById = cache(async (id: string): Promise<Photo | null> => {
+  const img = await cloudinary.api.resource(id).catch(() => null);
+
+  if (!img) return null;
+
+  return {
+    public_id: img.public_id,
+    width: img.width,
+    height: img.height,
+    alt: img.context?.alt || img.public_id.replace(/-/g, " "),
+    category: img.tags?.[0] || "uncategorised",
+    tags: img.tags || [],
+    created_at: img.created_at,
+    format: img.format || "jpg",
+    version: img.version,
+  };
+});

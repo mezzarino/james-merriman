@@ -1,3 +1,5 @@
+export const revalidate = 3600;
+
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,7 +7,7 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 
 import { config } from "@/config";
-import { getPhotos } from "@/lib/cloudinary";
+import { getPhotoById } from "@/lib/cloudinary";
 import { generateOGImage } from "@/lib/og";
 import { Photo } from "@/types/photo";
 
@@ -16,17 +18,14 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const photos = await getPhotos();
-  const photo = photos.find((p) => p.public_id === params.id);
-
-  if (!photo) return {};
+  const photo = await getPhotoById(params.id);
 
   const canonicalUrl = `${config.baseUrl}/photography/${params.id}`;
-  const ogImage = generateOGImage(photo.public_id, photo.alt);
+  const ogImage = generateOGImage(photo!.public_id, photo!.alt);
 
   return {
-    title: photo.alt,
-    description: photo.alt,
+    title: photo!.alt,
+    description: photo!.alt,
 
     alternates: {
       canonical: canonicalUrl,
@@ -34,41 +33,50 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     openGraph: {
       type: "article",
-      url: canonicalUrl, // ✅ also important
-      title: photo.alt,
-      description: photo.alt,
+      url: canonicalUrl,
+      title: photo!.alt,
+      description: photo!.alt,
       images: [
         {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: photo.alt,
+          alt: photo!.alt,
         },
       ],
     },
 
     twitter: {
       card: "summary_large_image",
-      title: photo.alt,
-      description: photo.alt,
+      title: photo!.alt,
+      description: photo!.alt,
       images: [ogImage],
     },
   };
 }
 
 const Page = async ({ params }: Props) => {
-  const photos = await getPhotos();
-  const photo = photos.find(
-    (p: Photo) => p.public_id === params.id || p.public_id.endsWith(`/${params.id}`),
-  );
+  const photo = await getPhotoById(params.id);
 
   if (!photo) {
     notFound();
   }
 
+  const mappedPhoto: Photo = {
+    public_id: photo!.public_id,
+    width: photo!.width,
+    height: photo!.height,
+    alt: photo!.alt || photo!.public_id.replace(/-/g, " "),
+    category: photo!.tags?.[0] || "uncategorised",
+    tags: photo!.tags || [],
+    created_at: photo!.created_at,
+    format: photo!.format || "jpg",
+    version: photo!.version,
+  };
+
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
-  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_1.2,g_center,o_40/v${photo.version}/${photo.public_id}.${photo.format}`;
+  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_1.2,g_center,o_40/v${mappedPhoto.version}/${mappedPhoto.public_id}.${mappedPhoto.format}`;
 
   return (
     <main className="container mx-auto px-4 py-10 max-w-4xl">
@@ -81,7 +89,6 @@ const Page = async ({ params }: Props) => {
             width={photo.width}
             height={photo.height}
             className="rounded-lg w-full h-auto object-contain"
-            // ✅ Performance
             priority
             sizes="(max-width: 768px) 100vw, 800px"
           />

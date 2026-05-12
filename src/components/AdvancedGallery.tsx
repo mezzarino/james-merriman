@@ -51,10 +51,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
               onClick={() => setActiveIndex(i)}
             >
               <motion.div className="overflow-hidden rounded-lg">
-                <figure>
-                  <GalleryImage photo={photo} />
-                  <figcaption className="mt-2 text-sm text-gray-600">{photo.alt}</figcaption>
-                </figure>
+                <GalleryImage photo={photo} />
               </motion.div>
             </motion.li>
           ))}
