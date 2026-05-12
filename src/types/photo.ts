@@ -6,4 +6,5 @@ export type Photo = {
   category: string;
   created_at?: string;
   format?: string;
+  version: number;
 };

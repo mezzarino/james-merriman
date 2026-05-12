@@ -4,6 +4,7 @@ export type CloudinaryResource = {
   height: number;
   created_at?: string;
   format: string;
+  version: number;
 
   context?: {
     custom?: {

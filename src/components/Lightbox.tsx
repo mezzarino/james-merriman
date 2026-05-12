@@ -129,7 +129,8 @@ export const Lightbox = ({
           {/* ✅ Cloudinary image */}
           <CldImage
             key={photo.public_id}
-            src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.public_id}.${photo.format || "jpg"}`}
+            src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
+            preserveTransformations
             alt={photo.alt}
             width={photo.width}
             height={photo.height}

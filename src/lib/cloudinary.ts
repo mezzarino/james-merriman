@@ -27,5 +27,6 @@ export async function getPhotos(): Promise<Photo[]> {
     category: img.context?.custom?.category || "all",
     created_at: img.created_at,
     format: img.format || "jpg",
+    version: img.version,
   }));
 }
