@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
@@ -62,19 +63,26 @@ const Page = async ({ params }: Props) => {
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
-  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/${photo.public_id}`;
+  // ✅ ✅ WATERMARKED CLOUDINARY URL
+  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_200,g_south_east,x_20,y_20,o_60/${photo.public_id}.jpg`;
 
   return (
     <main className="container mx-auto px-4 py-10 max-w-4xl">
       <article>
         <figure>
-          <img
+          {/* ✅ Next Image with watermark */}
+          <Image
             src={imageUrl}
             alt={photo.alt}
             width={photo.width}
             height={photo.height}
-            className="rounded-lg w-full h-auto"
+            className="rounded-lg w-full h-auto object-contain"
+            // ✅ Performance
+            priority
+            sizes="(max-width: 768px) 100vw, 800px"
           />
+
+          {/* ✅ Caption (SEO boost) */}
           <figcaption className="mt-4 text-sm text-gray-500">{photo.alt}</figcaption>
         </figure>
 
@@ -82,11 +90,11 @@ const Page = async ({ params }: Props) => {
 
         <p className="mt-4 text-gray-700">A travel photograph captured by James Merriman.</p>
 
-        {/* ✅ Licencing CTA */}
+        {/* ✅ Licensing CTA */}
         <section className="mt-10 p-6 bg-gray-100 rounded-lg text-center">
           <h2 className="text-xl font-semibold">Licence this image</h2>
 
-          <p className="mt-2">Available for editorial and commercial licencing.</p>
+          <p className="mt-2">Available for editorial and commercial licensing.</p>
 
           <Link href="/contact" className="inline-block mt-4 px-6 py-3 bg-black text-white rounded">
             Enquire Now
@@ -94,7 +102,7 @@ const Page = async ({ params }: Props) => {
         </section>
       </article>
 
-      {/* ✅ Structured Data (ImageObject) */}
+      {/* ✅ ✅ Structured Data (Enhanced ImageObject) */}
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

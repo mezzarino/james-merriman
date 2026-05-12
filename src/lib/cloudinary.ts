@@ -11,7 +11,7 @@ cloudinary.config({
 
 export async function getPhotos(): Promise<Photo[]> {
   const res = await cloudinary.search
-    .expression("resource_type:image")
+    .expression("folder:photography")
     .with_field("context")
     .sort_by("created_at", "desc")
     .max_results(60)
@@ -23,8 +23,8 @@ export async function getPhotos(): Promise<Photo[]> {
     public_id: img.public_id,
     width: img.width,
     height: img.height,
-    alt: img.context?.custom?.alt || "Photography by James Merriman",
-    category: img.context?.custom?.category || "all",
+    alt: img.alt || "Photography by James Merriman",
+    category: img.category || "Latest photos",
     created_at: img.created_at,
     format: img.format || "jpg",
     version: img.version,

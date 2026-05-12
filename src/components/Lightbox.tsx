@@ -140,6 +140,26 @@ export const Lightbox = ({
             format="auto"
             loading="eager"
             onLoad={() => setIsLoading(false)}
+            overlays={[
+              {
+                publicId: "james-merriman-watermark",
+                width: 0.25,
+                crop: "scale",
+
+                effects: [
+                  {
+                    name: "opacity",
+                    value: 60,
+                  },
+                ],
+
+                position: {
+                  gravity: "south_east",
+                  x: 30,
+                  y: 30,
+                },
+              },
+            ]}
             className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
               isLoading ? "opacity-0" : "opacity-100"
             }`}

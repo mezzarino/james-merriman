@@ -62,6 +62,24 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
                     format="auto"
                     loading="lazy"
                     decoding="async"
+                    overlays={[
+                      {
+                        publicId: "james-merriman-watermark",
+
+                        effects: [
+                          {
+                            name: "opacity",
+                            value: 60,
+                          },
+                        ],
+
+                        position: {
+                          gravity: "south_east",
+                          x: 20,
+                          y: 20,
+                        },
+                      },
+                    ]}
                     className="w-full h-auto object-cover"
                     title={photo.alt}
                   />
