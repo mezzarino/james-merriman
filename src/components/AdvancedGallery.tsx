@@ -22,7 +22,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
 
   return (
     <>
-      {/* ✅ Filters */}
+      {/* Filters */}
       <div className="mb-6 flex flex-wrap gap-3">
         {categories.map((cat) => (
           <button
@@ -40,39 +40,40 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
         ))}
       </div>
 
-      {/* ✅ Masonry Layout */}
-      <motion.ul layout className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+      {/* Masonry */}
+      <motion.ul className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         <AnimatePresence>
           {visible.map((photo, i) => (
             <motion.li
               key={photo.public_id}
-              layout
               className="break-inside-avoid cursor-pointer"
               onClick={() => setActiveIndex(i)}
             >
-              <motion.div
-                layoutId={photo.public_id}
-                whileHover={{ scale: 1.03 }}
-                className="overflow-hidden rounded-lg"
-              >
-                <CldImage
-                  src={photo.public_id}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                  quality="auto"
-                  format="auto"
-                  className="w-full h-auto object-cover"
-                />
+              <motion.div className="overflow-hidden rounded-lg">
+                <figure>
+                  <CldImage
+                    src={`${photo.public_id}.${photo.format}`}
+                    alt={photo.alt}
+                    width={photo.width}
+                    height={photo.height}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    quality="auto"
+                    format="auto"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto object-cover"
+                    title={photo.alt}
+                  />
+
+                  <figcaption className="mt-2 text-sm text-gray-600">{photo.alt}</figcaption>
+                </figure>
               </motion.div>
             </motion.li>
           ))}
         </AnimatePresence>
       </motion.ul>
 
-      {/* ✅ Load More */}
+      {/* Load More */}
       {visibleCount < filtered.length && (
         <div className="text-center mt-8">
           <button
@@ -84,7 +85,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
         </div>
       )}
 
-      {/* ✅ Lightbox */}
+      {/* Lightbox */}
       <AnimatePresence>
         {activeIndex !== null && (
           <Lightbox

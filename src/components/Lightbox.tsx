@@ -32,20 +32,24 @@ export const Lightbox = ({
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
-  const buildUrl = (id: string) =>
-    `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${id}`;
+  const buildUrl = (id: string, format?: string) =>
+    `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${id}.${format || "jpg"}`;
 
-  const buildBlurUrl = (id: string) =>
-    `https://res.cloudinary.com/${cloudName}/image/upload/w_50,q_10,e_blur:1000/${id}`;
+  const buildBlurUrl = (id: string, format?: string) =>
+    `https://res.cloudinary.com/${cloudName}/image/upload/w_50,q_10,e_blur:1000/${id}.${
+      format || "jpg"
+    }`;
 
-  // ✅ Keyboard navigation only (safe useEffect)
+  // ✅ Keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+
       if (e.key === "ArrowRight") {
         setDirection("next");
         onNext();
       }
+
       if (e.key === "ArrowLeft") {
         setDirection("prev");
         onPrev();
@@ -59,12 +63,21 @@ export const Lightbox = ({
   return (
     <>
       {/* ✅ Preload adjacent */}
-      {nextPhoto && <link rel="preload" as="image" href={buildUrl(nextPhoto.public_id)} />}
-      {prevPhoto && <link rel="preload" as="image" href={buildUrl(prevPhoto.public_id)} />}
+      {nextPhoto && (
+        <link rel="preload" as="image" href={buildUrl(nextPhoto.public_id, nextPhoto.format)} />
+      )}
+
+      {prevPhoto && (
+        <link rel="preload" as="image" href={buildUrl(prevPhoto.public_id, prevPhoto.format)} />
+      )}
 
       {/* ✅ Direction-aware preload */}
       {direction === "next" && nextNextPhoto && (
-        <link rel="preload" as="image" href={buildUrl(nextNextPhoto.public_id)} />
+        <link
+          rel="preload"
+          as="image"
+          href={buildUrl(nextNextPhoto.public_id, nextNextPhoto.format)}
+        />
       )}
 
       <motion.div
@@ -76,7 +89,7 @@ export const Lightbox = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        {/* Close */}
+        {/* ✅ Close button */}
         <button
           onClick={onClose}
           className="absolute top-6 right-6 text-white text-2xl"
@@ -85,7 +98,7 @@ export const Lightbox = ({
           ✕
         </button>
 
-        {/* Image container */}
+        {/* ✅ Image container */}
         <motion.div
           layoutId={photo.public_id}
           drag="x"
@@ -95,6 +108,7 @@ export const Lightbox = ({
               setDirection("next");
               onNext();
             }
+
             if (info.offset.x > 100) {
               setDirection("prev");
               onPrev();
@@ -105,24 +119,25 @@ export const Lightbox = ({
           }
           className="relative max-w-5xl w-full px-4 flex items-center justify-center"
         >
-          {/* ✅ Spinner */}
+          {/* ✅ Loading spinner */}
           {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
               <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
             </div>
           )}
 
-          {/* ✅ Key-based reset fixes React warning */}
+          {/* ✅ Cloudinary image */}
           <CldImage
-            key={photo.public_id} // 🔥 IMPORTANT FIX
-            src={photo.public_id}
+            key={photo.public_id}
+            src={`${photo.public_id}.${photo.format || "jpg"}`}
             alt={photo.alt}
             width={photo.width}
             height={photo.height}
             placeholder="blur"
-            blurDataURL={buildBlurUrl(photo.public_id)}
+            blurDataURL={buildBlurUrl(photo.public_id, photo.format)}
             quality="auto"
             format="auto"
+            loading="eager"
             onLoad={() => setIsLoading(false)}
             className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
               isLoading ? "opacity-0" : "opacity-100"
@@ -130,7 +145,7 @@ export const Lightbox = ({
           />
         </motion.div>
 
-        {/* Navigation */}
+        {/* ✅ Navigation */}
         <button
           onClick={onPrev}
           className="absolute left-6 text-white text-3xl"

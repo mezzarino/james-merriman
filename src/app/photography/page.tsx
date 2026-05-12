@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 import { AdvancedGallery } from "@/components/AdvancedGallery";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
@@ -52,7 +53,6 @@ export const metadata: Metadata = {
 
 const Page = async () => {
   const photos = await getPhotos();
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   return (
     <>
@@ -102,7 +102,7 @@ const Page = async () => {
         </section>
 
         {/* ✅ ✅ Structured Data */}
-        <script
+        <Script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -111,19 +111,29 @@ const Page = async () => {
               name: "James Merriman Photography Portfolio",
               description: "Travel and landscape photography portfolio by James Merriman.",
               url: `${config.baseUrl}/photography`,
+
               author: {
                 "@type": "Person",
                 name: "James Merriman",
               },
 
-              image: photos.slice(0, 20).map((photo: Photo) => ({
+              hasPart: photos.slice(0, 20).map((photo: Photo) => ({
                 "@type": "ImageObject",
-                contentUrl: `https://res.cloudinary.com/${cloudName}/image/upload/${photo.public_id}`,
+
+                contentUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${photo.public_id}.${photo.format}`,
+
                 thumbnailUrl: generateOGImage(photo.public_id, photo.alt),
+
                 name: photo.alt,
                 description: photo.alt,
+
                 width: photo.width,
                 height: photo.height,
+
+                creator: {
+                  "@type": "Person",
+                  name: "James Merriman",
+                },
               })),
             }),
           }}

@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
+import { config } from "@/config";
 import { getPhotos } from "@/lib/cloudinary";
 import { generateOGImage } from "@/lib/og";
 import { Photo } from "@/types/photo";
@@ -93,21 +95,28 @@ const Page = async ({ params }: Props) => {
       </article>
 
       {/* ✅ Structured Data (ImageObject) */}
-      <script
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ImageObject",
+
             contentUrl: imageUrl,
+
             name: photo.alt,
             description: photo.alt,
+
             width: photo.width,
             height: photo.height,
+
             creator: {
               "@type": "Person",
               name: "James Merriman",
             },
+
+            copyrightNotice: "© James Merriman",
+            license: `${config.baseUrl}/contact`,
           }),
         }}
       />

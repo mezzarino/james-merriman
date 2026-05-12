@@ -5,4 +5,5 @@ export type Photo = {
   alt: string;
   category: string;
   created_at?: string;
+  format?: string;
 };

@@ -26,5 +26,6 @@ export async function getPhotos(): Promise<Photo[]> {
     alt: img.context?.custom?.alt || "Photography by James Merriman",
     category: img.context?.custom?.category || "all",
     created_at: img.created_at,
+    format: img.format || "jpg",
   }));
 }
