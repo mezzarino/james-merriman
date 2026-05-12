@@ -143,7 +143,8 @@ export const Lightbox = ({
             overlays={[
               {
                 publicId: "james-merriman-watermark",
-                width: 200,
+
+                width: 0.5,
                 crop: "scale",
 
                 effects: [
@@ -154,9 +155,7 @@ export const Lightbox = ({
                 ],
 
                 position: {
-                  gravity: "south_east",
-                  x: 30,
-                  y: 30,
+                  gravity: "center",
                 },
               },
             ]}

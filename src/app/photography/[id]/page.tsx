@@ -63,8 +63,7 @@ const Page = async ({ params }: Props) => {
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
-  // ✅ ✅ WATERMARKED CLOUDINARY URL
-  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_200,g_south_east,x_20,y_20,o_60/${photo.version}/${photo.public_id}.${photo.format}`;
+  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_0.5,g_center,o_60/v${photo.version}/${photo.public_id.split("/").pop()}.${photo.format}`;
 
   return (
     <main className="container mx-auto px-4 py-10 max-w-4xl">

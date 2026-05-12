@@ -66,7 +66,8 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
                     overlays={[
                       {
                         publicId: "james-merriman-watermark",
-                        width: 200,
+
+                        width: 0.5,
                         crop: "scale",
 
                         effects: [
@@ -77,9 +78,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
                         ],
 
                         position: {
-                          gravity: "south_east",
-                          x: 20,
-                          y: 20,
+                          gravity: "center", // ✅ central watermark
                         },
                       },
                     ]}
