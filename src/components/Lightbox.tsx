@@ -143,7 +143,7 @@ export const Lightbox = ({
             overlays={[
               {
                 publicId: "james-merriman-watermark",
-                width: 0.25,
+                width: 200,
                 crop: "scale",
 
                 effects: [

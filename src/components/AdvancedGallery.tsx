@@ -65,6 +65,8 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
                     overlays={[
                       {
                         publicId: "james-merriman-watermark",
+                        width: 200,
+                        crop: "scale",
 
                         effects: [
                           {

@@ -57,7 +57,7 @@ const Page = async () => {
   return (
     <>
       <FullWidthHeader
-        title="Photography"
+        title="Travel Photography"
         description="A curated collection of travel and landscape photography."
         breadcrumb={[
           { label: "Home", href: "/" },
@@ -68,8 +68,6 @@ const Page = async () => {
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main">
         {/* ✅ Intro content (SEO boost) */}
         <article className="prose prose-lg max-w-none mb-10">
-          <h1>Travel Photography</h1>
-
           <p>
             This portfolio showcases a selection of my travel and landscape photography, capturing
             places, people and moments from around the world.
