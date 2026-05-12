@@ -6,76 +6,95 @@ import urlJoin from "url-join";
 
 import { config } from "@/config";
 
+import { getPhotos } from "../lib/cloudinary";
 import { wisp } from "../lib/wisp";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const postsResult = await wisp.getPosts({
-    limit: "all",
-  });
-
+  const postsResult = await wisp.getPosts({ limit: "all" });
   const tagsResult = await wisp.getTags();
+  const photos = await getPhotos();
+
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   return [
+    // ✅ Core pages
     {
       url: config.baseUrl,
       lastModified: new Date("2026-04-28"),
       priority: 1.0,
     },
-
     {
       url: urlJoin(config.baseUrl, "publications"),
       lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
-
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
       lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
-
+    {
+      url: urlJoin(config.baseUrl, "photography"),
+      lastModified: new Date("2026-05-11"),
+      priority: 0.8,
+    },
     {
       url: urlJoin(config.baseUrl, "about"),
       lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
-
     {
       url: urlJoin(config.baseUrl, "credentials"),
       lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
-
     {
       url: urlJoin(config.baseUrl, "contact"),
       lastModified: new Date("2026-04-30"),
       priority: 0.8,
     },
-
     {
       url: urlJoin(config.baseUrl, "category"),
       lastModified: new Date("2026-04-30"),
       priority: 0.6,
     },
 
+    // ✅ Blog posts
     ...postsResult.posts.map((post) => ({
       url: urlJoin(config.baseUrl, "post", post.slug),
       lastModified: new Date(post.updatedAt || post.publishedAt || post.createdAt),
       priority: 0.7,
     })),
 
+    // ✅ Tags
     ...tagsResult.tags.map((tag) => ({
       url: urlJoin(config.baseUrl, "category", tag.name),
       lastModified: new Date("2026-05-03"),
       priority: 0.5,
     })),
 
+    // ✅ ✅ Photography individual pages
+    ...photos.map((photo) => {
+      const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/${photo.public_id}`;
+
+      return {
+        url: urlJoin(config.baseUrl, "photography", photo.public_id),
+
+        lastModified: photo.created_at ? new Date(photo.created_at) : new Date(),
+
+        priority: 0.6,
+
+        // ✅ Correct format for Next.js
+        images: [imageUrl],
+      };
+    }),
+
+    // ✅ Legal / utility pages (RESTORED ✅)
     {
       url: urlJoin(config.baseUrl, "privacy-policy"),
       lastModified: new Date("2026-05-07"),
       priority: 0.4,
     },
-
     {
       url: urlJoin(config.baseUrl, "accessibility"),
       lastModified: new Date("2026-05-07"),

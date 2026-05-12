@@ -1,6 +1,6 @@
 {
   "name": "james-merriman",
-  "version": "6.1.0",
+  "version": "7.0.0",
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -32,11 +32,14 @@
     "@wisp-cms/react-custom-component": "^0.0.1",
     "axios": "^1.16.0",
     "class-variance-authority": "^0.7.1",
+    "cloudinary": "^2.10.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
+    "framer-motion": "^12.38.0",
     "html-react-parser": "^6.1.0",
     "lucide-react": "^0.451.0",
     "next": "^16.2.6",
+    "next-cloudinary": "^6.17.5",
     "node-html-parser": "^6.1.13",
     "react": "19.2.4",
     "react-dom": "19.2.4",
