@@ -57,8 +57,8 @@ const Page = async () => {
   return (
     <>
       <FullWidthHeader
-        title="Travel Photography"
-        description="A curated collection of travel and landscape photography."
+        title="Travel Photography Portfolio of Landscapes and Cultures from Remote Places"
+        description="A curated portfolio of travel and landscape photography documenting remote regions and natural environments across the world"
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "Photography", href: "/photography" },
