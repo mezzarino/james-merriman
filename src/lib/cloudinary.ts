@@ -11,7 +11,7 @@ cloudinary.config({
 
 export async function getPhotos(): Promise<Photo[]> {
   const res = await cloudinary.search
-    .expression("folder:photography")
+    .expression("public_id:*")
     .with_field("context")
     .sort_by("created_at", "desc")
     .max_results(60)
