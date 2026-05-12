@@ -13,21 +13,21 @@ export function proxy(request: NextRequest) {
 
   // Define the strict CSP including the Wisp connection and nonce
   const cspHeader = `
-    default-src 'self';
-    connect-src 'self' https://www.wisp.blog https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com;
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://imagedelivery.net;
-    font-src 'self';
-    frame-src 'none';
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'none';
-    upgrade-insecure-requests;
-    report-uri /api/csp-report;
-    report-to csp-endpoint;
-  `
+  default-src 'self';
+  connect-src 'self' https://www.wisp.blog https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com;
+  script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https://imagedelivery.net https://res.cloudinary.com;
+  font-src 'self';
+  frame-src 'none';
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'none';
+  upgrade-insecure-requests;
+  report-uri /api/csp-report;
+  report-to csp-endpoint;
+`
     .replace(/\s{2,}/g, " ")
     .trim();
 
