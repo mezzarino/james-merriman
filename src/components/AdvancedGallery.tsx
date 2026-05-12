@@ -14,9 +14,10 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
   const [filter, setFilter] = useState<string>("all");
   const [visibleCount, setVisibleCount] = useState<number>(15);
 
-  const categories = ["all", ...new Set(photos.map((p) => p.category))];
+  const categories = ["Latest photos", ...Array.from(new Set(photos.flatMap((p) => p.tags || [])))];
 
-  const filtered = filter === "all" ? photos : photos.filter((p) => p.category === filter);
+  const filtered =
+    filter === "Latest photos" ? photos : photos.filter((p) => p.tags?.includes(filter));
 
   const visible = filtered.slice(0, visibleCount);
 

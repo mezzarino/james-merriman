@@ -5,6 +5,7 @@ export type CloudinaryResource = {
   created_at?: string;
   format: string;
   version: number;
+  tags?: string[];
   context?: {
     alt?: string;
     category?: string;
