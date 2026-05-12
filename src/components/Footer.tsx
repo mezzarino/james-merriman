@@ -37,69 +37,64 @@ export const Footer = () => {
         <SocialLinks />
       </div>
 
-      {/* ✅ Footer content */}
-      <div className="flex flex-col gap-6">
-        {/* ✅ Top row */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          {/* Copyright */}
-          <div className="text-sm text-center sm:text-left text-muted-foreground">
-            © {config.organization} {new Date().getFullYear()}
-          </div>
-
-          {/* Navigation */}
-          <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm md:text-base text-muted-foreground">
-              {MAIN_NAV.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-
-        {/* ✅ Divider */}
-        <div className="border-t border-border/50 pt-4" />
-
-        {/* ✅ Bottom row */}
-        <div className="flex flex-col items-center gap-4 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          {/* Utility links */}
-          <ul className="flex flex-wrap justify-center gap-3">
-            <li>
+      {/* ✅ Footer navigation (NOW CENTERED UNDER SOCIALS) */}
+      <nav aria-label="Footer navigation" className="mb-8">
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm md:text-base text-muted-foreground">
+          {MAIN_NAV.map((item) => (
+            <li key={item.href}>
               <Link
-                href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-foreground"
+                href={item.href}
+                className="hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                Powered by Wisp
+                {item.label}
               </Link>
             </li>
+          ))}
+        </ul>
+      </nav>
 
-            <li>
-              <Link href="/privacy-policy" className="hover:text-foreground">
-                Privacy Policy
-              </Link>
-            </li>
+      {/* ✅ Divider */}
+      <div className="border-t border-border/50 pt-6" />
 
-            <li>
-              <Link href="/accessibility" className="hover:text-foreground">
-                Accessibility
-              </Link>
-            </li>
-          </ul>
+      {/* ✅ Bottom row: utilities + copyright */}
+      <div className="flex flex-col items-center gap-4 text-xs text-muted-foreground sm:flex-row sm:justify-between">
+        {/* Utility links */}
+        <ul className="flex flex-wrap justify-center gap-4">
+          <li>
+            <Link
+              href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground"
+            >
+              Powered by Wisp
+            </Link>
+          </li>
 
-          {/* RSS button */}
+          <li>
+            <Link href="/privacy-policy" className="hover:text-foreground">
+              Privacy Policy
+            </Link>
+          </li>
+
+          <li>
+            <Link href="/accessibility" className="hover:text-foreground">
+              Accessibility
+            </Link>
+          </li>
+        </ul>
+
+        {/* ✅ RSS + copyright grouped together */}
+        <div className="flex items-center gap-3">
           <Link href="/rss">
             <Button variant="ghost" size="icon" aria-label="RSS feed">
               <Rss className="h-4 w-4" />
             </Button>
           </Link>
+
+          <span className="text-muted-foreground">
+            © {config.organization} {new Date().getFullYear()}
+          </span>
         </div>
       </div>
     </footer>
