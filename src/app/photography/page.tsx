@@ -97,7 +97,7 @@ const Page = async () => {
           </p>
 
           <Link href="/contact" className="inline-block mt-6 px-6 py-3 bg-black text-white rounded">
-            Enquire About Licensing
+            Enquire About Licencing
           </Link>
         </section>
 
