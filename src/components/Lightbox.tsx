@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CldImage } from "next-cloudinary";
 import { useEffect, useState } from "react";
 
@@ -26,19 +26,15 @@ export const Lightbox = ({
   onPrev,
 }: LightboxProps) => {
   const shouldReduceMotion = useReducedMotion();
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [direction, setDirection] = useState<"next" | "prev" | null>(null);
-
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+  const [direction, setDirection] = useState<"next" | "prev" | null>(null);
 
   const buildUrl = (id: string, format?: string) =>
     `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${id}.${format || "jpg"}`;
 
   const buildBlurUrl = (id: string, format?: string) =>
-    `https://res.cloudinary.com/${cloudName}/image/upload/w_50,q_10,e_blur:1000/${id}.${
-      format || "jpg"
-    }`;
+    `https://res.cloudinary.com/${cloudName}/image/upload/w_50,q_10,e_blur:1000/${id}.${format || "jpg"}`;
 
   // ✅ Keyboard navigation
   useEffect(() => {
@@ -62,7 +58,7 @@ export const Lightbox = ({
 
   return (
     <>
-      {/* ✅ Preload adjacent */}
+      {/* ✅ Preload next + prev */}
       {nextPhoto && (
         <link rel="preload" as="image" href={buildUrl(nextPhoto.public_id, nextPhoto.format)} />
       )}
@@ -71,7 +67,7 @@ export const Lightbox = ({
         <link rel="preload" as="image" href={buildUrl(prevPhoto.public_id, prevPhoto.format)} />
       )}
 
-      {/* ✅ Direction-aware preload */}
+      {/* ✅ Preload next-next (direction aware) */}
       {direction === "next" && nextNextPhoto && (
         <link
           rel="preload"
@@ -80,6 +76,7 @@ export const Lightbox = ({
         />
       )}
 
+      {/* ✅ Lightbox overlay */}
       <motion.div
         className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
         role="dialog"
@@ -89,7 +86,7 @@ export const Lightbox = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        {/* ✅ Close button */}
+        {/* Close */}
         <button
           onClick={onClose}
           className="absolute top-6 right-6 text-white text-2xl"
@@ -99,75 +96,67 @@ export const Lightbox = ({
         </button>
 
         {/* ✅ Image container */}
-        <motion.div
-          layoutId={photo.public_id}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          onDragEnd={(e, info) => {
-            if (info.offset.x < -100) {
-              setDirection("next");
-              onNext();
-            }
+        <div className="relative max-w-5xl w-full px-4 flex items-center justify-center cursor-grab active:cursor-grabbing">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={photo.public_id}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              onDragEnd={(e, info) => {
+                const offset = info.offset.x;
+                const velocity = info.velocity.x;
 
-            if (info.offset.x > 100) {
-              setDirection("prev");
-              onPrev();
-            }
-          }}
-          transition={
-            shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 30 }
-          }
-          className="relative max-w-5xl w-full px-4 flex items-center justify-center"
-        >
-          {/* ✅ Loading spinner */}
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-              <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin" />
-            </div>
-          )}
+                if (offset < -80 || velocity < -500) {
+                  setDirection("next");
+                  onNext();
+                }
 
-          {/* ✅ Cloudinary image */}
-          <CldImage
-            key={photo.public_id}
-            src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
-            preserveTransformations
-            alt={photo.alt}
-            width={photo.width}
-            height={photo.height}
-            placeholder="blur"
-            blurDataURL={buildBlurUrl(photo.public_id, photo.format)}
-            quality="auto"
-            format="auto"
-            loading="eager"
-            onLoad={() => setIsLoading(false)}
-            overlays={[
-              {
-                publicId: "james-merriman-watermark",
-
-                width: "1.5",
-                crop: "scale",
-
-                effects: [
+                if (offset > 80 || velocity > 500) {
+                  setDirection("prev");
+                  onPrev();
+                }
+              }}
+              className="relative w-full flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.02 }}
+              transition={
+                shouldReduceMotion ? { duration: 0 } : { duration: 0.25, ease: "easeInOut" }
+              }
+            >
+              {/* ✅ Progressive blur image */}
+              <CldImage
+                src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
+                preserveTransformations
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                placeholder="blur"
+                blurDataURL={buildBlurUrl(photo.public_id, photo.format)}
+                quality="auto"
+                format="auto"
+                loading="eager"
+                overlays={[
                   {
-                    name: "opacity",
-                    value: 40,
+                    publicId: "james-merriman-watermark",
+                    width: "1.5",
+                    crop: "scale",
+                    effects: [{ name: "opacity", value: 40 }],
+                    position: { gravity: "center" },
                   },
-                ],
+                ]}
+                className="w-full h-auto object-contain rounded-lg"
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
-                position: {
-                  gravity: "center",
-                },
-              },
-            ]}
-            className={`w-full h-auto object-contain rounded-lg transition-opacity duration-300 ${
-              isLoading ? "opacity-0" : "opacity-100"
-            }`}
-          />
-        </motion.div>
-
-        {/* ✅ Navigation */}
+        {/* Navigation */}
         <button
-          onClick={onPrev}
+          onClick={() => {
+            setDirection("prev");
+            onPrev();
+          }}
           className="absolute left-6 text-white text-3xl"
           aria-label="Previous image"
         >
@@ -175,7 +164,10 @@ export const Lightbox = ({
         </button>
 
         <button
-          onClick={onNext}
+          onClick={() => {
+            setDirection("next");
+            onNext();
+          }}
           className="absolute right-6 text-white text-3xl"
           aria-label="Next image"
         >
