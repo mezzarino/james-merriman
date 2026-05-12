@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const Page = async ({ params }: Props) => {
   const photos = await getPhotos();
-  const photo = photos.find((p: Photo) => p.public_id === params.id);
+  const photo = photos.find((p: Photo) => p.public_id.replace("photography/", "") === params.id);
 
   if (!photo) {
     return (

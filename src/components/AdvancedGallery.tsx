@@ -11,7 +11,7 @@ import { Lightbox } from "./Lightbox";
 export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) => {
   const [photos] = useState<Photo[]>(initialPhotos);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [filter, setFilter] = useState<string>("all");
+  const [filter, setFilter] = useState<string>("Latest photos");
   const [visibleCount, setVisibleCount] = useState<number>(15);
 
   const categories = ["Latest photos", ...Array.from(new Set(photos.flatMap((p) => p.tags || [])))];
