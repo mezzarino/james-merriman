@@ -1,3 +1,5 @@
+export const revalidate = 300; // ✅ 5 minutes
+
 import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
