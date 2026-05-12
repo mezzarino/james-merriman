@@ -1,11 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
 import { useState } from "react";
 
 import { Photo } from "@/types/photo";
 
+import { GalleryImage } from "./GalleryImage";
 import { Lightbox } from "./Lightbox";
 
 export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) => {
@@ -52,40 +52,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
             >
               <motion.div className="overflow-hidden rounded-lg">
                 <figure>
-                  <CldImage
-                    src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
-                    preserveTransformations
-                    alt={photo.alt}
-                    width={photo.width}
-                    height={photo.height}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    quality="auto"
-                    format="auto"
-                    loading="lazy"
-                    decoding="async"
-                    overlays={[
-                      {
-                        publicId: "james-merriman-watermark",
-
-                        width: 0.5,
-                        crop: "scale",
-
-                        effects: [
-                          {
-                            name: "opacity",
-                            value: 60,
-                          },
-                        ],
-
-                        position: {
-                          gravity: "center", // ✅ central watermark
-                        },
-                      },
-                    ]}
-                    className="w-full h-auto object-cover"
-                    title={photo.alt}
-                  />
-
+                  <GalleryImage photo={photo} />
                   <figcaption className="mt-2 text-sm text-gray-600">{photo.alt}</figcaption>
                 </figure>
               </motion.div>

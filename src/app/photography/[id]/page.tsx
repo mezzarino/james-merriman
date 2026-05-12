@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Script from "next/script";
 
 import { config } from "@/config";
@@ -16,18 +17,24 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const photos = await getPhotos();
-  const photo = photos.find((p) => p.slug === params.id);
+  const photo = photos.find((p) => p.public_id === params.id);
 
   if (!photo) return {};
 
+  const canonicalUrl = `${config.baseUrl}/photography/${params.id}`;
   const ogImage = generateOGImage(photo.public_id, photo.alt);
 
   return {
     title: photo.alt,
     description: photo.alt,
 
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
     openGraph: {
       type: "article",
+      url: canonicalUrl, // ✅ also important
       title: photo.alt,
       description: photo.alt,
       images: [
@@ -51,19 +58,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const Page = async ({ params }: Props) => {
   const photos = await getPhotos();
-  const photo = photos.find((p: Photo) => p.slug === params.id);
+  const photo = photos.find(
+    (p: Photo) => p.public_id === params.id || p.public_id.endsWith(`/${params.id}`),
+  );
 
   if (!photo) {
-    return (
-      <main className="container mx-auto p-8">
-        <h1>Image not found</h1>
-      </main>
-    );
+    notFound();
   }
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
-  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_0.5,g_center,o_60/v${photo.version}/${photo.slug}`;
+  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/l_james-merriman-watermark,w_1.2,g_center,o_40/v${photo.version}/${photo.public_id}.${photo.format}`;
 
   return (
     <main className="container mx-auto px-4 py-10 max-w-4xl">
@@ -109,21 +114,35 @@ const Page = async ({ params }: Props) => {
             "@context": "https://schema.org",
             "@type": "ImageObject",
 
+            "@id": `${config.baseUrl}/photography/${params.id}`,
+
             contentUrl: imageUrl,
+            url: `${config.baseUrl}/photography/${params.id}`,
 
             name: photo.alt,
+            headline: photo.alt,
             description: photo.alt,
 
             width: photo.width,
             height: photo.height,
+
+            uploadDate: photo.created_at,
+
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${config.baseUrl}/photography/${params.id}`,
+            },
 
             creator: {
               "@type": "Person",
               name: "James Merriman",
             },
 
+            creditText: "James Merriman",
             copyrightNotice: "© James Merriman",
+
             license: `${config.baseUrl}/contact`,
+            acquireLicensePage: `${config.baseUrl}/contact`,
           }),
         }}
       />

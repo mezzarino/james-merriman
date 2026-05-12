@@ -1,6 +1,5 @@
 export type Photo = {
   public_id: string;
-  slug: string;
   width: number;
   height: number;
   alt: string;

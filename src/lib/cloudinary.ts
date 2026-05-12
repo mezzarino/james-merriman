@@ -22,7 +22,6 @@ export async function getPhotos(): Promise<Photo[]> {
 
   return resources.map((img) => ({
     public_id: img.public_id,
-    slug: img.public_id.split("/").pop() ?? img.public_id,
     width: img.width,
     height: img.height,
     alt: img.context?.alt || img.public_id.replace(/-/g, " ") || "Photography by James Merriman",

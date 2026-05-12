@@ -1,6 +1,5 @@
 export type CloudinaryResource = {
   public_id: string;
-  slug: string;
   width: number;
   height: number;
   created_at?: string;

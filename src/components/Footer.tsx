@@ -48,7 +48,7 @@ export const Footer = () => {
 
           {/* Navigation */}
           <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm md:text-base">
+            <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm md:text-base text-muted-foreground">
               {MAIN_NAV.map((item) => (
                 <li key={item.href}>
                   <Link
