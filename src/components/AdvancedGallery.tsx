@@ -20,6 +20,8 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
 
   const visible = filtered.slice(0, visibleCount);
 
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
   return (
     <>
       {/* Filters */}
@@ -52,7 +54,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
               <motion.div className="overflow-hidden rounded-lg">
                 <figure>
                   <CldImage
-                    src={`${photo.public_id}.${photo.format}`}
+                    src={`https://res.cloudinary.com/${cloudName}/image/upload/${photo.public_id}.${photo.format}`}
                     alt={photo.alt}
                     width={photo.width}
                     height={photo.height}
