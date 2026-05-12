@@ -62,7 +62,6 @@ export const Lightbox = ({
       {nextPhoto && (
         <link rel="preload" as="image" href={buildUrl(nextPhoto.public_id, nextPhoto.format)} />
       )}
-
       {prevPhoto && (
         <link rel="preload" as="image" href={buildUrl(prevPhoto.public_id, prevPhoto.format)} />
       )}
@@ -76,7 +75,7 @@ export const Lightbox = ({
         />
       )}
 
-      {/* ✅ Lightbox overlay */}
+      {/* ✅ Overlay */}
       <motion.div
         className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
         role="dialog"
@@ -86,45 +85,68 @@ export const Lightbox = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        {/* Close */}
+        {/* ✅ Close */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 text-white text-2xl"
+          className="absolute top-6 right-6 text-white text-2xl z-20"
           aria-label="Close image"
         >
           ✕
         </button>
 
+        {/* ✅ Click zones (desktop UX upgrade) */}
+        <button
+          onClick={() => {
+            setDirection("prev");
+            onPrev();
+          }}
+          className="absolute left-0 top-0 h-full w-1/2 z-10 cursor-w-resize focus:outline-none"
+          aria-label="Previous image"
+        />
+
+        <button
+          onClick={() => {
+            setDirection("next");
+            onNext();
+          }}
+          className="absolute right-0 top-0 h-full w-1/2 z-10 cursor-e-resize focus:outline-none"
+          aria-label="Next image"
+        />
+
         {/* ✅ Image container */}
-        <div className="relative max-w-5xl w-full px-4 flex items-center justify-center cursor-grab active:cursor-grabbing">
+        <div className="relative max-w-5xl w-full px-4 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
-              key={photo.public_id}
+              key={photo.public_id} // ✅ resets state & enables transitions
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
               onDragEnd={(e, info) => {
                 const offset = info.offset.x;
                 const velocity = info.velocity.x;
 
-                if (offset < -80 || velocity < -500) {
+                const SWIPE_THRESHOLD = 120;
+                const SWIPE_VELOCITY = 400;
+
+                if (offset < -SWIPE_THRESHOLD || velocity < -SWIPE_VELOCITY) {
                   setDirection("next");
                   onNext();
                 }
 
-                if (offset > 80 || velocity > 500) {
+                if (offset > SWIPE_THRESHOLD || velocity > SWIPE_VELOCITY) {
                   setDirection("prev");
                   onPrev();
                 }
               }}
-              className="relative w-full flex items-center justify-center"
+              // ✅ Crossfade animation
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
               transition={
                 shouldReduceMotion ? { duration: 0 } : { duration: 0.25, ease: "easeInOut" }
               }
+              className="relative w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
-              {/* ✅ Progressive blur image */}
               <CldImage
                 src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
                 preserveTransformations
@@ -139,7 +161,7 @@ export const Lightbox = ({
                 overlays={[
                   {
                     publicId: "james-merriman-watermark",
-                    width: "1.5",
+                    width: "1.5", // ✅ LARGE watermark
                     crop: "scale",
                     effects: [{ name: "opacity", value: 40 }],
                     position: { gravity: "center" },
@@ -151,13 +173,13 @@ export const Lightbox = ({
           </AnimatePresence>
         </div>
 
-        {/* Navigation */}
+        {/* ✅ Nav buttons */}
         <button
           onClick={() => {
             setDirection("prev");
             onPrev();
           }}
-          className="absolute left-6 text-white text-3xl"
+          className="absolute left-6 text-white text-3xl z-20"
           aria-label="Previous image"
         >
           ←
@@ -168,7 +190,7 @@ export const Lightbox = ({
             setDirection("next");
             onNext();
           }}
-          className="absolute right-6 text-white text-3xl"
+          className="absolute right-6 text-white text-3xl z-20"
           aria-label="Next image"
         >
           →
