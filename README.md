@@ -8,7 +8,7 @@
 ![pnpm](https://img.shields.io/badge/pnpm-latest-F69220)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A modern, fast, and accessibility‑focused personal travel writing platform built with **Next.js 16**, **TypeScript**, and **Wisp** as a headless CMS.  
+A modern, fast, and accessibility‑focused personal travel writing **and photography** platform built with **Next.js 16**, **TypeScript**, **Cloudinary**, and **Wisp** as a headless CMS.  
 Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm developer experience.
 
 ---
@@ -23,6 +23,7 @@ Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm
 - [🧪 Development](#-development)
 - [✅ Linting & Formatting](#-linting--formatting)
 - [📝 Content (Wisp CMS)](#-content-wisp-cms)
+- [📸 Photography](#-photography)
 - [📁 Project Structure](#-project-structure)
 - [🚀 Build for Production](#-build-for-production)
 - [📄 License](#-license)
@@ -33,14 +34,15 @@ Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm
 
 - ⚡ **Next.js 16** with App Router
 - 📝 **Wisp CMS** for long‑form writing
+- 📸 **Photography gallery** with filtering and lightbox
+- ☁️ **Cloudinary** image delivery with dynamic transforms and watermarking
 - 🎨 **Tailwind CSS** styling
 - 🧩 **shadcn/ui** component primitives
 - 🛡️ **TypeScript** end‑to‑end type safety
 - 🔍 **ESLint (Flat Config)** with strict rules
 - 🅰️ **Accessible by design** (WCAG 2.1 AA)
 - 📱 Fully responsive layout
-- 🌗 Dark mode support
-- 🚀 SEO‑friendly metadata & structured data
+- 🚀 SEO‑friendly metadata, Open Graph, and structured data
 
 ---
 
@@ -50,9 +52,10 @@ Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm
 
 - **Next.js 16** – App Router, Server Components, Metadata API
 
-### Content Management
+### Content & Media
 
-- **Wisp** – Markdown‑first headless CMS
+- **Wisp** – Markdown‑first headless CMS for writing
+- **Cloudinary** – Image hosting, optimisation, and transformations
 
 ### Styling & UI
 
@@ -76,7 +79,7 @@ Accessibility is treated as a first‑class concern:
 - WCAG 2.1 AA–compliant forms
 - Proper programmatic field purpose (`autocomplete`)
 - Visible focus states and sufficient control contrast
-- Keyboard‑friendly navigation
+- Keyboard‑friendly navigation (including galleries and lightbox)
 - Reduced‑motion support
 - Accessibility statement included
 
@@ -100,6 +103,7 @@ The project uses **behaviour‑focused testing**, not snapshot testing.
 - Forms (validation, focus management)
 - Core content rendering
 - Layout & landmarks
+- Photography gallery and lightbox behaviour
 - Accessibility regressions at component and page level
 
 ### CI
@@ -113,7 +117,7 @@ GitHub Actions enforce:
 
 Deployments to Vercel are **blocked if CI fails**.
 
-See `TESTING.md` for details.
+See `TESTING.md` for full details.
 
 ---
 
@@ -169,8 +173,27 @@ pnpm format
 
 Content is managed via **Wisp**, exposed through a JSON API and rendered with custom components.
 
-Learn more:
+Learn more:  
 https://wisp.blog
+
+---
+
+## 📸 Photography
+
+The photography section is powered by **Cloudinary** and includes:
+
+- Server‑rendered gallery with ISR caching
+- Tag‑based category filtering
+- Accessible, keyboard‑friendly lightbox
+- Progressive image loading and preloading
+- Central watermarking via Cloudinary overlays
+
+Individual image pages include:
+
+- Canonical URLs
+- Open Graph images
+- `ImageObject` structured data
+- Licensing metadata
 
 ---
 
@@ -179,9 +202,9 @@ https://wisp.blog
 ```
 src/
   app/            # App Router pages & layouts
-  components/     # UI and content components
+  components/     # UI, gallery, and content components
   hooks/          # Custom React hooks
-  lib/            # Utilities & helpers
+  lib/            # Utilities & helpers (Cloudinary, CMS, SEO)
   styles/         # Global styles
 public/
 eslint.config.mjs

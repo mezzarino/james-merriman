@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render } from "@testing-library/react";
 import { axe } from "jest-axe";
+import { act } from "react";
 import { describe, expect, it } from "vitest";
 
 import { CommentForm } from "./CommentForm";
@@ -34,7 +35,10 @@ describe("CommentForm accessibility", () => {
       />,
     );
 
-    const results = await axe(container);
+    let results;
+    await act(async () => {
+      results = await axe(container);
+    });
     expect(results).toHaveNoViolations();
   });
 });

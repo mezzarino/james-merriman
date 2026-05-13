@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
+import { act } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { BlogContent } from "./BlogContent";
@@ -73,7 +74,10 @@ describe("BlogContent", () => {
       <BlogContent post={mockPost} relatedPosts={[]} readingTime="5 min read" />,
     );
 
-    const results = await axe(container);
+    let results;
+    await act(async () => {
+      results = await axe(container);
+    });
     expect(results).toHaveNoViolations();
   });
 });

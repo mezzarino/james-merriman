@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
+import { act } from "react";
 import { describe, expect, it } from "vitest";
 
 import { SocialLinks } from "./social-links";
@@ -21,7 +22,10 @@ describe("SocialLinks", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<SocialLinks />);
-    const results = await axe(container);
+    let results;
+    await act(async () => {
+      results = await axe(container);
+    });
 
     expect(results).toHaveNoViolations();
   });

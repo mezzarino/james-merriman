@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { axe } from "jest-axe";
+import { act } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { ContactForm } from "./ContactForm";
@@ -58,7 +59,11 @@ describe("ContactForm", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<ContactForm />);
-    const results = await axe(container);
+
+    let results;
+    await act(async () => {
+      results = await axe(container);
+    });
 
     expect(results).toHaveNoViolations();
   });
