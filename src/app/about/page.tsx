@@ -191,6 +191,21 @@ const Page = async () => {
               >
                 ProudlyHuman™
               </a>
+              .
+            </p>
+            <p>
+              I am proud to be a{" "}
+              <a
+                href="https://oneplanetjourney.com/about/deep-travel-ambassadors/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
+              >
+                One Planet Journey - Deep Travel Ambassador
+              </a>
+              . Through my writing and my photography, I aim to show that taking the time to build
+              local relationships provides a much more memorable experience than simply ticking off
+              landmarks and guidebook checklists.{" "}
             </p>
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
