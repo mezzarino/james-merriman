@@ -74,21 +74,37 @@ export const Footer = () => {
         </ul>
 
         {/* ✅ Center: Proudly Human badge */}
+        {/* ✅ Center: Accreditation badges */}
         <div className="flex justify-center sm:w-1/3">
-          <div className="py-2 px-3 sm:px-4">
-            {" "}
-            {/* ✅ required clear space */}
+          <div className="flex items-center gap-4 py-2 px-3 sm:px-4">
+            {/* ✅ Proudly Human (compliant size) */}
             <a
               href="https://www.proudlyhuman.org/certified/james-merriman"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
             >
-              <div className="relative w-[125px] sm:w-[140px] h-[70px]">
+              <div className="relative w-[125px] h-[111px]">
                 <Image
                   src="/images/creditation-logos/proudly-human-logo.png"
-                  alt="My writing and photography has been has been independently verified as human-origin by ProudlyHuman™"
-                  title="I, James Merriman, declare that other than minimal use generally accepted by copyright agencies I am the proud human author of this work. My assertion of human authorship has been verified by ProudlyHuman™ and issued with certification mark 1000-0000-0578."
+                  alt="My writing and photography has been independently verified as human-origin by ProudlyHuman™"
+                  title="I, James Merriman, declare that other than minimal use generally accepted by copyright agencies I am the proud human author of this work. My assertion of human authorship has been verified by ProudlyHuman™."
+                  fill
+                  className="object-contain opacity-95 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </a>
+            <a
+              href="https://oneplanetjourney.com/about/deep-travel-ambassadors/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
+            >
+              <div className="relative w-[111px] h-[111px]">
+                <Image
+                  src="/images/creditation-logos/opj-ambassador-logo.png"
+                  alt="One Planet Journey - Deep Travel Ambassador logo"
+                  title="James Merriman is a One Planet Journey - Deep Travel Ambassador. Deep travel for me is about spending longer in fewer places and attempting to understand a destination by being away from the main tourist routes and interacting with locals away from the mass tourism trails."
                   fill
                   className="object-contain opacity-95 hover:opacity-100 transition-opacity"
                 />
