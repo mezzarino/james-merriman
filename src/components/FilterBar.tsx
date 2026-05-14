@@ -232,12 +232,8 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                     <span
                       className={cn(
                         "inline-flex min-h-[44px] items-center rounded border px-4 text-sm transition",
-                        isActive
-                          ? "bg-black text-white border-black"
-                          : "bg-gray-200 text-black border-gray-200",
-                        "sm:rounded-none sm:border-0 sm:px-3 sm:py-2",
-                        isActive &&
-                          "sm:border-b-2 sm:border-black sm:bg-transparent sm:text-black sm:font-semibold",
+                        isActive ? "bg-black text-white" : "bg-gray-200 text-black",
+                        "sm:px-3 sm:py-2",
                       )}
                     >
                       {category.label}
