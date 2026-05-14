@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
   // Define the strict CSP including the Wisp connection and nonce
   const cspHeader = `
   default-src 'self';
-  connect-src 'self' https://www.wisp.blog https://*.google-analytics.com https://*.google.com https://*.cloudinary.com;
+  connect-src 'self' https://www.wisp.blog https://*.google-analytics.com https://*.google.com https://*.cloudinary.com https://*.doubleclick.net;
   script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: https://imagedelivery.net https://*.cloudinary.com https://*.google-analytics.com https://*.google.com https://*.google.co.uk;

@@ -16,6 +16,12 @@ import { RelatedPosts } from "./RelatedPosts";
 import { processTableOfContents } from "./TOC";
 import { AboutCta } from "./ui/about-cta";
 
+function isElement(node: unknown): node is Element {
+  return (
+    typeof node === "object" && node !== null && "type" in node && (node as DOMNode).type === "tag"
+  );
+}
+
 export const BlogContent = ({
   post: { title, description, content, author, publishedAt, tags, slug },
   relatedPosts,
@@ -63,52 +69,83 @@ export const BlogContent = ({
         ]}
       />
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
-        <div className="flex items-center gap-2">
-          <Image
-            src={author.image || ""}
-            alt={author.name || ""}
-            width={30}
-            height={30}
-            className="rounded-full"
-          />
-          <div className="font-medium">{author.name}</div> |
-          <div>
-            Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"} | {readingTime}
+        <div className="border-b border-border/50 pb-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-2">
+              {author.image && (
+                <Image
+                  src={author.image}
+                  alt={author.name || ""}
+                  width={36}
+                  height={36}
+                  className="rounded-full"
+                />
+              )}
+              <div className="font-medium">
+                <Link href="/about">{author.name}</Link>
+              </div>
+            </div>
+            <div className="text-sm text-muted-foreground leading-relaxed">
+              <span>Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"}</span>
+              <span className="hidden sm:inline"> | </span>
+              <span className="block sm:inline">{readingTime}</span>
+            </div>
           </div>
         </div>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
             {parse(modifiedHtml, {
               replace: (node: DOMNode) => {
-                if (node.type === "tag" && (node as Element).name === "img") {
-                  const { src, alt } = (node as Element).attribs ?? {};
-                  if (!src) return;
+                if (isElement(node)) {
+                  if (
+                    node.name === "p" &&
+                    node.children?.some((child) => {
+                      if (!isElement(child)) return false;
 
-                  return (
-                    <figure className="my-6">
-                      <Image
-                        src={src}
-                        alt={alt ?? ""}
-                        width={840}
-                        height={630}
-                        quality={70}
-                        sizes="
+                      return (
+                        child.name === "small" &&
+                        child.children?.some((sub) => {
+                          if (!isElement(sub)) return false;
+
+                          return sub.name === "a" && sub.attribs?.href?.includes("synscribe.com");
+                        })
+                      );
+                    })
+                  ) {
+                    return <></>;
+                  }
+                  if (node.name === "img") {
+                    const { src, alt } = node.attribs ?? {};
+                    if (!src) return;
+
+                    return (
+                      <figure className="my-6">
+                        <Image
+                          src={src}
+                          alt={alt ?? ""}
+                          width={840}
+                          height={630}
+                          quality={70}
+                          sizes="
                           (max-width: 640px) 90vw,
                           (max-width: 1024px) 640px,
                           840px
                         "
-                        placeholder="blur"
-                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
-                        className="rounded-lg mx-auto"
-                      />
-                      {alt && (
-                        <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                          {alt}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ) as unknown as Element;
+                          placeholder="blur"
+                          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
+                          className="rounded-lg mx-auto"
+                        />
+                        {alt && (
+                          <figcaption className="mt-2 text-sm text-gray-500 text-center">
+                            {alt}
+                          </figcaption>
+                        )}
+                      </figure>
+                    ) as unknown as Element;
+                  }
                 }
+
+                return;
               },
             })}
             <div className="mt-12 border-t pt-6">

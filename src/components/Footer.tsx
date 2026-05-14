@@ -61,17 +61,6 @@ export const Footer = () => {
         {/* Utility links */}
         <ul className="flex flex-wrap justify-center gap-4">
           <li>
-            <Link
-              href={`https://wisp.blog/?utm_source=james-merriman&utm_medium=web&utm_campaign=${config.baseUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground"
-            >
-              Powered by Wisp
-            </Link>
-          </li>
-
-          <li>
             <Link href="/privacy-policy" className="hover:text-foreground">
               Privacy Policy
             </Link>
