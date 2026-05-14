@@ -84,7 +84,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
             >
-              <div className="relative w-[125px] sm:w-[140px] h-[40px]">
+              <div className="relative w-[125px] sm:w-[140px] h-[70px]">
                 <Image
                   src="/images/creditation-logos/proudly-human-logo.png"
                   alt="My writing and photography has been has been independently verified as human-origin by ProudlyHuman™"
