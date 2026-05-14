@@ -181,6 +181,17 @@ const Page = async () => {
               Based in the Devon countryside, I continue to explore the world with the same enduring
               curiosity that shapes both my journeys and my writing.
             </p>
+            <p>
+              My writing and photography has been has been independently verified as human-origin by{" "}
+              <a
+                href="https://www.proudlyhuman.org/certified/james-merriman"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
+              >
+                ProudlyHuman™
+              </a>
+            </p>
           </div>
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <FigureImage

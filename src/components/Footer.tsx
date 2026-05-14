@@ -37,7 +37,7 @@ export const Footer = () => {
         <SocialLinks />
       </div>
 
-      {/* ✅ Footer navigation (NOW CENTERED UNDER SOCIALS) */}
+      {/* ✅ Footer navigation */}
       <nav aria-label="Footer navigation" className="mb-8">
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm md:text-base text-muted-foreground">
           {MAIN_NAV.map((item) => (
@@ -56,10 +56,10 @@ export const Footer = () => {
       {/* ✅ Divider */}
       <div className="border-t border-border/50 pt-6" />
 
-      {/* ✅ Bottom row: utilities + copyright */}
-      <div className="flex flex-col items-center gap-4 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-        {/* Utility links */}
-        <ul className="flex flex-wrap justify-center gap-4">
+      {/* ✅ Bottom row: utilities + badge + rss */}
+      <div className="flex flex-col items-center gap-6 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:items-center">
+        {/* ✅ Left: Utility links */}
+        <ul className="flex flex-wrap justify-center gap-4 sm:justify-start sm:w-1/3">
           <li>
             <Link href="/privacy-policy" className="hover:text-foreground">
               Privacy Policy
@@ -73,15 +73,39 @@ export const Footer = () => {
           </li>
         </ul>
 
-        {/* ✅ RSS + copyright grouped together */}
-        <div className="flex items-center gap-3">
+        {/* ✅ Center: Proudly Human badge */}
+        <div className="flex justify-center sm:w-1/3">
+          <div className="py-2 px-3 sm:px-4">
+            {" "}
+            {/* ✅ required clear space */}
+            <a
+              href="https://www.proudlyhuman.org/certified/james-merriman"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
+            >
+              <div className="relative w-[125px] sm:w-[140px] h-[40px]">
+                <Image
+                  src="/images/creditation-logos/proudly-human-logo.png"
+                  alt="My writing and photography has been has been independently verified as human-origin by ProudlyHuman™"
+                  title="I, James Merriman, declare that other than minimal use generally accepted by copyright agencies I am the proud human author of this work. My assertion of human authorship has been verified by ProudlyHuman™ and issued with certification mark 1000-0000-0578."
+                  fill
+                  className="object-contain opacity-95 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        {/* ✅ Right: RSS + copyright */}
+        <div className="flex items-center justify-center gap-3 sm:justify-end sm:w-1/3">
           <Link href="/rss">
             <Button variant="ghost" size="icon" aria-label="RSS feed">
               <Rss className="h-4 w-4" />
             </Button>
           </Link>
 
-          <span className="text-muted-foreground">
+          <span>
             © {config.organization} {new Date().getFullYear()}
           </span>
         </div>
