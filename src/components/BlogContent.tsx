@@ -70,8 +70,9 @@ export const BlogContent = ({
       />
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="border-b border-border/50 pb-4 mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            {/* Avatar + name */}
+            <div className="flex items-center gap-2 leading-none">
               {author.image && (
                 <Image
                   src={author.image}
@@ -81,14 +82,18 @@ export const BlogContent = ({
                   className="rounded-full"
                 />
               )}
-              <div className="font-medium">
+              <div className="font-medium leading-none">
                 <Link href="/about">{author.name}</Link>
               </div>
             </div>
-            <div className="text-sm text-muted-foreground leading-relaxed">
+
+            {/* Metadata */}
+            <div className="text-sm text-muted-foreground leading-none sm:leading-normal">
               <span>Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"}</span>
-              <span className="hidden sm:inline"> | </span>
-              <span className="block sm:inline">{readingTime}</span>
+
+              <span className="mx-2">|</span>
+
+              <span>{readingTime}</span>
             </div>
           </div>
         </div>
