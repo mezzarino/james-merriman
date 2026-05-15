@@ -76,8 +76,8 @@ const Page = async () => {
           </p>
 
           <p>
-            All photographs are available for editorial and commercial licence. Please get in touch
-            for usage enquiries.
+            All photographs are available for editorial and commercial licence. Please{" "}
+            <Link href="/contact">get in touch</Link> for usage enquiries.
           </p>
         </article>
 
