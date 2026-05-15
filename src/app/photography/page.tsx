@@ -120,7 +120,7 @@ const Page = async () => {
               hasPart: photos.slice(0, 20).map((photo: Photo) => ({
                 "@type": "ImageObject",
 
-                contentUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${photo.public_id}.${photo.format}`,
+                contentUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`,
 
                 thumbnailUrl: generateOGImage(photo.public_id, photo.alt),
 
