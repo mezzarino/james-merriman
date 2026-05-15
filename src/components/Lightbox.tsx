@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CldImage } from "next-cloudinary";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Photo } from "@/types/photo";
 
@@ -30,11 +30,30 @@ export const Lightbox = ({
 
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
 
-  const buildUrl = (id: string, format?: string) =>
-    `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${id}.${format || "jpg"}`;
+  const buildUrl = useCallback(
+    (id: string, format?: string) =>
+      `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${id}.${format || "jpg"}`,
+    [cloudName],
+  );
 
   const buildBlurUrl = (id: string, format?: string) =>
     `https://res.cloudinary.com/${cloudName}/image/upload/w_50,q_10,e_blur:1000/${id}.${format || "jpg"}`;
+
+  // ✅ Smart preload (replaces <link preload>)
+  useEffect(() => {
+    const preload = (p?: Photo) => {
+      if (!p) return;
+      const img = new window.Image();
+      img.src = buildUrl(p.public_id, p.format);
+    };
+
+    preload(nextPhoto);
+    preload(prevPhoto);
+
+    if (direction === "next" && nextNextPhoto) {
+      preload(nextNextPhoto);
+    }
+  }, [buildUrl, nextPhoto, prevPhoto, nextNextPhoto, direction]);
 
   // ✅ Keyboard navigation
   useEffect(() => {
@@ -58,23 +77,6 @@ export const Lightbox = ({
 
   return (
     <>
-      {/* ✅ Preload next + prev */}
-      {nextPhoto && (
-        <link rel="preload" as="image" href={buildUrl(nextPhoto.public_id, nextPhoto.format)} />
-      )}
-      {prevPhoto && (
-        <link rel="preload" as="image" href={buildUrl(prevPhoto.public_id, prevPhoto.format)} />
-      )}
-
-      {/* ✅ Preload next-next (direction aware) */}
-      {direction === "next" && nextNextPhoto && (
-        <link
-          rel="preload"
-          as="image"
-          href={buildUrl(nextNextPhoto.public_id, nextNextPhoto.format)}
-        />
-      )}
-
       {/* ✅ Overlay */}
       <motion.div
         className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
@@ -94,7 +96,7 @@ export const Lightbox = ({
           ✕
         </button>
 
-        {/* ✅ Click zones (desktop UX upgrade) */}
+        {/* ✅ Click zones */}
         <button
           onClick={() => {
             setDirection("prev");
@@ -117,7 +119,7 @@ export const Lightbox = ({
         <div className="relative max-w-5xl w-full px-4 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
-              key={photo.public_id} // ✅ resets state & enables transitions
+              key={photo.public_id}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
@@ -138,7 +140,6 @@ export const Lightbox = ({
                   onPrev();
                 }
               }}
-              // ✅ Crossfade animation
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.02 }}
@@ -158,10 +159,11 @@ export const Lightbox = ({
                 quality="auto"
                 format="auto"
                 loading="eager"
+                decoding="async"
                 overlays={[
                   {
                     publicId: "james-merriman-watermark",
-                    width: "1.5", // ✅ LARGE watermark
+                    width: "1.5",
                     crop: "scale",
                     effects: [{ name: "opacity", value: 40 }],
                     position: { gravity: "center" },
