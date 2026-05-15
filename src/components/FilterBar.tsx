@@ -38,7 +38,10 @@ function usePrefersReducedMotion() {
 /* -------------------------------------------
  * Component
  * -----------------------------------------*/
-const categories = [{ label: "Latest Writing", tag: "latest" }, ...config.categories];
+const categories = [
+  { label: "Latest Writing", tag: "latest", isVisible: true },
+  ...config.categories.filter((c) => c.isVisible !== false),
+];
 
 interface BlogNavigationBarProps {
   className?: string;
