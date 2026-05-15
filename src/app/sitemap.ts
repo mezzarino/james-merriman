@@ -6,15 +6,11 @@ import urlJoin from "url-join";
 
 import { config } from "@/config";
 
-import { getPhotos } from "../lib/cloudinary";
 import { wisp } from "../lib/wisp";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const postsResult = await wisp.getPosts({ limit: "all" });
   const tagsResult = await wisp.getTags();
-  const photos = await getPhotos();
-
-  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   return [
     // ✅ Core pages
@@ -72,22 +68,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date("2026-05-03"),
       priority: 0.5,
     })),
-
-    // ✅ ✅ Photography individual pages
-    ...photos.map((photo) => {
-      const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/${photo.public_id}`;
-
-      return {
-        url: urlJoin(config.baseUrl, "photography", photo.public_id),
-
-        lastModified: photo.created_at ? new Date(photo.created_at) : new Date(),
-
-        priority: 0.6,
-
-        // ✅ Correct format for Next.js
-        images: [imageUrl],
-      };
-    }),
 
     // ✅ Legal / utility pages (RESTORED ✅)
     {
