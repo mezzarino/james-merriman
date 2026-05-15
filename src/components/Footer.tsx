@@ -56,10 +56,10 @@ export const Footer = () => {
       {/* ✅ Divider */}
       <div className="border-t border-border/50 pt-6" />
 
-      {/* ✅ Bottom row: utilities + badge + rss */}
-      <div className="flex flex-col items-center gap-6 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:items-center">
-        {/* ✅ Left: Utility links */}
-        <ul className="flex flex-wrap justify-center gap-4 sm:justify-start sm:w-1/3">
+      {/* ✅ Bottom row: utilities + RSS + copyright */}
+      <div className="flex flex-col items-center gap-4 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:items-center">
+        {/* ✅ Utility links */}
+        <ul className="flex flex-wrap justify-center gap-4 sm:justify-start">
           <li>
             <Link href="/privacy-policy" className="hover:text-foreground">
               Privacy Policy
@@ -73,10 +73,24 @@ export const Footer = () => {
           </li>
         </ul>
 
-        {/* ✅ Center: Proudly Human badge */}
-        {/* ✅ Center: Accreditation badges */}
-        <div className="flex justify-center sm:w-1/3">
-          <div className="flex items-center gap-4 py-2 px-3 sm:px-4">
+        {/* ✅ RSS + copyright */}
+        <div className="flex items-center gap-3">
+          <Link href="/rss">
+            <Button variant="ghost" size="icon" aria-label="RSS feed">
+              <Rss className="h-4 w-4" />
+            </Button>
+          </Link>
+
+          <span>
+            © {config.organization} {new Date().getFullYear()}
+          </span>
+        </div>
+      </div>
+
+      {/* ✅ Subtle divider + Accreditation logos */}
+      <div className="border-t border-border/30 mt-6 pt-4">
+        <div className="flex justify-center">
+          <div className="flex items-center gap-3 sm:gap-4 py-2">
             {/* ✅ Proudly Human (compliant size) */}
             <a
               href="https://www.proudlyhuman.org/certified/james-merriman"
@@ -90,10 +104,13 @@ export const Footer = () => {
                   alt="My writing and photography has been independently verified as human-origin by ProudlyHuman™"
                   title="I, James Merriman, declare that other than minimal use generally accepted by copyright agencies I am the proud human author of this work. My assertion of human authorship has been verified by ProudlyHuman™."
                   fill
+                  loading="lazy"
                   className="object-contain opacity-95 hover:opacity-100 transition-opacity"
                 />
               </div>
             </a>
+
+            {/* ✅ One Planet Journey Ambassador */}
             <a
               href="https://oneplanetjourney.com/about/deep-travel-ambassadors/"
               target="_blank"
@@ -104,26 +121,14 @@ export const Footer = () => {
                 <Image
                   src="/images/creditation-logos/opj-ambassador-logo.png"
                   alt="One Planet Journey - Deep Travel Ambassador logo"
-                  title="James Merriman is a One Planet Journey - Deep Travel Ambassador. Deep travel for me is about spending longer in fewer places and attempting to understand a destination by being away from the main tourist routes and interacting with locals away from the mass tourism trails."
+                  title="James Merriman is a One Planet Journey - Deep Travel Ambassador. Deep travel for me is about spending longer in fewer places and understanding a destination beyond mass tourism."
                   fill
+                  loading="lazy"
                   className="object-contain opacity-95 hover:opacity-100 transition-opacity"
                 />
               </div>
             </a>
           </div>
-        </div>
-
-        {/* ✅ Right: RSS + copyright */}
-        <div className="flex items-center justify-center gap-3 sm:justify-end sm:w-1/3">
-          <Link href="/rss">
-            <Button variant="ghost" size="icon" aria-label="RSS feed">
-              <Rss className="h-4 w-4" />
-            </Button>
-          </Link>
-
-          <span>
-            © {config.organization} {new Date().getFullYear()}
-          </span>
         </div>
       </div>
     </footer>
