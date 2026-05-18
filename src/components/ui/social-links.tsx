@@ -4,10 +4,10 @@ import { SiSubstack } from "react-icons/si";
 import { cn } from "@/lib/utils";
 
 const linkClass =
-  "p-3 md:p-2 md:w-9 md:h-9 flex-shrink-0 flex items-center justify-center rounded-full " +
+  "p-3 md:p-2 md:w-9 md:h-9 shrink-0 flex items-center justify-center rounded-full " +
   "border border-gray-300 text-gray-600 " +
   "hover:bg-black hover:text-white hover:border-black " +
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " +
+  "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 " +
   "transition motion-reduce:transition-none";
 
 const iconClass = "w-5 h-5 md:w-6 md:h-6";

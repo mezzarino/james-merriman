@@ -2,7 +2,7 @@
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4.3-06B6D4)
 ![shadcn/ui](https://img.shields.io/badge/shadcn--ui-000000)
 ![ESLint](https://img.shields.io/badge/ESLint-9-purple)
 ![pnpm](https://img.shields.io/badge/pnpm-latest-F69220)

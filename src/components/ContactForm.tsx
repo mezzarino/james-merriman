@@ -15,7 +15,7 @@ const inputClassName = `
   w-full rounded
   border border-gray-500
   p-2
-  focus-visible:outline-none
+  focus-visible:outline-hidden
   focus-visible:ring-2
   focus-visible:ring-black
   focus-visible:ring-offset-2

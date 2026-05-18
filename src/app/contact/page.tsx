@@ -146,7 +146,7 @@ const Page = async () => {
 
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
+          <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p>
               If you’d like more background on my work, you can read{" "}
               <Link href="/about">my biography</Link>, view{" "}

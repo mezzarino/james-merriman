@@ -27,11 +27,11 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
 }) => {
   return (
     <>
-      <header className={cn("bg-gradient-to-r from-blue-900 to-gray-900 text-white", className)}>
+      <header className={cn("bg-linear-to-r from-blue-900 to-gray-900 text-white", className)}>
         <div className="container mx-auto max-w-6xl px-4 py-8 lg:py-10">
           <div className="mx-auto mb-3 flex justify-center">
             <Link href="/" aria-label="James Merriman home">
-              <div className="relative w-[180px] sm:w-[220px] lg:w-[220px] aspect-[100/59]">
+              <div className="relative w-[180px] sm:w-[220px] lg:w-[220px] aspect-100/59">
                 <Image
                   src="/james-merriman-travel-writer-logo.png"
                   alt="James Merriman"
@@ -75,7 +75,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
                   ) : (
                     <Link
                       href={crumb.href}
-                      className="hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                      className="hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
                     >
                       {crumb.label}
                     </Link>

@@ -27,7 +27,7 @@ import { wisp } from "../lib/wisp";
 /* ✅ WCAG-compliant shared styles */
 const inputClassName = `
   border border-gray-500
-  focus-visible:outline-none
+  focus-visible:outline-hidden
   focus-visible:ring-2
   focus-visible:ring-black
   focus-visible:ring-offset-2

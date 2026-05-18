@@ -79,7 +79,7 @@ export const Lightbox = ({
     <>
       {/* ✅ Overlay */}
       <motion.div
-        className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
+        className="fixed inset-0 bg-black/80 backdrop-blur-xs flex items-center justify-center z-50"
         role="dialog"
         aria-modal="true"
         aria-label={photo.alt}
@@ -102,7 +102,7 @@ export const Lightbox = ({
             setDirection("prev");
             onPrev();
           }}
-          className="absolute left-0 top-0 h-full w-1/2 z-10 cursor-w-resize focus:outline-none"
+          className="absolute left-0 top-0 h-full w-1/2 z-10 cursor-w-resize focus:outline-hidden"
           aria-label="Previous image"
         />
 
@@ -111,7 +111,7 @@ export const Lightbox = ({
             setDirection("next");
             onNext();
           }}
-          className="absolute right-0 top-0 h-full w-1/2 z-10 cursor-e-resize focus:outline-none"
+          className="absolute right-0 top-0 h-full w-1/2 z-10 cursor-e-resize focus:outline-hidden"
           aria-label="Next image"
         />
 

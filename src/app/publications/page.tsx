@@ -236,7 +236,7 @@ const Page = async () => {
 
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-2/3 prose prose-lg max-w-none break-words blog-content">
+          <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p>
               In addition to work published on this site, I also write for magazines and external
               platforms. This page brings together a selection of travel writing that has appeared

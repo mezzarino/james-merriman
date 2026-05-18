@@ -98,7 +98,7 @@ export const BlogContent = ({
           </div>
         </div>
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 break-words blog-content">
+          <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 wrap-break-word blog-content">
             {parse(modifiedHtml, {
               replace: (node: DOMNode) => {
                 if (isElement(node)) {

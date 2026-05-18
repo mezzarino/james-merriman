@@ -14,7 +14,7 @@ export function ConsentBanner() {
     <div
       role="region"
       aria-labelledby="cookie-consent-title"
-      className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-3xl rounded-lg border bg-white p-4 shadow"
+      className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-3xl rounded-lg border bg-white p-4 shadow-sm"
     >
       <p id="cookie-consent-title" className="mb-3 text-sm text-gray-700">
         This site uses Google Analytics to understand readership. Analytics cookies are only set

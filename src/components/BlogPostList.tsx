@@ -16,7 +16,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
             <div className="aspect-video rounded-lg bg-muted animate-pulse motion-reduce:animate-none" />
           }
         >
-          <article className="break-words group content-visibility-auto">
+          <article className="wrap-break-word group content-visibility-auto">
             {/* Featured image */}
             <Link href={`/post/${post.slug}`} prefetch={false}>
               <AspectRatio ratio={16 / 9} className="relative w-full rounded-lg overflow-hidden">

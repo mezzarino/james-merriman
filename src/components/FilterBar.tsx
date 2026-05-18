@@ -187,7 +187,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             ref={inputRef}
             type="text"
             placeholder="Search posts…"
-            className="w-full bg-transparent text-sm focus:outline-none"
+            className="w-full bg-transparent text-sm focus:outline-hidden"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             onKeyUp={onHandleKey}
@@ -201,8 +201,8 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           {/* CATEGORY TABS */}
           <div className="relative">
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-gradient-to-r from-white to-transparent sm:hidden" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-gradient-to-l from-white to-transparent sm:hidden" />
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-6 bg-linear-to-r from-white to-transparent sm:hidden" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-linear-to-l from-white to-transparent sm:hidden" />
 
             <div
               ref={scrollContainerRef}
@@ -212,7 +212,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                 flex gap-2 overflow-x-auto py-1 pr-6
                 whitespace-nowrap snap-x snap-mandatory
                 [-ms-overflow-style:none]
-                [scrollbar-width:none]
+                scrollbar-none
                 [&::-webkit-scrollbar]:hidden
                 sm:overflow-visible sm:pr-0
               "
@@ -230,7 +230,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                     aria-selected={isActive}
                     tabIndex={isActive ? 0 : -1}
                     onKeyDown={onCategoryKeyDown(index)}
-                    className="snap-start focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
+                    className="snap-start focus:outline-hidden focus-visible:ring-2 focus-visible:ring-black"
                   >
                     <span
                       className={cn(

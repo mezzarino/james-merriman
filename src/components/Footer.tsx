@@ -14,7 +14,7 @@ export const Footer = () => {
       {/* ✅ Logo */}
       <div className="mx-auto pt-8 mb-6 flex justify-center">
         <Link href="/" aria-label="James Merriman home">
-          <div className="relative w-[140px] aspect-[18/10]">
+          <div className="relative w-[140px] aspect-18/10">
             <Image
               src="/james-merriman-travel-writer-logo-grey.png"
               alt="James Merriman – Travel Writer"
@@ -44,7 +44,7 @@ export const Footer = () => {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 {item.label}
               </Link>

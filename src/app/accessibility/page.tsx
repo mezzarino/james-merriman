@@ -55,7 +55,7 @@ const Page = async () => {
 
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full prose prose-lg max-w-none break-words blog-content">
+          <div className="w-full prose prose-lg max-w-none wrap-break-word blog-content">
             <p>
               <strong>Last updated:</strong> 6th May 2026
             </p>
