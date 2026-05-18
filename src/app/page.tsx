@@ -150,15 +150,6 @@ export default async function Page(props: {
       mainEntity: {
         "@id": `${currentPageUrl}#latest-writing`,
       },
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: breadcrumb.map((item, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: item.label,
-          item: `${currentPageUrl}${item.href}`,
-        })),
-      },
     },
 
     // Blog
