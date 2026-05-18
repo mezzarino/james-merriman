@@ -110,9 +110,9 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     },
 
     publisher: {
-      "@type": "Person",
-      "@id": `${config.baseUrl}/about#author`,
+      "@type": "Organization",
       name: "James Merriman",
+      logo: "https://www.jamesmerriman.co.uk/logo.png",
     },
 
     mainEntityOfPage: {

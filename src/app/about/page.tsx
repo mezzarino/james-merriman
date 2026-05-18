@@ -57,8 +57,8 @@ const Page = async () => {
             "@context": "https://schema.org",
             "@graph": [
               {
-                "@type": "ProfilePage",
-                "@id": `${config.baseUrl}/about`,
+                "@type": "AboutPage",
+                "@id": `${config.baseUrl}/about#aboutpage`,
                 url: `${config.baseUrl}/about`,
                 name: "About James Merriman",
                 description:
@@ -69,6 +69,12 @@ const Page = async () => {
                 mainEntity: {
                   "@id": `${config.baseUrl}#entity`,
                 },
+                primaryImageOfPage: {
+                  "@type": "ImageObject",
+                  url: "https://www.jamesmerriman.co.uk/images/james-merriman.jpg",
+                  width: 1200,
+                  height: 1600,
+                },
               },
               {
                 "@type": ["Person", "Organization"],
@@ -76,8 +82,8 @@ const Page = async () => {
                 name: "James Merriman",
                 url: config.baseUrl,
                 mainEntityOfPage: {
-                  "@type": "ProfilePage",
-                  "@id": `${config.baseUrl}/about`,
+                  "@type": "AboutPage",
+                  "@id": `${config.baseUrl}/about#aboutpage`,
                 },
                 image: {
                   "@type": "ImageObject",

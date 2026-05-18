@@ -136,22 +136,22 @@ export default async function Page(props: {
       },
     },
 
-    // Author
+    // WebPage
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": `${config.baseUrl}/about#author`,
-      name: "James Merriman",
-      url: `${config.baseUrl}/about`,
-      image: "/images/james-merriman-travel-writer.jpg",
-      sameAs: [
-        "https://x.com/mezzarino",
-        "https://linkedin.com/in/jamesmerriman",
-        "https://instagram.com/mezzarino",
-      ],
-      jobTitle: "Travel Writer & Photographer",
-      worksFor: {
+      "@type": "WebPage",
+      "@id": `${config.baseUrl}/webpage`,
+      url: `${config.baseUrl}`,
+      description:
+        "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
+      isPartOf: {
         "@id": `${config.baseUrl}#website`,
+      },
+      mainEntity: {
+        "@id": `${config.baseUrl}#latest-writing`,
+      },
+      breadcrumb: {
+        "@id": `${config.baseUrl}#breadcrumb`,
       },
     },
 

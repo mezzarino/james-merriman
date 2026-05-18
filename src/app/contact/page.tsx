@@ -58,8 +58,8 @@ const Page = async () => {
             "@context": "https://schema.org",
             "@graph": [
               {
-                "@type": "WebPage",
-                "@id": `${config.baseUrl}/contact`,
+                "@type": "ContactPage",
+                "@id": `${config.baseUrl}/contact#contactpage`,
                 url: `${config.baseUrl}/contact`,
                 name: "Contact James Merriman",
                 description:
@@ -67,8 +67,8 @@ const Page = async () => {
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
-                about: {
-                  "@id": `${config.baseUrl}#person`,
+                mainEntity: {
+                  "@id": `${config.baseUrl}#entity`,
                 },
               },
               {
@@ -93,16 +93,18 @@ const Page = async () => {
                   "https://linkedin.com/in/jamesmerriman",
                   "https://instagram.com/mezzarino",
                 ],
-                contactPoint: {
-                  "@type": "ContactPoint",
-                  contactType: "Professional enquiries",
-                  availableLanguage: ["en-GB"],
-                  sameAs: [
-                    "https://x.com/mezzarino",
-                    "https://linkedin.com/in/jamesmerriman",
-                    "https://instagram.com/mezzarino",
-                  ],
-                },
+                contactPoint: [
+                  {
+                    "@type": "ContactPoint",
+                    contactType: "Professional enquiries",
+                    availableLanguage: ["en-GB"],
+                    sameAs: [
+                      "https://x.com/mezzarino",
+                      "https://linkedin.com/in/jamesmerriman",
+                      "https://instagram.com/mezzarino",
+                    ],
+                  },
+                ],
               },
               {
                 "@type": "WebSite",
