@@ -5,7 +5,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/login",
+      "source": "/login/:path*",
       "destination": "/",
       "permanent": true
     },
@@ -28,6 +28,11 @@
     {
       "source": "/videos/:path*",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/photography/:path+",
+      "destination": "/photography",
       "permanent": true
     }
   ]
