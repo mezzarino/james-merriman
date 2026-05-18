@@ -140,18 +140,24 @@ export default async function Page(props: {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "@id": `${config.baseUrl}/webpage`,
-      url: `${config.baseUrl}`,
+      "@id": `${currentPageUrl}/webpage`,
+      url: `${currentPageUrl}`,
       description:
         "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
       isPartOf: {
-        "@id": `${config.baseUrl}#website`,
+        "@id": `${currentPageUrl}#website`,
       },
       mainEntity: {
-        "@id": `${config.baseUrl}#latest-writing`,
+        "@id": `${currentPageUrl}#latest-writing`,
       },
       breadcrumb: {
-        "@id": `${config.baseUrl}#breadcrumb`,
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumb.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.label,
+          item: `${currentPageUrl}${item.href}`,
+        })),
       },
     },
 
@@ -219,11 +225,12 @@ export default async function Page(props: {
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${currentPageUrl}#breadcrumb`,
       itemListElement: breadcrumb.map((item, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: item.label,
-        item: item.href === "/" ? config.baseUrl : currentPageUrl,
+        item: item.href === "/" ? config.baseUrl : `${config.baseUrl}${item.href}`,
       })),
     },
   ];
