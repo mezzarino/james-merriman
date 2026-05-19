@@ -19,7 +19,7 @@ export function proxy(request: NextRequest) {
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: https://imagedelivery.net https://*.cloudinary.com https://*.google-analytics.com https://*.google.com https://*.google.co.uk;
   font-src 'self';
-  frame-src 'none';
+  frame-src 'self';
   object-src 'none';
   base-uri 'self';
   form-action 'self';
