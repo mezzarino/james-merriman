@@ -15,11 +15,23 @@ export async function GET() {
     src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
 
   <style amp-boilerplate>
-    body { visibility: hidden }
+  body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+  -moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+  -ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;
+  animation:-amp-start 8s steps(1,end) 0s 1 normal both}
+  @-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  @-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  @-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  @-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+  @keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+</style>
+
+<noscript>
+  <style amp-boilerplate>
+    body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
   </style>
-  <noscript>
-    <style amp-boilerplate>body { visibility: visible }</style>
-  </noscript>
+</noscript>
+
 
   <style amp-custom>
     body { margin: 0; }
@@ -54,18 +66,77 @@ export async function GET() {
   standalone
   title="Afghanistan: The Anxious Explorer"
   publisher="James Merriman"
-  publisher-logo-src="https://www.jamesmerriman.co.uk/logo.png"
-  poster-portrait-src="https://<amp-story-grid-layer template="fill">
+  publisher-logo-src="https://stories.jamesmerriman.co.uk/stories/logo.png"
+  poster-portrait-src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg">
+    
+  <amp-story-page id="cover">
+  <amp-story-grid-layer template="fill">
+      <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg"
+        width="720" height="1280" layout="responsive"></amp-img>
+    </amp-story-grid-layer>
+    <!-- ✅ Overlay -->
+    <amp-story-grid-layer template="fill">
+      <div class="overlay"></div>
+    </amp-story-grid-layer>
+
+    <!-- ✅ Text -->
+    <amp-story-grid-layer template="vertical">
+      <h1>Afghanistan</h1>
+      <p>What you don’t expect</p>
+    </amp-story-grid-layer>
+
+  </amp-story-page>
+
+
+<!-- REPEATED PAGES -->
+${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  .map((i, idx) => {
+    const text = [
+      "Travel begins with hesitation.",
+      "Not fear — awareness.",
+      "Arrival is quiet.",
+      "Life moves beyond headlines.",
+      "Journeys stretch. Time shifts.",
+      "The streets never stop.",
+      "Encounters are brief — never empty.",
+      "The mountains define everything.",
+      "The tension never leaves.",
+      "What matters isn’t always visible.",
+    ][idx];
+
+    return `
+  <amp-story-page id="page-${i}">
+    <amp-story-grid-layer template="fill">
+      <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/${i}.jpg"
+        width="720" height="1280" layout="responsive"></amp-img>
+    </amp-story-grid-layer>
+    <amp-story-grid-layer template="fill">
+      <div class="overlay"></div>
+    </amp-story-grid-layer>
+    <amp-story-grid-layer template="vertical">
+      <p animate-in="fade-in">${text}</p>
+    </amp-story-grid-layer>
+  </amp-story-page>`;
+  })
+  .join("")}
+
+<!-- CTA -->
+<amp-story-page id="cta">
+  <amp-story-grid-layer template="fill">
+    <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/14.jpg"
+      width="720" height="1280" layout="responsive"></amp-img>
+  </amp-story-grid-layer>
+  <amp-story-grid-layer template="fill">
     <div class="overlay"></div>
   </amp-story-grid-layer>
-
   <amp-story-grid-layer template="vertical">
-    <h1>Afghanistan</h1>
-    <p>What you don’t expect</p>
+    <h2>See the full story</h2>
+    <p><a href="https://www.jamesmerriman.co.uk">Explore more →</a></p>
   </amp-story-grid-layer>
 </amp-story-page>
 
 </amp-story>
+
 
 </body>
 </html>`,
