@@ -49,18 +49,66 @@ export async function GET() {
       justify-content: flex-end;
     }
 
-    .overlay {
-      background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.8),
-        rgba(0,0,0,0.3),
-        rgba(0,0,0,0.05)
-      );
-    }
+.overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85) 0%,
+    rgba(0,0,0,0.4) 50%,
+    rgba(0,0,0,0.05) 100%
+  );
+}
   </style>
+  <meta name="description" content="A visual narrative of travel in Afghanistan by James Merriman.">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Afghanistan: The Anxious Explorer">
+<meta property="og:description" content="A visual narrative of travel in Afghanistan by James Merriman.">
+<meta property="og:url" content="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer">
+<meta property="og:site_name" content="James Merriman">
+<meta property="og:image" content="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg">
+<meta property="og:image:width" content="720">
+<meta property="og:image:height" content="1280">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Afghanistan: The Anxious Explorer">
+<meta name="twitter:description" content="A visual narrative of travel in Afghanistan by James Merriman.">
+<meta name="twitter:image" content="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg">
+
 </head>
 
 <body>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer"
+  },
+  "headline": "Afghanistan: The Anxious Explorer",
+  "description": "A visual narrative of travel in Afghanistan by James Merriman.",
+  "image": [
+    "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg"
+  ],
+  "datePublished": "2026-05-19",
+  "dateModified": "2026-05-19",
+  "author": {
+    "@type": "Person",
+    "name": "James Merriman",
+    "url": "https://www.jamesmerriman.co.uk"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "James Merriman"
+  },
+  "about": {
+    "@type": "Place",
+    "name": "Afghanistan"
+  },
+  "inLanguage": "en-GB"
+}
+</script>
 
 <amp-story
   standalone
@@ -81,8 +129,15 @@ export async function GET() {
 
     <!-- ✅ Text -->
     <amp-story-grid-layer template="vertical">
-      <h1>Afghanistan</h1>
-      <p>What you don’t expect</p>
+      
+<h1 animate-in="fade-in" style="font-size: 3.2rem; font-weight:700;">
+  Afghanistan
+</h1>
+
+<p animate-in="fade-in" animate-in-delay="0.2s" style="font-size: 1.3rem; opacity:0.9;">
+  Nothing prepares you
+</p>
+
     </amp-story-grid-layer>
 
   </amp-story-page>

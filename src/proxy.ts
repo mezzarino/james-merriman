@@ -3,6 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 export function proxy(request: NextRequest) {
   const url = request.nextUrl;
 
+  if (url.search.includes("_rsc")) {
+    return NextResponse.next();
+  }
+
   // ✅ Clean pagination redirect
   if (url.pathname === "/" && url.searchParams.get("page") === "1") {
     url.searchParams.delete("page");
@@ -48,8 +52,7 @@ export function proxy(request: NextRequest) {
         https://*.cloudinary.com
         https://*.doubleclick.net;
 
-      script-src 'self' 'unsafe-inline'
-        https://www.googletagmanager.com;
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
 
       style-src 'self' 'unsafe-inline';
 
