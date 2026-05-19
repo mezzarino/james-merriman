@@ -1,16 +1,11 @@
 import "./globals.css";
 
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { headers } from "next/headers";
 
-import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { ConsentProvider } from "@/components/analytics/ConsentContext";
-import { GoogleAnalyticsConsent } from "@/components/analytics/GoogleAnalyticsConsent";
-import { Footer } from "@/components/Footer";
-import ReadingProgress from "@/components/ui/readingProgress";
 
+import LayoutWrapper from "./LayoutWrapper";
 import { Providers } from "./providers";
 
 const fontSans = IBM_Plex_Sans({
@@ -19,9 +14,6 @@ const fontSans = IBM_Plex_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
-/**
- * ✅ Dynamic metadata based on subdomain
- */
 export async function generateMetadata() {
   const headersList = await headers();
   const host = headersList.get("host") || "";
@@ -51,7 +43,7 @@ export async function generateMetadata() {
     ],
 
     icons: isStories
-      ? {} // ✅ no icons on stories (avoids extra requests)
+      ? {} // ✅ remove icons for stories
       : {
           icon: [
             { url: "/favicon.svg", type: "image/svg+xml" },
@@ -68,7 +60,7 @@ export async function generateMetadata() {
     ...(isStories
       ? {}
       : {
-          manifest: "/site.webmanifest",
+          manifest: "/site.webmanifest", // ✅ only on main site
         }),
 
     appleWebApp: {
@@ -78,44 +70,16 @@ export async function generateMetadata() {
 }
 
 /**
- * ✅ Root layout with subdomain-aware rendering
+ * ✅ Root layout (NO conditional UI here)
+ * This must stay stable — do not try to detect host here
  */
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const headersList = await headers();
-  const host = headersList.get("host") || "";
-  const isStories = host.startsWith("stories.");
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB">
-      <body
-        className={`${fontSans.variable} antialiased font-sans`}
-        style={isStories ? { margin: 0, background: "#000" } : undefined}
-      >
-        {!isStories && (
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-white text-black px-4 py-2 rounded shadow-sm"
-          >
-            Skip to main content
-          </a>
-        )}
-
+      <body className={`${fontSans.variable} antialiased font-sans`}>
         <Providers>
           <ConsentProvider>
-            {!isStories && <ReadingProgress />}
-
-            {children}
-
-            {/* ✅ ONLY render site UI on main domain */}
-            {!isStories && (
-              <>
-                <Footer />
-                <SpeedInsights />
-                <Analytics />
-                <ConsentBanner />
-                <GoogleAnalyticsConsent />
-              </>
-            )}
+            <LayoutWrapper>{children}</LayoutWrapper>
           </ConsentProvider>
         </Providers>
       </body>

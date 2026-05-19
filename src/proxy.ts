@@ -13,22 +13,22 @@ export function proxy(request: NextRequest) {
   const host = request.headers.get("host") || "";
   const isStories = host.startsWith("stories.");
 
-  // ✅ Generate nonce (only used for main app)
+  // ✅ Generate nonce (main site only)
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
   let cspHeader: string;
 
+  /**
+   * ✅ CSP: STORIES (AMP)
+   */
   if (isStories) {
-    /**
-     * ✅ RELAXED CSP (AMP-compatible)
-     */
     cspHeader = `
       default-src 'self';
       script-src 'self' 'unsafe-inline' https://cdn.ampproject.org;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https://www.jamesmerriman.co.uk https:;
-      connect-src 'self' https://*.ampproject.org https://*.githubusercontent.com;
       media-src https://www.jamesmerriman.co.uk https:;
+      connect-src 'self' https://*.ampproject.org https://*.githubusercontent.com;
       frame-src 'self';
       font-src 'self' https:;
       object-src 'none';
@@ -37,7 +37,7 @@ export function proxy(request: NextRequest) {
     `;
   } else {
     /**
-     * ✅ STRICT CSP (Main app)
+     * ✅ CSP: MAIN SITE (STRICT)
      */
     cspHeader = `
       default-src 'self';
@@ -46,8 +46,7 @@ export function proxy(request: NextRequest) {
         https://*.google-analytics.com
         https://*.google.com
         https://*.cloudinary.com
-        https://*.doubleclick.net
-        https://*.githubusercontent.com;
+        https://*.doubleclick.net;
 
       script-src 'self' 'unsafe-inline'
         https://www.googletagmanager.com;
@@ -77,20 +76,25 @@ export function proxy(request: NextRequest) {
   // ✅ Normalise CSP
   cspHeader = cspHeader.replace(/\s{2,}/g, " ").trim();
 
-  // ✅ ✅ Rewrite BEFORE response creation
-
+  /**
+   * ✅ STORIES REWRITE (with headers applied)
+   */
   if (isStories) {
     const rewrittenUrl = url.clone();
 
-    // ✅ Always strip leading /stories if present
     const cleanPath = url.pathname.replace(/^\/stories/, "");
-
     rewrittenUrl.pathname = `/stories${cleanPath}`;
 
-    return NextResponse.rewrite(rewrittenUrl);
+    const response = NextResponse.rewrite(rewrittenUrl);
+
+    response.headers.set("Content-Security-Policy", cspHeader);
+
+    return applySecurityHeaders(response, true);
   }
 
-  // ✅ Standard request flow (main site)
+  /**
+   * ✅ MAIN SITE FLOW
+   */
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", cspHeader);
@@ -103,13 +107,14 @@ export function proxy(request: NextRequest) {
 
   response.headers.set("Content-Security-Policy", cspHeader);
 
-  return applySecurityHeaders(response);
+  return applySecurityHeaders(response, false);
 }
 
 /**
- * ✅ Extracted security headers (cleaner + reusable)
+ * ✅ SECURITY HEADERS
+ * ✅ ✅ CORP is now domain-specific
  */
-function applySecurityHeaders(response: NextResponse) {
+function applySecurityHeaders(response: NextResponse, isStories: boolean) {
   response.headers.set(
     "Permissions-Policy",
     "camera=(), microphone=(), geolocation=(), interest-cohort=()",
@@ -119,7 +124,16 @@ function applySecurityHeaders(response: NextResponse) {
   response.headers.set("X-Content-Type-Options", "nosniff");
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set("X-DNS-Prefetch-Control", "on");
-  response.headers.set("Cross-Origin-Resource-Policy", "same-origin");
+
+  /**
+   * ✅ ✅ KEY FIX: Cross-origin only for stories
+   */
+  if (isStories) {
+    response.headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+  } else {
+    response.headers.set("Cross-Origin-Resource-Policy", "same-origin");
+  }
+
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
 
   response.headers.set(
