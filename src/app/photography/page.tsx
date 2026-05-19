@@ -75,12 +75,21 @@ const Page = async () => {
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
+
                 author: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
                 },
+
                 publisher: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
                 },
+
                 mainEntity: {
                   "@id": `${config.baseUrl}/photography#imagegallery`,
                 },

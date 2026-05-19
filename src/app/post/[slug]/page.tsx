@@ -101,10 +101,16 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
 
     author: {
       "@id": `${config.baseUrl}#person`,
+      "@type": "Person",
+      name: "James Merriman",
+      url: config.baseUrl,
     },
 
     publisher: {
       "@id": `${config.baseUrl}#person`,
+      "@type": "Person",
+      name: "James Merriman",
+      url: config.baseUrl,
     },
 
     mainEntityOfPage: {

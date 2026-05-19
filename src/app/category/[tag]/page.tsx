@@ -122,12 +122,21 @@ export default async function Page(props: {
           url: `${config.baseUrl}/post/${post.slug}`,
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
+
           author: {
             "@id": `${config.baseUrl}#person`,
+            "@type": "Person",
+            name: "James Merriman",
+            url: config.baseUrl,
           },
+
           publisher: {
             "@id": `${config.baseUrl}#person`,
+            "@type": "Person",
+            name: "James Merriman",
+            url: config.baseUrl,
           },
+
           image: post.image ? [post.image] : undefined,
           mainEntityOfPage: {
             "@type": "WebPage",

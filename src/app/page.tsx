@@ -179,9 +179,14 @@ export default async function Page(props: {
             image: post.image ? [post.image] : undefined,
             datePublished: post.publishedAt || post.createdAt,
             dateModified: post.updatedAt || post.publishedAt || post.createdAt,
+
             author: {
               "@id": `${config.baseUrl}#person`,
+              "@type": "Person",
+              name: "James Merriman",
+              url: config.baseUrl,
             },
+
             mainEntityOfPage: {
               "@id": `${config.baseUrl}/post/${post.slug}`,
             },
