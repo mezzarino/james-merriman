@@ -92,7 +92,7 @@ export default function StoriesPage() {
         style={{
           minHeight: "100vh",
           padding: "2rem",
-          background: "#000",
+          background: "linear-gradient(to right, #1e3a8a, #111827)",
           color: "#fff",
         }}
       >

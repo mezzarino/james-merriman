@@ -16,7 +16,7 @@ export default function LayoutWrapper({
   isStories: boolean;
 }) {
   return (
-    <div style={isStories ? { margin: 0, background: "#000" } : undefined}>
+    <div style={isStories ? { margin: 0 } : undefined}>
       {!isStories ? (
         <>
           <a
