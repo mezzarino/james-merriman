@@ -91,9 +91,8 @@ export async function GET() {
   "image": [
     "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg"
   ],
-  
-"datePublished": "2026-05-19T09:00:00+00:00",
-"dateModified": "2026-05-19T09:00:00+00:00"
+  "datePublished": "2026-05-19T09:00:00+00:00",
+  "dateModified": "2026-05-19T09:00:00+00:00",
 
   "author": {
     "@type": "Person",
