@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import Script from "next/script";
 
 /**
  * Accessibility Statement page metadata

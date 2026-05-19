@@ -55,6 +55,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
 
+    {
+      url: urlJoin(config.baseUrl, "stories", "afghanistan-anxious-explorer"),
+      lastModified: new Date("2026-05-19"),
+      priority: 0.6,
+    },
+
     // ✅ Blog posts
     ...postsResult.posts.map((post) => ({
       url: urlJoin(config.baseUrl, "post", post.slug),
