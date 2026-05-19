@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Script from "next/script";
 
 import { config } from "@/config";
@@ -124,7 +123,7 @@ export default function StoriesPage() {
           }}
         >
           {stories.map((story) => (
-            <Link key={story.slug} href={`/${story.slug}`}>
+            <a key={story.slug} href={`/${story.slug}`}>
               <div
                 style={{
                   cursor: "pointer",
@@ -161,7 +160,7 @@ export default function StoriesPage() {
                   </p>
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </main>
