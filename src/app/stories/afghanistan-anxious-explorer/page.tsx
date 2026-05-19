@@ -1,4 +1,6 @@
-<!doctype html>
+export const dynamic = "force-static";
+
+const html = `<!doctype html>
 <html ⚡ lang="en">
 
 <head>
@@ -260,4 +262,19 @@
 
 </body>
 
-</html>
+</html>`;
+
+export default function Page() {
+  return (
+    <iframe
+      title="Afghanistan: The Anxious Explorer Web Story"
+      srcDoc={html}
+      style={{
+        width: "100%",
+        height: "100vh",
+        border: "none",
+      }}
+      sandbox="allow-scripts allow-same-origin"
+    />
+  );
+}
