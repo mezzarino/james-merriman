@@ -2,7 +2,7 @@
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { usePathname } from "next/navigation";
+import { useMemo } from "react";
 
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { GoogleAnalyticsConsent } from "@/components/analytics/GoogleAnalyticsConsent";
@@ -10,9 +10,10 @@ import { Footer } from "@/components/Footer";
 import ReadingProgress from "@/components/ui/readingProgress";
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
-  const isStories = pathname.startsWith("/stories");
+  const isStories = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    return window.location.hostname.startsWith("stories.");
+  }, []);
 
   return (
     <div style={isStories ? { margin: 0, background: "#000" } : undefined}>

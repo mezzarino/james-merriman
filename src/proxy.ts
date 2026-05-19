@@ -26,9 +26,9 @@ export function proxy(request: NextRequest) {
       default-src 'self';
       script-src 'self' 'unsafe-inline' https://cdn.ampproject.org https://www.googletagmanager.com;
       style-src 'self' 'unsafe-inline';
-      img-src 'self' data: https://www.jamesmerriman.co.uk https:;
+      img-src 'self' data: https://www.jamesmerriman.co.uk https://*.google-analytics.com  https://*.google.com https:;
       media-src https://www.jamesmerriman.co.uk https:;
-      connect-src 'self' https://*.ampproject.org https://*.githubusercontent.com;
+      connect-src 'self' https://*.ampproject.org https://*.google-analytics.com  https://*.google.com https://*.githubusercontent.com;
       frame-src 'self';
       font-src 'self' https:;
       object-src 'none';
