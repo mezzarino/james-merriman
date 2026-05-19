@@ -73,13 +73,17 @@ export async function generateMetadata() {
  * ✅ Root layout (NO conditional UI here)
  * This must stay stable — do not try to detect host here
  */
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headersList = await headers();
+  const host = headersList.get("host") || "";
+  const isStories = host.startsWith("stories.");
+
   return (
     <html lang="en-GB">
       <body className={`${fontSans.variable} antialiased font-sans`}>
         <Providers>
           <ConsentProvider>
-            <LayoutWrapper>{children}</LayoutWrapper>
+            <LayoutWrapper isStories={isStories}>{children}</LayoutWrapper>
           </ConsentProvider>
         </Providers>
       </body>
