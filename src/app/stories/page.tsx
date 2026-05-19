@@ -8,7 +8,8 @@ const stories = [
     slug: "afghanistan-anxious-explorer",
     title: "Afghanistan",
     subtitle: "The Anxious Explorer",
-    image: "https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg",
+    image:
+      "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg",
   },
 ];
 
@@ -23,7 +24,7 @@ export const metadata = {
     siteName: "James Merriman",
     images: [
       {
-        url: "https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg",
+        url: "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg",
         width: 720,
         height: 1280,
       },
@@ -39,7 +40,9 @@ export const metadata = {
     card: "summary_large_image",
     title: "Stories | James Merriman",
     description: "Visual travel narratives by James Merriman.",
-    images: ["https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg"],
+    images: [
+      "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg",
+    ],
   },
 };
 

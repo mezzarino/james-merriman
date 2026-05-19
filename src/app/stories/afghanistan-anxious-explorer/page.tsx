@@ -85,14 +85,14 @@ const html = `<!doctype html>
     <meta property="og:description" content="A visual narrative of travel in Afghanistan by James Merriman.">
     <meta property="og:url" content="https://www.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/">
     <meta property="og:site_name" content="James Merriman">
-    <meta property="og:image" content="https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg">
+    <meta property="og:image" content="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg">
     <meta property="og:image:width" content="720">
     <meta property="og:image:height" content="1280">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Afghanistan: The Anxious Explorer">
     <meta name="twitter:description" content="A visual narrative of travel in Afghanistan by James Merriman.">
-    <meta name="twitter:image" content="https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg">
+    <meta name="twitter:image" content="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg">
 
     <meta name="amp-story-generator-name" content="Custom">
     <meta name="amp-story-generator-version" content="1.0">
@@ -113,7 +113,7 @@ const html = `<!doctype html>
             "headline": "Afghanistan: The Anxious Explorer",
             "description": "A visual narrative of travel in Afghanistan by James Merriman.",
             "image": [
-                "https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg"
+                "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg"
             ],
             "datePublished": "2026-01-01",
             "dateModified": "2026-01-01",
@@ -145,13 +145,13 @@ const html = `<!doctype html>
 
     <amp-story standalone title="Afghanistan: The Anxious Explorer" publisher="James Merriman"
         publisher-logo-src="https://www.jamesmerriman.co.uk/logo.png"
-        poster-portrait-src="https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg">
+        poster-portrait-src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/cover.jpg">
 
         <!-- PAGE 1: COVER -->
         <amp-story-page id="cover">
 
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/1.jpg" width="720" height="1280" layout="responsive">
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/1.jpg" width="720" height="1280" layout="responsive">
                 </amp-img>
             </amp-story-grid-layer>
 
@@ -174,7 +174,7 @@ const html = `<!doctype html>
         <!-- PAGE 2 -->
         <amp-story-page id="intro">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/2.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/2.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
            
@@ -191,7 +191,7 @@ const html = `<!doctype html>
         <!-- PAGE 3 -->
         <amp-story-page id="awareness">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/3.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/3.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -208,7 +208,7 @@ const html = `<!doctype html>
         <!-- PAGE 4 -->
         <amp-story-page id="arrival">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/4.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/4.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -225,7 +225,7 @@ const html = `<!doctype html>
         <!-- PAGE 5 -->
         <amp-story-page id="expectation">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/5.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/5.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -242,7 +242,7 @@ const html = `<!doctype html>
         <!-- PAGE 6 -->
         <amp-story-page id="movement">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/6.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/6.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -259,7 +259,7 @@ const html = `<!doctype html>
         <!-- PAGE 7 -->
         <amp-story-page id="streets">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/7.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/7.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -276,7 +276,7 @@ const html = `<!doctype html>
         <!-- PAGE 8 -->
         <amp-story-page id="people">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/8.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/8.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -293,7 +293,7 @@ const html = `<!doctype html>
         <!-- PAGE 9 -->
         <amp-story-page id="landscape">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/9.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/9.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -310,7 +310,7 @@ const html = `<!doctype html>
         <!-- PAGE 10 -->
         <amp-story-page id="tension">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/10.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/10.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -327,7 +327,7 @@ const html = `<!doctype html>
         <!-- PAGE 11 -->
         <amp-story-page id="observation">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/11.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/11.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -344,7 +344,7 @@ const html = `<!doctype html>
         <!-- PAGE 12 -->
         <amp-story-page id="reflection">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/12.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/12.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -361,7 +361,7 @@ const html = `<!doctype html>
         <!-- PAGE 13 -->
         <amp-story-page id="meaning">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/13.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/13.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -378,7 +378,7 @@ const html = `<!doctype html>
         <!-- ✅ CTA PAGE -->
         <amp-story-page id="cta">
             <amp-story-grid-layer template="fill">
-                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/14.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer/images/afghanistan/14.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
