@@ -267,12 +267,13 @@ const html = `<!doctype html>
 export default function Page() {
   return (
     <iframe
-      title="Afghanistan: The Anxious Explorer Web Story"
+      title="Afghanistan Web Story: The Anxious Explorer"
       srcDoc={html}
       style={{
-        width: "100%",
+        width: "100vw",
         height: "100vh",
         border: "none",
+        display: "block",
       }}
       sandbox="allow-scripts allow-same-origin"
     />
