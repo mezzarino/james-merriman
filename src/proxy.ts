@@ -77,15 +77,16 @@ export function proxy(request: NextRequest) {
   cspHeader = cspHeader.replace(/\s{2,}/g, " ").trim();
 
   // ✅ ✅ Rewrite BEFORE response creation
+
   if (isStories) {
     const rewrittenUrl = url.clone();
-    rewrittenUrl.pathname = `/stories${url.pathname}`;
 
-    const response = NextResponse.rewrite(rewrittenUrl);
+    // ✅ Always strip leading /stories if present
+    const cleanPath = url.pathname.replace(/^\/stories/, "");
 
-    response.headers.set("Content-Security-Policy", cspHeader);
+    rewrittenUrl.pathname = `/stories${cleanPath}`;
 
-    return applySecurityHeaders(response);
+    return NextResponse.rewrite(rewrittenUrl);
   }
 
   // ✅ Standard request flow (main site)

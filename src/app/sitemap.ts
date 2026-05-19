@@ -19,6 +19,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date("2026-05-19"),
       priority: 1.0,
     },
+
+    {
+      url: "https://stories.jamesmerriman.co.uk/",
+      lastModified: new Date("2026-05-19"),
+      priority: 0.6,
+    },
+
     {
       url: urlJoin(config.baseUrl, "publications"),
       lastModified: new Date("2026-05-19"),
