@@ -8,7 +8,7 @@ const stories = [
     slug: "afghanistan-anxious-explorer",
     title: "Afghanistan",
     subtitle: "The Anxious Explorer",
-    image: "/images/afghanistan/cover.jpg",
+    image: "https://www.jamesmerriman.co.uk/images/afghanistan/cover.jpg",
   },
 ];
 

@@ -26,8 +26,9 @@ export function proxy(request: NextRequest) {
       default-src 'self';
       script-src 'self' 'unsafe-inline' https://cdn.ampproject.org;
       style-src 'self' 'unsafe-inline';
-      img-src 'self' data: https:;
+      img-src 'self' data: https://www.jamesmerriman.co.uk https:;
       connect-src 'self' https://*.ampproject.org https://*.githubusercontent.com;
+      media-src https://www.jamesmerriman.co.uk https:;
       frame-src 'self';
       font-src 'self' https:;
       object-src 'none';
