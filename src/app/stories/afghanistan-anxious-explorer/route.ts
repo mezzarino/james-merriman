@@ -74,9 +74,6 @@ export async function GET() {
 <meta name="twitter:description" content="A visual narrative of travel in Afghanistan by James Merriman.">
 <meta name="twitter:image" content="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg">
 
-</head>
-
-<body>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -110,6 +107,10 @@ export async function GET() {
   "inLanguage": "en-GB"
 }
 </script>
+
+</head>
+
+<body>
 
 <amp-story
   standalone
