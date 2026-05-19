@@ -97,9 +97,24 @@ export default function StoriesPage() {
           color: "#fff",
         }}
       >
-        <h1 style={{ fontSize: "2rem", marginBottom: "1.5rem" }}>Stories</h1>
+        <h1
+          style={{
+            fontSize: "2rem",
+            marginBottom: "1rem",
+          }}
+        >
+          Travel Stories & Visual Narratives
+        </h1>
 
-        <p style={{ marginBottom: "2rem", opacity: 0.8 }}>Short visual travel narratives</p>
+        <p
+          style={{
+            marginBottom: "2rem",
+            opacity: 0.8,
+          }}
+        >
+          Documentary-style visual stories from remote destinations, captured by travel writer James
+          Merriman.
+        </p>
 
         <div
           style={{

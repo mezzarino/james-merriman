@@ -130,7 +130,7 @@ export async function GET() {
     <!-- ✅ Text -->
     <amp-story-grid-layer template="vertical">
       
-<h1 animate-in="fade-in" style="font-size: 3.2rem; font-weight:700;">
+<h1 animate-in="fade-in" style="font-size: 2.5rem; font-weight:700;">
   Afghanistan
 </h1>
 
@@ -185,8 +185,8 @@ ${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     <div class="overlay"></div>
   </amp-story-grid-layer>
   <amp-story-grid-layer template="vertical">
-    <h2>See the full story</h2>
-    <p><a href="https://www.jamesmerriman.co.uk">Explore more →</a></p>
+    <h2>Visit the website of James Merriman</h2>
+    <p><a href="https://www.jamesmerriman.co.uk" style="color:#fff;">Explore more →</a></p>
   </amp-story-grid-layer>
 </amp-story-page>
 

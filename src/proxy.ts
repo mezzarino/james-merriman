@@ -3,10 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 export function proxy(request: NextRequest) {
   const url = request.nextUrl;
 
-  if (url.search.includes("_rsc")) {
-    return NextResponse.next();
-  }
-
   // ✅ Clean pagination redirect
   if (url.pathname === "/" && url.searchParams.get("page") === "1") {
     url.searchParams.delete("page");
