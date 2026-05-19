@@ -16,6 +16,22 @@ const nextConfig = {
       },
     ],
   },
+
+  // ✅ ✅ ✅ THIS is the critical addition
+  async headers() {
+    return [
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cross-Origin-Resource-Policy",
+            value: "cross-origin",
+          },
+        ],
+      },
+    ];
+  },
+
   redirects: async () => {
     return [];
   },

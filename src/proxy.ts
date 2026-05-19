@@ -24,7 +24,7 @@ export function proxy(request: NextRequest) {
   if (isStories) {
     cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.ampproject.org;
+      script-src 'self' 'unsafe-inline' https://cdn.ampproject.org https://www.googletagmanager.com;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https://www.jamesmerriman.co.uk https:;
       media-src https://www.jamesmerriman.co.uk https:;
