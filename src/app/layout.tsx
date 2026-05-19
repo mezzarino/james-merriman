@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
+import { headers } from "next/headers";
 
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { ConsentProvider } from "@/components/analytics/ConsentContext";
@@ -21,28 +22,22 @@ const fontSans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jamesmerriman.co.uk"),
-
-  // ✅ Branding defaults only (pages control full titles)
   title: {
     default: "James Merriman | Travel Writer & Photographer",
     template: "%s",
   },
-
   description:
     "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
-
   robots: {
     index: true,
     follow: true,
   },
-
   authors: [
     {
       name: "James Merriman",
       url: "/about",
     },
   ],
-
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -51,33 +46,49 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-
   manifest: "/site.webmanifest",
-
   appleWebApp: {
     title: "James Merriman Travel Writer",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headersList = await headers();
+  const host = headersList.get("host") || "";
+
+  const isStories = host.startsWith("stories.");
+
   return (
     <html lang="en-GB">
-      <body className={`${fontSans.variable} antialiased font-sans`}>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-white text-black px-4 py-2 rounded shadow-sm"
-        >
-          Skip to main content
-        </a>
+      <body
+        className={`${fontSans.variable} antialiased font-sans`}
+        style={isStories ? { margin: 0, background: "#000" } : undefined}
+      >
+        {!isStories && (
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-white text-black px-4 py-2 rounded shadow-sm"
+          >
+            Skip to main content
+          </a>
+        )}
+
         <Providers>
           <ConsentProvider>
-            <ReadingProgress />
+            {!isStories && <ReadingProgress />}
+
             {children}
-            <Footer />
-            <SpeedInsights />
-            <Analytics />
-            <ConsentBanner />
-            <GoogleAnalyticsConsent />
+
+            {/* ✅ Only render site chrome on main site */}
+            {!isStories && (
+              <>
+                <Footer />
+                <SpeedInsights />
+                <Analytics />
+                <ConsentBanner />
+                <GoogleAnalyticsConsent />
+              </>
+            )}
           </ConsentProvider>
         </Providers>
       </body>

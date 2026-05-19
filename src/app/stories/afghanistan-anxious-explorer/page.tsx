@@ -151,7 +151,7 @@ const html = `<!doctype html>
         <amp-story-page id="cover">
 
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/1.jpg" width="720" height="1280" layout="responsive">
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/1.jpg" width="720" height="1280" layout="responsive">
                 </amp-img>
             </amp-story-grid-layer>
 
@@ -174,7 +174,7 @@ const html = `<!doctype html>
         <!-- PAGE 2 -->
         <amp-story-page id="intro">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/2.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/2.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
            
@@ -191,7 +191,7 @@ const html = `<!doctype html>
         <!-- PAGE 3 -->
         <amp-story-page id="awareness">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/3.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/3.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -208,7 +208,7 @@ const html = `<!doctype html>
         <!-- PAGE 4 -->
         <amp-story-page id="arrival">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/4.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/4.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -225,7 +225,7 @@ const html = `<!doctype html>
         <!-- PAGE 5 -->
         <amp-story-page id="expectation">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/5.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/5.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -242,7 +242,7 @@ const html = `<!doctype html>
         <!-- PAGE 6 -->
         <amp-story-page id="movement">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/6.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/6.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -259,7 +259,7 @@ const html = `<!doctype html>
         <!-- PAGE 7 -->
         <amp-story-page id="streets">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/7.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/7.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -276,7 +276,7 @@ const html = `<!doctype html>
         <!-- PAGE 8 -->
         <amp-story-page id="people">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/8.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/8.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -293,7 +293,7 @@ const html = `<!doctype html>
         <!-- PAGE 9 -->
         <amp-story-page id="landscape">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/9.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/9.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -310,7 +310,7 @@ const html = `<!doctype html>
         <!-- PAGE 10 -->
         <amp-story-page id="tension">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/10.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/10.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -327,7 +327,7 @@ const html = `<!doctype html>
         <!-- PAGE 11 -->
         <amp-story-page id="observation">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/11.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/11.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -344,7 +344,7 @@ const html = `<!doctype html>
         <!-- PAGE 12 -->
         <amp-story-page id="reflection">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/12.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/12.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -361,7 +361,7 @@ const html = `<!doctype html>
         <!-- PAGE 13 -->
         <amp-story-page id="meaning">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/13.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/13.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
@@ -378,7 +378,7 @@ const html = `<!doctype html>
         <!-- ✅ CTA PAGE -->
         <amp-story-page id="cta">
             <amp-story-grid-layer template="fill">
-                <amp-img src="/images/afghanistan/14.jpg" width="720" height="1280" layout="responsive"></amp-img>
+                <amp-img src="https://www.jamesmerriman.co.uk/images/afghanistan/14.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
             
