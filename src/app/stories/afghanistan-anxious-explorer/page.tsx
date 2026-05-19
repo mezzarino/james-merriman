@@ -25,6 +25,59 @@ const html = `<!doctype html>
         </style>
     </noscript>
 
+    <style amp-custom>
+  /* ✅ Base text styling */
+  h1 {
+    font-family: Georgia, serif;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.4;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-family: Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  }
+
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  /* ✅ Improve vertical layout spacing */
+  amp-story-grid-layer[template="vertical"] {
+    padding: 2rem;
+    justify-content: flex-end;
+  }
+
+  /* ✅ Optional: dark gradient overlay */
+  .overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.75) 0%,
+      rgba(0,0,0,0.2) 60%,
+      rgba(0,0,0,0.05) 100%
+    );
+  }
+</style>
+
     <meta name="description" content="A visual narrative of travel in Afghanistan by James Merriman.">
 
     <meta property="og:type" content="article">
@@ -102,9 +155,17 @@ const html = `<!doctype html>
                 </amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
-                <h1>Afghanistan</h1>
-                <p>The Anxious Explorer</p>
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
+                
+<h1 style="font-size: 2.8rem;">Afghanistan</h1>
+<p style="font-size: 1.3rem;">The Anxious Explorer</p>
+
             </amp-story-grid-layer>
 
         </amp-story-page>
@@ -116,7 +177,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/2.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+           
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Travel here begins with hesitation.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -127,7 +194,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/3.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Not fear — but awareness. Nothing is predictable.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -138,7 +211,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/4.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Arrival is quiet. No spectacle, just movement.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -149,7 +228,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/5.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Life moves beyond the headlines.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -160,7 +245,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/6.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Journeys stretch. Time shifts.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -171,7 +262,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/7.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Streets carry conversation, trade, memory.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -182,7 +279,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/8.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Encounters are brief, but never empty.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -193,7 +296,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/9.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>The mountains define everything.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -204,7 +313,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/10.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>The tension never truly leaves.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -215,7 +330,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/11.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>What matters most is what isn’t said.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -226,7 +347,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/12.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Travel here isn’t about answers.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -237,7 +364,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/13.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <p>Places like this resist explanation.</p>
             </amp-story-grid-layer>
         </amp-story-page>
@@ -248,7 +381,13 @@ const html = `<!doctype html>
                 <amp-img src="/images/afghanistan/14.jpg" width="720" height="1280" layout="responsive"></amp-img>
             </amp-story-grid-layer>
 
-            <amp-story-grid-layer template="vertical">
+            
+<amp-story-grid-layer template="fill">
+  <div class="overlay"></div>
+</amp-story-grid-layer>
+
+<amp-story-grid-layer template="vertical">
+
                 <h2>Read more from James Merriman</h2>
                 <p>
                     <a href="https://www.jamesmerriman.co.uk" style="color:white; text-decoration:underline;">
