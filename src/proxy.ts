@@ -21,15 +21,13 @@ export function proxy(request: NextRequest) {
   if (isStories) {
     /**
      * ✅ RELAXED CSP (AMP-compatible)
-     * - Allows AMP runtime
-     * - Allows inline scripts/styles (required by AMP)
      */
     cspHeader = `
       default-src 'self';
       script-src 'self' 'unsafe-inline' https://cdn.ampproject.org;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
-      connect-src 'self' https://*.ampproject.org;
+      connect-src 'self' https://*.ampproject.org https://*.githubusercontent.com;
       frame-src 'self';
       font-src 'self' https:;
       object-src 'none';
@@ -39,9 +37,6 @@ export function proxy(request: NextRequest) {
   } else {
     /**
      * ✅ STRICT CSP (Main app)
-     * - Uses nonce
-     * - Removes strict-dynamic (simpler, avoids issues)
-     * - Avoids unsafe-inline for scripts
      */
     cspHeader = `
       default-src 'self';
@@ -78,30 +73,41 @@ export function proxy(request: NextRequest) {
     `;
   }
 
-  // ✅ Cleanup CSP formatting
+  // ✅ Normalise CSP
   cspHeader = cspHeader.replace(/\s{2,}/g, " ").trim();
 
-  // ✅ Clone headers
-  const requestHeaders = new Headers(request.headers);
+  // ✅ ✅ Rewrite BEFORE response creation
+  if (isStories) {
+    const rewrittenUrl = url.clone();
+    rewrittenUrl.pathname = `/stories${url.pathname}`;
 
-  // ✅ Only attach nonce to main app (not needed for AMP)
-  if (!isStories) {
-    requestHeaders.set("x-nonce", nonce);
+    const response = NextResponse.rewrite(rewrittenUrl);
+
+    response.headers.set("Content-Security-Policy", cspHeader);
+
+    return applySecurityHeaders(response);
   }
 
+  // ✅ Standard request flow (main site)
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", cspHeader);
 
-  // ✅ Create response
   const response = NextResponse.next({
     request: {
       headers: requestHeaders,
     },
   });
 
-  // ✅ Apply CSP
   response.headers.set("Content-Security-Policy", cspHeader);
 
-  // ✅ Security headers (unchanged)
+  return applySecurityHeaders(response);
+}
+
+/**
+ * ✅ Extracted security headers (cleaner + reusable)
+ */
+function applySecurityHeaders(response: NextResponse) {
   response.headers.set(
     "Permissions-Policy",
     "camera=(), microphone=(), geolocation=(), interest-cohort=()",
@@ -114,7 +120,6 @@ export function proxy(request: NextRequest) {
   response.headers.set("Cross-Origin-Resource-Policy", "same-origin");
   response.headers.set("Cross-Origin-Opener-Policy", "same-origin");
 
-  // ✅ CSP reporting
   response.headers.set(
     "Report-To",
     JSON.stringify({
