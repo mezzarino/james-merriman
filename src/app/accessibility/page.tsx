@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import Script from "next/script";
 
 /**
  * Accessibility Statement page metadata
@@ -44,6 +45,57 @@ export const metadata: Metadata = {
 const Page = async () => {
   return (
     <>
+      <Script
+        id="accessibility-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebPage",
+                additionalType: "https://schema.org/AccessibilityStatement",
+                "@id": `${config.baseUrl}/accessibility#webpage`,
+                url: `${config.baseUrl}/accessibility`,
+                name: "Accessibility Statement",
+                description:
+                  "Accessibility statement for jamesmerriman.co.uk outlining accessibility features and ongoing improvements.",
+                isPartOf: {
+                  "@id": `${config.baseUrl}#website`,
+                },
+                publisher: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                inLanguage: "en-GB",
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/accessibility#breadcrumb`,
+                },
+              },
+
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/accessibility#breadcrumb`,
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: `${config.baseUrl}/`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Accessibility",
+                    item: `${config.baseUrl}/accessibility`,
+                  },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       <FullWidthHeader
         title="Accessibility Statement"
         description=""

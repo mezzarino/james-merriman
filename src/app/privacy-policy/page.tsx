@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 
 import { ConsentPreferencesLink } from "@/components/analytics/ConsentPreferencesLink";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
@@ -48,6 +49,56 @@ export const metadata: Metadata = {
 const Page = async () => {
   return (
     <>
+      <Script
+        id="privacy-policy-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "PrivacyPolicy",
+                "@id": `${config.baseUrl}/privacy-policy#webpage`,
+                url: `${config.baseUrl}/privacy-policy`,
+                name: "Privacy Policy",
+                description:
+                  "Privacy policy for jamesmerriman.co.uk outlining how personal data is collected, used and protected.",
+                isPartOf: {
+                  "@id": `${config.baseUrl}#website`,
+                },
+                publisher: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                inLanguage: "en-GB",
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/privacy-policy#breadcrumb`,
+                },
+              },
+
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/privacy-policy#breadcrumb`,
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: `${config.baseUrl}/`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Privacy Policy",
+                    item: `${config.baseUrl}/privacy-policy`,
+                  },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       <FullWidthHeader
         title="Privacy Policy"
         description=""

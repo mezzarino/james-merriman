@@ -16,42 +16,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ✅ Core pages
     {
       url: config.baseUrl,
-      lastModified: new Date("2026-04-28"),
+      lastModified: new Date("2026-05-19"),
       priority: 1.0,
     },
     {
       url: urlJoin(config.baseUrl, "publications"),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "photography"),
-      lastModified: new Date("2026-05-11"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "credentials"),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "contact"),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "category"),
-      lastModified: new Date("2026-04-30"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.6,
     },
 
@@ -65,19 +65,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ✅ Tags
     ...tagsResult.tags.map((tag) => ({
       url: urlJoin(config.baseUrl, "category", tag.name),
-      lastModified: new Date("2026-05-03"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.5,
     })),
 
-    // ✅ Legal / utility pages (RESTORED ✅)
     {
       url: urlJoin(config.baseUrl, "privacy-policy"),
-      lastModified: new Date("2026-05-07"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.4,
     },
     {
       url: urlJoin(config.baseUrl, "accessibility"),
-      lastModified: new Date("2026-05-07"),
+      lastModified: new Date("2026-05-19"),
       priority: 0.4,
     },
   ];

@@ -3,7 +3,6 @@ export const revalidate = 60; // 1 minute
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Script from "next/script";
-import type { BlogPosting, WithContext } from "schema-dts";
 
 import { BlogContent } from "@/components/BlogContent";
 import { config } from "@/config";
@@ -64,12 +63,12 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   }
 
   const readingTime = getReadingTimeFromHtml(result.post.content);
-  const { title, publishedAt, updatedAt, author, image } = result.post;
+  const { title, publishedAt, updatedAt, image } = result.post;
 
   /**
    * BlogPosting structured data
    */
-  const jsonLd: WithContext<BlogPosting> = {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
 
@@ -83,6 +82,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
       ? [
           {
             "@type": "ImageObject",
+            "@id": `${config.baseUrl}/post/${slug}#primaryimage`,
             url: image,
           },
         ]
@@ -97,22 +97,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         : undefined,
 
     author: {
-      "@type": "Person",
-      "@id": `${config.baseUrl}/about#author`,
-      name: "James Merriman",
-      url: `${config.baseUrl}/about`,
-      image: author?.image ?? undefined,
-      sameAs: [
-        "https://x.com/mezzarino",
-        "https://linkedin.com/in/jamesmerriman",
-        "https://instagram.com/mezzarino",
-      ],
+      "@id": `${config.baseUrl}#person`,
     },
 
     publisher: {
-      "@type": "Organization",
-      name: "James Merriman",
-      logo: "https://www.jamesmerriman.co.uk/logo.png",
+      "@id": `${config.baseUrl}#person`,
     },
 
     mainEntityOfPage: {
@@ -120,15 +109,20 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
       "@id": `${config.baseUrl}/post/${slug}`,
     },
 
-    /**
-     * Stronger semantic relationship
-     */
-    isPartOf: {
-      "@type": "Blog",
-      "@id": `${config.baseUrl}#blog`,
-    },
+    isPartOf: [
+      {
+        "@id": `${config.baseUrl}#blog`,
+      },
+      {
+        "@id": `${config.baseUrl}#website`,
+      },
+    ],
 
     inLanguage: "en-GB",
+
+    breadcrumb: {
+      "@id": `${config.baseUrl}/post/${slug}#breadcrumb`,
+    },
 
     timeRequired: Number.isFinite(readingTime) ? `PT${readingTime}M` : undefined,
 
@@ -141,8 +135,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     articleSection: result.post.tags?.[0]?.name,
 
     about: result.post.tags?.map((tag) => ({
-      "@type": "Thing",
+      "@type": "DefinedTerm",
+      "@id": `${config.baseUrl}/category/${tag.name}#term`,
       name: tag.name,
+      url: `${config.baseUrl}/category/${tag.name}`,
+      inDefinedTermSet: `${config.baseUrl}/category`,
     })),
   };
 
@@ -158,17 +155,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: config.baseUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
         item: `${config.baseUrl}/`,
       },
       {
         "@type": "ListItem",
-        position: 3,
+        position: 2,
         name: title,
         item: `${config.baseUrl}/post/${slug}`,
       },

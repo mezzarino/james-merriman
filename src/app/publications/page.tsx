@@ -45,6 +45,17 @@ export const metadata: Metadata = {
   },
 };
 
+const publications = [
+  { id: "awakening-of-leptis-magna" },
+  { id: "eating-my-way-around-nice" },
+  { id: "my-tehran-beyond-the-headlines" },
+  {
+    id: "guardian-beach-bars",
+    external: true,
+    url: "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe#james-merriman",
+  },
+];
+
 const Page = async () => {
   return (
     <>
@@ -58,7 +69,7 @@ const Page = async () => {
             "@graph": [
               {
                 "@type": "CollectionPage",
-                "@id": `${config.baseUrl}/publications`,
+                "@id": `${config.baseUrl}/publications#collectionpage`,
                 url: `${config.baseUrl}/publications`,
                 name: "Selected Publications | James Merriman",
                 description:
@@ -69,22 +80,25 @@ const Page = async () => {
                 about: {
                   "@id": `${config.baseUrl}#person`,
                 },
-              },
-
-              {
-                "@type": ["Person", "Organization"],
-                "@id": `${config.baseUrl}#entity`,
-                name: "James Merriman",
-                url: config.baseUrl,
-                sameAs: [
-                  "https://x.com/mezzarino",
-                  "https://linkedin.com/in/jamesmerriman",
-                  "https://instagram.com/mezzarino",
-                ],
+                mainEntity: {
+                  "@type": "ItemList",
+                  name: "Publications by James Merriman",
+                  itemListElement: publications.map((pub, index) => ({
+                    "@type": "ListItem",
+                    position: index + 1,
+                    item: {
+                      "@id": pub.external ? pub.url : `${config.baseUrl}/publications#${pub.id}`,
+                    },
+                  })),
+                },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/publications#breadcrumb`,
+                },
               },
 
               {
                 "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/publications#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",
@@ -101,14 +115,11 @@ const Page = async () => {
                 ],
               },
 
-              /* ---------------------------
-               Creative works
-            ---------------------------- */
-
               {
                 "@type": "CreativeWork",
                 "@id": `${config.baseUrl}/publications#awakening-of-leptis-magna`,
                 name: "The Awakening of Leptis Magna",
+                headline: "The Awakening of Leptis Magna",
                 author: {
                   "@id": `${config.baseUrl}#person`,
                 },
@@ -131,94 +142,6 @@ const Page = async () => {
                   contentUrl: `${config.baseUrl}/publications/globe-magazine-spring-2026.pdf`,
                   encodingFormat: "application/pdf",
                 },
-              },
-
-              {
-                "@type": "CreativeWork",
-                "@id": `${config.baseUrl}/publications#eating-my-way-around-nice`,
-                name: "Eating My Way Around Nice",
-                author: {
-                  "@id": `${config.baseUrl}#person`,
-                },
-                publisher: {
-                  "@type": "Organization",
-                  name: "Globe Magazine",
-                },
-                datePublished: "2025-12",
-                genre: ["Travel writing", "Food", "City travel"],
-                about: {
-                  "@type": "Place",
-                  name: "Nice",
-                  address: {
-                    "@type": "PostalAddress",
-                    addressCountry: "FR",
-                  },
-                },
-                isPartOf: {
-                  "@type": "Periodical",
-                  name: "Globe Magazine",
-                },
-                encoding: {
-                  "@type": "MediaObject",
-                  contentUrl: `${config.baseUrl}/publications/globe-magazine-winter-2025.pdf`,
-                  encodingFormat: "application/pdf",
-                },
-              },
-
-              {
-                "@type": "CreativeWork",
-                "@id":
-                  "https://www.jamesmerriman.co.uk/publications#my-tehran-beyond-the-headlines",
-                name: "My Tehran: Beyond the Headlines",
-                author: {
-                  "@id": "https://www.jamesmerriman.co.uk#person",
-                },
-                isPartOf: {
-                  "@type": "Book",
-                  name: "The Kindness of Strangers",
-                  publisher: {
-                    "@type": "Organization",
-                    name: "Bradt Guides",
-                    url: "https://www.bradtguides.com/",
-                  },
-                  url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
-                },
-                genre: ["Travel writing", "City travel", "Culture"],
-                about: {
-                  "@type": "Place",
-                  name: "Tehran",
-                  address: {
-                    "@type": "PostalAddress",
-                    addressCountry: "IR",
-                  },
-                },
-                url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
-              },
-
-              {
-                "@type": "CreativeWork",
-                "@id":
-                  "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe#james-merriman",
-                name: "Readers' favourite beach bars in Europe",
-                author: {
-                  "@id": `${config.baseUrl}#person`,
-                },
-                publisher: {
-                  "@type": "Organization",
-                  name: "The Guardian",
-                  url: "https://www.theguardian.com/",
-                },
-                datePublished: "2026-05-08",
-                genre: ["Travel writing", "Food", "Coastal"],
-                about: {
-                  "@type": "Place",
-                  name: "Matala, Crete",
-                  address: {
-                    "@type": "PostalAddress",
-                    addressCountry: "GR",
-                  },
-                },
-                url: "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe",
               },
             ],
           }),

@@ -92,139 +92,137 @@ export default async function Page(props: {
   /**
    * JSON‑LD structured data
    */
-  const jsonLd = [
-    //Organisation
-    {
-      "@context": "https://schema.org",
-      "@type": ["Person", "Organization"],
-      "@id": "https://www.jamesmerriman.co.uk/#entity",
-      name: "James Merriman",
-      url: "https://www.jamesmerriman.co.uk/",
-      image: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
-      logo: {
-        "@type": "ImageObject",
-        "@id": "https://www.jamesmerriman.co.uk/#logo",
-        url: "https://www.jamesmerriman.co.uk/logo.png",
-        contentUrl: "https://www.jamesmerriman.co.uk/logo.png",
-        width: 640,
-        height: 640,
-      },
-      jobTitle: "Travel Writer & Photographer",
-      sameAs: [
-        "https://x.com/mezzarino",
-        "https://linkedin.com/in/jamesmerriman",
-        "https://instagram.com/mezzarino",
-      ],
-    },
-
-    // WebSite
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": `${config.baseUrl}#website`,
-      name: "James Merriman | Travel Writing and Photography",
-      url: config.baseUrl,
-
-      publisher: {
-        "@id": "https://www.jamesmerriman.co.uk/#entity",
-      },
-
-      potentialAction: {
-        "@type": "SearchAction",
-        target: `${config.baseUrl}/?query={search_term_string}`,
-        "query-input": "required name=search_term_string",
-      },
-    },
-
-    // WebPage
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "@id": `${currentPageUrl}/webpage`,
-      url: `${currentPageUrl}`,
-      description:
-        "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
-      isPartOf: {
-        "@id": `${currentPageUrl}#website`,
-      },
-      mainEntity: {
-        "@id": `${currentPageUrl}#latest-writing`,
-      },
-    },
-
-    // Blog
-    {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "@id": `${config.baseUrl}#blog`,
-      name: "James Merriman – Travel Writing",
-      url: currentPageUrl,
-      publisher: {
-        "@id": "https://www.jamesmerriman.co.uk/#entity",
-      },
-    },
-
-    // ItemList (posts on this page)
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "@id": `${currentPageUrl}#latest-writing`,
-      itemListElement: result.posts.map((post, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        item: {
-          "@type": "BlogPosting",
-          "@id": `${config.baseUrl}/post/${post.slug}`,
-          headline: post.title,
-          description: post.description,
-          url: `${config.baseUrl}/post/${post.slug}`,
-          image: [post.image],
-          datePublished: post.publishedAt || post.createdAt,
-          dateModified: post.updatedAt || post.publishedAt || post.createdAt,
-          author: {
-            "@id": "https://www.jamesmerriman.co.uk/#entity",
-          },
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      // ✅ Person (canonical entity)
+      {
+        "@type": "Person",
+        "@id": `${config.baseUrl}#person`,
+        name: "James Merriman",
+        url: config.baseUrl,
+        image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+        logo: {
+          "@type": "ImageObject",
+          "@id": `${config.baseUrl}#logo`,
+          url: `${config.baseUrl}/logo.png`,
+          width: 640,
+          height: 640,
         },
-      })),
-      numberOfItems: result.posts.length,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": currentPageUrl,
+        jobTitle: "Travel Writer & Photographer",
+        sameAs: [
+          "https://x.com/mezzarino",
+          "https://linkedin.com/in/jamesmerriman",
+          "https://instagram.com/mezzarino",
+        ],
       },
-    },
 
-    // ✅ CollectionPage (ONLY page 2+)
-    ...(page > 1
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "@id": `${currentPageUrl}#collection`,
-            name: `Latest Writing – Page ${page}`,
-            url: currentPageUrl,
-            isPartOf: {
-              "@id": `${config.baseUrl}#website`,
+      // ✅ WebSite
+      {
+        "@type": "WebSite",
+        "@id": `${config.baseUrl}#website`,
+        name: "James Merriman | Travel Writing and Photography",
+        url: config.baseUrl,
+        publisher: {
+          "@id": `${config.baseUrl}#person`,
+        },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${config.baseUrl}/?query={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+
+      // ✅ WebPage (homepage)
+      {
+        "@type": "WebPage",
+        "@id": `${currentPageUrl}#webpage`,
+        url: currentPageUrl,
+        description:
+          "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
+        isPartOf: {
+          "@id": `${config.baseUrl}#website`,
+        },
+        mainEntity: {
+          "@id": `${currentPageUrl}#latest-writing`,
+        },
+        breadcrumb: {
+          "@id": `${currentPageUrl}#breadcrumb`,
+        },
+      },
+
+      // ✅ Blog
+      {
+        "@type": "Blog",
+        "@id": `${config.baseUrl}#blog`,
+        name: "James Merriman – Travel Writing",
+        url: config.baseUrl,
+        publisher: {
+          "@id": `${config.baseUrl}#person`,
+        },
+      },
+
+      // ✅ Latest posts list
+      {
+        "@type": "ItemList",
+        "@id": `${currentPageUrl}#latest-writing`,
+        numberOfItems: result.posts.length,
+        itemListElement: result.posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "BlogPosting",
+            "@id": `${config.baseUrl}/post/${post.slug}#article`,
+            headline: post.title,
+            description: post.description,
+            url: `${config.baseUrl}/post/${post.slug}`,
+            image: post.image ? [post.image] : undefined,
+            datePublished: post.publishedAt || post.createdAt,
+            dateModified: post.updatedAt || post.publishedAt || post.createdAt,
+            author: {
+              "@id": `${config.baseUrl}#person`,
             },
-            mainEntity: {
-              "@id": `${currentPageUrl}#latest-writing`,
+            mainEntityOfPage: {
+              "@id": `${config.baseUrl}/post/${post.slug}`,
             },
           },
-        ]
-      : []),
+        })),
+        mainEntityOfPage: {
+          "@id": currentPageUrl,
+        },
+      },
 
-    // Breadcrumbs
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "@id": `${currentPageUrl}#breadcrumb`,
-      itemListElement: breadcrumb.map((item, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: item.label,
-        item: item.href === "/" ? config.baseUrl : `${config.baseUrl}${item.href}`,
-      })),
-    },
-  ];
+      // ✅ Optional paginated CollectionPage
+      ...(page > 1
+        ? [
+            {
+              "@type": "CollectionPage",
+              "@id": `${currentPageUrl}#collectionpage`,
+              name: `Latest Writing – Page ${page}`,
+              url: currentPageUrl,
+              isPartOf: {
+                "@id": `${config.baseUrl}#website`,
+              },
+              mainEntity: {
+                "@id": `${currentPageUrl}#latest-writing`,
+              },
+            },
+          ]
+        : []),
+
+      // ✅ Breadcrumbs
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${currentPageUrl}#breadcrumb`,
+        itemListElement: breadcrumb.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: item.label,
+          item: item.href === "/" ? `${config.baseUrl}/` : `${config.baseUrl}${item.href}`,
+        })),
+      },
+    ],
+  };
 
   return (
     <>

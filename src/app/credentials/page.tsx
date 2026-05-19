@@ -60,18 +60,24 @@ const Page = async () => {
             "@graph": [
               {
                 "@type": "ProfilePage",
-                "@id": `${config.baseUrl}/credentials`,
+                "@id": `${config.baseUrl}/credentials#profilepage`,
                 url: `${config.baseUrl}/credentials`,
                 name: "Credentials of James Merriman",
                 description:
                   "Awards, professional memberships and fellowships of UK-based travel writer James Merriman.",
+                isPartOf: {
+                  "@id": `${config.baseUrl}#website`,
+                },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#entity`,
+                  "@id": `${config.baseUrl}#person`,
+                },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/credentials#breadcrumb`,
                 },
               },
               {
-                "@type": ["Person", "Organization"],
-                "@id": `${config.baseUrl}#entity`,
+                "@type": "Person",
+                "@id": `${config.baseUrl}#person`,
                 name: "James Merriman",
                 url: config.baseUrl,
                 image: {
@@ -83,8 +89,17 @@ const Page = async () => {
                 description:
                   "UK-based travel writer and photographer documenting remote regions, cultural frontiers and human experience worldwide.",
                 jobTitle: "Travel Writer and Photographer",
-                nationality: "British",
+                nationality: {
+                  "@type": "Country",
+                  name: "United Kingdom",
+                },
                 knowsLanguage: ["en-GB"],
+                knowsAbout: [
+                  "Travel writing",
+                  "Travel photography",
+                  "Remote regions",
+                  "Cultural exploration",
+                ],
                 affiliation: [
                   { "@type": "Organization", name: "Royal Geographical Society" },
                   {
@@ -106,16 +121,8 @@ const Page = async () => {
                 ],
               },
               {
-                "@type": "WebSite",
-                "@id": `${config.baseUrl}#website`,
-                url: config.baseUrl,
-                name: "James Merriman | Travel Writing and Photography",
-                publisher: {
-                  "@id": `${config.baseUrl}#entity`,
-                },
-              },
-              {
                 "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/credentials#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",

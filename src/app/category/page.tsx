@@ -55,7 +55,7 @@ export default async function Page() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        "@id": `${config.baseUrl}/category`,
+        "@id": `${config.baseUrl}/category#collectionpage`,
         url: `${config.baseUrl}/category`,
         name: "Travel Writing Categories | James Merriman",
         description:
@@ -63,25 +63,31 @@ export default async function Page() {
         isPartOf: {
           "@id": `${config.baseUrl}#website`,
         },
-        about: {
-          "@type": "Blog",
-          "@id": `${config.baseUrl}#blog`,
+        publisher: {
+          "@id": `${config.baseUrl}#person`,
         },
         mainEntity: {
           "@type": "ItemList",
+          name: "Travel writing categories",
           itemListElement: result.tags.map((tag, index) => ({
             "@type": "ListItem",
             position: index + 1,
             item: {
               "@type": "DefinedTerm",
+              "@id": `${config.baseUrl}/category/${tag.name}#term`,
               name: tag.name.charAt(0).toUpperCase() + tag.name.slice(1),
               url: `${config.baseUrl}/category/${tag.name}`,
+              inDefinedTermSet: `${config.baseUrl}/category`,
             },
           })),
+        },
+        breadcrumb: {
+          "@id": `${config.baseUrl}/category#breadcrumb`,
         },
       },
       {
         "@type": "BreadcrumbList",
+        "@id": `${config.baseUrl}/category#breadcrumb`,
         itemListElement: [
           {
             "@type": "ListItem",

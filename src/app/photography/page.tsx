@@ -58,6 +58,79 @@ const Page = async () => {
 
   return (
     <>
+      {/* ✅ ✅ Structured Data */}
+      <Script
+        id="photography-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "ImageGallery",
+                "@id": `${config.baseUrl}/photography#imagegallery`,
+                url: `${config.baseUrl}/photography`,
+                name: "James Merriman Photography Portfolio",
+                description: "Travel and landscape photography portfolio by James Merriman.",
+                isPartOf: {
+                  "@id": `${config.baseUrl}#website`,
+                },
+                author: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                publisher: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                mainEntity: {
+                  "@id": `${config.baseUrl}/photography#imagegallery`,
+                },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/photography#breadcrumb`,
+                },
+                hasPart: photos.slice(0, 20).map((photo: Photo) => ({
+                  "@type": "ImageObject",
+                  "@id": `${config.baseUrl}/photography/${photo.public_id}#image`,
+
+                  contentUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`,
+
+                  url: `${config.baseUrl}/photography#${photo.public_id}`,
+
+                  thumbnailUrl: generateOGImage(photo.public_id, photo.alt),
+
+                  name: photo.alt,
+                  description: photo.alt,
+
+                  width: photo.width,
+                  height: photo.height,
+
+                  creator: {
+                    "@id": `${config.baseUrl}#person`,
+                  },
+                })),
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/photography#breadcrumb`,
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: `${config.baseUrl}/`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Photography",
+                    item: `${config.baseUrl}/photography`,
+                  },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
+
       <FullWidthHeader
         title="Travel Photography Portfolio of Landscapes and Cultures from Remote Places"
         description="A curated portfolio of travel and landscape photography documenting remote regions and natural environments across the world"
@@ -100,44 +173,6 @@ const Page = async () => {
             Enquire About Licencing
           </Link>
         </section>
-
-        {/* ✅ ✅ Structured Data */}
-        <Script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ImageGallery",
-              name: "James Merriman Photography Portfolio",
-              description: "Travel and landscape photography portfolio by James Merriman.",
-              url: `${config.baseUrl}/photography`,
-
-              author: {
-                "@type": "Person",
-                name: "James Merriman",
-              },
-
-              hasPart: photos.slice(0, 20).map((photo: Photo) => ({
-                "@type": "ImageObject",
-
-                contentUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`,
-
-                thumbnailUrl: generateOGImage(photo.public_id, photo.alt),
-
-                name: photo.alt,
-                description: photo.alt,
-
-                width: photo.width,
-                height: photo.height,
-
-                creator: {
-                  "@type": "Person",
-                  name: "James Merriman",
-                },
-              })),
-            }),
-          }}
-        />
       </main>
     </>
   );

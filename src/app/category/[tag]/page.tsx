@@ -94,21 +94,24 @@ export default async function Page(props: {
   const categoryJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": `${config.baseUrl}/category/${tag}`,
+    "@id": `${config.baseUrl}/category/${tag}#collectionpage`,
     url: `${config.baseUrl}/category/${tag}`,
-    name: `Travel writing articles with the category '${label}'| James Merriman`,
+    name: `Travel writing articles with the category '${label}' | James Merriman`,
     description,
     isPartOf: {
-      "@type": "Blog",
-      "@id": `${config.baseUrl}#blog`,
+      "@id": `${config.baseUrl}#website`,
     },
     about: {
       "@type": "DefinedTerm",
+      "@id": `${config.baseUrl}/category/${tag}#term`,
       name: label,
       description,
+      url: `${config.baseUrl}/category/${tag}`,
+      inDefinedTermSet: `${config.baseUrl}/category`,
     },
     mainEntity: {
       "@type": "ItemList",
+      name: `${label} articles`,
       itemListElement: result.posts.map((post, index) => ({
         "@type": "ListItem",
         position: index + 1,
@@ -120,14 +123,10 @@ export default async function Page(props: {
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
           author: {
-            "@type": "Person",
-            "@id": `${config.baseUrl}/about#author`,
-            name: "James Merriman",
+            "@id": `${config.baseUrl}#person`,
           },
           publisher: {
-            "@type": "Person",
-            "@id": `${config.baseUrl}/about#author`,
-            name: "James Merriman",
+            "@id": `${config.baseUrl}#person`,
           },
           image: post.image ? [post.image] : undefined,
           mainEntityOfPage: {
@@ -140,12 +139,14 @@ export default async function Page(props: {
               "@id": `${config.baseUrl}#blog`,
             },
             {
-              "@type": "CollectionPage",
-              "@id": `${config.baseUrl}/category/${tag}`,
+              "@id": `${config.baseUrl}/category/${tag}#collectionpage`,
             },
           ],
         },
       })),
+    },
+    breadcrumb: {
+      "@id": `${config.baseUrl}/category/${tag}#breadcrumb`,
     },
   };
 
@@ -161,7 +162,7 @@ export default async function Page(props: {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: config.baseUrl,
+        item: `${config.baseUrl}/`,
       },
       {
         "@type": "ListItem",

@@ -75,6 +75,9 @@ const Page = async () => {
                   width: 1200,
                   height: 1600,
                 },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/about#breadcrumb`,
+                },
               },
               {
                 "@type": ["Person", "Organization"],
@@ -134,12 +137,13 @@ const Page = async () => {
               },
               {
                 "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/about#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",
                     position: 1,
                     name: "Home",
-                    item: `${config.baseUrl}/`,
+                    item: `${config.baseUrl}`,
                   },
                   {
                     "@type": "ListItem",

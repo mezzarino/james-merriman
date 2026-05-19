@@ -68,55 +68,34 @@ const Page = async () => {
                   "@id": `${config.baseUrl}#website`,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#entity`,
+                  "@id": `${config.baseUrl}#person`,
+                },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/contact#breadcrumb`,
                 },
               },
               {
-                "@type": ["Person", "Organization"],
-                "@id": `${config.baseUrl}#entity`,
+                "@type": "Person",
+                "@id": `${config.baseUrl}#person`,
                 name: "James Merriman",
                 url: config.baseUrl,
-                image: {
-                  "@type": "ImageObject",
-                  url: "/images/james-merriman.jpg",
-                  width: 1200,
-                  height: 1600,
-                },
                 jobTitle: "Travel Writer and Photographer",
-                nationality: {
-                  "@type": "Country",
-                  name: "United Kingdom",
-                },
-                knowsLanguage: ["en-GB"],
                 sameAs: [
                   "https://x.com/mezzarino",
                   "https://linkedin.com/in/jamesmerriman",
                   "https://instagram.com/mezzarino",
                 ],
-                contactPoint: [
-                  {
-                    "@type": "ContactPoint",
-                    contactType: "Professional enquiries",
-                    availableLanguage: ["en-GB"],
-                    sameAs: [
-                      "https://x.com/mezzarino",
-                      "https://linkedin.com/in/jamesmerriman",
-                      "https://instagram.com/mezzarino",
-                    ],
-                  },
-                ],
-              },
-              {
-                "@type": "WebSite",
-                "@id": `${config.baseUrl}#website`,
-                url: config.baseUrl,
-                name: "James Merriman | Travel Writing and Photography",
-                publisher: {
-                  "@id": `${config.baseUrl}#entity`,
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "Professional enquiries",
+                  availableLanguage: ["en-GB"],
+                  url: `${config.baseUrl}/contact`,
+                  email: "info@jamesmerriman.co.uk",
                 },
               },
               {
                 "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/contact#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",

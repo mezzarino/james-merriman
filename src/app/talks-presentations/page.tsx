@@ -58,7 +58,7 @@ const Page = async () => {
             "@graph": [
               {
                 "@type": "CollectionPage",
-                "@id": `${config.baseUrl}/talks-presentations`,
+                "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
                 url: `${config.baseUrl}/talks-presentations`,
                 name: "Talks & Presentations | James Merriman",
                 description:
@@ -69,25 +69,29 @@ const Page = async () => {
                 about: {
                   "@id": `${config.baseUrl}#person`,
                 },
-              },
-
-              {
-                "@type": ["Person", "Organization"],
-                "@id": `${config.baseUrl}#entity`,
-                name: "James Merriman",
-                url: config.baseUrl,
-                jobTitle: "Travel Writer",
-                sameAs: [
-                  "https://x.com/mezzarino",
-                  "https://linkedin.com/in/jamesmerriman",
-                  "https://instagram.com/mezzarino",
-                ],
+                mainEntity: {
+                  "@type": "ItemList",
+                  name: "Talks and presentations",
+                  itemListElement: [
+                    {
+                      "@type": "ListItem",
+                      position: 1,
+                      item: {
+                        "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
+                      },
+                    },
+                  ],
+                },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/talks-presentations#breadcrumb`,
+                },
               },
 
               {
                 "@type": "Event",
-                "@id": `${config.baseUrl}/talks#rgs-south-west-afghanistan`,
+                "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
+                startDate: "2026-04",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
                 eventStatus: "https://schema.org/EventCompleted",
                 organizer: {
@@ -96,6 +100,10 @@ const Page = async () => {
                 },
                 performer: {
                   "@id": `${config.baseUrl}#person`,
+                },
+                location: {
+                  "@type": "Place",
+                  name: "Royal Geographical Society (South West)",
                 },
                 description:
                   "A 15-minute illustrated presentation reflecting on first-hand travel in Afghanistan, focusing on movement, public life, and everyday experiences beyond media narratives.",
@@ -107,6 +115,7 @@ const Page = async () => {
 
               {
                 "@type": "BreadcrumbList",
+                "@id": `${config.baseUrl}/talks-presentations#breadcrumb`,
                 itemListElement: [
                   {
                     "@type": "ListItem",
