@@ -68,6 +68,9 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   /**
    * BlogPosting structured data
    */
+
+  const place = (result.post.metadata as { place?: string } | null)?.place || null;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -141,6 +144,16 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
       url: `${config.baseUrl}/category/${tag.name}`,
       inDefinedTermSet: `${config.baseUrl}/category`,
     })),
+
+    mentions: place
+      ? [
+          {
+            "@type": "Place",
+            "@id": `${config.baseUrl}/place/${place.toLowerCase().replace(/\s+/g, "-")}#place`,
+            name: place,
+          },
+        ]
+      : undefined,
   };
 
   /**
