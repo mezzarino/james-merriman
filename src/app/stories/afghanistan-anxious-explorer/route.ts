@@ -42,7 +42,7 @@ export async function GET() {
     }
     h1 { font-size: 3rem; }
     h2 { font-size: 1.6rem; }
-    p { font-size: 1.2rem; }
+    p { font-size: 1.2rem; line-height: 1.45; }
 
     amp-story-grid-layer[template="vertical"] {
       padding: 2rem;
@@ -59,6 +59,7 @@ export async function GET() {
 }
   </style>
   <meta name="description" content="A visual narrative of travel in Afghanistan by James Merriman.">
+  <meta name="publisher" content="James Merriman">
 
 <meta property="og:type" content="article">
 <meta property="og:title" content="Afghanistan: The Anxious Explorer">
@@ -122,7 +123,7 @@ export async function GET() {
   <amp-story-page id="cover">
   <amp-story-grid-layer template="fill">
       <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg"
-        width="720" height="1280" layout="responsive"></amp-img>
+        width="720" height="1280" layout="responsive" alt="Sakhi Shrine in Kabul"></amp-img>
     </amp-story-grid-layer>
     <!-- ✅ Overlay -->
     <amp-story-grid-layer template="fill">
@@ -149,7 +150,7 @@ export async function GET() {
 ${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   .map((i, idx) => {
     const text = [
-      "Travel begins with hesitation.",
+      "The hesitation stays.",
       "Not fear — awareness.",
       "Arrival is quiet.",
       "Life moves beyond headlines.",
@@ -161,27 +162,60 @@ ${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
       "What matters isn’t always visible.",
     ][idx];
 
+    // ✅ Image‑focused ALT descriptions
+    const altDescriptions = [
+      "A game of buskachi underway in Mazar-e-Sharif",
+      "A lake at Band-e-amir National Park",
+      "Sakhi Shrine in Kabul",
+      "Shahr-e-Gholghola near Bamiyan",
+      "Mountains of the Hindu Kush from the air",
+      "Holy Shrine of Hazrat Ali in Mazar-e-Sharif",
+      "Looking out over Kabul from the air",
+      "The now empty Buddhas of Bamiyan",
+      "Mountains of the Hindu Kush from the air",
+      "Shahr-e-Gholghola near Bamiyan",
+    ];
+
+    // ✅ Animation variation
+    const animation =
+      idx < 3 ? "fade-in" : idx < 6 ? "fly-in-bottom" : idx < 9 ? "fade-in" : "whoosh-in-right";
+
+    // ✅ Progressive pacing
+    const paddingBottom = idx % 3 === 0 ? "3rem" : "2rem";
+
     return `
   <amp-story-page id="page-${i}">
     <amp-story-grid-layer template="fill">
-      <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/${i}.jpg"
-        width="720" height="1280" layout="responsive"></amp-img>
+      <amp-img
+        src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/${i}.jpg"
+        width="720"
+        height="1280"
+        layout="responsive"
+        alt="${altDescriptions[idx]}"
+      ></amp-img>
     </amp-story-grid-layer>
+
     <amp-story-grid-layer template="fill">
       <div class="overlay"></div>
     </amp-story-grid-layer>
-    <amp-story-grid-layer template="vertical">
-      <p animate-in="fade-in">${text}</p>
+
+    <amp-story-grid-layer
+      template="vertical"
+      style="padding-bottom:${paddingBottom};"
+    >
+      <p animate-in="${animation}">
+        ${text}
+      </p>
     </amp-story-grid-layer>
   </amp-story-page>`;
   })
   .join("")}
-
+  
 <!-- CTA -->
 <amp-story-page id="cta">
   <amp-story-grid-layer template="fill">
-    <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/14.jpg"
-      width="720" height="1280" layout="responsive"></amp-img>
+    <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/13.jpg"
+      width="720" height="1280" layout="responsive" alt="James Merriman in the mountains near Mazar-e-Sharif"></amp-img>
   </amp-story-grid-layer>
   <amp-story-grid-layer template="fill">
     <div class="overlay"></div>

@@ -58,8 +58,8 @@ export default function StoriesPage() {
             "@graph": [
               {
                 "@type": "CollectionPage",
-                "@id": `https://stories.jamesmerriman.co.uk/#collectionpage`,
-                url: `https://stories.jamesmerriman.co.uk/`,
+                "@id": "https://stories.jamesmerriman.co.uk/#collectionpage",
+                url: "https://stories.jamesmerriman.co.uk/",
                 name: "Stories | James Merriman",
                 description: "Visual travel stories and narratives by James Merriman.",
                 isPartOf: {
@@ -88,81 +88,47 @@ export default function StoriesPage() {
       />
 
       {/* ✅ UI */}
-      <main
-        style={{
-          minHeight: "100vh",
-          padding: "2rem",
-          background: "linear-gradient(to right, #1e3a8a, #111827)",
-          color: "#fff",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "2rem",
-            marginBottom: "1rem",
-          }}
-        >
-          Travel Stories & Visual Narratives
-        </h1>
+      <main className="min-h-screen bg-linear-to-r from-blue-900 to-gray-900 text-white p-8">
+        {/* Header */}
+        <header className="max-w-3xl mb-12">
+          <h1 className="text-2xl sm:text-3xl font-semibold mb-3">Visual Travel Stories</h1>
+          <p className="text-white/80 text-base sm:text-lg">
+            Documentary-style visual narratives from remote and complex destinations, captured by
+            travel writer James Merriman.
+          </p>
+        </header>
 
-        <p
-          style={{
-            marginBottom: "2rem",
-            opacity: 0.8,
-          }}
-        >
-          Documentary-style visual stories from remote destinations, captured by travel writer James
-          Merriman.
-        </p>
-
-        <div
-          style={{
-            display: "grid",
-            gap: "1.5rem",
-            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          }}
+        {/* Stories grid */}
+        <section
+          aria-label="Stories"
+          className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         >
           {stories.map((story) => (
-            <a key={story.slug} href={`/${story.slug}`}>
-              <div
-                style={{
-                  cursor: "pointer",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  background: "#111",
-                }}
-              >
+            <a key={story.slug} href={`/${story.slug}`} className="group focus:outline-none">
+              <article className="relative rounded-lg overflow-hidden bg-black/40 backdrop-blur-sm transition transform group-hover:-translate-y-1 group-hover:shadow-2xl focus-visible:ring-2 focus-visible:ring-white/70">
+                {/* Image */}
                 <div
-                  style={{
-                    aspectRatio: "9 / 16",
-                    backgroundImage: `url('${story.image}')`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
+                  className="aspect-9/16 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${story.image})` }}
                 />
 
-                <div style={{ padding: "0.75rem" }}>
-                  <h2
-                    style={{
-                      fontSize: "1rem",
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    {story.title}
-                  </h2>
-                  <p
-                    style={{
-                      fontSize: "0.85rem",
-                      opacity: 0.7,
-                    }}
-                  >
-                    {story.subtitle}
-                  </p>
+                {/* ✅ Gradient overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
+
+                {/* Text overlay */}
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <h2 className="text-sm font-semibold leading-tight mb-1">{story.title}</h2>
+                  <p className="text-xs text-white/80 mb-2">{story.subtitle}</p>
+
+                  {/* ✅ Micro‑CTA */}
+                  <span className="text-xs text-white/60 group-hover:text-white transition">
+                    View story →
+                  </span>
                 </div>
-              </div>
+              </article>
             </a>
           ))}
-        </div>
+        </section>
       </main>
     </>
   );
