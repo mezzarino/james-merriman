@@ -30,21 +30,6 @@ export async function generateMetadata() {
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
 
-    other: {
-      "link:alternate:rss": {
-        rel: "alternate",
-        type: "application/rss+xml",
-        href: "/rss",
-        title: "RSS Feed",
-      },
-      "link:alternate:json": {
-        rel: "alternate",
-        type: "application/feed+json",
-        href: "/feed.json",
-        title: "JSON Feed",
-      },
-    },
-
     robots: {
       index: true,
       follow: true,
@@ -95,6 +80,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en-GB">
+      <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS Feed"
+          href="https://www.jamesmerriman.co.uk/rss"
+        />
+        <link
+          rel="alternate"
+          type="application/feed+json"
+          title="JSON Feed"
+          href="https://www.jamesmerriman.co.uk/feed.json"
+        />
+      </head>
+
       <body className={`${fontSans.variable} antialiased font-sans`}>
         <Providers>
           <ConsentProvider>
