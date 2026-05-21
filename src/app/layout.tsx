@@ -30,6 +30,13 @@ export async function generateMetadata() {
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
 
+    alternates: {
+      types: {
+        "application/rss+xml": [{ url: "/rss", title: "RSS Feed" }],
+        "application/feed+json": [{ url: "/feed.json", title: "JSON Feed" }],
+      },
+    },
+
     robots: {
       index: true,
       follow: true,

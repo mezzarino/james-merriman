@@ -234,7 +234,7 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
                   >
                     <span
                       className={cn(
-                        "inline-flex min-h-[44px] items-center rounded border px-4 text-sm transition",
+                        "inline-flex min-h-11 items-center rounded border px-4 text-sm transition",
                         isActive ? "bg-black text-white" : "bg-gray-200 text-black",
                         "sm:px-3 sm:py-2",
                       )}

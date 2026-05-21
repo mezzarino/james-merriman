@@ -275,7 +275,7 @@ export default async function Page(props: {
           </p>
         </section>
 
-        <h2 className="mt-12 mb-6 text-3xl font-semibold">Latest Travel Writing</h2>
+        <h2 className="mt-12 mb-6 text-3xl px-4 lg:px-0 font-semibold">Latest Travel Writing</h2>
         <FilterBar active="latest" className="my-6" />
         <BlogPostList posts={result.posts} />
         <PostPagination

@@ -1,8 +1,8 @@
-export const dynamic = "force-dynamic";
+export const dynamic = "auto";
 export const revalidate = 3600; // 1 hour
 
 import { NextResponse } from "next/server";
-import RSS from "rss";
+import RSS, { ItemOptions } from "rss";
 import urlJoin from "url-join";
 
 import { config } from "@/config";
@@ -11,37 +11,112 @@ import { wisp } from "../../lib/wisp";
 
 const baseUrl = config.baseUrl;
 
+/**
+ * ✅ Strong typing for RSS custom elements (no `any`)
+ */
+type CustomElement = {
+  [key: string]:
+    | string
+    | {
+        _attr?: Record<string, string>;
+      };
+};
+
+type ExtendedItemOptions = ItemOptions & {
+  custom_elements?: CustomElement[];
+};
+
 export async function GET() {
   const result = await wisp.getPosts({ limit: 20 });
 
-  const posts = result.posts.map((post) => {
-    return {
-      title: post.title,
-      description: post.description || "",
-      url: urlJoin(baseUrl, `/post/${post.slug}`),
-      date: post.publishedAt || new Date(),
-    };
-  });
+  // ✅ Sort posts newest first
+  const posts = result.posts
+    .sort((a, b) => {
+      const dateA = new Date(a.publishedAt || 0).getTime();
+      const dateB = new Date(b.publishedAt || 0).getTime();
+      return dateB - dateA;
+    })
+    .map((post) => {
+      const url = urlJoin(baseUrl, `/post/${post.slug}`);
 
+      const safeDate =
+        post.publishedAt && !isNaN(new Date(post.publishedAt).getTime())
+          ? new Date(post.publishedAt)
+          : new Date();
+
+      return {
+        title: post.title,
+        description: post.description || "",
+        url,
+        guid: url,
+        date: safeDate,
+        author: "James Merriman",
+        categories: post.tags || [],
+        image: post.image || null,
+      };
+    });
+
+  // ✅ Feed metadata
   const feed = new RSS({
     title: config.title,
     description: config.description,
     site_url: baseUrl,
     feed_url: urlJoin(baseUrl, "/rss"),
     pubDate: new Date(),
-  });
-  posts.forEach((post) => {
-    feed.item(post);
+
+    language: "en-GB",
+    ttl: 60,
+
+    managingEditor: "you@jamesmerriman.co.uk",
+    webMaster: "you@jamesmerriman.co.uk",
+    copyright: `© ${new Date().getFullYear()} James Merriman`,
+
+    custom_namespaces: {
+      content: "http://purl.org/rss/1.0/modules/content/",
+      media: "http://search.yahoo.com/mrss/",
+    },
   });
 
-  const xml: string = feed.xml({ indent: true });
+  posts.forEach((post) => {
+    const item: ExtendedItemOptions = {
+      title: post.title,
+      description: post.description,
+      url: post.url,
+      guid: post.guid,
+      author: post.author,
+      date: post.date,
+      categories: post.categories.map((t) => t.name),
+    };
+
+    // ✅ Image support
+    if (post.image) {
+      item.enclosure = {
+        url: post.image,
+        type: "image/jpeg",
+      };
+
+      item.custom_elements = [
+        ...(item.custom_elements || []),
+        {
+          "media:content": {
+            _attr: {
+              url: post.image,
+              medium: "image",
+            },
+          },
+        },
+      ];
+    }
+
+    feed.item(item);
+  });
+
+  const xml = feed.xml({ indent: true });
 
   return new NextResponse(xml, {
     headers: {
-      "Content-Type": "application/rss+xml",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "GET",
+      "Content-Type": "application/rss+xml; charset=utf-8",
+      Link: `<${urlJoin(baseUrl, "/rss")}>; rel="alternate"; type="application/rss+xml"`,
     },
   });
 }
