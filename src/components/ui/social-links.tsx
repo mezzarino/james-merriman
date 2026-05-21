@@ -72,7 +72,7 @@ export function SocialLinks({ className }: { className?: string }) {
 
       <li>
         <a
-          href="https://www.youtube.com/jamesmerrimancouk"
+          href="https://www.youtube.com/@jamesmerrimancouk"
           target="_blank"
           rel="noopener noreferrer"
           className={linkClass}
