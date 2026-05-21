@@ -81,18 +81,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en-GB">
       <head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title="RSS Feed"
-          href="https://www.jamesmerriman.co.uk/rss"
-        />
-        <link
-          rel="alternate"
-          type="application/feed+json"
-          title="JSON Feed"
-          href="https://www.jamesmerriman.co.uk/feed.json"
-        />
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss" />
+        <link rel="alternate" type="application/feed+json" title="JSON Feed" href="/feed.json" />
       </head>
 
       <body className={`${fontSans.variable} antialiased font-sans`}>
