@@ -30,10 +30,18 @@ export async function generateMetadata() {
     description:
       "Award-longlisted travel writer and photographer documenting remote, complex and overlooked destinations across 160+ countries.",
 
-    alternates: {
-      types: {
-        "application/rss+xml": [{ url: "/rss", title: "RSS Feed" }],
-        "application/feed+json": [{ url: "/feed.json", title: "JSON Feed" }],
+    other: {
+      "link:alternate:rss": {
+        rel: "alternate",
+        type: "application/rss+xml",
+        href: "/rss",
+        title: "RSS Feed",
+      },
+      "link:alternate:json": {
+        rel: "alternate",
+        type: "application/feed+json",
+        href: "/feed.json",
+        title: "JSON Feed",
       },
     },
 
@@ -50,7 +58,7 @@ export async function generateMetadata() {
     ],
 
     icons: isStories
-      ? {} // ✅ remove icons for stories
+      ? {}
       : {
           icon: [
             { url: "/favicon.svg", type: "image/svg+xml" },
@@ -67,7 +75,7 @@ export async function generateMetadata() {
     ...(isStories
       ? {}
       : {
-          manifest: "/site.webmanifest", // ✅ only on main site
+          manifest: "/site.webmanifest",
         }),
 
     appleWebApp: {

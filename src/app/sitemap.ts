@@ -92,10 +92,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date("2026-05-19"),
       priority: 0.4,
     },
-    {
-      url: urlJoin(config.baseUrl, "rss"),
-      lastModified: new Date("2026-05-21"),
-      priority: 0.4,
-    },
   ];
 }

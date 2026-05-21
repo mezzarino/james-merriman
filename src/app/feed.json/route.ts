@@ -35,6 +35,8 @@ export async function GET() {
 
         date_published: safeDate.toISOString(),
 
+        date_modified: post.updatedAt?.toISOString(),
+
         authors: [
           {
             name: "James Merriman",
@@ -45,6 +47,15 @@ export async function GET() {
         tags: post.tags.map((t) => t.name),
 
         image: post.image || undefined,
+
+        attachments: post.image
+          ? [
+              {
+                url: post.image,
+                mime_type: "image/jpeg",
+              },
+            ]
+          : undefined,
       };
     });
 
@@ -57,6 +68,8 @@ export async function GET() {
     feed_url: urlJoin(baseUrl, "/feed.json"),
 
     language: "en-GB",
+
+    favicon: urlJoin(baseUrl, "/favicon.ico"),
 
     items,
   };

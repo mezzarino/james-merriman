@@ -11,9 +11,6 @@ import { wisp } from "../../lib/wisp";
 
 const baseUrl = config.baseUrl;
 
-/**
- * ✅ Strong typing for RSS custom elements (no `any`)
- */
 type CustomElement = {
   [key: string]:
     | string
@@ -29,7 +26,6 @@ type ExtendedItemOptions = ItemOptions & {
 export async function GET() {
   const result = await wisp.getPosts({ limit: 20 });
 
-  // ✅ Sort posts newest first
   const posts = result.posts
     .sort((a, b) => {
       const dateA = new Date(a.publishedAt || 0).getTime();
@@ -51,12 +47,11 @@ export async function GET() {
         guid: url,
         date: safeDate,
         author: "James Merriman",
-        categories: post.tags || [],
+        categories: post.tags,
         image: post.image || null,
       };
     });
 
-  // ✅ Feed metadata
   const feed = new RSS({
     title: config.title,
     description: config.description,
@@ -67,9 +62,11 @@ export async function GET() {
     language: "en-GB",
     ttl: 60,
 
-    managingEditor: "you@jamesmerriman.co.uk",
-    webMaster: "you@jamesmerriman.co.uk",
+    managingEditor: "info@jamesmerriman.co.uk",
+    webMaster: "info@jamesmerriman.co.uk",
     copyright: `© ${new Date().getFullYear()} James Merriman`,
+
+    image_url: urlJoin(baseUrl, "/apple-touch-icon.png"),
 
     custom_namespaces: {
       content: "http://purl.org/rss/1.0/modules/content/",
@@ -82,13 +79,22 @@ export async function GET() {
       title: post.title,
       description: post.description,
       url: post.url,
-      guid: post.guid,
       author: post.author,
       date: post.date,
       categories: post.categories.map((t) => t.name),
     };
 
-    // ✅ Image support
+    item.custom_elements = [
+      {
+        guid: {
+          _attr: {
+            isPermaLink: "true",
+          },
+          _cdata: post.guid,
+        },
+      },
+    ];
+
     if (post.image) {
       item.enclosure = {
         url: post.image,
