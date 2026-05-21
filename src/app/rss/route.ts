@@ -62,8 +62,9 @@ export async function GET() {
     language: "en-GB",
     ttl: 60,
 
-    managingEditor: "info@jamesmerriman.co.uk",
-    webMaster: "info@jamesmerriman.co.uk",
+    managingEditor: "info@jamesmerriman.co.uk (James Merriman)",
+    webMaster: "info@jamesmerriman.co.uk (James Merriman)",
+
     copyright: `© ${new Date().getFullYear()} James Merriman`,
 
     image_url: urlJoin(baseUrl, "/apple-touch-icon.png"),
@@ -79,21 +80,11 @@ export async function GET() {
       title: post.title,
       description: post.description,
       url: post.url,
+      guid: post.guid,
       author: post.author,
       date: post.date,
       categories: post.categories.map((t) => t.name),
     };
-
-    item.custom_elements = [
-      {
-        guid: {
-          _attr: {
-            isPermaLink: "true",
-          },
-          _cdata: post.guid,
-        },
-      },
-    ];
 
     if (post.image) {
       item.enclosure = {
