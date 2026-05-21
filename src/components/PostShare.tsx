@@ -220,7 +220,7 @@ export function PostShare({ url }: PostShareProps) {
         </li>
       </ul>
 
-      <span aria-live="polite" className="text-xs text-gray-500 min-w-[90px]">
+      <span aria-live="polite" className="text-xs text-gray-500 min-w-22.5">
         {copied ? "Link copied" : ""}
       </span>
     </div>

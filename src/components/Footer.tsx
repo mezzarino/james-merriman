@@ -14,7 +14,7 @@ export const Footer = () => {
       {/* ✅ Logo */}
       <div className="mx-auto pt-8 mb-6 flex justify-center">
         <Link href="/" aria-label="James Merriman home">
-          <div className="relative w-[140px] aspect-18/10">
+          <div className="relative w-35 aspect-18/10">
             <Image
               src="/james-merriman-travel-writer-logo-grey.png"
               alt="James Merriman – Travel Writer"
@@ -98,7 +98,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
             >
-              <div className="relative w-[125px] h-[111px]">
+              <div className="relative w-31.25 h-27.75">
                 <Image
                   src="/images/creditation-logos/proudly-human-logo.png"
                   alt="My writing and photography has been independently verified as human-origin by ProudlyHuman™"
@@ -117,7 +117,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
             >
-              <div className="relative w-[111px] h-[111px]">
+              <div className="relative w-27.75 h-27.75">
                 <Image
                   src="/images/creditation-logos/opj-ambassador-logo.png"
                   alt="One Planet Journey - Deep Travel Ambassador logo"
