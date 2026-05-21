@@ -12,7 +12,7 @@ export default function AccessibleAccordion({ items }: { items: Item[] }) {
 
   return (
     <section aria-labelledby="faq-title" className="mt-8">
-      <h2 id="faq-title" className="text-2xl font-semibold mb-4">Frequently asked questions</h2>
+      <h2 id="faq-title" className="text-2xl font-semibold mt-2 mb-2">Frequently asked questions</h2>
       <div className="space-y-4">
         {items.map((item, idx) => (
           <AccordionItem
@@ -45,7 +45,7 @@ function AccordionItem({
   const panelId = `faq-panel-${index}`
   const buttonId = `faq-button-${index}`
   return (
-    <details open={open} className="bg-white/5 p-4 rounded-lg">
+    <details open={open} className="bg-white/5 rounded-lg">
       <summary
         id={buttonId}
         aria-controls={panelId}
@@ -72,7 +72,7 @@ function AccordionItem({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className="mt-2 text-sm"
+        className="mt-2"
         tabIndex={open ? 0 : -1}
       >
         {answer}

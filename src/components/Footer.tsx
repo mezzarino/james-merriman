@@ -138,7 +138,7 @@ export const Footer = () => {
             >
               <div className="relative w-27.75 h-40">
                 <Image
-                  src="/images/creditation-logos/cioj-logo.png"
+                  src="/images/creditation-logos/cioj-logo.jpg"
                   alt="The Chartered Institute of Journalists logo"
                   title="James Merriman is a member of The Chartered Institute of Journalists."
                   fill
