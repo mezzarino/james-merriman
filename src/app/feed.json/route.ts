@@ -22,10 +22,15 @@ export async function GET() {
     .map((post) => {
       const url = urlJoin(baseUrl, `/post/${post.slug}`);
 
-      const safeDate =
-        post.publishedAt && !isNaN(new Date(post.publishedAt).getTime())
-          ? new Date(post.publishedAt)
-          : new Date();
+      function safeDate(
+        value: string | number | Date | null | undefined,
+        fallback = new Date(),
+      ): Date {
+        if (!value) return fallback;
+
+        const date = new Date(value);
+        return isNaN(date.getTime()) ? fallback : date;
+      }
 
       return {
         id: url,
@@ -33,9 +38,9 @@ export async function GET() {
         title: post.title,
         summary: post.description || "",
 
-        date_published: safeDate.toISOString(),
+        date_published: safeDate(post.publishedAt).toISOString(),
 
-        date_modified: post.updatedAt?.toISOString(),
+        date_modified: safeDate(post.updatedAt).toISOString(),
 
         authors: [
           {
