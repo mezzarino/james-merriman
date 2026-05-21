@@ -11,8 +11,8 @@ export default function AccessibleAccordion({ items }: { items: Item[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section aria-labelledby="faq-title" className="mt-8">
-      <h2 id="faq-title" className="text-2xl font-semibold mt-2 mb-2">Frequently asked questions</h2>
+    <section aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
       <div className="space-y-4">
         {items.map((item, idx) => (
           <AccordionItem
@@ -56,7 +56,7 @@ function AccordionItem({
         }}
         className="w-full list-none text-left flex items-center justify-between gap-3 cursor-pointer font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500"
       >
-        <span>{question}</span>
+        <strong>{question}</strong>
         <svg
           aria-hidden="true"
           className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${open ? 'rotate-180' : 'rotate-0'}`}
