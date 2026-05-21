@@ -104,6 +104,10 @@ const Page = async () => {
                   { "@type": "Organization", name: "Royal Geographical Society" },
                   {
                     "@type": "Organization",
+                    name: "The Chartered Institute of Journalists",
+                  },
+                  {
+                    "@type": "Organization",
                     name: "International Travel Writers Alliance",
                   },
                   { "@type": "Organization", name: "The Globetrotters Club" },
@@ -192,6 +196,17 @@ const Page = async () => {
                   aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
                 >
                   One Planet Journey
+                </a>
+              </li>
+              <li>
+                <strong>Member</strong> -{" "}
+                <a
+                  href="https://cioj.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View The Chartered Institute of Journalists website"
+                >
+                  The Chartered Institute of Journalists <em>(FCIOJ)</em>
                 </a>
               </li>
               <li>

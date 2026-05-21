@@ -128,6 +128,25 @@ export const Footer = () => {
                 />
               </div>
             </a>
+
+            {/* ✅ Member - CIOJ */}
+            <a
+              href="https://cioj.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="View The Chartered Institute of Journalists website"
+            >
+              <div className="relative w-27.75 h-40">
+                <Image
+                  src="/images/creditation-logos/cioj-logo.png"
+                  alt="The Chartered Institute of Journalists logo"
+                  title="James Merriman is a member of The Chartered Institute of Journalists."
+                  fill
+                  loading="lazy"
+                  className="object-contain opacity-95 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </a>
           </div>
         </div>
       </div>
