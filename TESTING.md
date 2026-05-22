@@ -30,6 +30,15 @@ Playwright is optional and not required for core coverage.
 
 ---
 
+#### **AccessibleAccordion**
+
+- Renders FAQ questions and heading
+- Expands/collapses answers via click
+- Maintains correct ARIA attributes for disclosure
+- No basic accessibility violations
+
+---
+
 #### **ContactForm**
 
 - Required‑field validation

@@ -1,14 +1,19 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
-import RootLayout from "./layout";
+import LayoutWrapper from "./LayoutWrapper";
+
+vi.mock("@vercel/analytics/next", () => ({ Analytics: () => null }));
+vi.mock("@vercel/speed-insights/next", () => ({ SpeedInsights: () => null }));
+vi.mock("@/components/analytics/ConsentBanner", () => ({ ConsentBanner: () => null }));
+vi.mock("@/components/analytics/GoogleAnalyticsConsent", () => ({ GoogleAnalyticsConsent: () => null }));
 
 describe("Layout accessibility", () => {
   it("includes a skip link to main content", () => {
     render(
-      <RootLayout>
+      <LayoutWrapper isStories={false}>
         <div>Content</div>
-      </RootLayout>,
+      </LayoutWrapper>,
     );
 
     const skipLink = screen.getByRole("link", {
@@ -20,9 +25,9 @@ describe("Layout accessibility", () => {
 
   it("has a main landmark", () => {
     render(
-      <RootLayout>
+      <LayoutWrapper isStories={false}>
         <main id="main">Content</main>
-      </RootLayout>,
+      </LayoutWrapper>,
     );
 
     expect(screen.getByRole("main")).toBeInTheDocument();

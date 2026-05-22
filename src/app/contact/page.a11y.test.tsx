@@ -7,7 +7,11 @@ import Page from "./page";
 
 describe("Contact page accessibility", () => {
   it("has no WCAG violations", async () => {
-    const { container } = render(<Page />);
+    let container: HTMLElement;
+    await act(async () => {
+      ({ container } = render(await Page()));
+    });
+
     let results;
     await act(async () => {
       results = await axe(container);

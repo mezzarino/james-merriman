@@ -48,7 +48,7 @@ export function FigureImage({
             "transition-opacity duration-300 motion-reduce:transition-none",
             loaded ? "opacity-100" : "opacity-0",
           )}
-          onLoadingComplete={() => setLoaded(true)}
+          onLoad={() => setLoaded(true)}
         />
       </div>
 

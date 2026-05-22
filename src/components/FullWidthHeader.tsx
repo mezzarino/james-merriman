@@ -67,7 +67,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
               const isLast = index === breadcrumb.length - 1;
 
               return (
-                <li key={crumb.href} className="flex items-center">
+                <li key={`${crumb.href}-${index}`} className="flex items-center">
                   {isLast ? (
                     <span aria-current="page" className="font-medium">
                       {crumb.label}

@@ -44,6 +44,38 @@ export const metadata: Metadata = {
     ],
   },
 };
+ 
+const faqItems = [
+  {
+    question:
+      "You have visited over 160 countries, yet you advocate for ‘Deep Travel’. How do those two concepts fit together?",
+    answer:
+      "When I first started exploring, the goal was sheer volume. I wanted to cover as much of the map as possible. Over time, that impulse completely faded. Visiting a vast number of places gave me a solid geographical baseline, but I found the best stories surfaced when I slowed down. Being a Deep Travel Ambassador is about advocating for that shift. The most rewarding material always comes from staying put, ordering a coffee and having a genuine conversation with the person next to you.",
+  },
+  {
+    question:
+      "Your work often takes you to post-conflict regions. What draws you to these specific areas?",
+    answer:
+      "I want to see what daily life looks like after the global news cycle moves on. Destinations like Afghanistan and Libya are often reduced to a single narrative of instability. Arriving on the ground usually reveals a completely different reality. You find normal routines, immense resilience and some of the most generous hospitality imaginable. I prefer writing about those human interactions over political analysis.",
+  },
+  {
+    question:
+      "Do you consider yourself a writer who takes photos or a photographer who writes?",
+    answer:
+      "I see them as the same process. I always carry a camera alongside my notebook. Taking a photograph forces me to stand still and study the physical geometry of a place. Once I have framed the shot, I use the notebook to record the context. The image captures the light and the architecture, while the writing documents the dialogue. They rely entirely on each other.",
+  },
+  {
+    question: "Why choose to base yourself in Devon when you travel so extensively?",
+    answer:
+      "Fieldwork is intense. It involves constant observation, navigating unfamiliar logistics and carrying a lot of equipment. When an assignment finishes, I need a complete contrast. Coming back to the South West gives me the physical distance required to review my notes and actually piece a feature together. A long run in the Devon countryside is usually the easiest way to prepare for a challenging trip.",
+  },
+  {
+    question:
+      "What is your best advice for people wanting to travel more meaningfully?",
+    answer:
+      "Leave empty space in your schedule. Over-planning kills spontaneity. If you map out every hour of a trip, you eliminate the chance for an unexpected detour or an unplanned meal with a local family. One of my favourite habits is waking up early to see how a city actually functions without the traffic or tourist numbers. Just get lost in a neighbourhood and see what happens.",
+  },
+];
 
 const Page = async () => {
   return (
@@ -220,39 +252,7 @@ const Page = async () => {
             </p>
             {/* Accessible, collapsible accordion (client component) */}
             {/* FAQ items are provided as plain data so the client component can render interactively */}
-            <AccessibleAccordion
-              items={[
-                {
-                  question:
-                    "You have visited over 160 countries, yet you advocate for ‘Deep Travel’. How do those two concepts fit together?",
-                  answer:
-                    "When I first started exploring, the goal was sheer volume. I wanted to cover as much of the map as possible. Over time, that impulse completely faded. Visiting a vast number of places gave me a solid geographical baseline, but I found the best stories surfaced when I slowed down. Being a Deep Travel Ambassador is about advocating for that shift. The most rewarding material always comes from staying put, ordering a coffee and having a genuine conversation with the person next to you.",
-                },
-                {
-                  question:
-                    "Your work often takes you to post-conflict regions. What draws you to these specific areas?",
-                  answer:
-                    "I want to see what daily life looks like after the global news cycle moves on. Destinations like Afghanistan and Libya are often reduced to a single narrative of instability. Arriving on the ground usually reveals a completely different reality. You find normal routines, immense resilience and some of the most generous hospitality imaginable. I prefer writing about those human interactions over political analysis.",
-                },
-                {
-                  question:
-                    "Do you consider yourself a writer who takes photos or a photographer who writes?",
-                  answer:
-                    "I see them as the same process. I always carry a camera alongside my notebook. Taking a photograph forces me to stand still and study the physical geometry of a place. Once I have framed the shot, I use the notebook to record the context. The image captures the light and the architecture, while the writing documents the dialogue. They rely entirely on each other.",
-                },
-                {
-                  question: "Why choose to base yourself in Devon when you travel so extensively?",
-                  answer:
-                    "Fieldwork is intense. It involves constant observation, navigating unfamiliar logistics and carrying a lot of equipment. When an assignment finishes, I need a complete contrast. Coming back to the South West gives me the physical distance required to review my notes and actually piece a feature together. A long run in the Devon countryside is usually the easiest way to prepare for a challenging trip.",
-                },
-                {
-                  question:
-                    "What is your best advice for people wanting to travel more meaningfully?",
-                  answer:
-                    "Leave empty space in your schedule. Over-planning kills spontaneity. If you map out every hour of a trip, you eliminate the chance for an unexpected detour or an unplanned meal with a local family. One of my favourite habits is waking up early to see how a city actually functions without the traffic or tourist numbers. Just get lost in a neighbourhood and see what happens.",
-                },
-              ]}
-            />
+            <AccessibleAccordion items={faqItems} />
 
             {/* FAQPage structured data for Google */}
             <Script
@@ -263,48 +263,14 @@ const Page = async () => {
                 __html: JSON.stringify({
                   "@context": "https://schema.org",
                   "@type": "FAQPage",
-                  mainEntity: [
-                    {
-                      "@type": "Question",
-                      name: "You have visited over 160 countries, yet you advocate for ‘Deep Travel’. How do those two concepts fit together?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "When I first started exploring, the goal was sheer volume. I wanted to cover as much of the map as possible. Over time, that impulse completely faded. Visiting a vast number of places gave me a solid geographical baseline, but I found the best stories surfaced when I slowed down. Being a Deep Travel Ambassador is about advocating for that shift. The most rewarding material always comes from staying put, ordering a coffee and having a genuine conversation with the person next to you.",
-                      },
+                  mainEntity: faqItems.map((item) => ({
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: item.answer,
                     },
-                    {
-                      "@type": "Question",
-                      name: "Your work often takes you to post-conflict regions. What draws you to these specific areas?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "I want to see what daily life looks like after the global news cycle moves on. Destinations like Afghanistan and Libya are often reduced to a single narrative of instability. Arriving on the ground usually reveals a completely different reality. You find normal routines, immense resilience and some of the most generous hospitality imaginable. I prefer writing about those human interactions over political analysis.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Do you consider yourself a writer who takes photos or a photographer who writes?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "I see them as the same process. I always carry a camera alongside my notebook. Taking a photograph forces me to stand still and study the physical geometry of a place. Once I have framed the shot, I use the notebook to record the context. The image captures the light and the architecture, while the writing documents the dialogue. They rely entirely on each other.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Why choose to base yourself in Devon when you travel so extensively?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Fieldwork is intense. It involves constant observation, navigating unfamiliar logistics and carrying a lot of equipment. When an assignment finishes, I need a complete contrast. Coming back to the South West gives me the physical distance required to review my notes and actually piece a feature together. A long run in the Devon countryside is usually the easiest way to prepare for a challenging trip.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "What is your best advice for people wanting to travel more meaningfully?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Leave empty space in your schedule. Over-planning kills spontaneity. If you map out every hour of a trip, you eliminate the chance for an unexpected detour or an unplanned meal with a local family. One of my favourite habits is waking up early to see how a city actually functions without the traffic or tourist numbers. Just get lost in a neighbourhood and see what happens.",
-                      },
-                    },
-                  ],
+                  })),
                 }),
               }}
             />
