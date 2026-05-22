@@ -128,6 +128,29 @@ These behaviours are validated visually and are intentionally excluded to avoid 
 - **Contact page**
   - No WCAG violations
 
+### ✅ Pages (Functional & Metadata)
+
+- **Home page**
+  - Renders page structure with header, main, sections
+  - Generates correct SEO metadata (page 1, pagination, search results)
+  - Returns noindex for search results (query parameter)
+  - Generates pagination titles and canonical URLs
+  - Includes OpenGraph and Twitter metadata
+  - Renders breadcrumbs navigation
+  - Displays filter bar and blog post list
+  - Includes pagination controls
+  - Includes JSON-LD structured data (Person, WebSite, WebPage, Blog, ItemList, BreadcrumbList)
+  - Links to related pages (About, Credentials, Publications, Talks)
+
+- **Contact page**
+  - Renders page structure with header and form
+  - Displays navigation breadcrumbs
+  - Renders contact form
+  - Displays profile image with caption
+  - Includes structured data schema
+  - Exports correct metadata (title, description, canonical URL)
+  - Exports OpenGraph and Twitter metadata
+
 > Page‑level tests intentionally focus on **accessibility only**.
 > Content correctness and routing are covered indirectly by component tests and manual QA.
 
