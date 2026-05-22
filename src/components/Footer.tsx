@@ -135,6 +135,7 @@ export const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View The Chartered Institute of Journalists website"
+              className="col-span-2 justify-self-center sm:col-span-1"
             >
               <div className="relative w-27.75 h-35.5">
                 <Image
