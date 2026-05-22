@@ -95,7 +95,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
             >
-              <div className="relative w-24 h-20 sm:w-31.25 sm:h-27.75">
+              <div className="relative w-24 h-20">
                 <Image
                   src="/images/creditation-logos/proudly-human-logo.png"
                   alt="My writing and photography has been independently verified as human-origin by ProudlyHuman™"
@@ -113,7 +113,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
             >
-              <div className="relative w-22 h-22 sm:w-27.75 sm:h-27.75">
+              <div className="relative w-22 h-22">
                 <Image
                   src="/images/creditation-logos/opj-ambassador-logo.png"
                   alt="One Planet Journey - Deep Travel Ambassador logo"
@@ -131,7 +131,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="View The Chartered Institute of Journalists website"
             >
-              <div className="relative w-22 h-28 sm:w-27.75 sm:h-35.5">
+              <div className="relative w-22 h-28">
                 <Image
                   src="/images/creditation-logos/cioj-logo.png"
                   alt="The Chartered Institute of Journalists logo"
