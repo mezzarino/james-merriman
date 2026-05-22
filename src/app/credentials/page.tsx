@@ -206,7 +206,7 @@ const Page = async () => {
                   rel="noopener noreferrer"
                   aria-label="View The Chartered Institute of Journalists website"
                 >
-                  The Chartered Institute of Journalists <em>(CIOJ)</em>
+                  The Chartered Institute of Journalists
                 </a>
               </li>
               <li>

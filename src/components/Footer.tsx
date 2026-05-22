@@ -90,7 +90,7 @@ export const Footer = () => {
       {/* ✅ Subtle divider + Accreditation logos */}
       <div className="border-t border-border/30 mt-6 pt-4">
         <div className="flex justify-center">
-          <div className="flex items-center gap-3 sm:gap-4 py-2">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:flex sm:items-center sm:gap-4 py-2">
             {/* ✅ Proudly Human (compliant size) */}
             <a
               href="https://www.proudlyhuman.org/certified/james-merriman"
@@ -136,9 +136,9 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label="View The Chartered Institute of Journalists website"
             >
-              <div className="relative w-27.75 h-40">
+              <div className="relative w-27.75 h-35.5">
                 <Image
-                  src="/images/creditation-logos/cioj-logo.jpg"
+                  src="/images/creditation-logos/cioj-logo.png"
                   alt="The Chartered Institute of Journalists logo"
                   title="James Merriman is a member of The Chartered Institute of Journalists."
                   fill
