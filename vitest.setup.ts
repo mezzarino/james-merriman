@@ -25,3 +25,6 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: vi.fn(),
   })),
 });
+
+/* ✅ Shim scrollTo for JSDOM */
+window.scrollTo = vi.fn();

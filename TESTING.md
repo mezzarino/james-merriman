@@ -39,6 +39,33 @@ Playwright is optional and not required for core coverage.
 
 ---
 
+#### **LazyRender**
+
+- Renders a placeholder before intersection
+- Loads children only after the element enters view
+- Supports client-only rendering without layout shift
+- Accessible fallback state when not yet visible
+
+---
+
+#### **FigureImage**
+
+- Renders image and caption together
+- Shows loading placeholder until `onLoad`
+- Removes placeholder after image load
+- Preserves accessible alt text
+
+---
+
+#### **BlogPostList**
+
+- Renders post title, description, and author metadata
+- Supports list navigation and content preview
+- Uses stable `next/image` and lazy loading mocks in tests
+- No basic accessibility violations
+
+---
+
 #### **ContactForm**
 
 - Required‑field validation
