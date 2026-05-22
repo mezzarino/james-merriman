@@ -13,6 +13,29 @@ export function proxy(request: NextRequest) {
   const host = request.headers.get("host") || "";
   const isStories = host.startsWith("stories.");
 
+  // ✅ Hotlink protection for public images
+  if (url.pathname.startsWith("/images/")) {
+    const referer = request.headers.get("referer") || "";
+    const origin = request.headers.get("origin") || "";
+    const hostDomain = host.replace(/^www\./, "");
+    const allowedOrigins = [
+      request.nextUrl.origin,
+      `https://${host}`,
+      `http://${host}`,
+      `https://${hostDomain}`,
+      `http://${hostDomain}`,
+      `https://stories.${hostDomain}`,
+      `http://stories.${hostDomain}`,
+    ];
+
+    const isAllowedReferer = !referer || allowedOrigins.some((allowed) => referer.startsWith(allowed));
+    const isAllowedOrigin = !origin || allowedOrigins.some((allowed) => origin === allowed);
+
+    if (!isAllowedReferer && !isAllowedOrigin) {
+      return new NextResponse("Hotlinking forbidden", { status: 403 });
+    }
+  }
+
   // ✅ Generate nonce (main site only)
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
