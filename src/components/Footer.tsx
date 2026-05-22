@@ -56,16 +56,14 @@ export const Footer = () => {
       {/* ✅ Divider */}
       <div className="border-t border-border/50 pt-6" />
 
-      {/* ✅ Bottom row: utilities + RSS + copyright */}
+      {/* ✅ Bottom row */}
       <div className="flex flex-col items-center gap-4 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:items-center">
-        {/* ✅ Utility links */}
         <ul className="flex flex-wrap justify-center gap-4 sm:justify-start">
           <li>
             <Link href="/privacy-policy" className="hover:text-foreground">
               Privacy Policy
             </Link>
           </li>
-
           <li>
             <Link href="/accessibility" className="hover:text-foreground">
               Accessibility
@@ -73,7 +71,6 @@ export const Footer = () => {
           </li>
         </ul>
 
-        {/* ✅ RSS + copyright */}
         <div className="flex items-center gap-3">
           <Link href="/rss">
             <Button variant="ghost" size="icon" aria-label="RSS feed">
@@ -87,64 +84,60 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* ✅ Subtle divider + Accreditation logos */}
+      {/* ✅ Accreditation logos */}
       <div className="border-t border-border/30 mt-6 pt-4">
         <div className="flex justify-center">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:flex sm:items-center sm:gap-4 py-2">
-            {/* ✅ Proudly Human (compliant size) */}
+          <div className="flex items-center gap-4 py-2">
+            {/* Proudly Human */}
             <a
               href="https://www.proudlyhuman.org/certified/james-merriman"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View the ProudlyHuman™ verification certificate for James Merriman"
             >
-              <div className="relative w-31.25 h-27.75">
+              <div className="relative w-24 h-20 sm:w-31.25 sm:h-27.75">
                 <Image
                   src="/images/creditation-logos/proudly-human-logo.png"
                   alt="My writing and photography has been independently verified as human-origin by ProudlyHuman™"
-                  title="I, James Merriman, declare that other than minimal use generally accepted by copyright agencies I am the proud human author of this work. My assertion of human authorship has been verified by ProudlyHuman™."
                   fill
                   loading="lazy"
-                  className="object-contain opacity-95 hover:opacity-100 transition-opacity"
+                  className="object-contain opacity-90 sm:opacity-95 hover:opacity-100 transition-opacity"
                 />
               </div>
             </a>
 
-            {/* ✅ One Planet Journey Ambassador */}
+            {/* One Planet Journey */}
             <a
               href="https://oneplanetjourney.com/about/deep-travel-ambassadors/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
             >
-              <div className="relative w-27.75 h-27.75">
+              <div className="relative w-22 h-22 sm:w-27.75 sm:h-27.75">
                 <Image
                   src="/images/creditation-logos/opj-ambassador-logo.png"
                   alt="One Planet Journey - Deep Travel Ambassador logo"
-                  title="James Merriman is a One Planet Journey - Deep Travel Ambassador. Deep travel for me is about spending longer in fewer places and understanding a destination beyond mass tourism."
                   fill
                   loading="lazy"
-                  className="object-contain opacity-95 hover:opacity-100 transition-opacity"
+                  className="object-contain opacity-90 sm:opacity-95 hover:opacity-100 transition-opacity"
                 />
               </div>
             </a>
 
-            {/* ✅ Member - CIOJ */}
+            {/* CIOJ */}
             <a
               href="https://cioj.org/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View The Chartered Institute of Journalists website"
-              className="col-span-2 justify-self-center sm:col-span-1"
             >
-              <div className="relative w-27.75 h-35.5">
+              <div className="relative w-22 h-28 sm:w-27.75 sm:h-35.5">
                 <Image
                   src="/images/creditation-logos/cioj-logo.png"
                   alt="The Chartered Institute of Journalists logo"
-                  title="James Merriman is a member of The Chartered Institute of Journalists."
                   fill
                   loading="lazy"
-                  className="object-contain opacity-95 hover:opacity-100 transition-opacity"
+                  className="object-contain opacity-90 sm:opacity-95 hover:opacity-100 transition-opacity"
                 />
               </div>
             </a>
