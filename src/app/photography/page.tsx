@@ -178,7 +178,9 @@ const Page = async () => {
           className="mt-16 p-10 bg-gray-100 rounded-xl text-center"
           aria-labelledby="licensing-heading"
         >
-          <h2 id="licensing-heading">Licence My Photography</h2>
+          <h2 id="licensing-heading" className="font-semibold">
+            Licence My Photography
+          </h2>
 
           <p className="mt-4">
             My photography is available for editorial and commercial use, including travel
