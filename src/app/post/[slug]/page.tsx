@@ -87,8 +87,14 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
             "@type": "ImageObject",
             "@id": `${config.baseUrl}/post/${slug}#primaryimage`,
             url: image,
+            creator: {
+              "@id": `${config.baseUrl}#person`,
+            },
+
             creditText: "James Merriman",
+            copyrightNotice: "© James Merriman",
             license: "https://www.jamesmerriman.co.uk/licencing",
+            acquireLicensePage: "https://www.jamesmerriman.co.uk/licencing",
           },
         ]
       : undefined,

@@ -91,22 +91,44 @@ const Page = async () => {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
+
                 startDate: "2026-04",
+                endDate: "2026-04",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
                 eventStatus: "https://schema.org/EventCompleted",
+
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://www.jamesmerriman.co.uk/images/james-merriman.jpg",
+                  width: 1200,
+                  height: 1600,
+                },
+
                 organizer: {
                   "@type": "Organization",
                   name: "Royal Geographical Society (South West)",
+                  url: "https://www.rgs.org",
                 },
+
                 performer: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
                 },
+
                 location: {
                   "@type": "Place",
                   name: "Royal Geographical Society (South West)",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Exeter",
+                    addressCountry: "GB",
+                  },
                 },
+
                 description:
                   "A 15-minute illustrated presentation reflecting on first-hand travel in Afghanistan, focusing on movement, public life, and everyday experiences beyond media narratives.",
+
                 about: {
                   "@type": "Place",
                   name: "Afghanistan",

@@ -118,7 +118,9 @@ const Page = async () => {
                   },
 
                   creditText: "James Merriman",
+                  copyrightNotice: "© James Merriman",
                   license: "https://www.jamesmerriman.co.uk/licencing",
+                  acquireLicensePage: "https://www.jamesmerriman.co.uk/licencing",
                 })),
               },
               {

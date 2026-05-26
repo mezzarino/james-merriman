@@ -123,14 +123,26 @@ const Page = async () => {
                 "@id": `${config.baseUrl}/publications#awakening-of-leptis-magna`,
                 headline: "The Awakening of Leptis Magna",
                 name: "The Awakening of Leptis Magna",
+
                 author: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
                 },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  width: 1200,
+                  height: 630,
+                },
+
                 publisher: {
                   "@type": "Organization",
                   name: "Globe Magazine",
                 },
-                datePublished: "2026-03",
+                datePublished: "2026-03-01T00:00:00+00:00",
                 about: {
                   "@type": "Place",
                   name: "Leptis Magna",
@@ -160,14 +172,26 @@ const Page = async () => {
                 "@id": `${config.baseUrl}/publications#eating-my-way-around-nice`,
                 headline: "Eating My Way Around Nice",
                 name: "Eating My Way Around Nice",
+
                 author: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
                 },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  width: 1200,
+                  height: 630,
+                },
+
                 publisher: {
                   "@type": "Organization",
                   name: "Globe Magazine",
                 },
-                datePublished: "2025-12",
+                datePublished: "2025-12-01T00:00:00+00:00",
                 about: {
                   "@type": "Place",
                   name: "Nice",
@@ -201,9 +225,21 @@ const Page = async () => {
                 "@id": `${config.baseUrl}/publications#my-tehran-beyond-the-headlines`,
                 name: "My Tehran: Beyond the Headlines",
                 headline: "My Tehran: Beyond the Headlines",
+
                 author: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
                 },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  width: 1200,
+                  height: 630,
+                },
+
                 isPartOf: {
                   "@type": "Book",
                   name: "The Kindness of Strangers",
@@ -232,15 +268,27 @@ const Page = async () => {
                   "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe#james-merriman",
                 headline: "Readers' favourite beach bars in Europe",
                 name: "Readers' favourite beach bars in Europe",
+
                 author: {
                   "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
                 },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  width: 1200,
+                  height: 630,
+                },
+
                 publisher: {
                   "@type": "Organization",
                   name: "The Guardian",
                   url: "https://www.theguardian.com/",
                 },
-                datePublished: "2026-05-08",
+                datePublished: "2026-05-08T00:00:00+00:00",
                 about: {
                   "@type": "Place",
                   name: "Matala, Crete",
