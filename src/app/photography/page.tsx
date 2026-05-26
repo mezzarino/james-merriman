@@ -76,21 +76,23 @@ const Page = async () => {
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
-
                 author: {
                   "@id": `${config.baseUrl}#person`,
                   "@type": "Person",
                   name: "James Merriman",
                   url: config.baseUrl,
                 },
-
                 publisher: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
+                  "@id": `${config.baseUrl}#organization`,
+                  "@type": "Organization",
                   name: "James Merriman",
-                  url: config.baseUrl,
                 },
-
+                image: {
+                  "@type": "ImageObject",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  width: 1200,
+                  height: 630,
+                },
                 mainEntity: {
                   "@id": `${config.baseUrl}/photography#imagegallery`,
                 },

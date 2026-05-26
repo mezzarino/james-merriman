@@ -102,6 +102,20 @@ export default async function Page(props: {
         name: "James Merriman",
         url: config.baseUrl,
         image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+        jobTitle: "Travel Writer and Photographer",
+        sameAs: [
+          "https://x.com/mezzarino",
+          "https://linkedin.com/in/jamesmerriman",
+          "https://instagram.com/mezzarino",
+        ],
+      },
+
+      // ✅ Organisation
+      {
+        "@type": "Organization",
+        "@id": `${config.baseUrl}#organization`,
+        name: "James Merriman",
+        url: config.baseUrl,
         logo: {
           "@type": "ImageObject",
           "@id": `${config.baseUrl}#logo`,
@@ -109,7 +123,9 @@ export default async function Page(props: {
           width: 640,
           height: 640,
         },
-        jobTitle: "Travel Writer & Photographer",
+        founder: {
+          "@id": `${config.baseUrl}#person`,
+        },
         sameAs: [
           "https://x.com/mezzarino",
           "https://linkedin.com/in/jamesmerriman",
@@ -124,7 +140,9 @@ export default async function Page(props: {
         name: "James Merriman | Travel Writing and Photography",
         url: config.baseUrl,
         publisher: {
-          "@id": `${config.baseUrl}#person`,
+          "@id": `${config.baseUrl}#organization`,
+          "@type": "Organization",
+          name: "James Merriman",
         },
         potentialAction: {
           "@type": "SearchAction",
@@ -158,7 +176,12 @@ export default async function Page(props: {
         name: "James Merriman – Travel Writing",
         url: config.baseUrl,
         publisher: {
-          "@id": `${config.baseUrl}#person`,
+          "@id": `${config.baseUrl}#organization`,
+          "@type": "Organization",
+          name: "James Merriman",
+        },
+        isPartOf: {
+          "@id": `${config.baseUrl}#website`,
         },
       },
 

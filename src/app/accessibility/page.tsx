@@ -65,7 +65,9 @@ const Page = async () => {
                   "@id": `${config.baseUrl}#website`,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": `${config.baseUrl}#organization`,
+                  "@type": "Organization",
+                  name: "James Merriman",
                 },
                 inLanguage: "en-GB",
                 breadcrumb: {

@@ -81,6 +81,11 @@ const Page = async () => {
                 about: {
                   "@id": `${config.baseUrl}#person`,
                 },
+                publisher: {
+                  "@id": `${config.baseUrl}#organization`,
+                  "@type": "Organization",
+                  name: "James Merriman",
+                },
                 mainEntity: {
                   "@type": "ItemList",
                   name: "Publications by James Merriman",
@@ -91,6 +96,10 @@ const Page = async () => {
                       "@id": pub.external ? pub.url : `${config.baseUrl}/publications#${pub.id}`,
                     },
                   })),
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `${config.baseUrl}/publications`,
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/publications#breadcrumb`,
@@ -141,6 +150,7 @@ const Page = async () => {
                 publisher: {
                   "@type": "Organization",
                   name: "Globe Magazine",
+                  url: "https://globetrotters.co.uk/members/globe.html",
                 },
                 datePublished: "2026-03-01T00:00:00+00:00",
                 about: {
@@ -190,6 +200,7 @@ const Page = async () => {
                 publisher: {
                   "@type": "Organization",
                   name: "Globe Magazine",
+                  url: "https://globetrotters.co.uk/members/globe.html",
                 },
                 datePublished: "2025-12-01T00:00:00+00:00",
                 about: {

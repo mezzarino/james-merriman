@@ -64,7 +64,9 @@ export default async function Page() {
           "@id": `${config.baseUrl}#website`,
         },
         publisher: {
-          "@id": `${config.baseUrl}#person`,
+          "@id": `${config.baseUrl}#organization`,
+          "@type": "Organization",
+          name: "James Merriman",
         },
         mainEntity: {
           "@type": "ItemList",
@@ -80,6 +82,9 @@ export default async function Page() {
               inDefinedTermSet: `${config.baseUrl}/category`,
             },
           })),
+        },
+        mainEntityOfPage: {
+          "@id": `${config.baseUrl}/category`,
         },
         breadcrumb: {
           "@id": `${config.baseUrl}/category#breadcrumb`,

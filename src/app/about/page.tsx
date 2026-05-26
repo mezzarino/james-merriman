@@ -162,9 +162,6 @@ const Page = async () => {
                 "@id": `${config.baseUrl}#website`,
                 url: config.baseUrl,
                 name: "James Merriman | Travel Writing and Photography",
-                publisher: {
-                  "@id": `${config.baseUrl}#entity`,
-                },
               },
               {
                 "@type": "BreadcrumbList",

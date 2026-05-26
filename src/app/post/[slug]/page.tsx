@@ -87,6 +87,8 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
             "@type": "ImageObject",
             "@id": `${config.baseUrl}/post/${slug}#primaryimage`,
             url: image,
+            width: 840,
+            height: 630,
             creator: {
               "@id": `${config.baseUrl}#person`,
             },
@@ -115,10 +117,9 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     },
 
     publisher: {
-      "@id": `${config.baseUrl}#person`,
-      "@type": "Person",
+      "@id": `${config.baseUrl}#organization`,
+      "@type": "Organization",
       name: "James Merriman",
-      url: config.baseUrl,
     },
 
     mainEntityOfPage: {
