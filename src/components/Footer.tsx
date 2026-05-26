@@ -77,11 +77,11 @@ export const Footer = () => {
         </ul>
 
         <div className="flex items-center gap-3">
-          <Link href="/rss">
-            <Button variant="ghost" size="icon" aria-label="RSS feed">
+          <Button asChild variant="ghost" size="icon">
+            <Link href="/rss" aria-label="RSS feed">
               <Rss className="h-4 w-4" />
-            </Button>
-          </Link>
+            </Link>
+          </Button>
 
           <span>
             © {config.organization} {new Date().getFullYear()}
