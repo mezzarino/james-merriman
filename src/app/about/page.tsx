@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import AccessibleAccordion from "@/components/AccessibleAccordion";
 
+import AccessibleAccordion from "@/components/AccessibleAccordion";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     ],
   },
 };
- 
+
 const faqItems = [
   {
     question:
@@ -59,8 +59,7 @@ const faqItems = [
       "I want to see what daily life looks like after the global news cycle moves on. Destinations like Afghanistan and Libya are often reduced to a single narrative of instability. Arriving on the ground usually reveals a completely different reality. You find normal routines, immense resilience and some of the most generous hospitality imaginable. I prefer writing about those human interactions over political analysis.",
   },
   {
-    question:
-      "Do you consider yourself a writer who takes photos or a photographer who writes?",
+    question: "Do you consider yourself a writer who takes photos or a photographer who writes?",
     answer:
       "I see them as the same process. I always carry a camera alongside my notebook. Taking a photograph forces me to stand still and study the physical geometry of a place. Once I have framed the shot, I use the notebook to record the context. The image captures the light and the architecture, while the writing documents the dialogue. They rely entirely on each other.",
   },
@@ -70,8 +69,7 @@ const faqItems = [
       "Fieldwork is intense. It involves constant observation, navigating unfamiliar logistics and carrying a lot of equipment. When an assignment finishes, I need a complete contrast. Coming back to the South West gives me the physical distance required to review my notes and actually piece a feature together. A long run in the Devon countryside is usually the easiest way to prepare for a challenging trip.",
   },
   {
-    question:
-      "What is your best advice for people wanting to travel more meaningfully?",
+    question: "What is your best advice for people wanting to travel more meaningfully?",
     answer:
       "Leave empty space in your schedule. Over-planning kills spontaneity. If you map out every hour of a trip, you eliminate the chance for an unexpected detour or an unplanned meal with a local family. One of my favourite habits is waking up early to see how a city actually functions without the traffic or tourist numbers. Just get lost in a neighbourhood and see what happens.",
   },
@@ -204,28 +202,33 @@ const Page = async () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p>
-              I am a British traveller and travel writer based in Devon, England. A Fellow of the
+              I am a British travel writer and photographer based in Devon, England. A Fellow of the
               Royal Geographical Society, I have travelled to{" "}
-              <strong>164 countries across six continents</strong>, driven by a deep curiosity for
-              landscape, culture and the stories that shape the world around us.{" "}
-              <Link href="/credentials">View my professional credentials</Link>, read a selection of{" "}
-              <Link href="/publications">published writing</Link>, or learn more about{" "}
-              <Link href="/talks-presentations">talks and presentations</Link> drawn from field
+              <strong>164 countries across six continents</strong>, building a long-term body of
+              work focused on geography, culture and lived experience.
+            </p>
+
+            <p>
+              My work ranges from long-form travel writing to documentary photography, often centred
+              on places that are overlooked or misunderstood. You can{" "}
+              <Link href="/publications">read a selection of published writing</Link>, explore my{" "}
+              <Link href="/photography">photography</Link>, or
+              <Link href="/credentials">view my professional credentials</Link> and field
               experience.
             </p>
 
             <p>
               My journeys have taken me from remote island nations to post‑conflict regions,
               exploring how geography, history and community intersect. Through my writing, I
-              reflect on the textures of travel - the light, the language, the food, and the quiet
-              human moments that define a destination beyond its map coordinates.
+              reflect on the textures of travel - the light, the language, the food and the human
+              moments that define a destination beyond its map coordinates.
             </p>
             <p>
               Based in the Devon countryside, I continue to explore the world with the same enduring
               curiosity that shapes both my journeys and my writing.
             </p>
             <p>
-              My writing and photography has been has been independently verified as human-origin by{" "}
+              My writing and photography has been independently verified as human-origin by{" "}
               <a
                 href="https://www.proudlyhuman.org/certified/james-merriman"
                 target="_blank"
@@ -250,6 +253,13 @@ const Page = async () => {
               local relationships provides a much more memorable experience than simply ticking off
               landmarks and guidebook checklists.{" "}
             </p>
+
+            <p>
+              I work on long-form travel features, essays and documentary photography projects. I am
+              available for editorial commissions, talks and selected collaborations aligned with my
+              work. <Link href="/contact">Get in touch</Link>.
+            </p>
+
             {/* Accessible, collapsible accordion (client component) */}
             {/* FAQ items are provided as plain data so the client component can render interactively */}
             <AccessibleAccordion items={faqItems} />
@@ -258,7 +268,7 @@ const Page = async () => {
             <Script
               id="about-faq-schema"
               type="application/ld+json"
-              strategy="afterInteractive"
+              strategy="beforeInteractive"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
                   "@context": "https://schema.org",

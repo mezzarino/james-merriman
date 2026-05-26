@@ -14,9 +14,9 @@ import { Photo } from "@/types/photo";
 const ogImage = "/images/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
-  title: "Travel Photography Portfolio | James Merriman",
+  title: "Documentary Travel Photography by James Merriman",
   description:
-    "Explore travel and landscape photography by James Merriman, featuring destinations, culture and natural landscapes from around the world.",
+    "Editorial and documentary travel photography from remote and overlooked regions, produced alongside long‑form travel writing by James Merriman.",
 
   keywords: [
     "James Merriman photography",
@@ -33,8 +33,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${config.baseUrl}/photography`,
-    title: "Travel Photography Portfolio | James Merriman",
-    description: "A curated collection of travel and landscape photography from around the world.",
+    title: "Documentary Travel Photography by James Merriman",
+    description:
+      "Editorial and documentary travel photography from remote and overlooked regions, produced alongside long‑form travel writing by James Merriman.",
     images: [
       {
         url: ogImage,
@@ -153,8 +154,10 @@ const Page = async () => {
         {/* ✅ Intro content (SEO boost) */}
         <article className="prose prose-lg max-w-none mb-10">
           <p>
-            This portfolio showcases a selection of my travel and landscape photography, capturing
-            places, people and moments from around the world.
+            This page presents a curated selection of my documentary and travel photography,
+            produced alongside long‑form writing from remote and often overlooked regions. The
+            images focus on daily life, geography and atmosphere rather than staged or illustrative
+            scenes.
           </p>
 
           <p>

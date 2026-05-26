@@ -44,12 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "photography"),
-      lastModified: new Date("2026-05-19"),
+      lastModified: new Date("2026-05-26"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-05-19"),
+      lastModified: new Date("2026-05-26"),
       priority: 0.8,
     },
     {
