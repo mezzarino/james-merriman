@@ -92,5 +92,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date("2026-05-19"),
       priority: 0.4,
     },
+    {
+      url: urlJoin(config.baseUrl, "licencing"),
+      lastModified: new Date("2026-05-26"),
+      priority: 0.4,
+    },
   ];
 }

@@ -154,7 +154,18 @@ export const BlogContent = ({
               },
             })}
             <div className="mt-12 border-t pt-6">
-              <PostShare url={postUrl} />
+              <p className="text-sm text-muted-foreground">
+                Photographs accompanying this article are available for editorial and commercial
+                licence. Further details are available on the{" "}
+                <Link href="/licencing" className="underline hover:no-underline">
+                  licencing page
+                </Link>
+                .
+              </p>
+
+              <div className="mt-4">
+                <PostShare url={postUrl} />
+              </div>
             </div>
           </div>
           <div className="w-full lg:w-1/4 lg:px-4">

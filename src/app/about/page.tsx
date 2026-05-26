@@ -257,7 +257,9 @@ const Page = async () => {
             <p>
               I work on long-form travel features, essays and documentary photography projects. I am
               available for editorial commissions, talks and selected collaborations aligned with my
-              work. <Link href="/contact">Get in touch</Link>.
+              work. Further details on the use of my photography are available on the{" "}
+              <Link href="/licencing">licencing page</Link>.{" "}
+              <Link href="/contact">Get in touch</Link>.
             </p>
 
             {/* Accessible, collapsible accordion (client component) */}

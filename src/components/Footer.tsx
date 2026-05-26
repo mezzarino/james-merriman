@@ -69,6 +69,11 @@ export const Footer = () => {
               Accessibility
             </Link>
           </li>
+          <li>
+            <Link href="/licencing" className="hover:text-foreground">
+              Licencing
+            </Link>
+          </li>
         </ul>
 
         <div className="flex items-center gap-3">

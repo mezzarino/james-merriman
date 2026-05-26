@@ -116,6 +116,9 @@ const Page = async () => {
                   creator: {
                     "@id": `${config.baseUrl}#person`,
                   },
+
+                  creditText: "James Merriman",
+                  license: "https://www.jamesmerriman.co.uk/licencing",
                 })),
               },
               {
@@ -161,8 +164,9 @@ const Page = async () => {
           </p>
 
           <p>
-            All photographs are available for editorial and commercial licence. Please{" "}
-            <Link href="/contact">get in touch</Link> for usage enquiries.
+            All photographs are available for editorial and commercial licence. Further details are
+            available on the <Link href="/licencing">licencing page</Link>. For specific usage
+            enquiries, please <Link href="/contact">get in touch</Link>.
           </p>
         </article>
 
@@ -181,7 +185,10 @@ const Page = async () => {
             publications, websites and marketing campaigns.
           </p>
 
-          <Link href="/contact" className="inline-block mt-6 px-6 py-3 bg-black text-white rounded">
+          <Link
+            href="/licencing"
+            className="inline-block mt-6 px-6 py-3 bg-black text-white rounded"
+          >
             Enquire About Licencing
           </Link>
         </section>
