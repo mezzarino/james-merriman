@@ -78,6 +78,27 @@ const Page = async () => {
                 },
               },
               {
+                "@type": "Service",
+                "@id": `${config.baseUrl}/licencing#service`,
+                name: "Editorial and Commercial Photography Licencing",
+                description:
+                  "Licencing of documentary and travel photography for editorial and commercial use, including journalism, publications and selected commercial projects.",
+                provider: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
+                areaServed: {
+                  "@type": "Place",
+                  name: "Worldwide",
+                },
+                audience: {
+                  "@type": "Audience",
+                  audienceType: "Editors, publishers, organisations",
+                },
+                isRelatedTo: {
+                  "@id": `${config.baseUrl}/licencing#webpage`,
+                },
+              },
+              {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/licencing#breadcrumb`,
                 itemListElement: [
@@ -112,10 +133,6 @@ const Page = async () => {
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full prose prose-lg max-w-none wrap-break-word blog-content">
-            <p>
-              <strong>Last updated:</strong> 26th May 2026
-            </p>
-
             <h2 className="mt-12 text-2xl font-semibold">Overview</h2>
             <p>
               All photographs published on this website are the original work of{" "}

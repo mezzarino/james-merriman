@@ -254,9 +254,13 @@ const Page = async () => {
             <p>
               I work on long-form travel features, essays and documentary photography projects. I am
               available for editorial commissions, talks and selected collaborations aligned with my
-              work. Further details on the use of my photography are available on the{" "}
-              <Link href="/licencing">licencing page</Link>.{" "}
-              <Link href="/contact">Get in touch</Link>.
+              work. Further information about commissioning new work is available on the{" "}
+              <Link href="/commissions">commissions page</Link>. Details on photography usage and
+              rights can be found on the <Link href="/licencing">licencing page</Link>.
+            </p>
+
+            <p>
+              For all other enquiries, please <Link href="/contact">get in touch</Link>.
             </p>
 
             {/* Accessible, collapsible accordion (client component) */}

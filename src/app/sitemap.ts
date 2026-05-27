@@ -39,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
-      lastModified: new Date("2026-05-19"),
+      lastModified: new Date("2026-05-27"),
       priority: 0.8,
     },
     {
@@ -49,7 +49,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-05-26"),
+      lastModified: new Date("2026-05-27"),
       priority: 0.8,
     },
     {
@@ -94,7 +94,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "licencing"),
-      lastModified: new Date("2026-05-26"),
+      lastModified: new Date("2026-05-27"),
+      priority: 0.4,
+    },
+    {
+      url: urlJoin(config.baseUrl, "commissions"),
+      lastModified: new Date("2026-05-27"),
       priority: 0.4,
     },
   ];

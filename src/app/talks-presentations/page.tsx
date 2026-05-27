@@ -86,7 +86,28 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/talks-presentations#breadcrumb`,
                 },
               },
-
+              {
+                "@type": "Service",
+                "@id": `${config.baseUrl}/talks-presentations#service`,
+                name: "Talks and Illustrated Presentations",
+                description:
+                  "Illustrated talks and presentations on travel, geography and first-hand experience, delivered to specialist, academic and cultural audiences.",
+                provider: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
+                areaServed: {
+                  "@type": "Place",
+                  name: "United Kingdom",
+                },
+                audience: {
+                  "@type": "Audience",
+                  audienceType:
+                    "Academic institutions, cultural organisations, literary events, specialist societies",
+                },
+                isRelatedTo: {
+                  "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
+                },
+              },
               {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
@@ -175,9 +196,7 @@ const Page = async () => {
               first‑hand experience in lesser‑known and complex regions. Presentations combine
               narrative travel writing with geographic and cultural context.
             </p>
-
             <h2>Recent talks</h2>
-
             <article>
               <h3>Royal Geographical Society (South West)</h3>
               <p>
@@ -186,10 +205,11 @@ const Page = async () => {
                 everyday encounters.
               </p>
             </article>
-
             <p>
               For detailed background on my work, see the <Link href="/about">about page</Link> or
-              explore my <Link href="/publications">published writing</Link>.
+              explore my <Link href="/publications">published writing</Link>. Information about
+              commissioning new writing or photography projects is available on the{" "}
+              <Link href="/commissions">commissions page</Link>.
             </p>
           </div>
 

@@ -74,6 +74,11 @@ export const Footer = () => {
               Licencing
             </Link>
           </li>
+          <li>
+            <Link href="/commissions" className="hover:text-foreground">
+              Commissions
+            </Link>
+          </li>
         </ul>
 
         <div className="flex items-center gap-3">
