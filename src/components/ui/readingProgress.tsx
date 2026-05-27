@@ -40,7 +40,7 @@ export default function ReadingProgress() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="fixed top-0 left-0 z-50 h-[2px] w-full pointer-events-none">
+    <div aria-hidden="true" className="fixed top-0 left-0 z-50 h-0.5 w-full pointer-events-none">
       <div
         className={`
           h-full bg-neutral-900 dark:bg-neutral-100

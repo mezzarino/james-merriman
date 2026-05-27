@@ -68,6 +68,9 @@ export default function StoriesPage() {
                 about: {
                   "@id": `${config.baseUrl}#person`,
                 },
+                publisher: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
                 mainEntity: {
                   "@type": "ItemList",
                   name: "Stories",

@@ -74,13 +74,7 @@ function AccordionItem({
         </svg>
       </summary>
 
-      <div
-        id={panelId}
-        role="region"
-        aria-labelledby={buttonId}
-        className="mt-2"
-        tabIndex={open ? 0 : -1}
-      >
+      <div id={panelId} role="region" aria-labelledby={buttonId} className="mt-2">
         {answer}
       </div>
     </details>

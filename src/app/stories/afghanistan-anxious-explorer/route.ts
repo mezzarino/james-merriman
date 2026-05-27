@@ -32,7 +32,6 @@ export async function GET() {
   </style>
 </noscript>
 
-
   <style amp-custom>
     body { margin: 0; }
     h1, h2, p {
@@ -119,7 +118,7 @@ export async function GET() {
   publisher="James Merriman"
   publisher-logo-src="https://stories.jamesmerriman.co.uk/stories/logo.png"
   poster-portrait-src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg">
-    
+
   <amp-story-page id="cover">
   <amp-story-grid-layer template="fill">
       <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg"
@@ -132,7 +131,7 @@ export async function GET() {
 
     <!-- ✅ Text -->
     <amp-story-grid-layer template="vertical">
-      
+
 <h1 animate-in="fade-in" style="font-size: 2.5rem; font-weight:700;">
   Afghanistan
 </h1>
@@ -210,7 +209,7 @@ ${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
   </amp-story-page>`;
   })
   .join("")}
-  
+
 <!-- CTA -->
 <amp-story-page id="cta">
   <amp-story-grid-layer template="fill">

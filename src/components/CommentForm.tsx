@@ -218,7 +218,7 @@ export function CommentForm({ slug, config, onSuccess }: CommentFormProps) {
                   autoComplete="off"
                   aria-invalid={!!fieldState.error}
                   aria-describedby={fieldState.error ? "content-error" : undefined}
-                  className={`${inputClassName} min-h-[120px] resize-y`}
+                  className={`${inputClassName} min-h-30 resize-y`}
                 />
               </FormControl>
               <FormMessage id="content-error" />
