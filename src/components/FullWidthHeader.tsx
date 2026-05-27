@@ -31,7 +31,7 @@ export const FullWidthHeader: FunctionComponent<FullWidthHeaderProps> = ({
         <div className="container mx-auto max-w-6xl px-4 py-8 lg:py-10">
           <div className="mx-auto mb-3 flex justify-center">
             <Link href="/" aria-label="James Merriman home">
-              <div className="relative w-[180px] sm:w-[220px] lg:w-[220px] aspect-100/59">
+              <div className="relative w-45 sm:w-55 lg:w-55 aspect-100/59">
                 <Image
                   src="/james-merriman-travel-writer-logo.png"
                   alt="James Merriman"
