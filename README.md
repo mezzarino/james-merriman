@@ -6,7 +6,7 @@
 ![shadcn/ui](https://img.shields.io/badge/shadcn--ui-000000)
 ![ESLint](https://img.shields.io/badge/ESLint-9-purple)
 ![pnpm](https://img.shields.io/badge/pnpm-latest-F69220)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-Source--Available-blue)
 
 A modern, fast, and accessibility‑focused personal travel writing **and photography** platform built with **Next.js 16**, **TypeScript**, **Cloudinary**, and **Wisp** as a headless CMS.
 Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm developer experience.
@@ -232,6 +232,12 @@ pnpm start
 
 ---
 
-## 📄 Licence
+## 📄 License
 
-MIT
+This project is released under a **Source‑Available License**.
+
+You may view the source code for personal or internal evaluation purposes,
+but copying, modification, redistribution, or commercial use is not permitted
+without explicit written permission.
+
+See the [LICENSE](./LICENSE) file for full terms.
