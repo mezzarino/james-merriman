@@ -8,8 +8,10 @@
 ![pnpm](https://img.shields.io/badge/pnpm-latest-F69220)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-A modern, fast, and accessibility‑focused personal travel writing **and photography** platform built with **Next.js 16**, **TypeScript**, **Cloudinary**, and **Wisp** as a headless CMS.  
+A modern, fast, and accessibility‑focused personal travel writing **and photography** platform built with **Next.js 16**, **TypeScript**, **Cloudinary**, and **Wisp** as a headless CMS.
 Designed for performance, semantic HTML, WCAG 2.1 AA accessibility, and a calm developer experience.
+
+**The project is intentionally editorial in nature, with no focus on advertising, tracking, or growth‑driven monetisation.**
 
 ---
 
@@ -93,7 +95,7 @@ The project uses **behaviour‑focused testing**, not snapshot testing.
 
 ### Tooling
 
-- **Vitest**
+- **Vitest** (unit tests and coverage reporting)
 - **@testing-library/react**
 - **@testing-library/user-event**
 - **jest‑axe** (accessibility regression testing)
@@ -105,6 +107,13 @@ The project uses **behaviour‑focused testing**, not snapshot testing.
 - Layout & landmarks
 - Photography gallery and lightbox behaviour
 - Accessibility regressions at component and page level
+
+### Coverage
+
+Test coverage reports can be generated with:
+
+```bash
+pnpm test:coverage
 
 ### CI
 
@@ -173,7 +182,7 @@ pnpm format
 
 Content is managed via **Wisp**, exposed through a JSON API and rendered with custom components.
 
-Learn more:  
+Learn more:
 https://wisp.blog
 
 ---
@@ -193,7 +202,7 @@ Individual image pages include:
 - Canonical URLs
 - Open Graph images
 - `ImageObject` structured data
-- Licensing metadata
+- Licencing metadata
 
 ---
 
@@ -223,6 +232,6 @@ pnpm start
 
 ---
 
-## 📄 License
+## 📄 Licence
 
 MIT

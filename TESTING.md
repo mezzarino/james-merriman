@@ -18,6 +18,15 @@ Playwright is optional and not required for core coverage.
 
 ---
 
+### Coverage
+
+Test coverage reporting is available via **Vitest**:
+
+```bash
+pnpm test:coverage
+
+---
+
 ## What We Test
 
 ### ✅ Components
@@ -203,9 +212,11 @@ These areas are either:
 
 - ✅ Test **what users rely on**
 - ✅ Test **accessibility and interaction**
+- ✅ Use coverage reports to identify untested behaviour
 - ❌ Avoid testing implementation details
 - ❌ Avoid snapshot‑driven development
 - ❌ Avoid animation‑coupled assertions
+- ❌ Do not chase coverage percentages at the expense of test quality
 
 ---
 
