@@ -313,7 +313,7 @@ export default async function Page(props: {
           <p>
             I write about travel through sustained time spent in places. Much of my work focuses on
             regions that are overlooked or poorly understood, where travel involves borders,
-            infrastructure and history rather than straightforward movement from one location to
+            infrastructure and history, rather than straightforward movement from one location to
             another.
           </p>
 
@@ -326,7 +326,7 @@ export default async function Page(props: {
 
           <p>
             My <Link href="/photography">photography</Link> accompanies and supports my writing. It
-            records landscape as well as ordinary moments, holding detail that the written work
+            records landscape as well as ordinary moments, holding details that the written work
             approaches from another angle.
           </p>
 
