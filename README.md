@@ -114,6 +114,7 @@ Test coverage reports can be generated with:
 
 ```bash
 pnpm test:coverage
+```
 
 ### CI
 
