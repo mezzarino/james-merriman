@@ -6,7 +6,9 @@ import LayoutWrapper from "./LayoutWrapper";
 vi.mock("@vercel/analytics/next", () => ({ Analytics: () => null }));
 vi.mock("@vercel/speed-insights/next", () => ({ SpeedInsights: () => null }));
 vi.mock("@/components/analytics/ConsentBanner", () => ({ ConsentBanner: () => null }));
-vi.mock("@/components/analytics/GoogleAnalyticsConsent", () => ({ GoogleAnalyticsConsent: () => null }));
+vi.mock("@/components/analytics/GoogleAnalyticsConsent", () => ({
+  GoogleAnalyticsConsent: () => null,
+}));
 
 describe("Layout accessibility", () => {
   it("includes a skip link to main content", () => {
