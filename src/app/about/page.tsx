@@ -137,7 +137,9 @@ const Page = async () => {
                   },
                 },
                 worksFor: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": `${config.baseUrl}#organization`,
+                  "@type": "Organization",
+                  name: "James Merriman",
                 },
                 nationality: {
                   "@type": "Country",

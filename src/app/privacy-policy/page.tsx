@@ -58,7 +58,7 @@ const Page = async () => {
             "@context": "https://schema.org",
             "@graph": [
               {
-                "@type": "PrivacyPolicy",
+                "@type": "WebPage",
                 "@id": `${config.baseUrl}/privacy-policy#webpage`,
                 url: `${config.baseUrl}/privacy-policy`,
                 name: "Privacy Policy",

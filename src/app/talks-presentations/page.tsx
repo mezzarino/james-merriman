@@ -116,7 +116,6 @@ const Page = async () => {
                 startDate: "2026-04",
                 endDate: "2026-04",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-                eventStatus: "https://schema.org/EventCompleted",
 
                 image: {
                   "@type": "ImageObject",

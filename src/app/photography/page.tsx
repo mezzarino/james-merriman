@@ -99,7 +99,6 @@ const Page = async () => {
                 breadcrumb: {
                   "@id": `${config.baseUrl}/photography#breadcrumb`,
                 },
-                numberOfItems: photos.length,
                 hasPart: photos.slice(0, 20).map((photo: Photo) => ({
                   "@type": "ImageObject",
                   "@id": `${config.baseUrl}/photography/${photo.public_id}#image`,

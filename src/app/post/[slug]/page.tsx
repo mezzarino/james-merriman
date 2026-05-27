@@ -73,102 +73,109 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-
-    "@id": `${config.baseUrl}/post/${slug}#article`,
-    url: `${config.baseUrl}/post/${slug}`,
-
-    headline: title,
-    description: result.post.description || undefined,
-
-    image: image
-      ? [
-          {
-            "@type": "ImageObject",
-            "@id": `${config.baseUrl}/post/${slug}#primaryimage`,
-            url: image,
-            width: 840,
-            height: 630,
-            creator: {
-              "@id": `${config.baseUrl}#person`,
-            },
-
-            creditText: "James Merriman",
-            copyrightNotice: "© James Merriman",
-            license: "https://www.jamesmerriman.co.uk/licencing",
-            acquireLicensePage: "https://www.jamesmerriman.co.uk/licencing",
-          },
-        ]
-      : undefined,
-
-    datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
-
-    dateModified: updatedAt
-      ? new Date(updatedAt).toISOString()
-      : publishedAt
-        ? new Date(publishedAt).toISOString()
-        : undefined,
-
-    author: {
-      "@id": `${config.baseUrl}#person`,
-      "@type": "Person",
-      name: "James Merriman",
-      url: config.baseUrl,
-    },
-
-    publisher: {
-      "@id": `${config.baseUrl}#organization`,
-      "@type": "Organization",
-      name: "James Merriman",
-    },
-
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${config.baseUrl}/post/${slug}`,
-    },
-
-    isPartOf: [
+    "@graph": [
       {
-        "@id": `${config.baseUrl}#blog`,
+        "@type": "WebPage",
+        "@id": `${config.baseUrl}/post/${slug}`,
+        url: `${config.baseUrl}/post/${slug}`,
+        name: title,
+        isPartOf: {
+          "@id": `${config.baseUrl}#website`,
+        },
+        breadcrumb: {
+          "@id": `${config.baseUrl}/post/${slug}#breadcrumb`,
+        },
+        mainEntity: {
+          "@id": `${config.baseUrl}/post/${slug}#article`,
+        },
+        inLanguage: "en-GB",
       },
+
       {
-        "@id": `${config.baseUrl}#website`,
+        "@type": "BlogPosting",
+        "@id": `${config.baseUrl}/post/${slug}#article`,
+        url: `${config.baseUrl}/post/${slug}`,
+
+        headline: title,
+        description: result.post.description || undefined,
+
+        image: image
+          ? [
+              {
+                "@type": "ImageObject",
+                "@id": `${config.baseUrl}/post/${slug}#primaryimage`,
+                url: image,
+                width: 840,
+                height: 630,
+                creator: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                creditText: "James Merriman",
+                copyrightNotice: "© James Merriman",
+                license: "https://www.jamesmerriman.co.uk/licencing",
+                acquireLicensePage: "https://www.jamesmerriman.co.uk/licencing",
+              },
+            ]
+          : undefined,
+
+        datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
+
+        dateModified: updatedAt
+          ? new Date(updatedAt).toISOString()
+          : publishedAt
+            ? new Date(publishedAt).toISOString()
+            : undefined,
+
+        author: {
+          "@id": `${config.baseUrl}#person`,
+          "@type": "Person",
+          name: "James Merriman",
+          url: config.baseUrl,
+        },
+
+        publisher: {
+          "@id": `${config.baseUrl}#organization`,
+          "@type": "Organization",
+          name: "James Merriman",
+        },
+
+        mainEntityOfPage: {
+          "@id": `${config.baseUrl}/post/${slug}`,
+        },
+
+        isPartOf: [{ "@id": `${config.baseUrl}#blog` }, { "@id": `${config.baseUrl}#website` }],
+
+        inLanguage: "en-GB",
+
+        timeRequired: Number.isFinite(readingTime) ? `PT${readingTime}M` : undefined,
+
+        wordCount: result.post.content
+          ? result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length
+          : undefined,
+
+        keywords: result.post.tags?.length ? result.post.tags.map((t) => t.name) : undefined,
+
+        articleSection: result.post.tags?.[0]?.name,
+
+        about: result.post.tags?.map((tag) => ({
+          "@type": "DefinedTerm",
+          "@id": `${config.baseUrl}/category/${tag.name}#term`,
+          name: tag.name,
+          url: `${config.baseUrl}/category/${tag.name}`,
+          inDefinedTermSet: `${config.baseUrl}/category`,
+        })),
+
+        mentions: place
+          ? [
+              {
+                "@type": "Place",
+                "@id": `${config.baseUrl}/place/${place.toLowerCase().replace(/\s+/g, "-")}#place`,
+                name: place,
+              },
+            ]
+          : undefined,
       },
     ],
-
-    inLanguage: "en-GB",
-
-    breadcrumb: {
-      "@id": `${config.baseUrl}/post/${slug}#breadcrumb`,
-    },
-
-    timeRequired: Number.isFinite(readingTime) ? `PT${readingTime}M` : undefined,
-
-    wordCount: result.post.content
-      ? result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length
-      : undefined,
-
-    keywords: result.post.tags?.length ? result.post.tags.map((t) => t.name) : undefined,
-
-    articleSection: result.post.tags?.[0]?.name,
-
-    about: result.post.tags?.map((tag) => ({
-      "@type": "DefinedTerm",
-      "@id": `${config.baseUrl}/category/${tag.name}#term`,
-      name: tag.name,
-      url: `${config.baseUrl}/category/${tag.name}`,
-      inDefinedTermSet: `${config.baseUrl}/category`,
-    })),
-
-    mentions: place
-      ? [
-          {
-            "@type": "Place",
-            "@id": `${config.baseUrl}/place/${place.toLowerCase().replace(/\s+/g, "-")}#place`,
-            name: place,
-          },
-        ]
-      : undefined,
   };
 
   /**
