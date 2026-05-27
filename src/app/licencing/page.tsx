@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 
+import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
 
@@ -132,7 +133,7 @@ const Page = async () => {
 
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
-          <div className="w-full prose prose-lg max-w-none wrap-break-word blog-content">
+          <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <h2 className="mt-12 text-2xl font-semibold">Overview</h2>
             <p>
               All photographs published on this website are the original work of{" "}
@@ -187,6 +188,15 @@ const Page = async () => {
               <Link href="/contact">get in touch via the contact form</Link>.
             </p>
             <p>I am happy to advise on suitability, context and rights for specific projects.</p>
+          </div>
+          <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
+            <FigureImage
+              src="/images/james-merriman.jpg"
+              alt="James Merriman, UK travel writer and photographer"
+              caption="James Merriman, UK travel writer and photographer"
+              width={1200}
+              height={1600}
+            />
           </div>
         </div>
       </main>
