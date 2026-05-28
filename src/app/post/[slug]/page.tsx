@@ -59,22 +59,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
 
   const rawMetadata = result.post.metadata;
 
-  const reviews: Review[] =
-    rawMetadata &&
-    typeof rawMetadata === "object" &&
-    Array.isArray((rawMetadata as PostMetadata).reviews)
-      ? (rawMetadata as PostMetadata).reviews!
-      : [];
-
   const metadata: PostMetadata | undefined =
-    rawMetadata &&
-    typeof rawMetadata === "object" &&
-    Array.isArray((rawMetadata as PostMetadata).reviews)
-      ? {
-          reviews: (rawMetadata as PostMetadata).reviews,
-          place: (rawMetadata as PostMetadata).place,
-        }
-      : undefined;
+    rawMetadata && typeof rawMetadata === "object" ? (rawMetadata as PostMetadata) : undefined;
+
+  const reviews: Review[] = Array.isArray(metadata?.reviews) ? metadata.reviews : [];
+
   const place = metadata?.place ?? null;
 
   const jsonLd = {
