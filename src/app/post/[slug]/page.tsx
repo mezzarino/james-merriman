@@ -9,7 +9,7 @@ import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
 import { wisp } from "@/lib/wisp";
-import type { PostMetadata } from "@/types/post-metadata";
+import type { PostMetadata, Review } from "@/types/post-metadata";
 
 interface Params {
   slug: string;
@@ -57,13 +57,24 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, image } = result.post;
 
-  // ✅ Normalize CMS metadata ONCE
   const rawMetadata = result.post.metadata;
 
-  const metadata: PostMetadata | undefined =
-    rawMetadata && typeof rawMetadata === "object" ? (rawMetadata as PostMetadata) : undefined;
+  const reviews: Review[] =
+    rawMetadata &&
+    typeof rawMetadata === "object" &&
+    Array.isArray((rawMetadata as PostMetadata).reviews)
+      ? (rawMetadata as PostMetadata).reviews!
+      : [];
 
-  const reviews = metadata?.reviews ?? [];
+  const metadata: PostMetadata | undefined =
+    rawMetadata &&
+    typeof rawMetadata === "object" &&
+    Array.isArray((rawMetadata as PostMetadata).reviews)
+      ? {
+          reviews: (rawMetadata as PostMetadata).reviews,
+          place: (rawMetadata as PostMetadata).place,
+        }
+      : undefined;
   const place = metadata?.place ?? null;
 
   const jsonLd = {
@@ -162,7 +173,10 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <BlogContent
-        post={{ ...result.post, metadata }}
+        post={{
+          ...result.post,
+          metadata,
+        }}
         relatedPosts={related.posts}
         readingTime={readingTime}
       />
