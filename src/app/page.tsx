@@ -6,10 +6,10 @@ import Link from "next/link";
 import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
-import { PostPagination } from "@/components/PostPagination";
+import { HomepageFilterBar } from "@/components/homepage/HomepageFilterBar";
+import { HomepagePagination } from "@/components/homepage/HomepagePagination";
 import { wisp } from "@/lib/wisp";
 
-import { FilterBar } from "../components/FilterBar";
 import { FullWidthHeader } from "../components/FullWidthHeader";
 import { config } from "../config";
 
@@ -301,13 +301,10 @@ export default async function Page(props: {
         </section>
 
         <h2 className="mt-12 mb-6 text-3xl px-4 lg:px-0 font-semibold">Latest Travel Writing</h2>
-        <FilterBar active="latest" className="my-6" />
+        <HomepageFilterBar />
         <BlogPostList posts={result.posts} />
-        <PostPagination
-          pagination={result.pagination}
-          className="mt-6 pb-6 border-b border-border/50"
-          query={searchParams?.query}
-        />
+
+        <HomepagePagination pagination={result.pagination} query={searchParams?.query} />
 
         <section className="prose max-w-full px-4 lg:px-0">
           <h2 className="pt-6">Travel Writing and Cultural History</h2>
