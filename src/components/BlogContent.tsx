@@ -2,6 +2,7 @@
 
 import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
 import parse, { DOMNode, Element } from "html-react-parser";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -12,10 +13,7 @@ import { useShareAttribution } from "@/hooks/useShareAttribute";
 import { formatFullDate } from "@/lib/date";
 import type { PostMetadata, Review } from "@/types/post-metadata";
 
-import { CommentSection } from "./CommentSection";
 import { FullWidthHeader } from "./FullWidthHeader";
-import { PostShare } from "./PostShare";
-import { RelatedPosts } from "./RelatedPosts";
 import { processTableOfContents } from "./TOC";
 import { AboutCta } from "./ui/about-cta";
 
@@ -24,6 +22,16 @@ function isElement(node: unknown): node is Element {
     typeof node === "object" && node !== null && "type" in node && (node as DOMNode).type === "tag"
   );
 }
+
+const CommentSection = dynamic(() => import("./CommentSection").then((m) => m.CommentSection), {
+  ssr: false,
+});
+
+const RelatedPosts = dynamic(() => import("./RelatedPosts").then((m) => m.RelatedPosts), {
+  ssr: false,
+});
+
+const PostShare = dynamic(() => import("./PostShare").then((m) => m.PostShare), { ssr: false });
 
 export const BlogContent = ({
   post,
