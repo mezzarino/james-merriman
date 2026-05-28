@@ -15,10 +15,6 @@ interface Params {
   slug: string;
 }
 
-function isPostMetadata(value: unknown): value is PostMetadata {
-  return typeof value === "object" && value !== null;
-}
-
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await props.params;
   const result = await wisp.getPost(slug);
@@ -63,20 +59,22 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   let reviews: Review[] = [];
   let place: string | null = null;
 
-  if (isPostMetadata(rawMetadata)) {
-    if (Array.isArray(rawMetadata.reviews)) {
-      reviews = rawMetadata.reviews;
+  if (rawMetadata && typeof rawMetadata === "object") {
+    const meta = rawMetadata as PostMetadata;
+
+    if (Array.isArray(meta.review)) {
+      reviews = meta.review;
     }
 
-    if (typeof rawMetadata.place === "string") {
-      place = rawMetadata.place;
+    if (typeof meta.place === "string") {
+      place = meta.place;
     }
   }
 
   const metadata: PostMetadata | undefined =
     reviews.length > 0 || place
       ? {
-          reviews: reviews.length > 0 ? reviews : undefined,
+          review: reviews.length > 0 ? reviews : undefined,
           place: place ?? undefined,
         }
       : undefined;

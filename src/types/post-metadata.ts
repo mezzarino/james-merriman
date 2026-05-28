@@ -5,6 +5,6 @@ export type Review = {
 };
 
 export type PostMetadata = {
-  reviews?: Review[];
+  review?: Review[];
   place?: string;
 };
