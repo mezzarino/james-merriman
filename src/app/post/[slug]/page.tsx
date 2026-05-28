@@ -54,9 +54,6 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
 
   if (!result.post) notFound();
 
-  const readingTime = getReadingTimeFromHtml(result.post.content);
-  const { title, publishedAt, updatedAt, image } = result.post;
-
   const rawMetadata = result.post.metadata;
 
   const metadata: PostMetadata | undefined =
@@ -65,6 +62,9 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   const reviews: Review[] = Array.isArray(metadata?.reviews) ? metadata.reviews : [];
 
   const place = metadata?.place ?? null;
+
+  const readingTime = getReadingTimeFromHtml(result.post.content);
+  const { title, publishedAt, updatedAt, image } = result.post;
 
   const jsonLd = {
     "@context": "https://schema.org",
