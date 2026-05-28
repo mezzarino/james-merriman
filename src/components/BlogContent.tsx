@@ -4,6 +4,7 @@ import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
 import parse, { DOMNode, Element } from "html-react-parser";
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
 
 import { config } from "@/config";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
@@ -52,14 +53,83 @@ export const BlogContent = ({
 }) => {
   const { title, description, content, author, publishedAt, tags, slug } = post;
 
-  const { modifiedHtml } = processTableOfContents(content, {
-    h1: true,
-    h2: true,
-    h3: true,
-    h4: true,
-    h5: true,
-    h6: true,
-  });
+  const { modifiedHtml } = useMemo(
+    () =>
+      processTableOfContents(content, {
+        h1: true,
+        h2: true,
+        h3: true,
+        h4: true,
+        h5: true,
+        h6: true,
+      }),
+    [content],
+  );
+
+  const firstImageSrc = useMemo(() => {
+    const match = content.match(/<img[^>]+src=["']([^"']+)["']/i);
+    return match?.[1] ?? null;
+  }, [content]);
+
+  const parsedContent = useMemo(
+    () =>
+      parse(modifiedHtml, {
+        replace: (node: DOMNode) => {
+          if (isElement(node)) {
+            // Strip unwanted injected paragraphs
+            if (
+              node.name === "p" &&
+              node.children?.some((child) => {
+                if (!isElement(child)) return false;
+
+                return (
+                  child.name === "small" &&
+                  child.children?.some((sub) => {
+                    if (!isElement(sub)) return false;
+                    return sub.name === "a" && sub.attribs?.href?.includes("synscribe.com");
+                  })
+                );
+              })
+            ) {
+              return <></>;
+            }
+
+            // Replace <img> with next/image
+            if (node.name === "img") {
+              const { src, alt } = node.attribs ?? {};
+              if (!src) return;
+
+              const isFirstImage = src === firstImageSrc;
+
+              return (
+                <figure className="my-6">
+                  <Image
+                    src={src}
+                    alt={alt ?? ""}
+                    width={840}
+                    height={630}
+                    quality={70}
+                    sizes="(max-width: 640px) 90vw,
+                         (max-width: 1024px) 640px,
+                         840px"
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
+                    className="rounded-lg mx-auto"
+                    priority={isFirstImage}
+                  />
+                  {alt && (
+                    <figcaption className="mt-2 text-sm text-gray-500 text-center">
+                      {alt}
+                    </figcaption>
+                  )}
+                </figure>
+              ) as unknown as Element;
+            }
+          }
+        },
+      }),
+    [modifiedHtml, firstImageSrc],
+  );
 
   const postUrl = `${config.baseUrl}/post/${slug}`;
 
@@ -107,58 +177,7 @@ export const BlogContent = ({
         <div className="flex flex-col lg:flex-row">
           {/* Main content */}
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 wrap-break-word blog-content">
-            {parse(modifiedHtml, {
-              replace: (node: DOMNode) => {
-                if (isElement(node)) {
-                  // Strip unwanted injected paragraphs
-                  if (
-                    node.name === "p" &&
-                    node.children?.some((child) => {
-                      if (!isElement(child)) return false;
-
-                      return (
-                        child.name === "small" &&
-                        child.children?.some((sub) => {
-                          if (!isElement(sub)) return false;
-                          return sub.name === "a" && sub.attribs?.href?.includes("synscribe.com");
-                        })
-                      );
-                    })
-                  ) {
-                    return <></>;
-                  }
-
-                  // Replace <img> with next/image
-                  if (node.name === "img") {
-                    const { src, alt } = node.attribs ?? {};
-                    if (!src) return;
-
-                    return (
-                      <figure className="my-6">
-                        <Image
-                          src={src}
-                          alt={alt ?? ""}
-                          width={840}
-                          height={630}
-                          quality={70}
-                          sizes="(max-width: 640px) 90vw,
-                                 (max-width: 1024px) 640px,
-                                 840px"
-                          placeholder="blur"
-                          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
-                          className="rounded-lg mx-auto"
-                        />
-                        {alt && (
-                          <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                            {alt}
-                          </figcaption>
-                        )}
-                      </figure>
-                    ) as unknown as Element;
-                  }
-                }
-              },
-            })}
+            {parsedContent}
 
             {/* ✅ Critical reception */}
             {reviews.length > 0 && (
