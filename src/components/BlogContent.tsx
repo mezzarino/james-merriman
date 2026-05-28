@@ -1,4 +1,5 @@
 "use client";
+
 import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
 import parse, { DOMNode, Element } from "html-react-parser";
 import Image from "next/image";
@@ -8,6 +9,7 @@ import { config } from "@/config";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 import { useShareAttribution } from "@/hooks/useShareAttribute";
 import { formatFullDate } from "@/lib/date";
+import type { PostMetadata } from "@/types/post-metadata";
 
 import { CommentSection } from "./CommentSection";
 import { FullWidthHeader } from "./FullWidthHeader";
@@ -23,7 +25,7 @@ function isElement(node: unknown): node is Element {
 }
 
 export const BlogContent = ({
-  post: { title, description, content, author, publishedAt, tags, slug },
+  post,
   relatedPosts,
   readingTime,
 }: {
@@ -41,10 +43,13 @@ export const BlogContent = ({
     publishedAt: Date | null;
     tags: TagInPost[];
     author: Author;
+    metadata?: PostMetadata;
   };
   relatedPosts: GetRelatedPostsResult["posts"];
   readingTime: string;
 }) => {
+  const { title, description, content, author, publishedAt, tags, slug, metadata } = post;
+
   const { modifiedHtml } = processTableOfContents(content, {
     h1: true,
     h2: true,
@@ -53,6 +58,7 @@ export const BlogContent = ({
     h5: true,
     h6: true,
   });
+
   const postUrl = `${config.baseUrl}/post/${slug}`;
 
   useScrollTracking();
@@ -68,10 +74,11 @@ export const BlogContent = ({
           { label: title, href: "" },
         ]}
       />
+
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
+        {/* Meta header */}
         <div className="border-b border-border/50 pb-4 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-            {/* Avatar + name */}
             <div className="flex items-center gap-2 leading-none">
               {author.image && (
                 <Image
@@ -87,21 +94,21 @@ export const BlogContent = ({
               </div>
             </div>
 
-            {/* Metadata */}
             <div className="text-sm text-muted-foreground leading-none sm:leading-normal">
               <span>Published on {publishedAt ? formatFullDate(publishedAt) : "N/A"}</span>
-
               <span className="mx-2">|</span>
-
               <span>{readingTime}</span>
             </div>
           </div>
         </div>
+
         <div className="flex flex-col lg:flex-row">
+          {/* Main content */}
           <div className="w-full lg:w-3/4 prose prose-lg max-w-none my-6 wrap-break-word blog-content">
             {parse(modifiedHtml, {
               replace: (node: DOMNode) => {
                 if (isElement(node)) {
+                  // Strip unwanted injected paragraphs
                   if (
                     node.name === "p" &&
                     node.children?.some((child) => {
@@ -111,7 +118,6 @@ export const BlogContent = ({
                         child.name === "small" &&
                         child.children?.some((sub) => {
                           if (!isElement(sub)) return false;
-
                           return sub.name === "a" && sub.attribs?.href?.includes("synscribe.com");
                         })
                       );
@@ -119,6 +125,8 @@ export const BlogContent = ({
                   ) {
                     return <></>;
                   }
+
+                  // Replace <img> with next/image
                   if (node.name === "img") {
                     const { src, alt } = node.attribs ?? {};
                     if (!src) return;
@@ -131,11 +139,9 @@ export const BlogContent = ({
                           width={840}
                           height={630}
                           quality={70}
-                          sizes="
-                          (max-width: 640px) 90vw,
-                          (max-width: 1024px) 640px,
-                          840px
-                        "
+                          sizes="(max-width: 640px) 90vw,
+                                 (max-width: 1024px) 640px,
+                                 840px"
                           placeholder="blur"
                           blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
                           className="rounded-lg mx-auto"
@@ -149,10 +155,32 @@ export const BlogContent = ({
                     ) as unknown as Element;
                   }
                 }
-
-                return;
               },
             })}
+
+            {/* ✅ Critical reception */}
+            {metadata?.reviews?.length ? (
+              <section aria-labelledby="review-heading" className="mt-12 border-t pt-6">
+                <h2 id="review-heading" className="text-base font-semibold">
+                  Critical reception
+                </h2>
+
+                {metadata.reviews.map((review, index) => (
+                  <blockquote
+                    key={index}
+                    className="mt-4 border-l-2 pl-4 text-sm text-muted-foreground"
+                  >
+                    <p>“{review.reviewText}”</p>
+                    <footer className="mt-2 text-xs not-italic text-muted-foreground">
+                      — {review.reviewName}
+                      {review.reviewJobTitle && `, ${review.reviewJobTitle}`}
+                    </footer>
+                  </blockquote>
+                ))}
+              </section>
+            ) : null}
+
+            {/* Licensing + share */}
             <div className="mt-12 border-t pt-6">
               <p className="text-sm text-muted-foreground">
                 Photographs accompanying this article are available for editorial and commercial
@@ -168,10 +196,14 @@ export const BlogContent = ({
               </div>
             </div>
           </div>
+
+          {/* Sidebar */}
           <div className="w-full lg:w-1/4 lg:px-4">
             <AboutCta />
           </div>
         </div>
+
+        {/* Tags + comments */}
         <ul className="mt-4 mb-8 flex flex-wrap gap-2">
           {tags.map((tag) => (
             <li key={tag.id}>
@@ -181,6 +213,7 @@ export const BlogContent = ({
             </li>
           ))}
         </ul>
+
         <CommentSection slug={slug} />
         <RelatedPosts posts={relatedPosts} />
       </main>
