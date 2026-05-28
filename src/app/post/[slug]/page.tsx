@@ -15,6 +15,10 @@ interface Params {
   slug: string;
 }
 
+function isPostMetadata(value: unknown): value is PostMetadata {
+  return typeof value === "object" && value !== null;
+}
+
 export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await props.params;
   const result = await wisp.getPost(slug);
@@ -56,12 +60,26 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
 
   const rawMetadata = result.post.metadata;
 
+  let reviews: Review[] = [];
+  let place: string | null = null;
+
+  if (isPostMetadata(rawMetadata)) {
+    if (Array.isArray(rawMetadata.reviews)) {
+      reviews = rawMetadata.reviews;
+    }
+
+    if (typeof rawMetadata.place === "string") {
+      place = rawMetadata.place;
+    }
+  }
+
   const metadata: PostMetadata | undefined =
-    rawMetadata && typeof rawMetadata === "object" ? (rawMetadata as PostMetadata) : undefined;
-
-  const reviews: Review[] = Array.isArray(metadata?.reviews) ? metadata.reviews : [];
-
-  const place = metadata?.place ?? null;
+    reviews.length > 0 || place
+      ? {
+          reviews: reviews.length > 0 ? reviews : undefined,
+          place: place ?? undefined,
+        }
+      : undefined;
 
   const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, image } = result.post;
