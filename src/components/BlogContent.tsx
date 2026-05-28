@@ -9,7 +9,7 @@ import { config } from "@/config";
 import { useScrollTracking } from "@/hooks/useScrollTracking";
 import { useShareAttribution } from "@/hooks/useShareAttribute";
 import { formatFullDate } from "@/lib/date";
-import type { PostMetadata } from "@/types/post-metadata";
+import type { PostMetadata, Review } from "@/types/post-metadata";
 
 import { CommentSection } from "./CommentSection";
 import { FullWidthHeader } from "./FullWidthHeader";
@@ -28,6 +28,7 @@ export const BlogContent = ({
   post,
   relatedPosts,
   readingTime,
+  reviews = [],
 }: {
   post: {
     id: string;
@@ -47,8 +48,9 @@ export const BlogContent = ({
   };
   relatedPosts: GetRelatedPostsResult["posts"];
   readingTime: string;
+  reviews?: Review[];
 }) => {
-  const { title, description, content, author, publishedAt, tags, slug, metadata } = post;
+  const { title, description, content, author, publishedAt, tags, slug } = post;
 
   const { modifiedHtml } = processTableOfContents(content, {
     h1: true,
@@ -159,13 +161,13 @@ export const BlogContent = ({
             })}
 
             {/* ✅ Critical reception */}
-            {metadata?.reviews?.length ? (
+            {reviews.length > 0 && (
               <section aria-labelledby="review-heading" className="mt-12 border-t pt-6">
                 <h2 id="review-heading" className="text-base font-semibold">
                   Critical reception
                 </h2>
 
-                {metadata.reviews.map((review, index) => (
+                {reviews.map((review, index) => (
                   <blockquote
                     key={index}
                     className="mt-4 border-l-2 pl-4 text-sm text-muted-foreground"
@@ -178,7 +180,7 @@ export const BlogContent = ({
                   </blockquote>
                 ))}
               </section>
-            ) : null}
+            )}
 
             {/* Licensing + share */}
             <div className="mt-12 border-t pt-6">

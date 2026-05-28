@@ -168,6 +168,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         }}
         relatedPosts={related.posts}
         readingTime={readingTime}
+        reviews={reviews}
       />
     </>
   );
