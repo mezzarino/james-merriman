@@ -43,10 +43,12 @@ export default function ReadingProgress() {
     <div aria-hidden="true" className="fixed top-0 left-0 z-50 h-0.5 w-full pointer-events-none">
       <div
         className={`
-          h-full bg-neutral-900 dark:bg-neutral-100
-          ${reduceMotion ? "" : "transition-[width] duration-150 ease-out"}
-        `}
-        style={{ width: `${progress}%` }}
+      h-full
+      bg-neutral-900 dark:bg-neutral-100
+      origin-left
+      ${reduceMotion ? "" : "transition-transform duration-150 ease-out"}
+    `}
+        style={{ transform: `scaleX(${progress / 100})` }}
       />
     </div>
   );

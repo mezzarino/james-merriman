@@ -2,16 +2,24 @@ export const revalidate = 60; // 1 minute
 export const runtime = "nodejs";
 
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
-import { PostPagination } from "@/components/PostPagination";
 import { wisp } from "@/lib/wisp";
 
-import { FilterBar } from "../components/FilterBar";
 import { FullWidthHeader } from "../components/FullWidthHeader";
 import { config } from "../config";
+
+const FilterBar = dynamic(() => import("../components/FilterBar").then((m) => m.FilterBar), {
+  ssr: false,
+});
+
+const PostPagination = dynamic(
+  () => import("@/components/PostPagination").then((m) => m.PostPagination),
+  { ssr: false },
+);
 
 /**
  * Dynamic SEO metadata
