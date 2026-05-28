@@ -1,13 +1,14 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 import { GoogleAnalytics } from "./GoogleAnalytics";
 
 export type AnalyticsConsent = "granted" | "denied";
 
 type ConsentContextValue = {
-  consent: AnalyticsConsent | null; // null = not hydrated yet
+  consent: AnalyticsConsent | null;
+  hydrated: boolean;
   setConsent: (value: AnalyticsConsent) => void;
   resetConsent: () => void;
 };
@@ -15,13 +16,12 @@ type ConsentContextValue = {
 const ConsentContext = createContext<ConsentContextValue | null>(null);
 
 export function ConsentProvider({ children }: { children: React.ReactNode }) {
-  const [consent, setConsentState] = useState<AnalyticsConsent | null>(null);
+  const hydrated = typeof window !== "undefined";
 
-  useEffect(() => {
-    const stored = localStorage.getItem("analyticsConsent") as AnalyticsConsent | null;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setConsentState((current) => (current === stored ? current : stored));
-  }, []);
+  const [consent, setConsentState] = useState<AnalyticsConsent | null>(() => {
+    if (!hydrated) return null;
+    return localStorage.getItem("analyticsConsent") as AnalyticsConsent | null;
+  });
 
   function setConsent(value: AnalyticsConsent) {
     localStorage.setItem("analyticsConsent", value);
@@ -30,11 +30,18 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
 
   function resetConsent() {
     localStorage.removeItem("analyticsConsent");
-    setConsentState(null); // ✅ banner will reappear
+    setConsentState(null);
   }
 
   return (
-    <ConsentContext.Provider value={{ consent, setConsent, resetConsent }}>
+    <ConsentContext.Provider
+      value={{
+        consent,
+        hydrated,
+        setConsent,
+        resetConsent,
+      }}
+    >
       <GoogleAnalytics />
       {children}
     </ConsentContext.Provider>
