@@ -20,12 +20,11 @@ export function PostShare({ url }: PostShareProps) {
   const canNativeShare = typeof navigator !== "undefined" && "share" in navigator;
 
   function trackShare(platform: string, method?: string) {
-    if (typeof window !== "undefined" && "gtag" in window) {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
       window.gtag("event", "share_click", {
         platform,
         method,
         page: window.location.pathname,
-        url,
       });
     }
   }

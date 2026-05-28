@@ -12,7 +12,11 @@ export function useShareAttribution() {
     const medium = params.get("utm_medium");
 
     if (source === "share" && campaign === "post_share" && shareId) {
-      if ("gtag" in window && !sessionStorage.getItem("share_visit_tracked")) {
+      if (
+        typeof window !== "undefined" &&
+        typeof window.gtag === "function" &&
+        !sessionStorage.getItem("share_visit_tracked")
+      ) {
         sessionStorage.setItem("share_visit_tracked", "true");
 
         window.gtag("event", "share_visit", {

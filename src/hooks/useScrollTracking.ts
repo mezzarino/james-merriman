@@ -9,7 +9,7 @@ export function useScrollTracking() {
     const startTime = Date.now();
 
     function track(event: string, data: Record<string, unknown> = {}) {
-      if (typeof window !== "undefined" && "gtag" in window) {
+      if (typeof window !== "undefined" && typeof window.gtag === "function") {
         window.gtag("event", event, {
           page: window.location.pathname,
           ...data,
