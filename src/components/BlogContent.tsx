@@ -172,7 +172,7 @@ export const BlogContent = ({
                     key={index}
                     className="mt-4 border-l-2 pl-4 text-sm text-muted-foreground"
                   >
-                    <p>“{review.reviewText}”</p>
+                    <p>{review.reviewText}</p>
                     <footer className="mt-2 text-xs not-italic text-muted-foreground">
                       — {review.reviewName}
                       {review.reviewJobTitle && `, ${review.reviewJobTitle}`}
