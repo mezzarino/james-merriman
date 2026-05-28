@@ -28,7 +28,8 @@ export function proxy(request: NextRequest) {
       `http://stories.${hostDomain}`,
     ];
 
-    const isAllowedReferer = !referer || allowedOrigins.some((allowed) => referer.startsWith(allowed));
+    const isAllowedReferer =
+      !referer || allowedOrigins.some((allowed) => referer.startsWith(allowed));
     const isAllowedOrigin = !origin || allowedOrigins.some((allowed) => origin === allowed);
 
     if (!isAllowedReferer && !isAllowedOrigin) {
@@ -79,6 +80,7 @@ export function proxy(request: NextRequest) {
         https://imagedelivery.net
         https://*.cloudinary.com
         https://*.google-analytics.com
+        https://*.googletagmanager.com
         https://*.google.com
         https://*.google.co.uk;
 
