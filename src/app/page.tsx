@@ -1,4 +1,5 @@
 export const revalidate = 60; // 1 minute
+export const runtime = "nodejs";
 
 import { Metadata } from "next";
 import Link from "next/link";
@@ -15,13 +16,14 @@ import { config } from "../config";
 /**
  * Dynamic SEO metadata
  */
-export function generateMetadata({
+export async function generateMetadata({
   searchParams,
 }: {
-  searchParams?: { page?: string; query?: string };
-}): Metadata {
-  const page = searchParams?.page;
-  const query = searchParams?.query;
+  searchParams?: Promise<{ page?: string; query?: string }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const page = params?.page;
+  const query = params?.query;
 
   // Internal search results → noindex
   if (query) {

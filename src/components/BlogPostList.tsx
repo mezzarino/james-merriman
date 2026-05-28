@@ -26,7 +26,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
                     src={post.image}
                     width={544}
                     height={306}
-                    quality={65}
+                    quality={75}
                     sizes="(max-width: 640px) 264px, (max-width: 1024px) 50vw, 33vw"
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTI4IiBoZWlnaHQ9IjI5NyIgZmlsbD0iI2VlZWVlZSIvPg=="

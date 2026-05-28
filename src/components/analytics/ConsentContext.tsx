@@ -2,6 +2,8 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
+import { GoogleAnalytics } from "./GoogleAnalytics";
+
 export type AnalyticsConsent = "granted" | "denied";
 
 type ConsentContextValue = {
@@ -33,6 +35,7 @@ export function ConsentProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ConsentContext.Provider value={{ consent, setConsent, resetConsent }}>
+      <GoogleAnalytics />
       {children}
     </ConsentContext.Provider>
   );
