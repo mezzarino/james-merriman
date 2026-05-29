@@ -105,6 +105,9 @@ export default async function Page(props: {
         url: config.baseUrl,
         image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
         jobTitle: "Travel Writer and Photographer",
+        worksFor: {
+          "@id": "https://www.jamesmerriman.co.uk#organization",
+        },
         sameAs: [
           "https://x.com/mezzarino",
           "https://linkedin.com/in/jamesmerriman",
@@ -124,6 +127,10 @@ export default async function Page(props: {
           url: `${config.baseUrl}/logo.png`,
           width: 640,
           height: 640,
+          name: "James Merriman Travel Writer logo",
+        },
+        image: {
+          "@id": `${config.baseUrl}#logo`,
         },
         founder: {
           "@id": `${config.baseUrl}#person`,
@@ -166,6 +173,9 @@ export default async function Page(props: {
         mainEntity: {
           "@id": `${currentPageUrl}#latest-writing`,
         },
+        publisher: {
+          "@id": "https://www.jamesmerriman.co.uk#organization",
+        },
         breadcrumb: {
           "@id": `${currentPageUrl}#breadcrumb`,
         },
@@ -204,6 +214,9 @@ export default async function Page(props: {
       {
         "@type": "ItemList",
         "@id": `${currentPageUrl}#latest-writing`,
+        publisher: {
+          "@id": `${config.baseUrl}#organization`,
+        },
         numberOfItems: result.posts.length,
         itemListElement: result.posts.map((post, index) => ({
           "@type": "ListItem",
