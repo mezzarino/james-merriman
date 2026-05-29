@@ -319,21 +319,22 @@ export default async function Page(props: {
 
         <HomepagePagination pagination={result.pagination} query={searchParams?.query} />
 
-        <section aria-labelledby="endorsement-heading" className="my-12 px-4 lg:px-0">
-          <h2 id="endorsement-heading" className="sr-only">
-            Critical endorsement
-          </h2>
-
-          <blockquote className="border-l-2 pl-4 max-w-3xl">
-            <p className="italic text-muted-foreground">
-              “In such a precarious journey every incident becomes important. Merriman did well.”
-            </p>
-            <footer className="mt-2 text-sm not-italic text-foreground">— Colin Thubron</footer>
-          </blockquote>
-        </section>
-
         <section className="prose max-w-full px-4 lg:px-0">
           <h2 className="pt-6">Travel Writing and Cultural History</h2>
+
+          <p className="text-muted-foreground">
+            My work has received critical endorsements from some of the most respected writers in
+            contemporary travel literature.
+          </p>
+
+          <blockquote className="border-l-2 pl-4 my-6">
+            <p className="italic">
+              In such a precarious journey every incident becomes important. Merriman did well.
+            </p>
+            <footer className="mt-2 text-sm not-italic text-muted-foreground">
+              — Colin Thubron
+            </footer>
+          </blockquote>
 
           <p>
             I write about travel through sustained time spent in places. Much of my work focuses on
