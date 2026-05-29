@@ -187,6 +187,19 @@ export default async function Page(props: {
         },
       },
 
+      {
+        "@type": "Quotation",
+        "@id": `${currentPageUrl}#endorsement-thubron`,
+        text: "In such a precarious journey every incident becomes important. Merriman did well.",
+        author: {
+          "@type": "Person",
+          name: "Colin Thubron",
+        },
+        isPartOf: {
+          "@id": `${currentPageUrl}#webpage`,
+        },
+      },
+
       // ✅ Latest posts list
       {
         "@type": "ItemList",
@@ -305,6 +318,19 @@ export default async function Page(props: {
         <BlogPostList posts={result.posts} />
 
         <HomepagePagination pagination={result.pagination} query={searchParams?.query} />
+
+        <section aria-labelledby="endorsement-heading" className="my-12 px-4 lg:px-0">
+          <h2 id="endorsement-heading" className="sr-only">
+            Critical endorsement
+          </h2>
+
+          <blockquote className="border-l-2 pl-4 max-w-3xl">
+            <p className="italic text-muted-foreground">
+              “In such a precarious journey every incident becomes important. Merriman did well.”
+            </p>
+            <footer className="mt-2 text-sm not-italic text-foreground">— Colin Thubron</footer>
+          </blockquote>
+        </section>
 
         <section className="prose max-w-full px-4 lg:px-0">
           <h2 className="pt-6">Travel Writing and Cultural History</h2>

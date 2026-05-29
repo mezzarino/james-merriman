@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ✅ Core pages
     {
       url: config.baseUrl,
-      lastModified: new Date("2026-05-27"),
+      lastModified: new Date("2026-05-29"),
       priority: 1.0,
     },
 
