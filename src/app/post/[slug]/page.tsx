@@ -110,6 +110,9 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
                 url: image,
                 width: 840,
                 height: 630,
+                creator: {
+                  "@id": `${config.baseUrl}#person`,
+                },
                 creditText: "James Merriman",
                 copyrightNotice: "© James Merriman",
                 license: "https://www.jamesmerriman.co.uk/licencing",
@@ -135,15 +138,14 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         inLanguage: "en-GB",
         timeRequired: `PT${readingTime}M`,
         wordCount: result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length,
-        review:
+        comment:
           reviews.length > 0
             ? reviews.map((review) => ({
-                "@type": "Review",
-                reviewBody: review.reviewText,
+                "@type": "Comment",
+                text: review.reviewText,
                 author: {
                   "@type": "Person",
                   name: review.reviewName,
-                  jobTitle: review.reviewJobTitle,
                 },
               }))
             : undefined,
