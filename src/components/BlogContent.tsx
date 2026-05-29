@@ -195,10 +195,7 @@ export const BlogContent = ({
                 </h2>
 
                 {reviews.map((review, index) => (
-                  <blockquote
-                    key={index}
-                    className="mt-4 border-l-2 pl-4 text-sm text-muted-foreground"
-                  >
+                  <blockquote key={index} className="mt-4 border-l-2 pl-4 text-sm">
                     <p>{review.reviewText}</p>
                     <footer className="mt-2 text-xs not-italic text-muted-foreground">
                       — {review.reviewName}

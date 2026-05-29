@@ -332,7 +332,7 @@ export default async function Page(props: {
               In such a precarious journey every incident becomes important. Merriman did well.
             </p>
             <footer className="mt-2 text-sm not-italic text-muted-foreground">
-              — Colin Thubron
+              — Colin Thubron, Author
             </footer>
           </blockquote>
 
