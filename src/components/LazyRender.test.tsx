@@ -36,7 +36,10 @@ describe("LazyRender", () => {
     expect(screen.queryByTestId("content")).toBeNull();
 
     await act(async () => {
-      intersectionCallback?.([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver);
+      intersectionCallback?.(
+        [{ isIntersecting: true } as IntersectionObserverEntry],
+        {} as IntersectionObserver,
+      );
     });
 
     expect(screen.queryByTestId("placeholder")).toBeNull();

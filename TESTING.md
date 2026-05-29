@@ -180,7 +180,7 @@ These behaviours are validated visually and are intentionally excluded to avoid 
 
 The comment form intentionally has **lighter coverage** than the main contact form.
 
-- Validation and submission logic are handled by well‑tested libraries  
+- Validation and submission logic are handled by well‑tested libraries
   (`react-hook-form`, `zod`, `shadcn/ui`)
 - The form is rendered within blog pages that already have page‑level
   accessibility regression tests
@@ -230,3 +230,4 @@ These areas are either:
 ---
 
 ✅ This strategy provides **high confidence**, **low maintenance**, and **production‑grade coverage** for a content‑driven site.
+```

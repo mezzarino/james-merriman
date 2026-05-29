@@ -33,9 +33,7 @@ describe("Home page accessibility", () => {
   it("has no WCAG violations", async () => {
     let container: HTMLElement;
     await act(async () => {
-      ({ container } = render(
-        await Page({ searchParams: Promise.resolve({}) }),
-      ));
+      ({ container } = render(await Page({ searchParams: Promise.resolve({}) })));
     });
 
     let results;

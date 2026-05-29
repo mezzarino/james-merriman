@@ -11,7 +11,8 @@ const faqItems = [
   },
   {
     question: "Why base yourself in Devon?",
-    answer: "Coming back to the South West gives me the physical distance required to review my notes.",
+    answer:
+      "Coming back to the South West gives me the physical distance required to review my notes.",
   },
 ];
 
@@ -19,7 +20,9 @@ describe("AccessibleAccordion", () => {
   it("renders the FAQ heading and items", () => {
     render(<AccessibleAccordion items={faqItems} />);
 
-    expect(screen.getByRole("heading", { name: /frequently asked questions/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /frequently asked questions/i }),
+    ).toBeInTheDocument();
     expect(screen.getByText(faqItems[0].question)).toBeInTheDocument();
     expect(screen.getByText(faqItems[1].question)).toBeInTheDocument();
   });
