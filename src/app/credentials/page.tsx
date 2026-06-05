@@ -126,6 +126,9 @@ const Page = async () => {
                   "https://x.com/mezzarino",
                   "https://linkedin.com/in/jamesmerriman",
                   "https://instagram.com/mezzarino",
+                  "https://mezzarino.substack.com",
+                  "https://www.youtube.com/@jamesmerrimancouk",
+                  "https://medium.com/@mezzarino",
                 ],
               },
               {
