@@ -116,6 +116,13 @@ const Page = async () => {
                 startDate: "2026-04-08",
                 endDate: "2026-04-08",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                offers: {
+                  "@type": "Offer",
+                  url: "https://www.rgs.org",
+                  price: "0",
+                  priceCurrency: "GBP",
+                  availability: "https://schema.org/InStock"
+                },
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman.jpg`,
