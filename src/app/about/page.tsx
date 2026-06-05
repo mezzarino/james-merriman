@@ -161,6 +161,7 @@ const Page = async () => {
                   "https://mezzarino.substack.com",
                   "https://www.youtube.com/@jamesmerrimancouk",
                   "https://medium.com/@mezzarino",
+                  "https://about.me/jamesmerriman",
                 ],
                 knowsAbout: [
                   "Travel Writing",

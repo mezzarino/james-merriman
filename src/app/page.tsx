@@ -115,6 +115,7 @@ export default async function Page(props: {
           "https://mezzarino.substack.com",
           "https://www.youtube.com/@jamesmerrimancouk",
           "https://medium.com/@mezzarino",
+          "https://about.me/jamesmerriman",
         ],
       },
 
@@ -145,6 +146,7 @@ export default async function Page(props: {
           "https://mezzarino.substack.com",
           "https://www.youtube.com/@jamesmerrimancouk",
           "https://medium.com/@mezzarino",
+          "https://about.me/jamesmerriman",
         ],
       },
 
