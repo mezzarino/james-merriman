@@ -112,6 +112,7 @@ const Page = async () => {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
+                eventStatus: "https://schema.org/EventScheduled",
                 startDate: "2026-04-08",
                 endDate: "2026-04-08",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
