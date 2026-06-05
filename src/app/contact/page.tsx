@@ -129,11 +129,11 @@ const Page = async () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p>
-              If you’d like more background on my work, you can read{" "}
-              <Link href="/about">my biography</Link>, view{" "}
-              <Link href="/credentials">my professional credentials</Link>, explore{" "}
-              <Link href="/publications">published writing</Link>, or learn more about{" "}
-              <Link href="/talks-presentations">talks and presentations</Link>.
+              If you are looking for more background on my documentary work, you can read{" "}
+              <Link href="/about">my biography</Link>, or view{" "}
+              <Link href="/credentials">my field credentials</Link>. You can also explore my recent{" "}
+              <Link href="/publications">travel writing and photography</Link>, or learn more about{" "}
+              <Link href="/talks-presentations">my talks and presentations</Link>.
             </p>
 
             <p>Please get in touch using the contact form below.</p>
