@@ -62,16 +62,17 @@ const Page = async () => {
                 "@type": "WebPage",
                 "@id": `${config.baseUrl}/licencing#webpage`,
                 url: `${config.baseUrl}/licencing`,
-                name: "Photography Licencing",
+                name: "Photography Licencing | James Merriman",
                 description:
-                  "Information about licencing photography by James Merriman for editorial and commercial use.",
+                  "Information on licencing documentary and travel photography by British travel writer and photographer James Merriman for editorial and commercial use.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
                 publisher: {
                   "@id": `${config.baseUrl}#organization`,
-                  "@type": "Organization",
-                  name: "James Merriman",
+                },
+                mainEntity: {
+                  "@id": `${config.baseUrl}/licencing#service`,
                 },
                 inLanguage: "en-GB",
                 breadcrumb: {
@@ -93,9 +94,9 @@ const Page = async () => {
                 },
                 audience: {
                   "@type": "Audience",
-                  audienceType: "Editors, publishers, organisations",
+                  audienceType: "Editors, publishers and organisations",
                 },
-                isRelatedTo: {
+                mainEntityOfPage: {
                   "@id": `${config.baseUrl}/licencing#webpage`,
                 },
               },

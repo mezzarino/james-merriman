@@ -62,9 +62,9 @@ const Page = async () => {
                 "@type": "ProfilePage",
                 "@id": `${config.baseUrl}/credentials#profilepage`,
                 url: `${config.baseUrl}/credentials`,
-                name: "Credentials of James Merriman",
+                name: "Credentials | James Merriman",
                 description:
-                  "Awards, professional memberships and fellowships of UK-based travel writer James Merriman.",
+                  "Awards, professional memberships and field credentials of British travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -82,12 +82,12 @@ const Page = async () => {
                 url: config.baseUrl,
                 image: {
                   "@type": "ImageObject",
-                  url: "/images/james-merriman.jpg",
+                  url: `${config.baseUrl}/images/james-merriman.jpg`,
                   width: 1200,
                   height: 1600,
                 },
                 description:
-                  "UK-based travel writer and photographer documenting remote regions, cultural frontiers and human experience worldwide.",
+                  "British travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",
                 nationality: {
                   "@type": "Country",
@@ -95,10 +95,11 @@ const Page = async () => {
                 },
                 knowsLanguage: ["en-GB"],
                 knowsAbout: [
-                  "Travel writing",
-                  "Travel photography",
-                  "Remote regions",
-                  "Cultural exploration",
+                  "Travel Writing",
+                  "Documentary Photography",
+                  "Remote Travel",
+                  "Cultural Geography",
+                  "Walking and Exploration",
                 ],
                 affiliation: [
                   { "@type": "Organization", name: "Royal Geographical Society" },
@@ -117,7 +118,10 @@ const Page = async () => {
                     name: "International Bank Note Society",
                   },
                 ],
-                award: ["Longlisted – Bradt Guides New Travel Writer of the Year (2026)"],
+                award: [
+                  "Longlisted – Bradt Guides New Travel Writer of the Year (2026)",
+                  "NomadMania Verified Travel to 150+ UN Countries",
+                ],
                 sameAs: [
                   "https://x.com/mezzarino",
                   "https://linkedin.com/in/jamesmerriman",

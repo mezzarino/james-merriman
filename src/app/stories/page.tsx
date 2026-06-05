@@ -61,15 +61,19 @@ export default function StoriesPage() {
                 "@id": "https://stories.jamesmerriman.co.uk/#collectionpage",
                 url: "https://stories.jamesmerriman.co.uk/",
                 name: "Stories | James Merriman",
-                description: "Visual travel stories and narratives by James Merriman.",
+                description:
+                  "Visual travel stories and photo essays by British travel writer and photographer James Merriman.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": "https://stories.jamesmerriman.co.uk/#website",
                 },
                 about: {
                   "@id": `${config.baseUrl}#person`,
                 },
                 publisher: {
                   "@id": `${config.baseUrl}#organization`,
+                },
+                breadcrumb: {
+                  "@id": "https://stories.jamesmerriman.co.uk/#breadcrumb",
                 },
                 mainEntity: {
                   "@type": "ItemList",
@@ -84,6 +88,34 @@ export default function StoriesPage() {
                     },
                   })),
                 },
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://stories.jamesmerriman.co.uk/#website",
+                url: "https://stories.jamesmerriman.co.uk/",
+                name: "Visual Stories | James Merriman",
+                publisher: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
+                inLanguage: "en-GB",
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://stories.jamesmerriman.co.uk/#breadcrumb",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "James Merriman",
+                    item: `${config.baseUrl}/`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Stories",
+                    item: "https://stories.jamesmerriman.co.uk/",
+                  },
+                ],
               },
             ],
           }),

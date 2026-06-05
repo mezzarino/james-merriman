@@ -74,7 +74,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/publications`,
                 name: "Selected Publications | James Merriman",
                 description:
-                  "A selection of travel writing by James Merriman published in magazines and on external platforms.",
+                  "A selection of travel writing, reportage and fieldwork by British travel writer James Merriman, published in international magazines, guidebooks and national newspapers.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -98,8 +98,7 @@ const Page = async () => {
                   })),
                 },
                 mainEntityOfPage: {
-                  "@type": "WebPage",
-                  "@id": `${config.baseUrl}/publications`,
+                  "@id": `${config.baseUrl}/publications#collectionpage`,
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/publications#breadcrumb`,
@@ -142,7 +141,7 @@ const Page = async () => {
 
                 image: {
                   "@type": "ImageObject",
-                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
@@ -166,8 +165,7 @@ const Page = async () => {
                   },
                 },
                 mainEntityOfPage: {
-                  "@type": "WebPage",
-                  "@id": `${config.baseUrl}/publications`,
+                  "@id": `${config.baseUrl}/publications#collectionpage`,
                 },
                 encoding: {
                   "@type": "MediaObject",
@@ -192,7 +190,7 @@ const Page = async () => {
 
                 image: {
                   "@type": "ImageObject",
-                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
@@ -220,8 +218,7 @@ const Page = async () => {
                   },
                 },
                 mainEntityOfPage: {
-                  "@type": "WebPage",
-                  "@id": `${config.baseUrl}/publications`,
+                  "@id": `${config.baseUrl}/publications#collectionpage`,
                 },
                 encoding: {
                   "@type": "MediaObject",
@@ -246,7 +243,7 @@ const Page = async () => {
 
                 image: {
                   "@type": "ImageObject",
-                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
@@ -289,7 +286,7 @@ const Page = async () => {
 
                 image: {
                   "@type": "ImageObject",
-                  url: "https://www.jamesmerriman.co.uk/images/james-merriman-travel-writer.jpg",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },

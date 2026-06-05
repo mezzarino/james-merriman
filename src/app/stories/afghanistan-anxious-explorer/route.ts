@@ -77,34 +77,88 @@ export async function GET() {
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#article",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer"
-  },
-  "headline": "Afghanistan: The Anxious Explorer",
-  "description": "A visual narrative of travel in Afghanistan by James Merriman.",
-  "image": [
-    "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg"
-  ],
-  "datePublished": "2026-05-19T09:00:00+00:00",
-  "dateModified": "2026-05-19T09:00:00+00:00",
-
-  "author": {
-    "@type": "Person",
-    "name": "James Merriman",
-    "url": "https://www.jamesmerriman.co.uk"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "James Merriman"
-  },
-  "about": {
-    "@type": "Place",
-    "name": "Afghanistan"
-  },
-  "inLanguage": "en-GB"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#webpage",
+      "url": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer",
+      "name": "Afghanistan: The Anxious Explorer",
+      "isPartOf": {
+        "@id": "https://stories.jamesmerriman.co.uk/#website"
+      },
+      "mainEntity": {
+        "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#article"
+      },
+      "breadcrumb": {
+        "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#breadcrumb"
+      },
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#article",
+      "headline": "Afghanistan: The Anxious Explorer",
+      "description": "A visual narrative of travel in Afghanistan by British travel writer and photographer James Merriman.",
+      "image": [
+        {
+          "@type": "ImageObject",
+          "url": "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg",
+          "creator": {
+            "@id": "https://www.jamesmerriman.co.uk#person"
+          },
+          "creditText": "James Merriman",
+          "copyrightNotice": "© James Merriman",
+          "license": "https://www.jamesmerriman.co.uk/licensing",
+          "acquireLicensePage": "https://www.jamesmerriman.co.uk/licensing"
+        }
+      ],
+      "datePublished": "2026-05-19T09:00:00+00:00",
+      "dateModified": "2026-05-19T09:00:00+00:00",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.jamesmerriman.co.uk#person",
+        "name": "James Merriman",
+        "url": "https://www.jamesmerriman.co.uk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.jamesmerriman.co.uk#organization",
+        "name": "James Merriman"
+      },
+      "about": {
+        "@type": "Place",
+        "name": "Afghanistan"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#webpage"
+      },
+      "inLanguage": "en-GB"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "James Merriman",
+          "item": "https://www.jamesmerriman.co.uk/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Visual Stories",
+          "item": "https://stories.jamesmerriman.co.uk/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Afghanistan: The Anxious Explorer",
+          "item": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer"
+        }
+      ]
+    }
+  ]
 }
 </script>
 

@@ -59,7 +59,7 @@ export default async function Page() {
         url: `${config.baseUrl}/category`,
         name: "Travel Writing Categories | James Merriman",
         description:
-          "Browse travel writing categories by James Merriman, including walking, pilgrimage, culture, food and history.",
+          "An index of travel writing and documentary photography by James Merriman, organised by themes including walking, culture and history.",
         isPartOf: {
           "@id": `${config.baseUrl}#website`,
         },
@@ -84,7 +84,7 @@ export default async function Page() {
           })),
         },
         mainEntityOfPage: {
-          "@id": `${config.baseUrl}/category`,
+          "@id": `${config.baseUrl}/category#collectionpage`,
         },
         breadcrumb: {
           "@id": `${config.baseUrl}/category#breadcrumb`,

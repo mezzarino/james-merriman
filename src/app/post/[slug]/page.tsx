@@ -89,7 +89,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": `${config.baseUrl}/post/${slug}`,
+        "@id": `${config.baseUrl}/post/${slug}#webpage`,
         url: `${config.baseUrl}/post/${slug}`,
         name: title,
         isPartOf: { "@id": `${config.baseUrl}#website` },
@@ -115,8 +115,8 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
                 },
                 creditText: "James Merriman",
                 copyrightNotice: "© James Merriman",
-                license: "https://www.jamesmerriman.co.uk/licencing",
-                acquireLicensePage: "https://www.jamesmerriman.co.uk/licencing",
+                license: `${config.baseUrl}/licencing`,
+                acquireLicensePage: `${config.baseUrl}/licencing`,
               },
             ]
           : undefined,
@@ -132,7 +132,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
           "@id": `${config.baseUrl}#organization`,
         },
         mainEntityOfPage: {
-          "@id": `${config.baseUrl}/post/${slug}`,
+          "@id": `${config.baseUrl}/post/${slug}#webpage`,
         },
         isPartOf: [{ "@id": `${config.baseUrl}#blog` }, { "@id": `${config.baseUrl}#website` }],
         inLanguage: "en-GB",
@@ -167,7 +167,13 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
     "@id": `${config.baseUrl}/post/${slug}#breadcrumb`,
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${config.baseUrl}/` },
-      { "@type": "ListItem", position: 2, name: title, item: `${config.baseUrl}/post/${slug}` },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Publications",
+        item: `${config.baseUrl}/publications`,
+      },
+      { "@type": "ListItem", position: 3, name: title, item: `${config.baseUrl}/post/${slug}` },
     ],
   };
 

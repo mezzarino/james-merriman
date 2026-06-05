@@ -91,9 +91,9 @@ const Page = async () => {
                 "@type": "AboutPage",
                 "@id": `${config.baseUrl}/about#aboutpage`,
                 url: `${config.baseUrl}/about`,
-                name: "About James Merriman",
+                name: "About James Merriman: Travel Writer and Photographer",
                 description:
-                  "Biography and personal background of James Merriman, a UK-based travel writer exploring culture, geography and human experience worldwide.",
+                  "Personal background and fieldwork practice of a British travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -102,7 +102,7 @@ const Page = async () => {
                 },
                 primaryImageOfPage: {
                   "@type": "ImageObject",
-                  url: "https://www.jamesmerriman.co.uk/images/james-merriman.jpg",
+                  url: `${config.baseUrl}/images/james-merriman.jpg`,
                   width: 1200,
                   height: 1600,
                 },
@@ -111,7 +111,7 @@ const Page = async () => {
                 },
               },
               {
-                "@type": ["Person", "Organization"],
+                "@type": "Person",
                 "@id": `${config.baseUrl}#entity`,
                 name: "James Merriman",
                 url: config.baseUrl,
@@ -121,12 +121,12 @@ const Page = async () => {
                 },
                 image: {
                   "@type": "ImageObject",
-                  url: "/images/james-merriman.jpg",
+                  url: `${config.baseUrl}/images/james-merriman.jpg`,
                   width: 1200,
                   height: 1600,
                 },
                 description:
-                  "UK-based travel writer and photographer documenting remote regions, cultural frontiers and human experience worldwide.",
+                  "British travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",
                 hasOccupation: {
                   "@type": "Occupation",
@@ -141,6 +141,14 @@ const Page = async () => {
                   "@type": "Organization",
                   name: "James Merriman",
                 },
+                affiliation: {
+                  "@type": "Organization",
+                  name: "Royal Geographical Society",
+                },
+                award: [
+                  "Fellow of the Royal Geographical Society (FRGS)",
+                  "NomadMania Verified Travel to 150+ UN Countries",
+                ],
                 nationality: {
                   "@type": "Country",
                   name: "United Kingdom",
@@ -189,8 +197,8 @@ const Page = async () => {
       />
 
       <FullWidthHeader
-        title="Biography and Background of Travel Writer James Merriman"
-        description="Personal background and working practice of a British travel writer exploring culture, geography and human experience"
+        title="About James Merriman: Travel Writer and Photographer"
+        description="Personal background and fieldwork practice of a British travel writer and photographer documenting culture and geography in over 160 countries."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
@@ -203,31 +211,46 @@ const Page = async () => {
             <p>
               I am a British travel writer and photographer based in Devon, England. A Fellow of the
               Royal Geographical Society, I have travelled to{" "}
-              <strong>164 countries across six continents</strong>, building a long-term body of
-              work focused on geography, culture and lived experience.
+              <strong>more than 160 countries across six continents</strong>and built a long-term
+              body of work focused on geography, culture and lived experience.
+            </p>
+
+            <p>
+              My travel record has been independently verified by{" "}
+              <a
+                href="https://nomadmania.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="James Merriman's travel record has been verified by NomadMania, one of the world's largest travel communities"
+              >
+                NomadMania
+              </a>
+              , one of the world's largest travel communities. After a detailed review of passport
+              stamps, visas and supporting evidence, NomadMania verified my travel to more than 150
+              UN countries.
             </p>
 
             <p>
               My work ranges from long-form travel writing to documentary photography, often centred
-              on places that are overlooked or misunderstood. You can{" "}
-              <Link href="/publications">read a selection of published writing</Link>, explore my{" "}
-              <Link href="/photography">photography</Link>, or
-              <Link href="/credentials">view my professional credentials</Link> and field
-              experience.
+              on overlooked or misunderstood places You can{" "}
+              <Link href="/publications">read a selection of published writing</Link>,{" "}
+              <Link href="/photography">explore my photography</Link>, or
+              <Link href="/credentials">learn more about my background and field experience.</Link>
             </p>
 
             <p>
-              My journeys have taken me from remote island nations to post‑conflict regions,
-              exploring how geography, history and community intersect. Through my writing, I
-              reflect on the textures of travel - the light, the language, the food and the human
-              moments that define a destination beyond its map coordinates.
+              My work moves between remote island nations and post-conflict regions. I am primarily
+              interested in how a specific geography dictates daily life. My writing relies on
+              staying put and paying attention to the immediate surroundings. I document regional
+              food cultures and record the everyday conversations that give a location its actual
+              character.
             </p>
             <p>
               Based in the Devon countryside, I continue to explore the world with the same enduring
               curiosity that shapes both my journeys and my writing.
             </p>
             <p>
-              My writing and photography has been independently verified as human-origin by{" "}
+              My writing and photography have been independently verified as human-origin by{" "}
               <a
                 href="https://www.proudlyhuman.org/certified/james-merriman"
                 target="_blank"
@@ -246,10 +269,10 @@ const Page = async () => {
                 rel="noopener noreferrer"
                 aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
               >
-                One Planet Journey - Deep Travel Ambassador
+                One Planet Journey Deep Travel Ambassador
               </a>
-              . Through my writing and my photography, I aim to show that taking the time to build
-              local relationships provides a much more memorable experience than simply ticking off
+              . Through my writing and photography, I aim to show that taking the time to build
+              local relationships provides a more memorable experience than simply ticking off
               landmarks and guidebook checklists.{" "}
             </p>
 

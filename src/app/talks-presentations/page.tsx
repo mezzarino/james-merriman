@@ -62,7 +62,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/talks-presentations`,
                 name: "Talks & Presentations | James Merriman",
                 description:
-                  "Talks and presentations by travel writer James Merriman, based on first-hand travel and field research.",
+                  "Talks and illustrated presentations by British travel writer and photographer James Merriman, based on fieldwork and first-hand reporting.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -102,9 +102,9 @@ const Page = async () => {
                 audience: {
                   "@type": "Audience",
                   audienceType:
-                    "Academic institutions, cultural organisations, literary events, specialist societies",
+                    "Academic institutions, cultural organisations, literary events and specialist societies",
                 },
-                isRelatedTo: {
+                mainEntityOfPage: {
                   "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
                 },
               },
@@ -112,30 +112,25 @@ const Page = async () => {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
-
-                startDate: "2026-04",
-                endDate: "2026-04",
+                startDate: "2026-04-08",
+                endDate: "2026-04-08",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-
                 image: {
                   "@type": "ImageObject",
-                  url: "https://www.jamesmerriman.co.uk/images/james-merriman.jpg",
+                  url: `${config.baseUrl}/images/james-merriman.jpg`,
                   width: 1200,
                   height: 1600,
                 },
-
                 organizer: {
                   "@type": "Organization",
                   name: "Royal Geographical Society (South West)",
                   url: "https://www.rgs.org",
                 },
-
                 performer: {
                   "@id": `${config.baseUrl}#person`,
                   "@type": "Person",
                   name: "James Merriman",
                 },
-
                 location: {
                   "@type": "Place",
                   name: "Royal Geographical Society (South West)",
@@ -145,16 +140,13 @@ const Page = async () => {
                     addressCountry: "GB",
                   },
                 },
-
                 description:
                   "A 15-minute illustrated presentation reflecting on first-hand travel in Afghanistan, focusing on movement, public life, and everyday experiences beyond media narratives.",
-
                 about: {
                   "@type": "Place",
                   name: "Afghanistan",
                 },
               },
-
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/talks-presentations#breadcrumb`,

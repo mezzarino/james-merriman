@@ -96,7 +96,7 @@ export default async function Page(props: {
     "@type": "CollectionPage",
     "@id": `${config.baseUrl}/category/${tag}#collectionpage`,
     url: `${config.baseUrl}/category/${tag}`,
-    name: `Travel writing articles with the category '${label}' | James Merriman`,
+    name: `${label} – Travel Writing and Photography | James Merriman`,
     description,
     isPartOf: {
       "@id": `${config.baseUrl}#website`,
@@ -137,7 +137,7 @@ export default async function Page(props: {
           image: post.image ? [post.image] : undefined,
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${config.baseUrl}/post/${post.slug}`,
+            "@id": `${config.baseUrl}/post/${post.slug}#webpage`,
           },
           isPartOf: [
             {

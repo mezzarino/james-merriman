@@ -21,7 +21,7 @@ describe("generateMetadata", () => {
       searchParams: Promise.resolve({}),
     });
 
-    expect(metadata.title).toBe("Travel Writing & Documentary Photography | James Merriman");
+    expect(metadata.title).toBe("Travel Writing and Documentary Photography | James Merriman");
     expect(metadata.alternates?.canonical).toBe(config.baseUrl);
     expect(metadata.openGraph?.url).toBe(config.baseUrl);
     const twitterImages = metadata.twitter?.images;

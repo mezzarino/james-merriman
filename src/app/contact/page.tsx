@@ -61,9 +61,9 @@ const Page = async () => {
                 "@type": "ContactPage",
                 "@id": `${config.baseUrl}/contact#contactpage`,
                 url: `${config.baseUrl}/contact`,
-                name: "Contact James Merriman",
+                name: "Contact James Merriman | Travel Writer and Photographer",
                 description:
-                  "Contact details and social channels for UK-based travel writer and photographer James Merriman.",
+                  "Contact information and social channels for British travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -87,7 +87,7 @@ const Page = async () => {
                 ],
                 contactPoint: {
                   "@type": "ContactPoint",
-                  contactType: "Professional enquiries",
+                  contactType: "Editorial enquiries",
                   availableLanguage: ["en-GB"],
                   url: `${config.baseUrl}/contact`,
                   email: "info@jamesmerriman.co.uk",

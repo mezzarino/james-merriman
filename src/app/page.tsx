@@ -39,8 +39,8 @@ export async function generateMetadata({
 
   const title =
     page && page !== "1"
-      ? `Travel Writing & Documentary Photography | James Merriman – Page ${page}`
-      : "Travel Writing & Documentary Photography | James Merriman";
+      ? `Travel Writing and Documentary Photography | James Merriman – Page ${page}`
+      : "Travel Writing and Documentary Photography | James Merriman";
 
   const description =
     "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.";
@@ -106,7 +106,7 @@ export default async function Page(props: {
         image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
         jobTitle: "Travel Writer and Photographer",
         worksFor: {
-          "@id": "https://www.jamesmerriman.co.uk#organization",
+          "@id": `${config.baseUrl}#organization`,
         },
         sameAs: [
           "https://x.com/mezzarino",
@@ -166,7 +166,7 @@ export default async function Page(props: {
         "@id": `${currentPageUrl}#webpage`,
         url: currentPageUrl,
         description:
-          "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.",
+          "Award-longlisted travel writer and photographer documenting culture, history and place in over 160 countries.",
         isPartOf: {
           "@id": `${config.baseUrl}#website`,
         },
@@ -174,7 +174,7 @@ export default async function Page(props: {
           "@id": `${currentPageUrl}#latest-writing`,
         },
         publisher: {
-          "@id": "https://www.jamesmerriman.co.uk#organization",
+          "@id": `${config.baseUrl}#organization`,
         },
         breadcrumb: {
           "@id": `${currentPageUrl}#breadcrumb`,
@@ -238,6 +238,10 @@ export default async function Page(props: {
               url: config.baseUrl,
             },
 
+            publisher: {
+              "@id": `${config.baseUrl}#organization`,
+            },
+
             mainEntityOfPage: {
               "@id": `${config.baseUrl}/post/${post.slug}`,
             },
@@ -288,41 +292,41 @@ export default async function Page(props: {
       />
 
       <FullWidthHeader
-        title="Travel Writing and Photography from Remote & Overlooked Places"
-        description="Award‑longlisted travel writer and photographer documenting culture, history and landscapes across 160+ countries"
+        title="Travel Writing and Photography from Remote and Overlooked Places"
+        description="Award-longlisted travel writer and photographer documenting culture, history and place in over 160 countries"
         breadcrumb={breadcrumb}
       />
 
       <main className="container mx-auto max-w-6xl" id="main" tabIndex={-1}>
         <section className="container mx-auto my-6 max-w-6xl px-4 lg:px-0 prose">
           <p className="text-lg">
-            This site presents the writing and photographic work of travel writer James Merriman.
-            For a personal background, visit{" "}
+            This site presents the writing and photographic work of British travel writer James
+            Merriman. You can read{" "}
             <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
               my biography
             </Link>
-            , explore{" "}
+            and review{" "}
             <Link
               href="/credentials"
               className="underline underline-offset-4 hover:text-foreground"
             >
-              my professional credentials
+              my credentials
             </Link>
-            , view selected{" "}
+            for further background. A selection of{" "}
             <Link
               href="/publications"
               className="underline underline-offset-4 hover:text-foreground"
             >
-              publications
+              published writing
             </Link>
-            , or read about{" "}
+            is also available alongside details of recent{" "}
             <Link
               href="/talks-presentations"
               className="underline underline-offset-4 hover:text-foreground"
             >
               talks and presentations
             </Link>{" "}
-            delivered to specialist audiences.
+            .
           </p>
         </section>
 
@@ -335,11 +339,6 @@ export default async function Page(props: {
         <section className="prose max-w-full px-4 lg:px-0">
           <h2 className="pt-6">Travel Writing and Cultural History</h2>
 
-          <p className="text-muted-foreground">
-            My work has received critical endorsements from some of the most respected writers in
-            contemporary travel literature.
-          </p>
-
           <blockquote className="border-l-2 pl-4 my-6">
             <p className="italic">
               In such a precarious journey every incident becomes important. Merriman did well.
@@ -351,41 +350,40 @@ export default async function Page(props: {
 
           <p>
             I write about travel through sustained time spent in places. Much of my work focuses on
-            regions that are overlooked or poorly understood, where travel involves borders,
-            infrastructure and history, rather than straightforward movement from one location to
-            another.
+            regions that are overlooked or poorly understood, where borders, infrastructure and
+            history shape everyday life as much as the landscape itself.
           </p>
 
           <p>
             I work slowly and on the ground, spending extended periods walking, observing and
-            reading around the places I visit. My writing is informed by historical research and my
-            own experience, with an emphasis on how people live within particular political and
-            geographical conditions.
+            reading around the places I visit. My writing is informed by historical research and
+            personal experience, with a particular interest in how people live within the realities
+            of geography, politics and place.
           </p>
 
           <p>
             My <Link href="/photography">photography</Link> accompanies and supports my writing. It
-            records landscape as well as ordinary moments, holding details that the written work
+            records landscapes and everyday moments, preserving details that the written work
             approaches from another angle.
           </p>
 
           <h3>Publications</h3>
 
           <p>
-            My writing and photographic work has appeared in UK and international publications
-            covering travel, culture and history. These shorter pieces sit alongside longer projects
-            developed across repeated journeys and sustained research. A selection of published work
-            can be found on the <Link href="/publications">publications</Link> page.
+            My writing and photography have appeared in UK and international publications, including{" "}
+            <em>The Guardian</em>, <em>Globe Magazine</em> and <em>Bradt Guides</em>. These
+            commissioned pieces sit alongside long-form projects developed through repeated journeys
+            and sustained research. A selection of published work can be found on the{" "}
+            <Link href="/publications">publications</Link> page.
           </p>
 
           <h3>Talks and Presentations</h3>
 
           <p>
-            Alongside my writing, I give talks and presentations on travel writing, cultural history
-            and research‑led practice. These are drawn from fieldwork, long‑form projects and
-            archival sources and are delivered to specialist and academic audiences, cultural
-            organisations and literary events. Further details are available on the{" "}
-            <Link href="/talks-presentations">talks and presentations</Link> page.
+            Alongside my writing, I give talks on travel writing, cultural history and research-led
+            practice. Drawing on fieldwork and long-form projects, these presentations are delivered
+            to literary audiences, cultural organisations and academic groups. Further details are
+            available on the <Link href="/talks-presentations">talks and presentations</Link> page.
           </p>
         </section>
       </main>

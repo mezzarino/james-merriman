@@ -58,23 +58,20 @@ const Page = async () => {
                 additionalType: "https://schema.org/AccessibilityStatement",
                 "@id": `${config.baseUrl}/accessibility#webpage`,
                 url: `${config.baseUrl}/accessibility`,
-                name: "Accessibility Statement",
+                name: "Accessibility Statement | James Merriman",
                 description:
-                  "Accessibility statement for jamesmerriman.co.uk outlining accessibility features and ongoing improvements.",
+                  "Accessibility statement outlining the digital accessibility features, standards and ongoing improvements for British travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
                 publisher: {
                   "@id": `${config.baseUrl}#organization`,
-                  "@type": "Organization",
-                  name: "James Merriman",
                 },
                 inLanguage: "en-GB",
                 breadcrumb: {
                   "@id": `${config.baseUrl}/accessibility#breadcrumb`,
                 },
               },
-
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/accessibility#breadcrumb`,

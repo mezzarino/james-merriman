@@ -72,7 +72,8 @@ const Page = async () => {
                 "@id": `${config.baseUrl}/photography#imagegallery`,
                 url: `${config.baseUrl}/photography`,
                 name: "James Merriman Photography Portfolio",
-                description: "Travel and landscape photography portfolio by James Merriman.",
+                description:
+                  "Travel and landscape photography portfolio by British travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -92,9 +93,6 @@ const Page = async () => {
                   url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
-                },
-                mainEntity: {
-                  "@id": `${config.baseUrl}/photography#imagegallery`,
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/photography#breadcrumb`,
@@ -121,8 +119,8 @@ const Page = async () => {
 
                   creditText: "James Merriman",
                   copyrightNotice: "© James Merriman",
-                  license: "https://www.jamesmerriman.co.uk/licencing",
-                  acquireLicensePage: "https://www.jamesmerriman.co.uk/licencing",
+                  license: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
                 })),
               },
               {

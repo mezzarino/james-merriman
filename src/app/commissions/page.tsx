@@ -61,14 +61,17 @@ const Page = async () => {
                 "@type": "WebPage",
                 "@id": `${config.baseUrl}/commissions#webpage`,
                 url: `${config.baseUrl}/commissions`,
-                name: "Commissions",
+                name: "Editorial Commissions | James Merriman",
                 description:
-                  "Information on commissioning travel writing and documentary photography projects by James Merriman.",
+                  "Information on commissioning travel writing, long-form features and documentary photography by British travel writer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
                 publisher: {
                   "@id": `${config.baseUrl}#organization`,
+                },
+                mainEntity: {
+                  "@id": `${config.baseUrl}/commissions#service`,
                 },
                 inLanguage: "en-GB",
                 breadcrumb: {
@@ -80,7 +83,7 @@ const Page = async () => {
                 "@id": `${config.baseUrl}/commissions#service`,
                 name: "Editorial Travel Writing and Documentary Photography",
                 description:
-                  "Commissioned travel writing, long‑form features and documentary photography projects developed through field research and on‑the‑ground reporting.",
+                  "Commissioned travel writing, long-form features and documentary photography projects developed through field research and on-the-ground reporting.",
                 provider: {
                   "@id": `${config.baseUrl}#organization`,
                 },
@@ -91,9 +94,9 @@ const Page = async () => {
                 audience: {
                   "@type": "Audience",
                   audienceType:
-                    "Editors, publishers, cultural organisations, academic institutions",
+                    "Editors, publishers, cultural organisations and academic institutions",
                 },
-                isRelatedTo: {
+                mainEntityOfPage: {
                   "@id": `${config.baseUrl}/commissions#webpage`,
                 },
               },

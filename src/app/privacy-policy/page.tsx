@@ -61,23 +61,20 @@ const Page = async () => {
                 "@type": "WebPage",
                 "@id": `${config.baseUrl}/privacy-policy#webpage`,
                 url: `${config.baseUrl}/privacy-policy`,
-                name: "Privacy Policy",
+                name: "Privacy Policy | James Merriman",
                 description:
-                  "Privacy policy for jamesmerriman.co.uk outlining how personal data is collected, used and protected.",
+                  "Privacy policy outlining how personal data is collected, used and protected by British travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
                 publisher: {
                   "@id": `${config.baseUrl}#organization`,
-                  "@type": "Organization",
-                  name: "James Merriman",
                 },
                 inLanguage: "en-GB",
                 breadcrumb: {
                   "@id": `${config.baseUrl}/privacy-policy#breadcrumb`,
                 },
               },
-
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/privacy-policy#breadcrumb`,
