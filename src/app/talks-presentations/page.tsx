@@ -121,7 +121,7 @@ const Page = async () => {
                   url: "https://www.rgs.org",
                   price: "0",
                   priceCurrency: "GBP",
-                  availability: "https://schema.org/InStock"
+                  availability: "https://schema.org/InStock",
                 },
                 image: {
                   "@type": "ImageObject",
