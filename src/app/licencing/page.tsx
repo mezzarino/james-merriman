@@ -193,8 +193,8 @@ const Page = async () => {
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <FigureImage
               src="/images/james-merriman.jpg"
-              alt="James Merriman, UK travel writer and photographer"
-              caption="James Merriman, UK travel writer and photographer"
+              alt="James Merriman, British travel writer and photographer"
+              caption="James Merriman, British travel writer and photographer"
               width={1200}
               height={1600}
             />
