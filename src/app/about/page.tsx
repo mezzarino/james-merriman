@@ -211,7 +211,7 @@ const Page = async () => {
             <p>
               I am a British travel writer and photographer based in Devon, England. A Fellow of the
               Royal Geographical Society, I have travelled to{" "}
-              <strong>more than 160 countries across six continents</strong>and built a long-term
+              <strong>more than 160 countries across six continents</strong> and built a long-term
               body of work focused on geography, culture and lived experience.
             </p>
 
@@ -234,8 +234,8 @@ const Page = async () => {
               My work ranges from long-form travel writing to documentary photography, often centred
               on overlooked or misunderstood places You can{" "}
               <Link href="/publications">read a selection of published writing</Link>,{" "}
-              <Link href="/photography">explore my photography</Link>, or
-              <Link href="/credentials">learn more about my background and field experience.</Link>
+              <Link href="/photography">explore my photography</Link>, or{" "}
+              <Link href="/credentials">learn more about my credentials</Link>.
             </p>
 
             <p>

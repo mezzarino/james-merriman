@@ -305,27 +305,27 @@ export default async function Page(props: {
             <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
               my biography
             </Link>
-            and review{" "}
+            {" "}and review{" "}
             <Link
               href="/credentials"
               className="underline underline-offset-4 hover:text-foreground"
             >
               my credentials
             </Link>
-            for further background. A selection of{" "}
+            {" "}for further background. A selection of{" "}
             <Link
               href="/publications"
               className="underline underline-offset-4 hover:text-foreground"
             >
               published writing
             </Link>
-            is also available alongside details of recent{" "}
+            {" "}is also available alongside details of recent{" "}
             <Link
               href="/talks-presentations"
               className="underline underline-offset-4 hover:text-foreground"
             >
               talks and presentations
-            </Link>{" "}
+            </Link>
             .
           </p>
         </section>
