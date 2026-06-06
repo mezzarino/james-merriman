@@ -113,8 +113,8 @@ const Page = async () => {
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
                 eventStatus: "https://schema.org/EventScheduled",
-                startDate: "2026-04-08",
-                endDate: "2026-04-08",
+                startDate: "2026-04-08T00:00:00Z",
+                endDate: "2026-04-08T00:00:00Z",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
                 offers: {
                   "@type": "Offer",
@@ -122,6 +122,7 @@ const Page = async () => {
                   price: "0",
                   priceCurrency: "GBP",
                   availability: "https://schema.org/InStock",
+                  validFrom: "2026-03-09T00:00:00Z"
                 },
                 image: {
                   "@type": "ImageObject",
