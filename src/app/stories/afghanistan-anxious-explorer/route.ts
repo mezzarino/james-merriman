@@ -135,6 +135,38 @@ export async function GET() {
       "inLanguage": "en-GB"
     },
     {
+      "@type": "TouristTrip",
+      "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#trip",
+      "name": "Expedition through Afghanistan",
+      "description": "A geographical route and visual narrative documenting movement through Kabul, Herat, Bamiyan, and Mazar-e-Sharif.",
+      "touristType": "Cultural Tourism",
+      "subjectOf": {
+        "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#article"
+      },
+      "itinerary": [
+        {
+          "@type": "City",
+          "name": "Kabul",
+          "sameAs": "https://en.wikipedia.org/wiki/Kabul"
+        },
+        {
+          "@type": "City",
+          "name": "Herat",
+          "sameAs": "https://en.wikipedia.org/wiki/Herat"
+        },
+        {
+          "@type": "City",
+          "name": "Bamiyan",
+          "sameAs": "https://en.wikipedia.org/wiki/Bamyan"
+        },
+        {
+          "@type": "City",
+          "name": "Mazar-e-Sharif",
+          "sameAs": "https://en.wikipedia.org/wiki/Mazar-i-Sharif"
+        }
+      ]
+    },
+    {
       "@type": "BreadcrumbList",
       "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#breadcrumb",
       "itemListElement": [

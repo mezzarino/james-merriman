@@ -11,7 +11,7 @@ import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
 import { wisp } from "@/lib/wisp";
-import type { PostMetadata, Review } from "@/types/post-metadata";
+import type { LocationMetadata, PostMetadata, Review } from "@/types/post-metadata";
 
 interface Params {
   slug: string;
@@ -81,6 +81,13 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         }
       : undefined;
 
+  const locations: LocationMetadata[] =
+    rawMetadata &&
+    typeof rawMetadata === "object" &&
+    Array.isArray((rawMetadata as PostMetadata).location)
+      ? (rawMetadata as PostMetadata).location!
+      : [];
+
   const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, image } = result.post;
 
@@ -117,6 +124,10 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
                 copyrightNotice: "© James Merriman",
                 license: `${config.baseUrl}/licencing`,
                 acquireLicensePage: `${config.baseUrl}/licencing`,
+                tdmReservation: {
+                  "@type": "TDMReservation",
+                  reservationRight: `${config.baseUrl}/licencing`,
+                },
               },
             ]
           : undefined,
@@ -127,6 +138,10 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
           "@type": "Person",
           name: "James Merriman",
           url: config.baseUrl,
+        },
+        tdmReservation: {
+          "@type": "TDMReservation",
+          reservationRight: `${config.baseUrl}/licencing`,
         },
         publisher: {
           "@id": `${config.baseUrl}#organization`,
@@ -157,6 +172,32 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
               },
             ]
           : undefined,
+
+        contentLocation:
+          locations.length > 0
+            ? locations.map((location) => ({
+                "@type": "TouristDestination",
+                name: location.name,
+
+                ...(location.sameAs
+                  ? {
+                      sameAs: `https://en.wikipedia.org/wiki/${location.sameAs}`,
+                    }
+                  : {}),
+
+                ...(location.desc
+                  ? {
+                      description: location.desc,
+                    }
+                  : {}),
+
+                ...(location.touristType
+                  ? {
+                      touristType: location.touristType,
+                    }
+                  : {}),
+              }))
+            : undefined,
       },
     ],
   };

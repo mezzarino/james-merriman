@@ -121,6 +121,10 @@ const Page = async () => {
                   copyrightNotice: "© James Merriman",
                   license: `${config.baseUrl}/licencing`,
                   acquireLicensePage: `${config.baseUrl}/licencing`,
+                  tdmReservation: {
+                    "@type": "TDMReservation",
+                    reservationRight: `${config.baseUrl}/licencing`,
+                  },
                 })),
               },
               {
