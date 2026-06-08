@@ -92,7 +92,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, image } = result.post;
 
-  const videoObject = await buildVideoObjectFromHtml(result.post.content, result.post.description);
+  const videoObject = await buildVideoObjectFromHtml(
+    result.post.content,
+    result.post.description,
+    publishedAt,
+  );
 
   const jsonLd = {
     "@context": "https://schema.org",

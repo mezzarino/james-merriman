@@ -25,7 +25,11 @@ export async function getYouTubeOEmbed(videoId: string) {
  * - YouTube metadata (title)
  * - Article description as fallback context
  */
-export async function buildVideoObjectFromHtml(html: string, articleDescription?: string | null) {
+export async function buildVideoObjectFromHtml(
+  html: string,
+  articleDescription?: string | null,
+  articlePublishedAt?: Date | string | null,
+) {
   const ids = extractYouTubeIds(html);
   if (ids.length === 0) return null;
 
@@ -36,11 +40,12 @@ export async function buildVideoObjectFromHtml(html: string, articleDescription?
   return {
     "@type": "VideoObject",
     name: meta.title,
-
-    description:
-      articleDescription?.trim() || `Video content referenced in the accompanying travel essay.`,
-
+    description: articleDescription?.trim() || undefined,
     thumbnailUrl: [meta.thumbnail_url],
+
+    // ✅ REQUIRED by Google
+    uploadDate: articlePublishedAt ? new Date(articlePublishedAt).toISOString() : undefined,
+
     embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
     url: `https://www.youtube.com/watch?v=${youtubeId}`,
   };
