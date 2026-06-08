@@ -122,9 +122,9 @@ export const BlogContent = ({
                   loading="lazy"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
-                  className={node.attribs.class || undefined}
+                  className="data-youtube-video absolute inset-0 w-full h-full"
                 />
-              );
+              ) as unknown as Element;
             }
 
             // Replace <img> with next/image
