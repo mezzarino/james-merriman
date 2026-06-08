@@ -72,7 +72,7 @@ export function proxy(request: NextRequest) {
         https://*.cloudinary.com
         https://*.doubleclick.net;
 
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com;
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com https://www.youtube.com https://www.google.com;
 
       style-src 'self' 'unsafe-inline';
 
