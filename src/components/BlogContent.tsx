@@ -102,6 +102,29 @@ export const BlogContent = ({
               return <></>;
             }
 
+            // ✅ Rewrite YouTube iframe → youtube-nocookie
+            if (
+              node.name === "iframe" &&
+              typeof node.attribs?.src === "string" &&
+              node.attribs.src.includes("youtube.com/embed/")
+            ) {
+              const src = node.attribs.src.replace(
+                "https://www.youtube.com/embed/",
+                "https://www.youtube-nocookie.com/embed/",
+              );
+
+              return (
+                <iframe
+                  {...node.attribs}
+                  src={src}
+                  title={node.attribs.title || `YouTube video embedded in article`}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              ) as unknown as Element;
+            }
+
             // Replace <img> with next/image
             if (node.name === "img") {
               const { src, alt } = node.attribs ?? {};
@@ -118,8 +141,8 @@ export const BlogContent = ({
                     height={630}
                     quality={70}
                     sizes="(max-width: 640px) 90vw,
-                         (max-width: 1024px) 640px,
-                         840px"
+                   (max-width: 1024px) 640px,
+                   840px"
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
                     className="rounded-lg mx-auto"
