@@ -5,19 +5,29 @@ export function extractYouTubeIds(html: string): string[] {
   return Array.from(matches, (m) => m[1]);
 }
 
-export async function getYouTubeOEmbed(videoId: string) {
+export async function getYouTubeVideoFromApi(videoId: string) {
   const res = await fetch(
-    `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`,
-    { next: { revalidate: 86400 } },
+    `https://www.googleapis.com/youtube/v3/videos` +
+      `?part=snippet,contentDetails,statistics` +
+      `&id=${videoId}` +
+      `&key=${process.env.YOUTUBE_API_KEY}`,
+    { next: { revalidate: 86400 } }, // cache 24h
   );
 
   if (!res.ok) return null;
 
-  return res.json() as Promise<{
-    title: string;
-    author_name: string;
-    thumbnail_url: string;
-  }>;
+  const data = await res.json();
+  const video = data.items?.[0];
+  if (!video) return null;
+
+  return {
+    title: video.snippet.title,
+    description: video.snippet.description,
+    thumbnail: video.snippet.thumbnails.high.url,
+    uploadDate: video.snippet.publishedAt,
+    duration: video.contentDetails.duration, // ISO 8601
+    viewCount: Number(video.statistics.viewCount),
+  };
 }
 
 /**
@@ -25,28 +35,29 @@ export async function getYouTubeOEmbed(videoId: string) {
  * - YouTube metadata (title)
  * - Article description as fallback context
  */
-export async function buildVideoObjectFromHtml(
-  html: string,
-  articleDescription?: string | null,
-  articlePublishedAt?: Date | string | null,
-) {
+export async function buildVideoObjectFromHtml(html: string) {
   const ids = extractYouTubeIds(html);
   if (ids.length === 0) return null;
 
   const youtubeId = ids[0];
-  const meta = await getYouTubeOEmbed(youtubeId);
+  const meta = await getYouTubeVideoFromApi(youtubeId);
   if (!meta) return null;
 
   return {
     "@type": "VideoObject",
     name: meta.title,
-    description: articleDescription?.trim() || undefined,
-    thumbnailUrl: [meta.thumbnail_url],
-
-    // ✅ REQUIRED by Google
-    uploadDate: articlePublishedAt ? new Date(articlePublishedAt).toISOString() : undefined,
-
+    description: meta.description,
+    thumbnailUrl: [meta.thumbnail],
+    uploadDate: meta.uploadDate,
+    duration: meta.duration,
     embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
     url: `https://www.youtube.com/watch?v=${youtubeId}`,
+
+    // ✅ Optional, now legitimate
+    interactionStatistic: {
+      "@type": "InteractionCounter",
+      interactionType: { "@type": "WatchAction" },
+      userInteractionCount: meta.viewCount,
+    },
   };
 }
