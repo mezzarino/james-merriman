@@ -102,7 +102,7 @@ export const BlogContent = ({
               return <></>;
             }
 
-            // ✅ Rewrite YouTube iframe → youtube-nocookie
+            // ✅ Rewrite YouTube iframe → youtube-nocookie + accessible title
             if (
               node.name === "iframe" &&
               typeof node.attribs?.src === "string" &&
@@ -115,14 +115,14 @@ export const BlogContent = ({
 
               return (
                 <iframe
-                  {...node.attribs}
                   src={src}
-                  title={node.attribs.title || `YouTube video embedded in article`}
+                  title={node.attribs.title || "Embedded YouTube video"}
                   loading="lazy"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
+                  className={node.attribs.class || undefined}
                 />
-              ) as unknown as Element;
+              );
             }
 
             // Replace <img> with next/image
