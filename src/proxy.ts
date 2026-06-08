@@ -85,7 +85,7 @@ export function proxy(request: NextRequest) {
         https://*.google.co.uk;
 
       font-src 'self';
-      frame-src 'self' https://www.youtube.com;
+      frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com/;
       object-src 'none';
       base-uri 'self';
       form-action 'self';

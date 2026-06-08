@@ -113,10 +113,12 @@ export const BlogContent = ({
                 "https://www.youtube-nocookie.com/embed/",
               );
 
+              const iframeTitle = node.attribs.title || `YouTube video: ${title}`;
+
               return (
                 <iframe
                   src={src}
-                  title={node.attribs.title || "Embedded YouTube video"}
+                  title={iframeTitle}
                   loading="lazy"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
@@ -159,7 +161,7 @@ export const BlogContent = ({
           }
         },
       }),
-    [modifiedHtml, firstImageSrc],
+    [modifiedHtml, firstImageSrc, title],
   );
 
   const postUrl = `${config.baseUrl}/post/${slug}`;
