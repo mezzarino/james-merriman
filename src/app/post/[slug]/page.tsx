@@ -11,6 +11,7 @@ import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
 import { wisp } from "@/lib/wisp";
+import { buildVideoObjectFromHtml } from "@/lib/youtube";
 import type { LocationMetadata, PostMetadata, Review } from "@/types/post-metadata";
 
 interface Params {
@@ -91,6 +92,8 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   const readingTime = getReadingTimeFromHtml(result.post.content);
   const { title, publishedAt, updatedAt, image } = result.post;
 
+  const videoObject = await buildVideoObjectFromHtml(result.post.content, result.post.description);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -110,6 +113,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         url: `${config.baseUrl}/post/${slug}`,
         headline: title,
         description: result.post.description || undefined,
+        ...(videoObject ? { video: videoObject } : {}),
         image: image
           ? [
               {
