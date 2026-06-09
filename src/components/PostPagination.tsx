@@ -19,9 +19,18 @@ const constructPath = ({
   query?: string;
 }) => {
   const searchParams = new URLSearchParams();
-  if (page) searchParams.append("page", page);
-  if (query) searchParams.append("query", query);
-  return `${basePath}?${searchParams.toString()}`;
+
+  // ✅ Only include page if it's not page 1
+  if (page && page !== "1") {
+    searchParams.append("page", page);
+  }
+
+  if (query) {
+    searchParams.append("query", query);
+  }
+
+  const params = searchParams.toString();
+  return params ? `${basePath}?${params}` : basePath;
 };
 
 export const PostPagination = ({

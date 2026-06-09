@@ -3,6 +3,7 @@ export const runtime = "nodejs";
 
 import { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
@@ -74,6 +75,10 @@ export default async function Page(props: {
 }) {
   const searchParams = await props.searchParams;
   const page = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
+
+  if (page === 1 && searchParams?.page) {
+    redirect(config.baseUrl);
+  }
 
   const currentPageUrl = page > 1 ? `${config.baseUrl}/?page=${page}` : config.baseUrl;
 

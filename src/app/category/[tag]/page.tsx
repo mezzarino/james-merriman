@@ -1,6 +1,7 @@
 export const revalidate = 60; // 1 minute
 
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
@@ -80,6 +81,10 @@ export default async function Page(props: {
     `${label}-related travel writing exploring culture, place and lived experience.`;
 
   const page = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
+
+  if (page === 1 && searchParams?.page) {
+    redirect(`/category/${tag}`);
+  }
 
   const result = await wisp.getPosts({
     limit: 6,
