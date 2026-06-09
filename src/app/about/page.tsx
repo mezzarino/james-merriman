@@ -98,7 +98,7 @@ const Page = async () => {
                   "@id": `${config.baseUrl}#website`,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#entity`,
+                  "@id": `${config.baseUrl}#person`,
                 },
                 primaryImageOfPage: {
                   "@type": "ImageObject",
@@ -109,10 +109,17 @@ const Page = async () => {
                 breadcrumb: {
                   "@id": `${config.baseUrl}/about#breadcrumb`,
                 },
+                speakable: {
+                  "@type": "SpeakableSpecification",
+                  cssSelector: ["#about-intro"],
+                },
+                publisher: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
               },
               {
                 "@type": "Person",
-                "@id": `${config.baseUrl}#entity`,
+                "@id": `${config.baseUrl}#person`,
                 name: "James Merriman",
                 url: config.baseUrl,
                 mainEntityOfPage: {
@@ -212,7 +219,7 @@ const Page = async () => {
       <main className="container mx-auto mt-8 px-4 max-w-6xl" id="main" tabIndex={-1}>
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
-            <p>
+            <p id="about-intro">
               I am a British travel writer and photographer based in Devon, England. A Fellow of the
               Royal Geographical Society, I have travelled to{" "}
               <strong>more than 160 countries across six continents</strong> and built a long-term
@@ -229,9 +236,9 @@ const Page = async () => {
               >
                 NomadMania
               </a>
-              , one of the world's largest travel communities. After a detailed review of passport
-              stamps, visas and supporting evidence, NomadMania verified my travel to more than 150
-              UN countries.
+              , one of the world&rsquo;s largest travel communities. After a detailed review of
+              passport stamps, visas and supporting evidence, NomadMania verified my travel to more
+              than 150 UN countries.
             </p>
 
             <p>

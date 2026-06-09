@@ -73,6 +73,9 @@ const Page = async () => {
                 breadcrumb: {
                   "@id": `${config.baseUrl}/contact#breadcrumb`,
                 },
+                publisher: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
               },
               {
                 "@type": "Person",

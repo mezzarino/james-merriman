@@ -122,7 +122,7 @@ const Page = async () => {
                   price: "0",
                   priceCurrency: "GBP",
                   availability: "https://schema.org/InStock",
-                  validFrom: "2026-03-09T00:00:00Z"
+                  validFrom: "2026-03-09T00:00:00Z",
                 },
                 image: {
                   "@type": "ImageObject",
