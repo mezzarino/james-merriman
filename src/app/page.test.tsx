@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { generateMetadata } from "./page";
+
 import { config } from "../config";
+import Page, { generateMetadata } from "./page";
 
 describe("generateMetadata", () => {
   it("returns noindex robots when query is present", async () => {
@@ -37,5 +38,23 @@ describe("generateMetadata", () => {
 
     expect(metadata.title).toContain("Page 2");
     expect(metadata.alternates?.canonical).toBe(`${config.baseUrl}/?page=2`);
+  });
+});
+
+describe("homepageContent", () => {
+  it("redirects ?page=1 to the root URL", async () => {
+    const props: {
+      searchParams?: Promise<{ query?: string; page?: string }>;
+    } = {
+      searchParams: Promise.resolve({ page: "1" }),
+    };
+
+    try {
+      await Page(props);
+      throw new Error("Expected redirect did not occur");
+    } catch (error) {
+      expect(error).toHaveProperty("digest", "NEXT_REDIRECT");
+      expect(String(error)).toContain(config.baseUrl);
+    }
   });
 });
