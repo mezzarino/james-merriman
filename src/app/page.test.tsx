@@ -53,8 +53,11 @@ describe("homepageContent", () => {
       await Page(props);
       throw new Error("Expected redirect did not occur");
     } catch (error) {
-      expect(error).toHaveProperty("digest", "NEXT_REDIRECT");
-      expect(String(error)).toContain(config.baseUrl);
+      const redirectError = error as Error & { digest?: string };
+
+      expect(redirectError).toHaveProperty("digest");
+      expect(redirectError.digest).toContain("NEXT_REDIRECT");
+      expect(redirectError.digest).toContain(config.baseUrl);
     }
   });
 });

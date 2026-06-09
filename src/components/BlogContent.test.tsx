@@ -3,6 +3,12 @@ import { axe } from "jest-axe";
 import { act } from "react";
 import { describe, expect, it, vi } from "vitest";
 
+vi.mock("next/image", () => ({
+  default: ({ fill: _fill, priority: _priority, blurDataURL: _blurDataURL, ...props }: any) => (
+    <img {...props} />
+  ),
+}));
+
 import { BlogContent } from "./BlogContent";
 
 // ✅ Mock hooks that rely on browser behaviour
@@ -67,6 +73,44 @@ describe("BlogContent", () => {
 
     // ✅ Author
     expect(screen.getByText(/james merriman/i)).toBeInTheDocument();
+  });
+
+  it("renders transformed media and strips embedded synscribe copy", () => {
+    const content = `
+      <p><small><a href="https://example.synscribe.com">Synscribe promo</a></small></p>
+      <iframe src="https://www.youtube.com/embed/abc123" title="Embedded video"></iframe>
+      <img src="/images/demo.jpg" alt="Demo image" />
+    `;
+
+    render(<BlogContent post={{ ...mockPost, content }} relatedPosts={[]} readingTime="5 min read" />);
+
+    expect(screen.queryByText("Synscribe promo")).not.toBeInTheDocument();
+    expect(screen.getByTitle("Embedded video")).toHaveAttribute(
+      "src",
+      "https://www.youtube-nocookie.com/embed/abc123",
+    );
+    expect(screen.getByRole("img", { name: /demo image/i })).toBeInTheDocument();
+  });
+
+  it("renders critical reception details when reviews are provided", () => {
+    render(
+      <BlogContent
+        post={mockPost}
+        relatedPosts={[]}
+        readingTime="5 min read"
+        reviews={[
+          {
+            reviewText: "A thoughtful and vivid piece.",
+            reviewName: "A. Reviewer",
+            reviewJobTitle: "Editor",
+          },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("heading", { name: /critical reception/i })).toBeInTheDocument();
+    expect(screen.getByText("A thoughtful and vivid piece.")).toBeInTheDocument();
+    expect(screen.getByText(/A\. Reviewer, Editor/i)).toBeInTheDocument();
   });
 
   it("has no accessibility violations", async () => {
