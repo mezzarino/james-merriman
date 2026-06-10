@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     {
       url: "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer",
-      lastModified: new Date("2026-06-05"),
+      lastModified: new Date("2026-06-10"),
       priority: 0.7,
     },
 
