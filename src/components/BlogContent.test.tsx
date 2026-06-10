@@ -1,17 +1,26 @@
 import { render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
-import { act } from "react";
+import React, { act } from "react";
 import { describe, expect, it, vi } from "vitest";
-
-vi.mock("next/image", () => ({
-  default: ({ fill: _fill, priority: _priority, blurDataURL: _blurDataURL, ...props }: any) => (
-    <img {...props} />
-  ),
-}));
 
 import { BlogContent } from "./BlogContent";
 
-// ✅ Mock hooks that rely on browser behaviour
+/* -------------------------------------------------
+ * next/image mock (typed, accessible)
+ * ------------------------------------------------- */
+vi.mock("next/image", () => ({
+  __esModule: true,
+  default: ({
+    alt,
+    ...props
+  }: React.ImgHTMLAttributes<HTMLImageElement> & {
+    alt?: string;
+  }) => <img alt={alt ?? ""} {...props} />,
+}));
+
+/* -------------------------------------------------
+ * Hook mocks (browser‑dependent)
+ * ------------------------------------------------- */
 vi.mock("@/hooks/useScrollTracking", () => ({
   useScrollTracking: () => {},
 }));
@@ -20,7 +29,9 @@ vi.mock("@/hooks/useShareAttribute", () => ({
   useShareAttribution: () => {},
 }));
 
-// ✅ Mock heavy child components (we test them separately)
+/* -------------------------------------------------
+ * Heavy child components mocked
+ * ------------------------------------------------- */
 vi.mock("./CommentSection", () => ({
   CommentSection: () => <div>Comments</div>,
 }));
@@ -37,17 +48,19 @@ vi.mock("./ui/about-cta", () => ({
   AboutCta: () => <div>About CTA</div>,
 }));
 
-// ✅ Test data
+/* -------------------------------------------------
+ * Typed test data
+ * ------------------------------------------------- */
 const mockPost = {
   id: "1",
-  createdAt: new Date(),
   teamId: "team",
-  description: "A test description",
-  title: "Test Blog Post",
-  content: "<p>This is <strong>blog content</strong>.</p>",
   slug: "test-post",
+  title: "Test Blog Post",
+  description: "A test description",
+  content: "<p>This is <strong>blog content</strong>.</p>",
   image: null,
   authorId: "author",
+  createdAt: new Date(),
   updatedAt: new Date(),
   publishedAt: new Date(),
   tags: [{ id: "t1", name: "travel" }],
@@ -62,16 +75,9 @@ describe("BlogContent", () => {
   it("renders the main content of the blog post", () => {
     render(<BlogContent post={mockPost} relatedPosts={[]} readingTime="5 min read" />);
 
-    // ✅ Main landmark
     expect(screen.getByRole("main")).toBeInTheDocument();
-
-    // ✅ Title
     expect(screen.getByRole("heading", { name: /test blog post/i })).toBeInTheDocument();
-
-    // ✅ Parsed HTML content
     expect(screen.getByText(/blog content/i)).toBeInTheDocument();
-
-    // ✅ Author
     expect(screen.getByText(/james merriman/i)).toBeInTheDocument();
   });
 
@@ -82,13 +88,17 @@ describe("BlogContent", () => {
       <img src="/images/demo.jpg" alt="Demo image" />
     `;
 
-    render(<BlogContent post={{ ...mockPost, content }} relatedPosts={[]} readingTime="5 min read" />);
+    render(
+      <BlogContent post={{ ...mockPost, content }} relatedPosts={[]} readingTime="5 min read" />,
+    );
 
     expect(screen.queryByText("Synscribe promo")).not.toBeInTheDocument();
+
     expect(screen.getByTitle("Embedded video")).toHaveAttribute(
       "src",
       "https://www.youtube-nocookie.com/embed/abc123",
     );
+
     expect(screen.getByRole("img", { name: /demo image/i })).toBeInTheDocument();
   });
 
@@ -109,7 +119,9 @@ describe("BlogContent", () => {
     );
 
     expect(screen.getByRole("heading", { name: /critical reception/i })).toBeInTheDocument();
+
     expect(screen.getByText("A thoughtful and vivid piece.")).toBeInTheDocument();
+
     expect(screen.getByText(/A\. Reviewer, Editor/i)).toBeInTheDocument();
   });
 
@@ -118,10 +130,7 @@ describe("BlogContent", () => {
       <BlogContent post={mockPost} relatedPosts={[]} readingTime="5 min read" />,
     );
 
-    let results;
-    await act(async () => {
-      results = await axe(container);
-    });
+    const results = await act(async () => axe(container));
     expect(results).toHaveNoViolations();
   });
 });

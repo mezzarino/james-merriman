@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { AxiosError } from "axios";
-import { describe, expect, it, vi, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { CommentForm } from "./CommentForm";
 
@@ -103,10 +103,12 @@ describe("CommentForm", () => {
     fireEvent.change(screen.getByLabelText(/^Comment$/i), { target: { value: "Nice post" } });
     fireEvent.click(screen.getByRole("button", { name: /post comment/i }));
 
-    await waitFor(() => expect(toastMock).toHaveBeenCalledWith({
-      title: "Error",
-      description: "Email verification failed",
-      variant: "destructive",
-    }));
+    await waitFor(() =>
+      expect(toastMock).toHaveBeenCalledWith({
+        title: "Error",
+        description: "Email verification failed",
+        variant: "destructive",
+      }),
+    );
   });
 });

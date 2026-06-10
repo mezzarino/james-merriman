@@ -1,42 +1,74 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { act } from "react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { axe } from "jest-axe";
 
+import { FilterBar } from "./FilterBar";
+
+/* -------------------------------------------------
+ * Next.js navigation mocks
+ * ------------------------------------------------- */
 const pushMock = vi.fn();
 const searchParamsMock = new URLSearchParams();
 
 vi.mock("next/navigation", () => ({
-  useRouter: () => ({ push: pushMock, replace: vi.fn(), back: vi.fn(), forward: vi.fn() }),
+  useRouter: () => ({
+    push: pushMock,
+    replace: vi.fn(),
+    back: vi.fn(),
+    forward: vi.fn(),
+  }),
   useSearchParams: () => searchParamsMock,
 }));
 
+/* -------------------------------------------------
+ * matchMedia mock (for prefers-reduced-motion)
+ * ------------------------------------------------- */
 if (typeof window.matchMedia === "undefined") {
   Object.defineProperty(window, "matchMedia", {
-    value: (query: string) => ({
+    writable: true,
+    value: (query: string): MediaQueryList => ({
       matches: true,
       media: query,
       onchange: null,
       addEventListener: vi.fn(),
       removeEventListener: vi.fn(),
-      addListener: vi.fn(),
-      removeListener: vi.fn(),
+      addListener: vi.fn(), // legacy
+      removeListener: vi.fn(), // legacy
       dispatchEvent: vi.fn(),
     }),
-    writable: true,
   });
 }
 
-if (typeof Element !== "undefined" && !Element.prototype.scrollIntoView) {
-  Element.prototype.scrollIntoView = function () {} as any;
-}
+/* -------------------------------------------------
+ * DOM method stubs (typed, overload-safe)
+ * ------------------------------------------------- */
+
+type ScrollByFn = {
+  (options?: ScrollToOptions): void;
+  (x: number, y: number): void;
+};
+
+const mockScrollBy: ScrollByFn = (arg1?: ScrollToOptions | number, arg2?: number): void => {
+  void arg1;
+  void arg2;
+};
+
+const mockScrollIntoView = (arg?: boolean | ScrollIntoViewOptions): void => {
+  void arg;
+};
 
 if (typeof Element !== "undefined" && !Element.prototype.scrollBy) {
-  Element.prototype.scrollBy = function () {} as any;
+  Element.prototype.scrollBy = mockScrollBy;
 }
 
-import { FilterBar } from "./FilterBar";
+if (typeof Element !== "undefined" && !Element.prototype.scrollIntoView) {
+  Element.prototype.scrollIntoView = mockScrollIntoView;
+}
 
+/* -------------------------------------------------
+ * Tests
+ * ------------------------------------------------- */
 describe("FilterBar", () => {
   beforeEach(() => {
     pushMock.mockReset();
@@ -48,7 +80,9 @@ describe("FilterBar", () => {
     render(<FilterBar active="latest" />);
 
     expect(screen.getByRole("tablist", { name: /blog categories/i })).toBeInTheDocument();
+
     expect(screen.getByRole("button", { name: /search posts/i })).toBeInTheDocument();
+
     expect(screen.getByRole("tab", { name: /latest writing/i })).toHaveAttribute(
       "aria-selected",
       "true",
@@ -60,10 +94,14 @@ describe("FilterBar", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /search posts/i }));
 
-    const searchInput = screen.getByRole("textbox", { name: /search posts/i });
-    expect(searchInput).toBeInTheDocument();
+    const searchInput = screen.getByRole("textbox", {
+      name: /search posts/i,
+    });
 
-    fireEvent.change(searchInput, { target: { value: "test query" } });
+    fireEvent.change(searchInput, {
+      target: { value: "test query" },
+    });
+
     fireEvent.keyUp(searchInput, { key: "Enter", code: "Enter" });
 
     expect(pushMock).toHaveBeenCalledWith("/?query=test query");
@@ -73,21 +111,29 @@ describe("FilterBar", () => {
     render(<FilterBar active="latest" />);
 
     fireEvent.click(screen.getByRole("button", { name: /search posts/i }));
-    const input = screen.getByRole("textbox", { name: /search posts/i });
+
+    const input = screen.getByRole("textbox", {
+      name: /search posts/i,
+    });
 
     fireEvent.keyUp(input, { key: "Escape" });
 
     await waitFor(() => {
       expect(screen.queryByRole("textbox", { name: /search posts/i })).not.toBeInTheDocument();
     });
+
     expect(screen.getByRole("button", { name: /search posts/i })).toBeInTheDocument();
   });
 
   it("clears the search text and returns home when the query is removed", () => {
     searchParamsMock.set("query", "existing");
+
     render(<FilterBar active="latest" />);
 
-    const input = screen.getByRole("textbox", { name: /search posts/i });
+    const input = screen.getByRole("textbox", {
+      name: /search posts/i,
+    });
+
     fireEvent.change(input, { target: { value: "" } });
     fireEvent.click(screen.getByRole("button", { name: /clear search/i }));
 
@@ -96,29 +142,28 @@ describe("FilterBar", () => {
 
   it("moves focus between category tabs with arrow keys and animates scroll hints", async () => {
     vi.useFakeTimers();
-    const scrollBySpy = vi
-      .spyOn(HTMLElement.prototype, "scrollBy")
-      .mockImplementation(() => {});
+
+    const scrollBySpy = vi.spyOn(HTMLElement.prototype, "scrollBy").mockImplementation(() => {});
+
     vi.spyOn(window, "matchMedia").mockImplementation(
-      (query: string) =>
-        ({
-          matches: false,
-          media: query,
-          onchange: null,
-          addEventListener: vi.fn(),
-          removeEventListener: vi.fn(),
-          addListener: vi.fn(),
-          removeListener: vi.fn(),
-          dispatchEvent: vi.fn(),
-        }) as MediaQueryList,
+      (query: string): MediaQueryList => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      }),
     );
 
     render(<FilterBar active="latest" />);
 
     const tabs = screen.getAllByRole("tab");
     tabs[0].focus();
-    fireEvent.keyDown(tabs[0], { key: "ArrowRight" });
 
+    fireEvent.keyDown(tabs[0], { key: "ArrowRight" });
     expect(tabs[1]).toHaveFocus();
 
     await act(async () => {
@@ -128,17 +173,21 @@ describe("FilterBar", () => {
       await vi.runOnlyPendingTimersAsync();
     });
 
-    expect(scrollBySpy).toHaveBeenCalledWith({ left: 40, behavior: "smooth" });
-    expect(scrollBySpy).toHaveBeenCalledWith({ left: -40, behavior: "smooth" });
+    expect(scrollBySpy).toHaveBeenCalledWith({
+      left: 40,
+      behavior: "smooth",
+    });
+
+    expect(scrollBySpy).toHaveBeenCalledWith({
+      left: -40,
+      behavior: "smooth",
+    });
   });
 
   it("has no basic accessibility violations", async () => {
     const { container } = render(<FilterBar active="latest" />);
-    let results;
 
-    await act(async () => {
-      results = await axe(container);
-    });
+    const results = await act(async () => axe(container));
 
     expect(results).toHaveNoViolations();
   });

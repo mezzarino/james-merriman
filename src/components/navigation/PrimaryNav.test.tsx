@@ -113,7 +113,9 @@ describe("PrimaryNav", () => {
 
     rerender(<PrimaryNav />);
     fireEvent.click(screen.getByRole("button", { name: /open navigation menu/i }));
-    fireEvent.click(within(screen.getByRole("dialog")).getByRole("link", { name: /publications/i }));
+    fireEvent.click(
+      within(screen.getByRole("dialog")).getByRole("link", { name: /publications/i }),
+    );
 
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
   });

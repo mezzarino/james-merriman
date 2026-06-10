@@ -2,39 +2,56 @@ process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME = "test";
 
 import { fireEvent, render, screen } from "@testing-library/react";
 import { axe } from "jest-axe";
-import { act } from "react";
+import React, { act } from "react";
 import { describe, expect, it, vi } from "vitest";
-
-const { dragEndInfo } = vi.hoisted(() => ({
-  dragEndInfo: { offset: { x: 0 }, velocity: { x: 0 } },
-}));
-
-vi.mock("framer-motion", () => {
-  const React = require("react");
-
-  return {
-    AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-    motion: {
-      div: ({ children, onDragEnd, drag, dragConstraints, dragElastic, ...props }: any) => (
-        <div
-          {...props}
-          data-testid="lightbox-motion"
-          onDragEnd={(event) => onDragEnd?.(event, dragEndInfo)}
-        >
-          {children}
-        </div>
-      ),
-    },
-    useReducedMotion: () => false,
-  };
-});
 
 import { Photo } from "@/types/photo";
 
 import { Lightbox } from "./Lightbox";
 
+/* -------------------------------------------------
+ * Hoisted drag info (shared between tests)
+ * ------------------------------------------------- */
+const { dragEndInfo } = vi.hoisted(() => ({
+  dragEndInfo: {
+    offset: { x: 0 },
+    velocity: { x: 0 },
+  },
+}));
+
+/* -------------------------------------------------
+ * framer-motion mock
+ * ------------------------------------------------- */
+vi.mock("framer-motion", () => ({
+  AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  motion: {
+    div: ({
+      children,
+      onDragEnd,
+      ...props
+    }: React.HTMLAttributes<HTMLDivElement> & {
+      onDragEnd?: (event: React.DragEvent<HTMLDivElement>, info: typeof dragEndInfo) => void;
+    }) => (
+      <div
+        {...props}
+        data-testid="lightbox-motion"
+        onDragEnd={(event) => onDragEnd?.(event, dragEndInfo)}
+      >
+        {children}
+      </div>
+    ),
+  },
+  useReducedMotion: () => false,
+}));
+
+/* -------------------------------------------------
+ * next-cloudinary mock
+ * ------------------------------------------------- */
 vi.mock("next-cloudinary");
 
+/* -------------------------------------------------
+ * Test data
+ * ------------------------------------------------- */
 const photo: Photo = {
   public_id: "photo-1",
   alt: "Test photo",
@@ -45,13 +62,14 @@ const photo: Photo = {
   version: 1,
 };
 
+/* -------------------------------------------------
+ * Tests
+ * ------------------------------------------------- */
 describe("Lightbox", () => {
   it("renders as a dialog", () => {
-    const { getByRole } = render(
-      <Lightbox photo={photo} onClose={vi.fn()} onNext={vi.fn()} onPrev={vi.fn()} />,
-    );
+    render(<Lightbox photo={photo} onClose={vi.fn()} onNext={vi.fn()} onPrev={vi.fn()} />);
 
-    expect(getByRole("dialog")).toBeInTheDocument();
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
   });
 
   it("closes when Escape is pressed", () => {
@@ -78,7 +96,10 @@ describe("Lightbox", () => {
 
   it("preloads the next-next image when moving forward", () => {
     const imageSrcs: string[] = [];
-    const ImageMock = vi.spyOn(window, "Image").mockImplementation(function (this: any) {
+
+    const imageSpy = vi.spyOn(window, "Image").mockImplementation(function (
+      this: HTMLImageElement,
+    ) {
       Object.defineProperty(this, "src", {
         get: () => "",
         set: (value: string) => {
@@ -102,9 +123,11 @@ describe("Lightbox", () => {
 
     fireEvent.keyDown(document, { key: "ArrowRight" });
 
-    expect(imageSrcs).toContain("https://res.cloudinary.com/test/image/upload/f_auto,q_auto/photo-3.jpg");
+    expect(imageSrcs).toContain(
+      "https://res.cloudinary.com/test/image/upload/f_auto,q_auto/photo-3.jpg",
+    );
 
-    ImageMock.mockRestore();
+    imageSpy.mockRestore();
   });
 
   it("supports click-zone and swipe navigation", () => {
@@ -121,12 +144,14 @@ describe("Lightbox", () => {
 
     dragEndInfo.offset.x = -200;
     dragEndInfo.velocity.x = -500;
-    fireEvent.dragEnd(screen.getAllByTestId("lightbox-motion")[1], {});
+
+    fireEvent.dragEnd(screen.getAllByTestId("lightbox-motion")[1]);
     expect(onNext).toHaveBeenCalledTimes(2);
 
     dragEndInfo.offset.x = 200;
     dragEndInfo.velocity.x = 500;
-    fireEvent.dragEnd(screen.getAllByTestId("lightbox-motion")[1], {});
+
+    fireEvent.dragEnd(screen.getAllByTestId("lightbox-motion")[1]);
     expect(onPrev).toHaveBeenCalledTimes(2);
   });
 
@@ -135,10 +160,7 @@ describe("Lightbox", () => {
       <Lightbox photo={photo} onClose={vi.fn()} onNext={vi.fn()} onPrev={vi.fn()} />,
     );
 
-    let results;
-    await act(async () => {
-      results = await axe(container);
-    });
+    const results = await act(async () => axe(container));
     expect(results).toHaveNoViolations();
   });
 });
