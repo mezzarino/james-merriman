@@ -315,7 +315,7 @@ export default async function Page(props: {
       />
 
       <main className="container mx-auto max-w-6xl" id="main" tabIndex={-1}>
-        <section className="container mx-auto my-6 max-w-6xl px-4 lg:px-0 prose">
+        <section className="container mx-auto my-6 max-w-6xl px-4 prose">
           <p id="homepage-intro" className="text-lg">
             This site presents the writing and photographic work of British travel writer James
             Merriman. You can read{" "}
@@ -347,13 +347,13 @@ export default async function Page(props: {
           </p>
         </section>
 
-        <h2 className="mt-12 mb-6 text-3xl px-4 lg:px-0 font-semibold">Latest Travel Writing</h2>
+        <h2 className="mt-12 mb-6 text-3xl px-4 font-semibold">Latest Travel Writing</h2>
         <HomepageFilterBar />
         <BlogPostList posts={result.posts} />
 
         <HomepagePagination pagination={result.pagination} query={searchParams?.query} />
 
-        <section className="prose max-w-full px-4 lg:px-0">
+        <section className="prose max-w-full px-4">
           <h2 className="pt-6">Travel Writing and Cultural History</h2>
 
           <blockquote className="border-l-2 pl-4 my-6">
