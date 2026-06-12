@@ -4,6 +4,7 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [320, 375, 384, 640, 768, 1024],
     imageSizes: [320, 384, 480, 640],
+    qualities: [65, 70, 75], // ✅ Added to resolve Next.js browser warnings
 
     remotePatterns: [
       {

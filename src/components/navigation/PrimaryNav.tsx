@@ -210,6 +210,7 @@ export function PrimaryNav() {
             <button
               ref={closeButtonRef}
               onClick={() => setOpen(false)}
+              tabIndex={open ? undefined : -1}
               className="text-sm text-white/70 hover:text-white focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
             >
               Close
@@ -227,6 +228,7 @@ export function PrimaryNav() {
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
                       onClick={() => setOpen(false)}
+                      tabIndex={open ? undefined : -1}
                       className={cn(
                         "block text-sm font-medium transition-colors",
                         "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",

@@ -110,6 +110,7 @@ export const Footer = () => {
                   src="/images/creditation-logos/proudly-human-logo.png"
                   alt="My writing and photography has been independently verified as human-origin by ProudlyHuman™"
                   fill
+                  sizes="96px"
                   loading="lazy"
                   className="object-contain opacity-90 sm:opacity-95 hover:opacity-100 transition-opacity"
                 />
@@ -128,6 +129,7 @@ export const Footer = () => {
                   src="/images/creditation-logos/opj-ambassador-logo.png"
                   alt="One Planet Journey - Deep Travel Ambassador logo"
                   fill
+                  sizes="88px"
                   loading="lazy"
                   className="object-contain opacity-90 sm:opacity-95 hover:opacity-100 transition-opacity"
                 />
@@ -146,6 +148,7 @@ export const Footer = () => {
                   src="/images/creditation-logos/cioj-logo.png"
                   alt="The Chartered Institute of Journalists logo"
                   fill
+                  sizes="88px"
                   loading="lazy"
                   className="object-contain opacity-90 sm:opacity-95 hover:opacity-100 transition-opacity"
                 />

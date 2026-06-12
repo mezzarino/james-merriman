@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 
 import AccessibleAccordion from "@/components/AccessibleAccordion";
 import { FigureImage } from "@/components/FigureImage";
@@ -79,10 +78,9 @@ const Page = async () => {
   return (
     <>
       {/* Structured data */}
-      <Script
+      <script
         id="about-schema"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -245,7 +243,7 @@ const Page = async () => {
               My work ranges from long-form travel writing to documentary photography, often centred
               on overlooked or misunderstood places You can{" "}
               <Link href="/publications">read a selection of published writing</Link>,{" "}
-              <Link href="/photography">explore my photography</Link>, or{" "}
+              <Link href="/photography">explore my photography</Link> or{" "}
               <Link href="/credentials">learn more about my credentials</Link>.
             </p>
 
@@ -304,10 +302,9 @@ const Page = async () => {
             <AccessibleAccordion items={faqItems} />
 
             {/* FAQPage structured data for Google */}
-            <Script
+            <script
               id="about-faq-schema"
               type="application/ld+json"
-              strategy="beforeInteractive"
               dangerouslySetInnerHTML={{
                 __html: JSON.stringify({
                   "@context": "https://schema.org",

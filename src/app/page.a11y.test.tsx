@@ -14,16 +14,16 @@ if (typeof globalThis.IntersectionObserver === "undefined") {
     observe() {}
     unobserve() {}
     disconnect() {}
-  } as any;
+  } as unknown as typeof IntersectionObserver;
 }
 
 if (typeof Element !== "undefined") {
   if (!Element.prototype.scrollIntoView) {
-    Element.prototype.scrollIntoView = function () {} as any;
+    Element.prototype.scrollIntoView = vi.fn();
   }
 
   if (!Element.prototype.scrollBy) {
-    Element.prototype.scrollBy = function () {} as any;
+    Element.prototype.scrollBy = vi.fn();
   }
 }
 

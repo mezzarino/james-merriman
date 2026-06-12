@@ -138,9 +138,9 @@ export default async function Page() {
           <ul className="mt-4 flex flex-wrap gap-3 list-none p-0 justify-center">
             {result.tags.map((tag) => {
               const label = tag.name
-                .split('-')
+                .split("-")
                 .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ');
+                .join(" ");
 
               return (
                 <li key={tag.id}>

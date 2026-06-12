@@ -1,14 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useSyncExternalStore } from "react";
 
 import { useConsent } from "./ConsentContext";
 
-export function ConsentBanner() {
-  const { consent, hydrated, setConsent } = useConsent();
+const emptySubscribe = () => () => {};
 
-  // ✅ Never render on the server or before hydration
-  if (!hydrated) return null;
+export function ConsentBanner() {
+  const { consent, setConsent } = useConsent();
+
+  // useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const isMounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+
+  // ✅ Server and initial client render both return null safely
+  if (!isMounted) return null;
 
   // ✅ Don’t show once a choice has been made
   if (consent !== null) return null;

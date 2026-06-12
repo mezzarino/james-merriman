@@ -1,7 +1,7 @@
 "use client";
 
 import { Author, GetRelatedPostsResult, TagInPost } from "@wisp-cms/client";
-import parse, { DOMNode, Element } from "html-react-parser";
+import parse, { DOMNode, domToReact, Element, HTMLReactParserOptions } from "html-react-parser";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -79,14 +79,13 @@ export const BlogContent = ({
     return match?.[1] ?? null;
   }, [content]);
 
-  const parsedContent = useMemo(
-    () =>
-      parse(modifiedHtml, {
-        replace: (node: DOMNode) => {
-          if (isElement(node)) {
+  const parsedContent = useMemo(() => {
+    const options: HTMLReactParserOptions = {
+      replace: (node: DOMNode) => {
+        if (isElement(node)) {
+          if (node.name === "p") {
             // Strip unwanted injected paragraphs
             if (
-              node.name === "p" &&
               node.children?.some((child) => {
                 if (!isElement(child)) return false;
 
@@ -102,67 +101,76 @@ export const BlogContent = ({
               return <></>;
             }
 
-            // ✅ Rewrite YouTube iframe → youtube-nocookie + accessible title
-            if (
-              node.name === "iframe" &&
-              typeof node.attribs?.src === "string" &&
-              node.attribs.src.includes("youtube.com/embed/")
-            ) {
-              const src = node.attribs.src.replace(
-                "https://www.youtube.com/embed/",
-                "https://www.youtube-nocookie.com/embed/",
-              );
+            // ✅ Fix: Unwrap <p> tags containing images to prevent <figure> hydration errors
+            const containsImg = node.children?.some(
+              (child) => isElement(child) && child.name === "img",
+            );
 
-              const iframeTitle = node.attribs.title || `YouTube video: ${title}`;
-
-              return (
-                <iframe
-                  src={src}
-                  title={iframeTitle}
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className="data-youtube-video absolute inset-0 w-full h-full"
-                />
-              ) as unknown as Element;
-            }
-
-            // Replace <img> with next/image
-            if (node.name === "img") {
-              const { src, alt } = node.attribs ?? {};
-              if (!src) return;
-
-              const isFirstImage = src === firstImageSrc;
-
-              return (
-                <figure className="my-6">
-                  <Image
-                    src={src}
-                    alt={alt ?? ""}
-                    width={840}
-                    height={630}
-                    quality={70}
-                    sizes="(max-width: 640px) 90vw,
-                   (max-width: 1024px) 640px,
-                   840px"
-                    placeholder="blur"
-                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
-                    className="rounded-lg mx-auto"
-                    priority={isFirstImage}
-                  />
-                  {alt && (
-                    <figcaption className="mt-2 text-sm text-gray-500 text-center">
-                      {alt}
-                    </figcaption>
-                  )}
-                </figure>
-              ) as unknown as Element;
+            if (containsImg) {
+              return <>{domToReact(node.children as DOMNode[], options)}</>;
             }
           }
-        },
-      }),
-    [modifiedHtml, firstImageSrc, title],
-  );
+
+          // ✅ Rewrite YouTube iframe → youtube-nocookie + accessible title
+          if (
+            node.name === "iframe" &&
+            typeof node.attribs?.src === "string" &&
+            node.attribs.src.includes("youtube.com/embed/")
+          ) {
+            const src = node.attribs.src.replace(
+              "https://www.youtube.com/embed/",
+              "https://www.youtube-nocookie.com/embed/",
+            );
+
+            const iframeTitle = node.attribs.title || `YouTube video: ${title}`;
+
+            return (
+              <iframe
+                src={src}
+                title={iframeTitle}
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="data-youtube-video absolute inset-0 w-full h-full"
+              />
+            ) as unknown as Element;
+          }
+
+          // Replace <img> with next/image inside a <figure>
+          if (node.name === "img") {
+            const { src, alt } = node.attribs ?? {};
+            if (!src) return;
+
+            const isFirstImage = src === firstImageSrc;
+
+            return (
+              <figure className="my-6">
+                <Image
+                  src={src}
+                  alt={alt ?? ""}
+                  width={840}
+                  height={630}
+                  quality={70}
+                  sizes="(max-width: 640px) 90vw,
+                   (max-width: 1024px) 640px,
+                   840px"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODQwIiBoZWlnaHQ9IjYzMCIgZmlsbD0iI2VlZWVlZSIvPjwvc3ZnPg=="
+                  className="rounded-lg mx-auto"
+                  priority={isFirstImage}
+                />
+                {alt && (
+                  <figcaption className="mt-2 text-sm text-gray-500 text-center">{alt}</figcaption>
+                )}
+              </figure>
+            ) as unknown as Element;
+          }
+        }
+      },
+    };
+
+    return parse(modifiedHtml, options);
+  }, [modifiedHtml, firstImageSrc, title]);
 
   const postUrl = `${config.baseUrl}/post/${slug}`;
 

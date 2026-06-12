@@ -40,6 +40,9 @@ export function proxy(request: NextRequest) {
   // ✅ Generate nonce (main site only)
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
 
+  // ✅ Detect development environment
+  const isDev = process.env.NODE_ENV !== "production";
+
   let cspHeader: string;
 
   /**
@@ -48,7 +51,7 @@ export function proxy(request: NextRequest) {
   if (isStories) {
     cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.ampproject.org https://www.googletagmanager.com;
+      script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://cdn.ampproject.org https://www.googletagmanager.com;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https://www.jamesmerriman.co.uk https://*.google-analytics.com  https://*.google.com https:;
       media-src https://www.jamesmerriman.co.uk https:;
@@ -72,7 +75,7 @@ export function proxy(request: NextRequest) {
         https://*.cloudinary.com
         https://*.doubleclick.net;
 
-      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.googletagmanager.com https://www.youtube.com https://www.google.com;
+      script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${isDev ? "'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.youtube.com https://www.google.com;
 
       style-src 'self' 'unsafe-inline';
 
