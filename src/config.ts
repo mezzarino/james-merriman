@@ -37,6 +37,13 @@ const categories: Category[] = [
   },
   {
     isVisible: true,
+    label: "North America",
+    tag: "north-america",
+    description:
+      "Travel writing from North America exploring shifting landscapes and local communities found well beyond the established tourist trail.",
+  },
+  {
+    isVisible: true,
     label: "South America",
     tag: "south-america",
     description:
