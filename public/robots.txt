@@ -6,14 +6,34 @@
 User-agent: *
 Allow: /
 
+# --- Block Next.js media assets and fonts ---
+Disallow: /_next/static/media/
+Disallow: /*.woff$
+Disallow: /*.woff2$
+
 # --- Block truly private or non-public areas ---
 Disallow: /admin/
 Disallow: /cms/
 Disallow: /dashboard/
 Disallow: /server/
+Disallow: /login
 
 # --- Optional: block internal APIs ---
 Disallow: /api/
+
+# --- Protect Intellectual Property but Allow Live AI Search ---
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Anthropic-ai
+Disallow: /
+
+# --- Explicitly ALLOW Live User Browsing ---
+User-agent: ChatGPT-User
+Allow: /
 
 # --- Sitemap ---
 Sitemap: https://www.jamesmerriman.co.uk/sitemap.xml
