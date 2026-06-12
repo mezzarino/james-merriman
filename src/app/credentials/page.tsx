@@ -199,6 +199,17 @@ const Page = async () => {
                 </a>
               </li>
               <li>
+                <strong>Member (Student)</strong> -{" "}
+                <a
+                  href="https://cioj.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View The Chartered Institute of Journalists website"
+                >
+                  The Chartered Institute of Journalists
+                </a>
+              </li>
+              <li>
                 <strong>Deep Travel Ambassador</strong> -{" "}
                 <a
                   href="https://oneplanetjourney.com/about/deep-travel-ambassadors/"
@@ -207,17 +218,6 @@ const Page = async () => {
                   aria-label="Find out more about James Merriman's role as a One Planet Journey - Deep Travel Ambassador"
                 >
                   One Planet Journey
-                </a>
-              </li>
-              <li>
-                <strong>Member</strong> -{" "}
-                <a
-                  href="https://cioj.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="View The Chartered Institute of Journalists website"
-                >
-                  The Chartered Institute of Journalists
                 </a>
               </li>
               <li>
