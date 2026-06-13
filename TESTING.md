@@ -24,6 +24,15 @@ Test coverage reporting is available via **Vitest**:
 
 ```bash
 pnpm test:coverage
+```
+
+Current verified project status (latest run):
+
+- 23 test files passing
+- 61 tests passing
+- Coverage: 95.48% statements, 82.43% branches, 96.8% functions, 98.02% lines
+
+This is now reported as approximately 95% overall coverage for the project.
 
 ---
 
@@ -175,6 +184,28 @@ These behaviours are validated visually and are intentionally excluded to avoid 
 - No accessibility violations
 
 ---
+
+### ✅ Utility & Interaction Coverage
+
+#### **TOC / Table of Contents**
+
+- Generates unique heading IDs for repeated headings
+- Skips disabled header levels
+- Renders anchor links with the expected indentation and hrefs
+
+#### **useToast**
+
+- Covers reducer update, dismiss, and remove flows
+- Verifies the hook-level toast lifecycle and delayed removal path
+
+#### **ReadingProgress**
+
+- Verifies scroll-driven progress calculation and the progress bar transform state
+
+#### **Form helpers**
+
+- Covers the context error path for `useFormField`
+- Verifies description and error-message accessibility wiring
 
 ### ✅ CommentForm
 

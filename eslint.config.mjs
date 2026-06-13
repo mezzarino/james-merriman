@@ -18,7 +18,7 @@ import validateFilename from "eslint-plugin-validate-filename";
 export default [
   // ✅ Must be first
   {
-    ignores: ["dist/**", "build/**", "node_modules/**", ".next/**"],
+    ignores: ["dist/**", "build/**", "node_modules/**", ".next/**", "coverage/**"],
   },
 
   // ✅ Tailwind config must be treated as Node code

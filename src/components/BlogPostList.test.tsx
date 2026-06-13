@@ -8,15 +8,20 @@ import { describe, expect, it, vi } from "vitest";
  * ------------------------------------------------- */
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: ({
-    src,
-    alt,
-    onLoad,
-    ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement> & {
-    src: string;
-    alt: string;
-  }) => <img src={src} alt={alt} onLoad={onLoad} {...props} />,
+  default: (
+    props: React.ImgHTMLAttributes<HTMLImageElement> & {
+      src: string;
+      alt: string;
+      fill?: boolean;
+      priority?: boolean;
+      placeholder?: string;
+      blurDataURL?: string;
+    },
+  ) => {
+    const { src, alt, onLoad, ...imgProps } = props;
+
+    return <img src={src} alt={alt} onLoad={onLoad} {...imgProps} />;
+  },
 }));
 
 /* -------------------------------------------------

@@ -25,21 +25,31 @@ const { dragEndInfo } = vi.hoisted(() => ({
 vi.mock("framer-motion", () => ({
   AnimatePresence: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   motion: {
-    div: ({
-      children,
-      onDragEnd,
-      ...props
-    }: React.HTMLAttributes<HTMLDivElement> & {
-      onDragEnd?: (event: React.DragEvent<HTMLDivElement>, info: typeof dragEndInfo) => void;
-    }) => (
-      <div
-        {...props}
-        data-testid="lightbox-motion"
-        onDragEnd={(event) => onDragEnd?.(event, dragEndInfo)}
-      >
-        {children}
-      </div>
-    ),
+    div: (
+      props: React.HTMLAttributes<HTMLDivElement> & {
+        children?: React.ReactNode;
+        onDragEnd?: (event: React.DragEvent<HTMLDivElement>, info: typeof dragEndInfo) => void;
+        dragConstraints?: unknown;
+        dragElastic?: number;
+        initial?: unknown;
+        animate?: unknown;
+        exit?: unknown;
+        transition?: unknown;
+        drag?: unknown;
+      },
+    ) => {
+      const { children, onDragEnd, ...divProps } = props;
+
+      return (
+        <div
+          {...divProps}
+          data-testid="lightbox-motion"
+          onDragEnd={(event) => onDragEnd?.(event, dragEndInfo)}
+        >
+          {children}
+        </div>
+      );
+    },
   },
   useReducedMotion: () => false,
 }));

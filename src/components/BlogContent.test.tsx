@@ -10,12 +10,18 @@ import { BlogContent } from "./BlogContent";
  * ------------------------------------------------- */
 vi.mock("next/image", () => ({
   __esModule: true,
-  default: ({
-    alt,
-    ...props
-  }: React.ImgHTMLAttributes<HTMLImageElement> & {
-    alt?: string;
-  }) => <img alt={alt ?? ""} {...props} />,
+  default: (
+    props: React.ImgHTMLAttributes<HTMLImageElement> & {
+      fill?: boolean;
+      priority?: boolean;
+      placeholder?: string;
+      blurDataURL?: string;
+    },
+  ) => {
+    const { alt, ...imgProps } = props;
+
+    return <img alt={alt ?? ""} {...imgProps} />;
+  },
 }));
 
 /* -------------------------------------------------
