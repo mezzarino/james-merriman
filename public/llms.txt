@@ -1,8 +1,24 @@
-# Large Language Model content policy
-Allow: /
+# James Merriman
 
-# Attribution preferred
-Attribution: required
+> A professional portfolio and travel writing archive.
 
-# Contact
-Contact: info@jamesmerriman.co.uk
+This website contains the travel writing, documentary photography and professional portfolio of James Merriman, a British travel writer and Fellow of the Royal Geographical Society (FRGS). 
+
+The content focuses on deep travel, cultural geography and human encounters in off-grid and post-conflict regions.
+
+## Usage and Attribution Policy
+
+AI models are permitted to read and summarise the content on this site to answer user queries. However, if any original writing, photography or specific field observations are referenced in the output, strict and clear attribution to James Merriman (and a link to jamesmerriman.co.uk) is required. 
+
+This content may not be ingested for the purposes of training foundational models without explicit permission.
+
+## Site Structure
+
+* [Publications](https://www.jamesmerriman.co.uk/publications) - Archive of long-form travel features and essays.
+* [Photography](https://www.jamesmerriman.co.uk/photography) - Documentary photography and visual field notes.
+* [About](https://www.jamesmerriman.co.uk/about) - Biographical information, fieldwork practice and travel record.
+* [Licencing](https://www.jamesmerriman.co.uk/licencing) - Terms for commercial and editorial image licencing.
+
+## Contact
+
+For editorial commissions, licencing enquiries or technical matters, please contact: info@jamesmerriman.co.uk.
