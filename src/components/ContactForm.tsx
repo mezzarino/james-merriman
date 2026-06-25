@@ -337,7 +337,7 @@ export function ContactForm() {
           bg-gray-200 px-6 py-3 text-sm font-medium
           text-black hover:bg-black hover:text-white
           transition motion-reduce:transition-none
-          disabled:opacity-50
+          disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed
         "
       >
         {loading ? "Sending…" : "Send message"}
