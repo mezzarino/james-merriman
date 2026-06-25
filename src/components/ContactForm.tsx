@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Errors = Partial<{
   name: string;
@@ -9,6 +9,29 @@ type Errors = Partial<{
   company: string;
   message: string;
 }>;
+
+type ContactEnquiryParams = {
+  name: string;
+  email: string;
+  company?: string;
+  telephone?: string;
+  message: string;
+};
+
+type MCPTool<TInput, TOutput> = {
+  name: string;
+  description: string;
+  inputSchema: object;
+  execute: (params: TInput) => Promise<TOutput>;
+};
+
+interface ModelContext {
+  registerTool: <TInput, TOutput>(tool: MCPTool<TInput, TOutput>) => void;
+}
+
+interface NavigatorWithMCP extends Navigator {
+  modelContext?: ModelContext;
+}
 
 // ✅ Shared, WCAG-compliant input styles
 const inputClassName = `
@@ -27,7 +50,56 @@ export function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [formError, setFormError] = useState<string | null>(null);
 
+  const formLoadTime = useRef<number | null>(null);
+
+  useEffect(() => {
+    formLoadTime.current = Date.now();
+  }, []);
+
   const summaryRef = useRef<HTMLDivElement>(null);
+
+  // ✅ Optional: Imperative MCP tool (progressive enhancement)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const nav = navigator as NavigatorWithMCP;
+
+    if (nav.modelContext) {
+      try {
+        nav.modelContext.registerTool<ContactEnquiryParams, { success: true }>({
+          name: "send_contact_enquiry",
+          description:
+            "Send a contact enquiry to James Merriman including name, email, and message",
+          inputSchema: {
+            type: "object",
+            required: ["name", "email", "message"],
+            properties: {
+              name: { type: "string", maxLength: 100 },
+              email: { type: "string", format: "email", maxLength: 100 },
+              company: { type: "string", maxLength: 100 },
+              telephone: { type: "string" },
+              message: { type: "string", maxLength: 500 },
+            },
+          },
+          execute: async (params) => {
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "X-Submission-Type": "mcp-agent" },
+              body: JSON.stringify(params),
+            });
+
+            if (!res.ok) {
+              throw new Error("Submission failed");
+            }
+
+            return { success: true };
+          },
+        });
+      } catch {
+        // fail silently (experimental API)
+      }
+    }
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -37,7 +109,8 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    if (formData.get("botField")) return;
+    // ✅ Improved honeypot name (less likely to be filled by agents)
+    if (formData.get("website")) return;
 
     const name = formData.get("name")?.toString().trim() || "";
     const email = formData.get("email")?.toString().trim() || "";
@@ -69,6 +142,9 @@ export function ContactForm() {
     try {
       setLoading(true);
 
+      const timeToSubmit =
+        formLoadTime.current !== null ? Date.now() - formLoadTime.current : undefined;
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,6 +154,9 @@ export function ContactForm() {
           company,
           message,
           telephone,
+          meta: {
+            timeToSubmit,
+          },
         }),
       });
 
@@ -104,11 +183,18 @@ export function ContactForm() {
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="space-y-4 max-w-xl">
-      {/* Honeypot */}
+    <form
+      noValidate
+      onSubmit={handleSubmit}
+      className="space-y-4 max-w-xl"
+      // ✅ WebMCP declarative hooks (core addition)
+      toolname="send_contact_enquiry"
+      tooldescription="Send a contact enquiry including name, email, and message"
+    >
+      {/* ✅ Honeypot */}
       <input
         type="text"
-        name="botField"
+        name="website"
         tabIndex={-1}
         autoComplete="off"
         className="hidden"
@@ -143,6 +229,7 @@ export function ContactForm() {
           name="name"
           required
           autoComplete="name"
+          data-purpose="full_name"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "name-error" : undefined}
           className={inputClassName}
@@ -165,6 +252,7 @@ export function ContactForm() {
           type="email"
           required
           autoComplete="email"
+          data-purpose="email_address"
           aria-invalid={!!errors.email}
           aria-describedby={errors.email ? "email-error" : undefined}
           className={inputClassName}
@@ -185,6 +273,7 @@ export function ContactForm() {
           id="company"
           name="company"
           autoComplete="organization"
+          data-purpose="company"
           aria-invalid={!!errors.company}
           aria-describedby={errors.company ? "company-error" : undefined}
           className={inputClassName}
@@ -206,6 +295,7 @@ export function ContactForm() {
           name="telephone"
           type="tel"
           autoComplete="tel"
+          data-purpose="phone_number"
           className={inputClassName}
         />
       </div>
@@ -221,6 +311,7 @@ export function ContactForm() {
           required
           rows={5}
           autoComplete="off"
+          data-purpose="enquiry_message"
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
           className={inputClassName}
@@ -243,7 +334,7 @@ export function ContactForm() {
         disabled={loading}
         className="
           mt-2 inline-flex items-center justify-center rounded
-           bg-gray-200 px-6 py-3 text-sm font-medium
+          bg-gray-200 px-6 py-3 text-sm font-medium
           text-black hover:bg-black hover:text-white
           transition motion-reduce:transition-none
           disabled:opacity-50

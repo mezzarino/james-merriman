@@ -89,6 +89,13 @@ export default [
       // ✅ React
       "react/react-in-jsx-scope": "off",
 
+      "react/no-unknown-property": [
+        "error",
+          {
+            ignore: ["toolname", "tooldescription"],
+          },
+      ],
+
       // ✅ Unicorn (modern best practices)
       "unicorn/prefer-top-level-await": "warn",
       "unicorn/no-useless-undefined": "warn",
