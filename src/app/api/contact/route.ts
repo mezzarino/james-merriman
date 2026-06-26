@@ -32,21 +32,16 @@ export async function POST(req: Request) {
   const { name, email, company, telephone, message, botField, website, meta } =
     data as ContactPayload;
 
-  // ✅ 1. Honeypot (support both old + new field)
   if (botField || website) {
     return NextResponse.json({ success: true });
   }
 
-  // ✅ 2. Detect MCP submissions (from your frontend tool)
   const submissionType = headers.get("x-submission-type");
   const isMCP = submissionType === "mcp-agent";
 
-  // ✅ 3. Detect "too fast" submissions (likely automation)
   const timeToSubmit = typeof meta?.timeToSubmit === "number" ? meta.timeToSubmit : undefined;
+  const isFast = timeToSubmit !== undefined && timeToSubmit < 1000;
 
-  const isFast = timeToSubmit !== undefined && timeToSubmit < 1500;
-
-  // ✅ 4. Classify source
   let source: "HUMAN" | "AI_AGENT" | "LIKELY_AUTOMATION";
 
   if (isMCP) {
@@ -57,14 +52,12 @@ export async function POST(req: Request) {
     source = "HUMAN";
   }
 
-  // ✅ Optional: useful logging
   console.log({
     source,
     timeToSubmit,
     userAgent: headers.get("user-agent"),
   });
 
-  // ✅ Validation (unchanged, just safer typing)
   if (
     typeof name !== "string" ||
     typeof email !== "string" ||
@@ -90,8 +83,6 @@ export async function POST(req: Request) {
       to: ["info@jamesmerriman.co.uk"],
       replyTo: email,
       subject: `Contact form message from ${name}`,
-
-      // ✅ Include detection in email (very useful in practice)
       html: `
         <h1>Website contact form submission</h1>
 

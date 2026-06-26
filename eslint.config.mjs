@@ -91,9 +91,9 @@ export default [
 
       "react/no-unknown-property": [
         "error",
-          {
-            ignore: ["toolname", "tooldescription"],
-          },
+        {
+          ignore: ["toolname", "tooldescription"],
+        },
       ],
 
       // ✅ Unicorn (modern best practices)

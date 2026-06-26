@@ -29,11 +29,14 @@ interface ModelContext {
   registerTool: <TInput, TOutput>(tool: MCPTool<TInput, TOutput>) => void;
 }
 
+interface DocumentWithMCP extends Document {
+  modelContext?: ModelContext;
+}
+
 interface NavigatorWithMCP extends Navigator {
   modelContext?: ModelContext;
 }
 
-// ✅ Shared, WCAG-compliant input styles
 const inputClassName = `
   w-full rounded
   border border-gray-500
@@ -53,23 +56,22 @@ export function ContactForm() {
   const formLoadTime = useRef<number | null>(null);
 
   useEffect(() => {
-    formLoadTime.current = Date.now();
+    formLoadTime.current = performance.now();
   }, []);
 
   const summaryRef = useRef<HTMLDivElement>(null);
 
-  // ✅ Optional: Imperative MCP tool (progressive enhancement)
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const nav = navigator as NavigatorWithMCP;
+    const modelContext =
+      (document as DocumentWithMCP).modelContext || (navigator as NavigatorWithMCP).modelContext;
 
-    if (nav.modelContext) {
+    if (modelContext) {
       try {
-        nav.modelContext.registerTool<ContactEnquiryParams, { success: true }>({
+        modelContext.registerTool<ContactEnquiryParams, { success: boolean; error?: string }>({
           name: "send_contact_enquiry",
-          description:
-            "Send a contact enquiry to James Merriman including name, email, and message",
+          description: "Send a contact enquiry to James Merriman including name, email and message",
           inputSchema: {
             type: "object",
             required: ["name", "email", "message"],
@@ -84,19 +86,26 @@ export function ContactForm() {
           execute: async (params) => {
             const res = await fetch("/api/contact", {
               method: "POST",
-              headers: { "Content-Type": "application/json", "X-Submission-Type": "mcp-agent" },
+              headers: {
+                "Content-Type": "application/json",
+                "X-Submission-Type": "mcp-agent",
+              },
               body: JSON.stringify(params),
             });
 
             if (!res.ok) {
-              throw new Error("Submission failed");
+              const errorData = await res.json().catch(() => ({}));
+              return {
+                success: false,
+                error: errorData.error || "Submission failed due to a server error.",
+              };
             }
 
             return { success: true };
           },
         });
       } catch {
-        // fail silently (experimental API)
+        // Fail silently for experimental API
       }
     }
   }, []);
@@ -109,7 +118,6 @@ export function ContactForm() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // ✅ Improved honeypot name (less likely to be filled by agents)
     if (formData.get("website")) return;
 
     const name = formData.get("name")?.toString().trim() || "";
@@ -143,7 +151,9 @@ export function ContactForm() {
       setLoading(true);
 
       const timeToSubmit =
-        formLoadTime.current !== null ? Date.now() - formLoadTime.current : undefined;
+        formLoadTime.current !== null
+          ? Math.round(performance.now() - formLoadTime.current)
+          : undefined;
 
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -177,7 +187,7 @@ export function ContactForm() {
         role="status"
         className="rounded-lg border border-green-600 bg-green-50 p-6 text-green-800"
       >
-        Thanks — your message has been sent successfully.
+        Thanks. Your message has been sent successfully.
       </div>
     );
   }
@@ -187,11 +197,11 @@ export function ContactForm() {
       noValidate
       onSubmit={handleSubmit}
       className="space-y-4 max-w-xl"
-      // ✅ WebMCP declarative hooks (core addition)
-      toolname="send_contact_enquiry"
-      tooldescription="Send a contact enquiry including name, email, and message"
+      {...({
+        toolname: "send_contact_enquiry",
+        tooldescription: "Send a contact enquiry including name, email and message",
+      } as React.FormHTMLAttributes<HTMLFormElement>)}
     >
-      {/* ✅ Honeypot */}
       <input
         type="text"
         name="website"
@@ -201,7 +211,6 @@ export function ContactForm() {
         aria-hidden="true"
       />
 
-      {/* Error summary */}
       {Object.keys(errors).length > 0 && (
         <div
           ref={summaryRef}
@@ -219,7 +228,6 @@ export function ContactForm() {
         </div>
       )}
 
-      {/* Name */}
       <div>
         <label htmlFor="name" className="block text-sm font-medium">
           Name *
@@ -241,7 +249,6 @@ export function ContactForm() {
         )}
       </div>
 
-      {/* Email */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium">
           Email *
@@ -264,7 +271,6 @@ export function ContactForm() {
         )}
       </div>
 
-      {/* Company */}
       <div>
         <label htmlFor="company" className="block text-sm font-medium">
           Company
@@ -285,7 +291,6 @@ export function ContactForm() {
         )}
       </div>
 
-      {/* Telephone */}
       <div>
         <label htmlFor="telephone" className="block text-sm font-medium">
           Telephone
@@ -300,7 +305,6 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Message */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium">
           Message *
@@ -346,7 +350,7 @@ export function ContactForm() {
       <p className="text-sm text-gray-500 mt-4">
         <strong>Privacy notice</strong>
         <br />
-        By submitting this form, you consent to James Merriman using your information to respond to
+        By submitting this form you consent to James Merriman using your information to respond to
         your enquiry. Details will not be shared. See our{" "}
         <Link href="/privacy-policy">Privacy Policy</Link>.
       </p>

@@ -261,4 +261,3 @@ These areas are either:
 ---
 
 ✅ This strategy provides **high confidence**, **low maintenance**, and **production‑grade coverage** for a content‑driven site.
-```
