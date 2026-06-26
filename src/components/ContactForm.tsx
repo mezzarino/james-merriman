@@ -76,11 +76,16 @@ export function ContactForm() {
             type: "object",
             required: ["name", "email", "message"],
             properties: {
-              name: { type: "string", maxLength: 100 },
-              email: { type: "string", format: "email", maxLength: 100 },
-              company: { type: "string", maxLength: 100 },
-              telephone: { type: "string" },
-              message: { type: "string", maxLength: 500 },
+              name: { type: "string", maxLength: 100, description: "The sender's name" },
+              email: {
+                type: "string",
+                format: "email",
+                maxLength: 100,
+                description: "The sender's email address",
+              },
+              company: { type: "string", maxLength: 100, description: "The sender's company" },
+              telephone: { type: "string", description: "The sender's telephone number" },
+              message: { type: "string", maxLength: 500, description: "The message content" },
             },
           },
           execute: async (params) => {
