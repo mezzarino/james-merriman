@@ -1,4 +1,5 @@
 // lib/youtube.ts
+import { config } from "@/config";
 
 export function extractYouTubeIds(html: string): string[] {
   const matches = html.matchAll(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/g);
@@ -71,14 +72,28 @@ export async function buildVideoObjectFromHtml(
       description: apiMeta.description || articleDescription || undefined,
       thumbnailUrl: [apiMeta.thumbnail],
       uploadDate: apiMeta.uploadDate,
+      publisher: {
+        "@id": `${config.baseUrl}#organization`,
+      },
       duration: apiMeta.duration,
       embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
       url: `https://www.youtube.com/watch?v=${youtubeId}`,
+      contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
       interactionStatistic: {
         "@type": "InteractionCounter",
         interactionType: { "@type": "WatchAction" },
         userInteractionCount: apiMeta.viewCount,
       },
+      hasPart: {
+        "@type": "WebPageElement",
+        isAccessibleForFree: true,
+        position: 1,
+      },
+      potentialAction: {
+        "@type": "WatchAction",
+        target: `https://www.youtube.com/watch?v=${youtubeId}`,
+      },
+      inLanguage: "en-GB",
     };
   }
 
@@ -91,8 +106,22 @@ export async function buildVideoObjectFromHtml(
     name: oEmbedMeta.title,
     description: articleDescription || undefined,
     thumbnailUrl: [oEmbedMeta.thumbnail],
+    publisher: {
+      "@id": `${config.baseUrl}#organization`,
+    },
     uploadDate: articlePublishedAt ? new Date(articlePublishedAt).toISOString() : undefined,
     embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
     url: `https://www.youtube.com/watch?v=${youtubeId}`,
+    contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
+    hasPart: {
+      "@type": "WebPageElement",
+      isAccessibleForFree: true,
+      position: 1,
+    },
+    potentialAction: {
+      "@type": "WatchAction",
+      target: `https://www.youtube.com/watch?v=${youtubeId}`,
+    },
+    inLanguage: "en-GB",
   };
 }

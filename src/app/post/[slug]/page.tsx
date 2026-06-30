@@ -117,7 +117,11 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         url: `${config.baseUrl}/post/${slug}`,
         headline: title,
         description: result.post.description || undefined,
-        ...(videoObject ? { video: videoObject } : {}),
+        ...(videoObject
+          ? {
+              video: { "@id": `${config.baseUrl}/post/${slug}#video` },
+            }
+          : {}),
         image: image
           ? [
               {
@@ -207,6 +211,18 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
               }))
             : undefined,
       },
+      ...(videoObject
+        ? [
+            {
+              ...videoObject,
+              "@id": `${config.baseUrl}/post/${slug}#video`,
+              mainEntityOfPage: `${config.baseUrl}/post/${slug}`,
+              isPartOf: {
+                "@id": `${config.baseUrl}/post/${slug}#webpage`,
+              },
+            },
+          ]
+        : []),
     ],
   };
 
