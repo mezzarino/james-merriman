@@ -145,18 +145,16 @@ describe("FilterBar", () => {
 
     const scrollBySpy = vi.spyOn(HTMLElement.prototype, "scrollBy").mockImplementation(() => {});
 
-    vi.spyOn(window, "matchMedia").mockImplementation(
-      (query: string): MediaQueryList => ({
-        matches: false,
-        media: query,
-        onchange: null,
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-        addListener: vi.fn(),
-        removeListener: vi.fn(),
-        dispatchEvent: vi.fn(),
-      }),
-    );
+    vi.spyOn(window, "matchMedia").mockImplementation((query: string): MediaQueryList => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }));
 
     render(<FilterBar active="latest" />);
 
