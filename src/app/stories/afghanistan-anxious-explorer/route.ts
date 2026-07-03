@@ -103,6 +103,7 @@ export async function GET() {
         {
           "@type": "ImageObject",
           "url": "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg",
+          "contentUrl": "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg",
           "creator": {
             "@id": "https://www.jamesmerriman.co.uk#person"
           },

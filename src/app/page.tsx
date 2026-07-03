@@ -134,6 +134,7 @@ export default async function Page(props: {
           "@type": "ImageObject",
           "@id": `${config.baseUrl}#logo`,
           url: `${config.baseUrl}/logo.png`,
+          contentUrl: `${config.baseUrl}/logo.png`,
           width: 640,
           height: 640,
           name: "James Merriman Travel Writer logo",

@@ -84,11 +84,6 @@ export async function buildVideoObjectFromHtml(
         interactionType: { "@type": "WatchAction" },
         userInteractionCount: apiMeta.viewCount,
       },
-      hasPart: {
-        "@type": "WebPageElement",
-        isAccessibleForFree: true,
-        position: 1,
-      },
       potentialAction: {
         "@type": "WatchAction",
         target: `https://www.youtube.com/watch?v=${youtubeId}`,
@@ -113,11 +108,6 @@ export async function buildVideoObjectFromHtml(
     embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
     url: `https://www.youtube.com/watch?v=${youtubeId}`,
     contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
-    hasPart: {
-      "@type": "WebPageElement",
-      isAccessibleForFree: true,
-      position: 1,
-    },
     potentialAction: {
       "@type": "WatchAction",
       target: `https://www.youtube.com/watch?v=${youtubeId}`,

@@ -127,6 +127,7 @@ const Page = async () => {
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
                   width: 1200,
                   height: 1600,
                 },

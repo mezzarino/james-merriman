@@ -127,6 +127,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
               {
                 "@type": "ImageObject",
                 url: image,
+                contentUrl: image,
                 width: 840,
                 height: 630,
                 creator: {

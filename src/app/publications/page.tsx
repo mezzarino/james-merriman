@@ -142,6 +142,7 @@ const Page = async () => {
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
@@ -191,6 +192,7 @@ const Page = async () => {
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
@@ -244,6 +246,7 @@ const Page = async () => {
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
@@ -287,6 +290,7 @@ const Page = async () => {
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                   width: 1200,
                   height: 630,
                 },
