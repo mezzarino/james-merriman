@@ -130,10 +130,6 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
                 },
 
-                isPartOf: {
-                  "@id": `${config.baseUrl}/talks-presentations#service`,
-                },
-
                 offers: {
                   "@type": "Offer",
                   url: "https://www.rgs.org",
@@ -193,10 +189,6 @@ const Page = async () => {
 
                 mainEntityOfPage: {
                   "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
-                },
-
-                isPartOf: {
-                  "@id": `${config.baseUrl}/talks-presentations#service`,
                 },
 
                 offers: {
