@@ -80,12 +80,20 @@ const Page = async () => {
                         "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                       },
                     },
+                    {
+                      "@type": "ListItem",
+                      position: 2,
+                      item: {
+                        "@id": `${config.baseUrl}/talks-presentations#globetrotters-london-afghanistan`,
+                      },
+                    },
                   ],
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/talks-presentations#breadcrumb`,
                 },
               },
+
               {
                 "@type": "Service",
                 "@id": `${config.baseUrl}/talks-presentations#service`,
@@ -108,6 +116,7 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
                 },
               },
+
               {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
@@ -116,6 +125,15 @@ const Page = async () => {
                 startDate: "2026-04-08T00:00:00Z",
                 endDate: "2026-04-08T00:00:00Z",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+
+                mainEntityOfPage: {
+                  "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
+                },
+
+                isPartOf: {
+                  "@id": `${config.baseUrl}/talks-presentations#service`,
+                },
+
                 offers: {
                   "@type": "Offer",
                   url: "https://www.rgs.org",
@@ -124,6 +142,7 @@ const Page = async () => {
                   availability: "https://schema.org/InStock",
                   validFrom: "2026-03-09T00:00:00Z",
                 },
+
                 image: {
                   "@type": "ImageObject",
                   url: `${config.baseUrl}/images/james-merriman.jpg`,
@@ -131,16 +150,19 @@ const Page = async () => {
                   width: 1200,
                   height: 1600,
                 },
+
                 organizer: {
                   "@type": "Organization",
                   name: "Royal Geographical Society (South West)",
                   url: "https://www.rgs.org",
                 },
+
                 performer: {
                   "@id": `${config.baseUrl}#person`,
                   "@type": "Person",
                   name: "James Merriman",
                 },
+
                 location: {
                   "@type": "Place",
                   name: "Royal Geographical Society (South West)",
@@ -150,13 +172,83 @@ const Page = async () => {
                     addressCountry: "GB",
                   },
                 },
+
                 description:
                   "A 15-minute illustrated presentation reflecting on first-hand travel in Afghanistan, focusing on movement, public life, and everyday experiences beyond media narratives.",
+
                 about: {
                   "@type": "Place",
                   name: "Afghanistan",
                 },
               },
+
+              {
+                "@type": "Event",
+                "@id": `${config.baseUrl}/talks-presentations#globetrotters-london-afghanistan`,
+                name: "Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan",
+                eventStatus: "https://schema.org/EventScheduled",
+                startDate: "2026-10-03T14:45:00+01:00",
+                endDate: "2026-10-03T17:00:00+01:00",
+                eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+
+                mainEntityOfPage: {
+                  "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
+                },
+
+                isPartOf: {
+                  "@id": `${config.baseUrl}/talks-presentations#service`,
+                },
+
+                offers: {
+                  "@type": "Offer",
+                  url: "https://globetrotters.co.uk/blog/events/saturday-october-3-2026.html",
+                  price: "10",
+                  priceCurrency: "GBP",
+                  availability: "https://schema.org/InStock",
+                  validFrom: "2026-10-01T00:00:00+01:00",
+                },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: `${config.baseUrl}/images/james-merriman.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
+                  width: 1200,
+                  height: 1600,
+                },
+
+                organizer: {
+                  "@type": "Organization",
+                  name: "The Globetrotters Club",
+                  url: "https://globetrotters.co.uk/",
+                },
+
+                performer: {
+                  "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                },
+
+                location: {
+                  "@type": "Place",
+                  name: "The Church Of Scotland",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "Crown Court",
+                    addressLocality: "London",
+                    postalCode: "WC2B 5EZ",
+                    addressCountry: "GB",
+                  },
+                },
+
+                description:
+                  "In this illustrated talk, James shares the story of a ten-day journey through Afghanistan in early 2026, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif during a period of heightened regional tension, with a focus on walking, public life and everyday encounters.",
+
+                about: {
+                  "@type": "Place",
+                  name: "Afghanistan",
+                },
+              },
+
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/talks-presentations#breadcrumb`,
@@ -197,6 +289,26 @@ const Page = async () => {
               first‑hand experience in lesser‑known and complex regions. Presentations combine
               narrative travel writing with geographic and cultural context.
             </p>
+            <h2>Upcoming talks</h2>
+            <article>
+              <h3>Globetrotters Club (London) - 3rd October 2026</h3>
+              <p>
+                <strong>Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan</strong> — In
+                this illustrated talk, James shares the story of a ten-day journey in early 2026
+                through Afghanistan, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif
+                during a period of heightened regional tension.on in Afghanistan, with a focus on
+                walking, public life, and everyday encounters.{" "}
+                <a
+                  href="https://globetrotters.co.uk/blog/events/saturday-october-3-2026.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Find out more and book tickets for the Globetrotters Club (London) - 3rd October 2026 event"
+                >
+                  Book tickets for this event here
+                </a>
+                .
+              </p>
+            </article>
             <h2>Recent talks</h2>
             <article>
               <h3>Royal Geographical Society (South West)</h3>
