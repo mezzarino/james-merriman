@@ -46,6 +46,7 @@ export const metadata: Metadata = {
 };
 
 const publications = [
+  { id: "buzkashi-the-rules-of-the-game" },
   { id: "awakening-of-leptis-magna" },
   { id: "eating-my-way-around-nice" },
   { id: "my-tehran-beyond-the-headlines" },
@@ -123,6 +124,56 @@ const Page = async () => {
                     item: `${config.baseUrl}/publications`,
                   },
                 ],
+              },
+
+              // ✅ Article (Globe Magazine - Summer 2026)
+              {
+                "@type": "Article",
+                "@id": `${config.baseUrl}/publications#buzkashi-the-rules-of-the-game`,
+                headline: "Buzkashi: the rules of the game",
+                name: "Buzkashi: the rules of the game",
+
+                author: {
+                  "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
+                },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  width: 1200,
+                  height: 630,
+                },
+
+                publisher: {
+                  "@type": "Organization",
+                  name: "Globe Magazine",
+                  url: "https://globetrotters.co.uk/members/globe.html",
+                },
+                datePublished: "2026-07-05T00:00:00+00:00",
+                about: {
+                  "@type": "Place",
+                  name: "Mazar-e-Sharif",
+                },
+                isPartOf: {
+                  "@type": "PublicationIssue",
+                  name: "Globe Magazine – Summer 2026",
+                  isPartOf: {
+                    "@type": "Periodical",
+                    name: "Globe Magazine",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@id": `${config.baseUrl}/publications#collectionpage`,
+                },
+                encoding: {
+                  "@type": "MediaObject",
+                  contentUrl: `${config.baseUrl}/publications/globe-magazine-summer-2026.pdf`,
+                  encodingFormat: "application/pdf",
+                },
               },
 
               // ✅ Article (Globe Magazine - Spring 2026)
@@ -418,6 +469,38 @@ const Page = async () => {
             </article>
 
             <h2 className="mt-12 text-2xl font-semibold">Magazine writing</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">Buzkashi: the rules of the game</h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>Globe Magazine</em> · Summer 2026 · Commissioned feature
+              </p>
+
+              <p className="mt-3">
+                Experience the intensity of Buzkashi, Afghanistan’s national sport, as riders battle
+                on horseback through dust, chaos and fierce competition in a vivid first-hand
+                account from Mazar-e-Sharif.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="/publications/globe-magazine-summer-2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Download PDF excerpt of Buzkashi: the rules of the game"
+                >
+                  Download PDF excerpt (Mazar-e-Sharif)
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication and layout remain the copyright of <em>Globe Magazine</em>.
+                The PDF excerpt is shared for portfolio purposes. The blog version is an adapted
+                author’s cut.
+              </p>
+            </article>
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">The Awakening of Leptis Magna</h3>
