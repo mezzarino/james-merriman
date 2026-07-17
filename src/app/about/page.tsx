@@ -309,7 +309,7 @@ const Page = async () => {
             <ul>
               <li>
                 <a
-                  href="intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
+                  href="https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Listen to the Intrepid Times podcast"
