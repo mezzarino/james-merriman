@@ -346,7 +346,7 @@ export default async function Page(props: {
             </Link>
             .
           </p>
-          <p>
+          <p className="text-lg">
             Recent feature:{" "}
             <a
               href="https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
