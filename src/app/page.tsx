@@ -346,6 +346,18 @@ export default async function Page(props: {
             </Link>
             .
           </p>
+          <p>
+            Recent feature:{" "}
+            <a
+              href="https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              I was interviewed by Intrepid Times on visiting 160+ countries and the idea of Deep
+              Travel
+            </a>
+            .
+          </p>
         </section>
 
         <h2 className="mt-12 mb-6 text-3xl px-4 font-semibold">Latest Travel Writing</h2>

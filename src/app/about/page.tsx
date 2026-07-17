@@ -177,6 +177,18 @@ const Page = async () => {
                   "Cultural Geography",
                   "Walking and Exploration",
                 ],
+                subjectOf: [
+                  {
+                    "@type": "Article",
+                    headline:
+                      "James Merriman Visited 160 Countries Before He Realized That Wasn't the Point of Travel",
+                    url: "https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/",
+                    publisher: {
+                      "@type": "Organization",
+                      name: "Intrepid Times",
+                    },
+                  },
+                ],
               },
               {
                 "@type": "WebSite",
@@ -286,6 +298,28 @@ const Page = async () => {
               local relationships provides a more memorable experience than simply ticking off
               landmarks and guidebook checklists.{" "}
             </p>
+
+            <h2>Interviews & Features</h2>
+
+            <p>
+              My work and approach to travel have also been featured in interviews and independent
+              publications.
+            </p>
+
+            <ul>
+              <li>
+                <a
+                  href="intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Listen to the Intrepid Times podcast"
+                >
+                  James Merriman Visited 160 Countries Before He Realized That Wasn&apos;t the Point
+                  of Travel
+                </a>{" "}
+                — <em>Intrepid Times</em> (2026)
+              </li>
+            </ul>
 
             <p>
               I work on long-form travel features, essays and documentary photography projects. I am
