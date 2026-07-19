@@ -318,7 +318,7 @@ export default async function Page(props: {
       <main className="container mx-auto max-w-6xl" id="main" tabIndex={-1}>
         <section className="container mx-auto my-6 max-w-6xl px-4 prose">
           <p id="homepage-intro" className="text-lg">
-            This site presents the writing and photographic work of British travel writer James
+            This site presents the writing and photographic work of British and Irish travel writer James
             Merriman. You can read{" "}
             <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
               my biography

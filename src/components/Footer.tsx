@@ -28,7 +28,7 @@ export const Footer = () => {
 
       {/* ✅ Trust / context */}
       <p className="mb-6 text-sm text-muted-foreground text-center">
-        James Merriman is a British travel writer and photographer documenting culture, history and
+        James Merriman is a British and Irish travel writer and photographer documenting culture, history and
         remote places worldwide.
       </p>
 

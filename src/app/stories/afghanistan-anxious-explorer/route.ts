@@ -98,7 +98,7 @@ export async function GET() {
       "@type": "Article",
       "@id": "https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer#article",
       "headline": "Afghanistan: The Anxious Explorer",
-      "description": "A visual narrative of travel in Afghanistan by British travel writer and photographer James Merriman.",
+      "description": "A visual narrative of travel in Afghanistan by British and Irish travel writer and photographer James Merriman.",
       "image": [
         {
           "@type": "ImageObject",

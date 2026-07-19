@@ -63,7 +63,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/privacy-policy`,
                 name: "Privacy Policy | James Merriman",
                 description:
-                  "Privacy policy outlining how personal data is collected, used and protected by British travel writer and photographer James Merriman.",
+                  "Privacy policy outlining how personal data is collected, used and protected by British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },

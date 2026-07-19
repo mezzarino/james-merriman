@@ -73,7 +73,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/photography`,
                 name: "James Merriman Photography Portfolio",
                 description:
-                  "Travel and landscape photography portfolio by British travel writer and photographer James Merriman.",
+                  "Travel and landscape photography portfolio by British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },

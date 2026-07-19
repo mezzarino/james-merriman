@@ -62,7 +62,7 @@ export default function StoriesPage() {
                 url: "https://stories.jamesmerriman.co.uk/",
                 name: "Stories | James Merriman",
                 description:
-                  "Visual travel stories and photo essays by British travel writer and photographer James Merriman.",
+                  "Visual travel stories and photo essays by British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": "https://stories.jamesmerriman.co.uk/#website",
                 },

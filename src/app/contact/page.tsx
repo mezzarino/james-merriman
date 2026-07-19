@@ -63,7 +63,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/contact`,
                 name: "Contact James Merriman | Travel Writer and Photographer",
                 description:
-                  "Contact information and social channels for British travel writer and photographer James Merriman.",
+                  "Contact information and social channels for British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },

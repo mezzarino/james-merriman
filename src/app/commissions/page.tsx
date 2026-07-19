@@ -63,7 +63,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/commissions`,
                 name: "Editorial Commissions | James Merriman",
                 description:
-                  "Information on commissioning travel writing, long-form features and documentary photography by British travel writer James Merriman.",
+                  "Information on commissioning travel writing, long-form features and documentary photography by British and Irish travel writer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -183,8 +183,8 @@ const Page = async () => {
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <FigureImage
               src="/images/james-merriman.jpg"
-              alt="James Merriman, British travel writer and photographer"
-              caption="James Merriman, British travel writer and photographer"
+              alt="James Merriman, British and Irish travel writer and photographer"
+              caption="James Merriman, British and Irish travel writer and photographer"
               width={1200}
               height={1600}
             />

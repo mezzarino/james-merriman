@@ -64,7 +64,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/credentials`,
                 name: "Credentials | James Merriman",
                 description:
-                  "Awards, professional memberships and field credentials of British travel writer and photographer James Merriman.",
+                  "Awards, professional memberships and field credentials of British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -91,7 +91,7 @@ const Page = async () => {
                   height: 1600,
                 },
                 description:
-                  "British travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
+                  "British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",
                 nationality: {
                   "@type": "Country",

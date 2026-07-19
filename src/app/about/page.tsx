@@ -91,7 +91,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/about`,
                 name: "About James Merriman: Travel Writer and Photographer",
                 description:
-                  "Personal background and fieldwork practice of a British travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
+                  "Personal background and fieldwork practice of a British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -133,7 +133,7 @@ const Page = async () => {
                   height: 1600,
                 },
                 description:
-                  "British travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
+                  "British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",
                 hasOccupation: {
                   "@type": "Occupation",
@@ -221,7 +221,7 @@ const Page = async () => {
 
       <FullWidthHeader
         title="About James Merriman: Travel Writer and Photographer"
-        description="Personal background and fieldwork practice of a British travel writer and photographer documenting culture and geography in over 160 countries."
+        description="Personal background and fieldwork practice of a British and Irish travel writer and photographer documenting culture and geography in over 160 countries."
         breadcrumb={[
           { label: "Home", href: "/" },
           { label: "About", href: "/about" },
@@ -232,7 +232,7 @@ const Page = async () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p id="about-intro">
-              I am a British travel writer and photographer based in Devon, England. A Fellow of the
+              I am a British and Irish travel writer and photographer based in Devon, England. A Fellow of the
               Royal Geographical Society, I have travelled to{" "}
               <strong>more than 160 countries across six continents</strong> and built a long-term
               body of work focused on geography, culture and lived experience.
@@ -360,8 +360,8 @@ const Page = async () => {
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <FigureImage
               src="/images/james-merriman.jpg"
-              alt="James Merriman, British travel writer and photographer"
-              caption="James Merriman, British travel writer and photographer"
+              alt="James Merriman, British and Irish travel writer and photographer"
+              caption="James Merriman, British and Irish travel writer and photographer"
               width={1200}
               height={1600}
             />

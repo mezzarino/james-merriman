@@ -64,7 +64,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/licencing`,
                 name: "Photography Licencing | James Merriman",
                 description:
-                  "Information on licencing documentary and travel photography by British travel writer and photographer James Merriman for editorial and commercial use.",
+                  "Information on licencing documentary and travel photography by British and Irish travel writer and photographer James Merriman for editorial and commercial use.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
@@ -193,8 +193,8 @@ const Page = async () => {
           <div className="w-full lg:w-1/3 pt-8 lg:pt-0 lg:pl-8">
             <FigureImage
               src="/images/james-merriman.jpg"
-              alt="James Merriman, British travel writer and photographer"
-              caption="James Merriman, British travel writer and photographer"
+              alt="James Merriman, British and Irish travel writer and photographer"
+              caption="James Merriman, British and Irish travel writer and photographer"
               width={1200}
               height={1600}
             />

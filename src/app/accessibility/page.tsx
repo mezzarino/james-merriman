@@ -60,7 +60,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/accessibility`,
                 name: "Accessibility Statement | James Merriman",
                 description:
-                  "Accessibility statement outlining the digital accessibility features, standards and ongoing improvements for British travel writer and photographer James Merriman.",
+                  "Accessibility statement outlining the digital accessibility features, standards and ongoing improvements for British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },

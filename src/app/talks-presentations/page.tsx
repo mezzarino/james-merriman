@@ -62,7 +62,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/talks-presentations`,
                 name: "Talks & Presentations | James Merriman",
                 description:
-                  "Talks and illustrated presentations by British travel writer and photographer James Merriman, based on fieldwork and first-hand reporting.",
+                  "Talks and illustrated presentations by British and Irish travel writer and photographer James Merriman, based on fieldwork and first-hand reporting.",
                 isPartOf: {
                   "@id": `${config.baseUrl}#website`,
                 },
