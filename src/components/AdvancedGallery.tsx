@@ -43,7 +43,7 @@ export const AdvancedGallery = ({ initialPhotos }: { initialPhotos: Photo[] }) =
               setFilter(cat);
               setVisibleCount(15);
             }}
-            className={`px-4 py-2 rounded ${
+            className={`px-4 py-2 rounded cursor-pointer ${
               filter === cat ? "bg-black text-white" : "bg-gray-200"
             }`}
           >
