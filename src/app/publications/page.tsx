@@ -55,6 +55,11 @@ const publications = [
     external: true,
     url: "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe#james-merriman",
   },
+  {
+    id: "afghanistan-adventure-dust-mountains-and-buzkashi",
+    external: true,
+    url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
+  },
 ];
 
 const Page = async () => {
@@ -323,6 +328,49 @@ const Page = async () => {
                 url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
               },
 
+              // ✅ NewsArticle (Lupine Travel)
+              {
+                "@type": "NewsArticle",
+                "@id": "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
+                headline: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
+                name: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
+
+                author: {
+                  "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
+                },
+
+                image: {
+                  "@type": "ImageObject",
+                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                  width: 1200,
+                  height: 630,
+                },
+
+                publisher: {
+                  "@type": "Organization",
+                  name: "Lupine Travel",
+                  url: "https://lupinetravel.co.uk/",
+                },
+                datePublished: "2026-07-22T00:00:00+00:00",
+                about: {
+                  "@type": "Place",
+                  name: "Afghanistan",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "AF",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
+                },
+                url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
+              },
+
               // ✅ NewsArticle (Guardian)
               {
                 "@type": "NewsArticle",
@@ -397,6 +445,38 @@ const Page = async () => {
               <Link href="/about">about page</Link>, or browse articles published on this site by
               theme on the <Link href="/category">categories page</Link>.
             </p>
+
+            <h2 className="mt-12 text-2xl font-semibold">Websites &amp; online platforms</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">Afghanistan Adventure: Dust, Mountains and Buzkashi</h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>Lupine Travel</em> · July 2026 · Published feature
+              </p>
+
+              <p className="mt-3">
+                A first-hand account of travel through Afghanistan, tracing the country’s dust,
+                mountain landscapes and the intensity of buzkashi as both spectacle and cultural
+                ritual.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Read the article on Lupine Travel website"
+                >
+                  Read the article on Lupine Travel
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication remains the copyright of <em>Lupine Travel</em>.
+              </p>
+            </article>
 
             <h2 className="mt-12 text-2xl font-semibold">Newspapers</h2>
 
