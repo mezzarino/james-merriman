@@ -136,8 +136,12 @@ See `TESTING.md` for full details.
 ```bash
 git clone https://github.com/mezzarino/james-merriman
 cd james-merriman
+corepack enable
+corepack prepare pnpm@11.15.0 --activate
 pnpm install
 ```
+
+> Note: this project uses pnpm 11.15.0 for local development and deployments. Using a different pnpm version can cause lockfile or Vercel install issues.
 
 ---
 
