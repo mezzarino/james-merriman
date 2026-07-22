@@ -331,7 +331,8 @@ const Page = async () => {
               // ✅ NewsArticle (Lupine Travel)
               {
                 "@type": "NewsArticle",
-                "@id": "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
+                "@id":
+                  "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
                 headline: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
                 name: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
 
@@ -366,7 +367,8 @@ const Page = async () => {
                 },
                 mainEntityOfPage: {
                   "@type": "WebPage",
-                  "@id": "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
+                  "@id":
+                    "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
                 },
                 url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
               },
@@ -449,7 +451,9 @@ const Page = async () => {
             <h2 className="mt-12 text-2xl font-semibold">Websites &amp; online platforms</h2>
 
             <article className="mb-10">
-              <h3 className="text-xl font-semibold">Afghanistan Adventure: Dust, Mountains and Buzkashi</h3>
+              <h3 className="text-xl font-semibold">
+                Afghanistan Adventure: Dust, Mountains and Buzkashi
+              </h3>
 
               <p className="text-sm text-gray-600 mt-1">
                 <em>Lupine Travel</em> · July 2026 · Published feature

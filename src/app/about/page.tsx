@@ -232,8 +232,8 @@ const Page = async () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p id="about-intro">
-              I am a British and Irish travel writer and photographer based in Devon, England. A Fellow of the
-              Royal Geographical Society, I have travelled to{" "}
+              I am a British and Irish travel writer and photographer based in Devon, England. A
+              Fellow of the Royal Geographical Society, I have travelled to{" "}
               <strong>more than 160 countries across six continents</strong> and built a long-term
               body of work focused on geography, culture and lived experience.
             </p>
