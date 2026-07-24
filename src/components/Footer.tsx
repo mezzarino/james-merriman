@@ -54,7 +54,7 @@ export const Footer = () => {
       </nav>
 
       {/* ✅ Divider */}
-      <div className="border-t border-border/50 pt-6" />
+      <div className="border-t border-border/50 pt-4" />
 
       {/* ✅ Bottom row */}
       <div className="flex flex-col items-center gap-4 text-xs text-muted-foreground sm:flex-row sm:justify-between sm:items-center">
@@ -94,8 +94,18 @@ export const Footer = () => {
         </div>
       </div>
 
+      {/* ✅ Divider */}
+      <div className="border-t border-border/50 mt-4 pt-6" />
+
+      {/* ✅ Trademark notice */}
+      <div className="mt-0">
+        <p className="text-xs text-muted-foreground text-center">
+          The James Merriman® logo is a registered trademark. Registration number: UK00004378500.
+        </p>
+      </div>
+
       {/* ✅ Accreditation logos */}
-      <div className="border-t border-border/30 mt-6 pt-4">
+      <div className="mt-6">
         <div className="flex justify-center">
           <div className="flex items-center gap-4 py-2">
             {/* Proudly Human */}

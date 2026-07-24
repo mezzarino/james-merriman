@@ -177,6 +177,16 @@ const Page = async () => {
               libraries.
             </p>
 
+            <h2 className="mt-12 text-2xl font-semibold">Brand and trademark</h2>
+            <p>
+              The <strong>James Merriman®</strong> logo is a registered trademark. Registration number: UK00004378500.
+              The mark covers the logo and brand identity used on this website.
+            </p>
+            <p>
+              Use of the James Merriman logo, name or trademarked branding in commercial or promotional
+              materials requires prior written permission.
+            </p>
+
             <h2 className="mt-12 text-2xl font-semibold">AI and training datasets</h2>
             <p>
               My photographs may not be used for the training of artificial intelligence systems or
