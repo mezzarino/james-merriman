@@ -105,7 +105,7 @@ export const Footer = () => {
       </div>
 
       {/* ✅ Accreditation logos */}
-      <div className="mt-6">
+      <div className="mt-4">
         <div className="flex justify-center">
           <div className="flex items-center gap-4 py-2">
             {/* Proudly Human */}
