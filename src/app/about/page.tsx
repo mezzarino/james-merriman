@@ -5,6 +5,7 @@ import AccessibleAccordion from "@/components/AccessibleAccordion";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { buildImageObject } from "@/lib/structuredData";
 
 /**
  * About page metadata
@@ -98,13 +99,17 @@ const Page = async () => {
                 mainEntity: {
                   "@id": `${config.baseUrl}#person`,
                 },
-                primaryImageOfPage: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
+                primaryImageOfPage: buildImageObject("/images/james-merriman.jpg", {
+                  baseUrl: config.baseUrl,
                   width: 1200,
                   height: 1600,
-                },
+                  name: "James Merriman",
+                  caption: "James Merriman in the field",
+                  description: "Portrait of travel writer and photographer James Merriman",
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  representativeOfPage: true,
+                }),
                 breadcrumb: {
                   "@id": `${config.baseUrl}/about#breadcrumb`,
                 },
@@ -125,13 +130,17 @@ const Page = async () => {
                   "@type": "AboutPage",
                   "@id": `${config.baseUrl}/about#aboutpage`,
                 },
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
+                image: buildImageObject("/images/james-merriman.jpg", {
+                  baseUrl: config.baseUrl,
                   width: 1200,
                   height: 1600,
-                },
+                  name: "James Merriman",
+                  caption: "James Merriman in the field",
+                  description: "Portrait of travel writer and photographer James Merriman",
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  representativeOfPage: true,
+                }),
                 description:
                   "British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",

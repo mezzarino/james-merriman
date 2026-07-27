@@ -5,6 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { buildImageObject } from "@/lib/structuredData";
 
 /**
  * Credentials page metadata
@@ -83,13 +84,17 @@ const Page = async () => {
                 "@id": `${config.baseUrl}#person`,
                 name: "James Merriman",
                 url: config.baseUrl,
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
+                image: buildImageObject("/images/james-merriman.jpg", {
+                  baseUrl: config.baseUrl,
                   width: 1200,
                   height: 1600,
-                },
+                  name: "James Merriman",
+                  caption: "James Merriman in the field",
+                  description: "Portrait of travel writer and photographer James Merriman",
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  representativeOfPage: true,
+                }),
                 description:
                   "British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",

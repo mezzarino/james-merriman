@@ -5,6 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { buildImageObject } from "@/lib/structuredData";
 
 /**
  * Publications page metadata
@@ -44,6 +45,18 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+const featuredPublicationImage = buildImageObject("/images/james-merriman-travel-writer.jpg", {
+  baseUrl: config.baseUrl,
+  width: 1200,
+  height: 630,
+  name: "James Merriman travel writing and photography",
+  caption: "James Merriman travel writing and photography",
+  description: "Travel writing and photography by James Merriman",
+  licenseUrl: `${config.baseUrl}/licencing`,
+  acquireLicensePage: `${config.baseUrl}/licencing`,
+  representativeOfPage: true,
+});
 
 const publications = [
   { id: "buzkashi-the-rules-of-the-game" },
@@ -145,13 +158,7 @@ const Page = async () => {
                   url: config.baseUrl,
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
+                image: featuredPublicationImage,
 
                 publisher: {
                   "@type": "Organization",
@@ -195,13 +202,7 @@ const Page = async () => {
                   url: config.baseUrl,
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
+                image: featuredPublicationImage,
 
                 publisher: {
                   "@type": "Organization",
@@ -245,13 +246,7 @@ const Page = async () => {
                   url: config.baseUrl,
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
+                image: featuredPublicationImage,
 
                 publisher: {
                   "@type": "Organization",
@@ -299,13 +294,7 @@ const Page = async () => {
                   url: config.baseUrl,
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
+                image: featuredPublicationImage,
 
                 isPartOf: {
                   "@type": "Book",
@@ -343,13 +332,7 @@ const Page = async () => {
                   url: config.baseUrl,
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
+                image: featuredPublicationImage,
 
                 publisher: {
                   "@type": "Organization",
@@ -388,13 +371,7 @@ const Page = async () => {
                   url: config.baseUrl,
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
+                image: featuredPublicationImage,
 
                 publisher: {
                   "@type": "Organization",

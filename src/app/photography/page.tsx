@@ -9,6 +9,7 @@ import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
 import { getPhotos } from "@/lib/cloudinary";
 import { generateOGImage } from "@/lib/og";
+import { buildImageObject } from "@/lib/structuredData";
 import { Photo } from "@/types/photo";
 
 const ogImage = "/images/james-merriman-travel-writer.jpg";
@@ -88,45 +89,48 @@ const Page = async () => {
                   "@type": "Organization",
                   name: "James Merriman",
                 },
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+                image: buildImageObject("/images/james-merriman-travel-writer.jpg", {
+                  baseUrl: config.baseUrl,
                   width: 1200,
                   height: 630,
-                },
+                  name: "James Merriman travel writing and photography",
+                  caption: "James Merriman travel writing and photography",
+                  description: "Travel photography and writing by James Merriman",
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  representativeOfPage: true,
+                }),
                 breadcrumb: {
                   "@id": `${config.baseUrl}/photography#breadcrumb`,
                 },
-                hasPart: photos.slice(0, 20).map((photo: Photo) => ({
-                  "@type": "ImageObject",
-                  "@id": `${config.baseUrl}/photography/${photo.public_id}#image`,
+                hasPart: photos.slice(0, 20).map((photo: Photo) => {
+                  const photoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`;
 
-                  contentUrl: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`,
-
-                  url: `${config.baseUrl}/photography#${photo.public_id}`,
-
-                  thumbnailUrl: generateOGImage(photo.public_id, photo.alt),
-
-                  name: photo.alt,
-                  description: photo.alt,
-
-                  width: photo.width,
-                  height: photo.height,
-
-                  creator: {
-                    "@id": `${config.baseUrl}#person`,
-                  },
-
-                  creditText: "James Merriman",
-                  copyrightNotice: "© James Merriman",
-                  license: `${config.baseUrl}/licencing`,
-                  acquireLicensePage: `${config.baseUrl}/licencing`,
-                  tdmReservation: {
-                    "@type": "TDMReservation",
-                    reservationRight: `${config.baseUrl}/licencing`,
-                  },
-                })),
+                  return {
+                    ...buildImageObject(photoUrl, {
+                      baseUrl: config.baseUrl,
+                      width: photo.width,
+                      height: photo.height,
+                      name: photo.alt,
+                      caption: photo.alt,
+                      description: photo.alt,
+                      thumbnailUrl: generateOGImage(photo.public_id, photo.alt),
+                      licenseUrl: `${config.baseUrl}/licencing`,
+                      acquireLicensePage: `${config.baseUrl}/licencing`,
+                      creditText: "James Merriman",
+                      copyrightNotice: "© James Merriman",
+                      creator: {
+                        "@id": `${config.baseUrl}#person`,
+                      },
+                      representativeOfPage: false,
+                    }),
+                    "@id": `${config.baseUrl}/photography/${photo.public_id}#image`,
+                    tdmReservation: {
+                      "@type": "TDMReservation",
+                      reservationRight: `${config.baseUrl}/licencing`,
+                    },
+                  };
+                }),
               },
               {
                 "@type": "BreadcrumbList",

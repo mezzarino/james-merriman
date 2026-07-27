@@ -5,6 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { buildImageObject } from "@/lib/structuredData";
 
 /**
  * Talks & Presentations page metadata
@@ -139,13 +140,17 @@ const Page = async () => {
                   validFrom: "2026-03-09T00:00:00Z",
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
+                image: buildImageObject("/images/james-merriman.jpg", {
+                  baseUrl: config.baseUrl,
                   width: 1200,
                   height: 1600,
-                },
+                  name: "James Merriman",
+                  caption: "James Merriman speaking at a lecture",
+                  description: "Portrait of travel writer and photographer James Merriman",
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  representativeOfPage: true,
+                }),
 
                 organizer: {
                   "@type": "Organization",
@@ -200,13 +205,17 @@ const Page = async () => {
                   validFrom: "2026-10-01T00:00:00+01:00",
                 },
 
-                image: {
-                  "@type": "ImageObject",
-                  url: `${config.baseUrl}/images/james-merriman.jpg`,
-                  contentUrl: `${config.baseUrl}/images/james-merriman.jpg`,
+                image: buildImageObject("/images/james-merriman.jpg", {
+                  baseUrl: config.baseUrl,
                   width: 1200,
                   height: 1600,
-                },
+                  name: "James Merriman",
+                  caption: "James Merriman speaking at a lecture",
+                  description: "Portrait of travel writer and photographer James Merriman",
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  representativeOfPage: true,
+                }),
 
                 organizer: {
                   "@type": "Organization",

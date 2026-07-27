@@ -10,6 +10,7 @@ import { BlogContent } from "@/components/BlogContent";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
+import { buildImageObject } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 import { buildVideoObjectFromHtml } from "@/lib/youtube";
 import type { LocationMetadata, PostMetadata, Review } from "@/types/post-metadata";
@@ -125,18 +126,22 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         image: image
           ? [
               {
-                "@type": "ImageObject",
-                url: image,
-                contentUrl: image,
-                width: 840,
-                height: 630,
-                creator: {
-                  "@id": `${config.baseUrl}#person`,
-                },
-                creditText: "James Merriman",
-                copyrightNotice: "© James Merriman",
-                license: `${config.baseUrl}/licencing`,
-                acquireLicensePage: `${config.baseUrl}/licencing`,
+                ...buildImageObject(image, {
+                  baseUrl: config.baseUrl,
+                  width: 840,
+                  height: 630,
+                  name: title,
+                  caption: title,
+                  description: result.post.description || title,
+                  licenseUrl: `${config.baseUrl}/licencing`,
+                  acquireLicensePage: `${config.baseUrl}/licencing`,
+                  creditText: "James Merriman",
+                  copyrightNotice: "© James Merriman",
+                  creator: {
+                    "@id": `${config.baseUrl}#person`,
+                  },
+                  representativeOfPage: true,
+                }),
                 tdmReservation: {
                   "@type": "TDMReservation",
                   reservationRight: `${config.baseUrl}/licencing`,

@@ -9,6 +9,7 @@ import Script from "next/script";
 import { BlogPostList } from "@/components/BlogPostList";
 import { HomepageFilterBar } from "@/components/homepage/HomepageFilterBar";
 import { HomepagePagination } from "@/components/homepage/HomepagePagination";
+import { buildImageObject } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 
 import { FullWidthHeader } from "../components/FullWidthHeader";
@@ -131,13 +132,16 @@ export default async function Page(props: {
         name: "James Merriman",
         url: config.baseUrl,
         logo: {
-          "@type": "ImageObject",
+          ...buildImageObject("/logo.png", {
+            baseUrl: config.baseUrl,
+            width: 640,
+            height: 640,
+            name: "James Merriman Travel Writer logo",
+            caption: "James Merriman Travel Writer logo",
+            licenseUrl: `${config.baseUrl}/licencing`,
+            acquireLicensePage: `${config.baseUrl}/licencing`,
+          }),
           "@id": `${config.baseUrl}#logo`,
-          url: `${config.baseUrl}/logo.png`,
-          contentUrl: `${config.baseUrl}/logo.png`,
-          width: 640,
-          height: 640,
-          name: "James Merriman Travel Writer logo",
         },
         image: {
           "@id": `${config.baseUrl}#logo`,
