@@ -524,6 +524,11 @@ const Page = async () => {
                   Read the feature on The Guardian
                 </a>
               </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication remains the copyright of{" "}
+                <em>Guardian News &amp; Media Limited</em>.
+              </p>
             </article>
 
             <article className="mb-10">
