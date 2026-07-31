@@ -508,8 +508,9 @@ const Page = async () => {
               </p>
 
               <p className="mt-3">
-                My Guardian contribution on readers&apos; favourite travel trips inspired by a book
-                is now live online.
+                A published contribution reflecting on readers&apos; favourite travel trips inspired by
+                a book, with a focus on place, memory and the journeys that linger after the final
+                page.
               </p>
 
               <p className="mt-3">
