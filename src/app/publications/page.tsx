@@ -504,7 +504,7 @@ const Page = async () => {
               </h3>
 
               <p className="text-sm text-gray-600 mt-1">
-                <em>The Guardian</em> · July 2026 · Published feature
+                <em>The Guardian</em> · July 2026 · Featured contribution
               </p>
 
               <p className="mt-3">
