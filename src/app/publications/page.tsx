@@ -69,6 +69,11 @@ const publications = [
     url: "https://www.theguardian.com/travel/2026/may/08/readers-tips-favourite-beach-bars-uk-and-europe#james-merriman",
   },
   {
+    id: "guardian-award-winning-piece",
+    external: true,
+    url: "https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers",
+  },
+  {
     id: "afghanistan-adventure-dust-mountains-and-buzkashi",
     external: true,
     url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
@@ -355,7 +360,39 @@ const Page = async () => {
                 },
                 url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
               },
+              // ✅ NewsArticle (Guardian - award-winning piece)
+              {
+                "@type": "NewsArticle",
+                "@id":
+                  "https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers",
+                headline: "Readers' favourite travel trips inspired by a book",
+                name: "Readers' favourite travel trips inspired by a book",
 
+                author: {
+                  "@id": `${config.baseUrl}#person`,
+                  "@type": "Person",
+                  name: "James Merriman",
+                  url: config.baseUrl,
+                },
+
+                image: featuredPublicationImage,
+
+                publisher: {
+                  "@type": "Organization",
+                  name: "The Guardian",
+                  url: "https://www.theguardian.com/",
+                },
+                about: {
+                  "@type": "Thing",
+                  name: "Readers' favourite travel trips inspired by a book",
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id":
+                    "https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers",
+                },
+                url: "https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers",
+              },
               // ✅ NewsArticle (Guardian)
               {
                 "@type": "NewsArticle",
@@ -460,6 +497,33 @@ const Page = async () => {
             </article>
 
             <h2 className="mt-12 text-2xl font-semibold">Newspapers</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">
+                Readers&apos; favourite travel trips inspired by a book
+              </h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>The Guardian</em> · July 2026 · Published feature
+              </p>
+
+              <p className="mt-3">
+                My Guardian contribution on readers&apos; favourite travel trips inspired by a book
+                is now live online.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Read the article on The Guardian website"
+                >
+                  Read the feature on The Guardian
+                </a>
+              </p>
+            </article>
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">

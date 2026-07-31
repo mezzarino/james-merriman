@@ -128,6 +128,7 @@ const Page = async () => {
                   },
                 ],
                 award: [
+                  "Winner – Guardian Weekly Travel Tips Competition",
                   "Longlisted – Bradt Guides New Travel Writer of the Year (2026)",
                   "NomadMania Verified Travel to 150+ UN Countries",
                 ],
@@ -186,6 +187,10 @@ const Page = async () => {
 
             <h2>Awards &amp; Nominations</h2>
             <ul>
+              <li>
+                <strong>Winner</strong> - <em>Guardian Weekly Travel Tips Competition</em> —
+                recognising my work as an award-winning travel writer
+              </li>
               <li>
                 <strong>Longlisted</strong> -{" "}
                 <em>Bradt Guides New Travel Writer of the Year 2026</em>

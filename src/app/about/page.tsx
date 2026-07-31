@@ -13,16 +13,16 @@ import { buildImageObject } from "@/lib/structuredData";
 const ogImage = "/images/james-merriman-travel-writer.jpg";
 
 export const metadata: Metadata = {
-  title: "About James Merriman, Travel Writer & Photographer",
+  title: "About James Merriman, Award-Winning Travel Writer & Photographer",
   description:
-    "Biography and personal background of James Merriman, a UK-based travel writer exploring culture, geography and human experience across the world.",
+    "Biography and personal background of James Merriman, an award-winning British and Irish travel writer exploring culture, geography and human experience across the world.",
   alternates: {
     canonical: `${config.baseUrl}/about`,
   },
   openGraph: {
     type: "profile",
-    title: "About James Merriman, Travel Writer & Photographer",
-    description: "Biography and personal background of UK-based travel writer James Merriman.",
+    title: "About James Merriman, Award-Winning Travel Writer & Photographer",
+    description: "Biography and personal background of award-winning travel writer James Merriman.",
     images: [
       {
         url: ogImage,
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About James Merriman – Travel Writer & Photographer",
-    description: "Biography and personal background of UK-based travel writer James Merriman.",
+    title: "About James Merriman – Award-Winning Travel Writer & Photographer",
+    description: "Biography and personal background of award-winning travel writer James Merriman.",
     images: [
       {
         url: ogImage,
@@ -86,6 +86,29 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              {
+                "@type": "ProfilePage",
+                "@id": `${config.baseUrl}/about#profilepage`,
+                url: `${config.baseUrl}/about`,
+                name: "About James Merriman: Travel Writer and Photographer",
+                description:
+                  "Personal background and fieldwork practice of a British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
+                isPartOf: {
+                  "@id": `${config.baseUrl}#website`,
+                },
+                mainEntity: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                about: {
+                  "@id": `${config.baseUrl}#person`,
+                },
+                breadcrumb: {
+                  "@id": `${config.baseUrl}/about#breadcrumb`,
+                },
+                publisher: {
+                  "@id": `${config.baseUrl}#organization`,
+                },
+              },
               {
                 "@type": "AboutPage",
                 "@id": `${config.baseUrl}/about#aboutpage`,
@@ -142,7 +165,7 @@ const Page = async () => {
                   representativeOfPage: true,
                 }),
                 description:
-                  "British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
+                  "Award-winning British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",
                 hasOccupation: {
                   "@type": "Occupation",
@@ -162,6 +185,7 @@ const Page = async () => {
                   name: "Royal Geographical Society",
                 },
                 award: [
+                  "Winner – Guardian Weekly Travel Tips Competition",
                   "Fellow of the Royal Geographical Society (FRGS)",
                   "NomadMania Verified Travel to 150+ UN Countries",
                 ],
@@ -241,8 +265,8 @@ const Page = async () => {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-2/3 prose prose-lg max-w-none wrap-break-word blog-content">
             <p id="about-intro">
-              I am a British and Irish travel writer and photographer based in Devon, England. A
-              Fellow of the Royal Geographical Society, I have travelled to{" "}
+              I am an award-winning British and Irish travel writer and photographer based in Devon,
+              England. A Fellow of the Royal Geographical Society, I have travelled to{" "}
               <strong>more than 160 countries across six continents</strong> and built a long-term
               body of work focused on geography, culture and lived experience.
             </p>
@@ -264,8 +288,13 @@ const Page = async () => {
 
             <p>
               My work ranges from long-form travel writing to documentary photography, often centred
-              on overlooked or misunderstood places You can{" "}
-              <Link href="/publications">read a selection of published writing</Link>,{" "}
+              on overlooked or misunderstood places. I am also pleased to have recently won the
+              Guardian Weekly Travel Tips competition, a recognition that reflects the depth of my
+              reporting and the long-term value of the travel stories I tell.
+            </p>
+
+            <p>
+              You can <Link href="/publications">read a selection of published writing</Link>,{" "}
               <Link href="/photography">explore my photography</Link> or{" "}
               <Link href="/credentials">learn more about my credentials</Link>.
             </p>

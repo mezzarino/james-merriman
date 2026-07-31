@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { buildImageObject } from "./structuredData"
+import { buildImageObject } from "./structuredData";
 
 describe("buildImageObject", () => {
   it("normalizes relative image paths into absolute ImageObject metadata", () => {
@@ -26,6 +26,13 @@ describe("buildImageObject", () => {
       representativeOfPage: true,
       license: "https://www.example.com/licencing",
       acquireLicensePage: "https://www.example.com/licencing",
+      copyrightNotice: "© James Merriman",
+      creditText: "James Merriman",
+      creator: {
+        "@type": "Person",
+        name: "James Merriman",
+        url: "https://www.example.com",
+      },
     });
   });
 });

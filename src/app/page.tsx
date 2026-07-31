@@ -45,7 +45,7 @@ export async function generateMetadata({
       : "Travel Writing and Documentary Photography | James Merriman";
 
   const description =
-    "Award‑longlisted travel writer and photographer documenting remote, complex and overlooked destinations across the world.";
+    "Award‑winning travel writer and photographer documenting remote, complex and overlooked destinations across the world.";
 
   const ogImage = "/images/james-merriman-travel-writer.jpg";
 
@@ -110,7 +110,7 @@ export default async function Page(props: {
         name: "James Merriman",
         url: config.baseUrl,
         image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
-        jobTitle: "Travel Writer and Photographer",
+        jobTitle: "Award-Winning Travel Writer and Photographer",
         worksFor: {
           "@id": `${config.baseUrl}#organization`,
         },
@@ -184,7 +184,7 @@ export default async function Page(props: {
         "@id": `${currentPageUrl}#webpage`,
         url: currentPageUrl,
         description:
-          "Award-longlisted travel writer and photographer documenting culture, history and place in over 160 countries.",
+          "Award-winning travel writer and photographer documenting culture, history and place in over 160 countries.",
         isPartOf: {
           "@id": `${config.baseUrl}#website`,
         },
@@ -315,15 +315,15 @@ export default async function Page(props: {
 
       <FullWidthHeader
         title="Travel Writing and Photography from Remote and Overlooked Places"
-        description="Award-longlisted travel writer and photographer documenting culture, history and place in over 160 countries"
+        description="Award-winning travel writer and photographer documenting culture, history and place in over 160 countries"
         breadcrumb={breadcrumb}
       />
 
       <main className="container mx-auto max-w-6xl" id="main" tabIndex={-1}>
         <section className="container mx-auto my-6 max-w-6xl px-4 prose">
           <p id="homepage-intro" className="text-lg">
-            This site presents the writing and photographic work of British and Irish travel writer
-            James Merriman. You can read{" "}
+            This site presents the writing and photographic work of award-winning British and Irish
+            travel writer James Merriman. You can read{" "}
             <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
               my biography
             </Link>{" "}
@@ -351,14 +351,14 @@ export default async function Page(props: {
             .
           </p>
           <p className="text-lg">
-            Recent feature:{" "}
+            Recent recognition:{" "}
             <a
               href="https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              I was interviewed by Intrepid Times on visiting 160+ countries and the idea of Deep
-              Travel
+              I recently won the Guardian Weekly Travel Tips competition and was interviewed by
+              Intrepid Times on visiting 160+ countries and the idea of Deep Travel
             </a>
             .
           </p>

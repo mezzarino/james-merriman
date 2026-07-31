@@ -38,6 +38,13 @@ export function buildImageObject(imageUrl: string, options: ImageObjectOptions) 
 
   const description = options.description ?? options.caption;
   const representativeOfPage = options.representativeOfPage ?? true;
+  const copyrightNotice = options.copyrightNotice ?? "© James Merriman";
+  const creditText = options.creditText ?? "James Merriman";
+  const creator = options.creator ?? {
+    "@type": "Person" as const,
+    name: "James Merriman",
+    url: options.baseUrl,
+  };
 
   return {
     "@type": "ImageObject" as const,
@@ -53,9 +60,9 @@ export function buildImageObject(imageUrl: string, options: ImageObjectOptions) 
       : {}),
     ...(options.licenseUrl ? { license: options.licenseUrl } : {}),
     ...(options.acquireLicensePage ? { acquireLicensePage: options.acquireLicensePage } : {}),
-    ...(options.copyrightNotice ? { copyrightNotice: options.copyrightNotice } : {}),
-    ...(options.creditText ? { creditText: options.creditText } : {}),
-    ...(options.creator ? { creator: options.creator } : {}),
+    copyrightNotice,
+    creditText,
+    creator,
     representativeOfPage,
   };
 }
