@@ -351,16 +351,15 @@ export default async function Page(props: {
             .
           </p>
           <p className="text-lg">
-            Recent recognition:{" "}
-            <a
+            Recent recognition: <a
               href="https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
               target="_blank"
               rel="noopener noreferrer"
+              className="underline underline-offset-4 hover:text-foreground"
             >
-              I recently won the Guardian Weekly Travel Tips competition and was interviewed by
-              Intrepid Times on visiting 160+ countries and the idea of Deep Travel
+              I was recently interviewed by Intrepid Times about travelling to 160+ countries and
+              the idea of Deep Travel.
             </a>
-            .
           </p>
         </section>
 
