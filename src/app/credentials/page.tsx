@@ -115,7 +115,7 @@ const Page = async () => {
                   "Remote Travel",
                   "Cultural Geography",
                   "Walking and Exploration",
-                  "Remote and overlooked places"
+                  "Remote and overlooked places",
                 ],
                 affiliation: [
                   { "@type": "Organization", name: "Royal Geographical Society" },
@@ -135,7 +135,7 @@ const Page = async () => {
                   },
                 ],
                 award: [
-                  "Winner – Guardian Weekly Travel Tips Competition",
+                  "Winner – Guardian Travel readers' tips competition",
                   "Longlisted – Bradt Guides New Travel Writer of the Year (2026)",
                   "NomadMania Verified Travel to 150+ UN Countries",
                 ],
@@ -196,7 +196,7 @@ const Page = async () => {
             <h2>Awards &amp; Nominations</h2>
             <ul>
               <li>
-                <strong>Winner</strong> - <em>Guardian Weekly Travel Tips Competition</em> —
+                <strong>Winner</strong> - <em>Guardian Travel readers' tips competition</em> —
                 recognising my work as an award-winning travel writer
               </li>
               <li>

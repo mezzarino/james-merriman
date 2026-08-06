@@ -191,7 +191,7 @@ const Page = async () => {
                   name: "Royal Geographical Society",
                 },
                 award: [
-                  "Winner – Guardian Weekly Travel Tips Competition",
+                  "Winner – Guardian Travel readers' tips competition",
                   "Fellow of the Royal Geographical Society (FRGS)",
                   "NomadMania Verified Travel to 150+ UN Countries",
                 ],
@@ -333,9 +333,17 @@ const Page = async () => {
 
             <p>
               My work ranges from long-form travel writing to documentary photography, often centred
-              on overlooked or misunderstood places. I am also pleased to have recently won the
-              Guardian Weekly Travel Tips competition, a recognition that reflects the depth of my
-              reporting and the long-term value of the travel stories I tell.
+              on overlooked or misunderstood places. In July 2026, I won the{" "}
+              <a
+                href="https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Guardian Travel readers' tips competition winning entry by James Merriman"
+              >
+                Guardian Travel readers' tips competition
+              </a>{" "}
+              with a tip inspired by Dervla Murphy's <em>A Place Apart</em>, reflecting my interest
+              in the depth of reporting and the long-term value of travel stories.
             </p>
 
             <p>
