@@ -148,6 +148,7 @@ const Page = async () => {
                   "https://medium.com/@mezzarino",
                   "https://about.me/jamesmerriman",
                   "https://www.wikidata.org/wiki/Q140897679",
+                  "https://linktr.ee/mezzarino",
                 ],
               },
               {

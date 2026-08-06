@@ -209,6 +209,7 @@ const Page = async () => {
                   "https://medium.com/@mezzarino",
                   "https://about.me/jamesmerriman",
                   "https://www.wikidata.org/wiki/Q140897679",
+                  "https://linktr.ee/mezzarino",
                 ],
                 knowsAbout: [
                   "Travel Writing",
@@ -264,6 +265,29 @@ const Page = async () => {
                       "@type": "Organization",
                       name: "Royal Geographical Society",
                       url: "https://www.instagram.com/rgs_ibg",
+                    },
+                  },
+                  {
+                    "@type": "Article",
+                    headline: "Before He Realized That Wasn't the Point of Travel",
+                    url: "https://open.spotify.com/episode/1S1BHmBBuCzYJeWn4ihi22",
+                    author: {
+                      "@id": personId,
+                    },
+                    image: buildImageObject("/images/james-merriman.jpg", {
+                      baseUrl: config.baseUrl,
+                      width: 1200,
+                      height: 1600,
+                      name: "James Merriman",
+                      caption: "James Merriman",
+                      description: "Photo of James Merriman",
+                      licenseUrl: `${config.baseUrl}/licencing`,
+                      acquireLicensePage: `${config.baseUrl}/licencing`,
+                    }),
+                    publisher: {
+                      "@type": "Organization",
+                      name: "The Travel Writing Podcast",
+                      url: "https://open.spotify.com/show/4KcriU5MHy3s9smbaN660v",
                     },
                   },
                 ],

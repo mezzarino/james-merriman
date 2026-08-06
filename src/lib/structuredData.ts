@@ -9,6 +9,7 @@ export const personSameAs = [
   "https://x.com/mezzarino",
   "https://www.youtube.com/@jamesmerrimancouk",
   "https://mezzarino.substack.com",
+  "https://linktr.ee/mezzarino",
 ];
 export const websiteId = `${config.baseUrl}#website`;
 export const organizationId = `${config.baseUrl}#organization`;
