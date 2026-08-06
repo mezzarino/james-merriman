@@ -216,7 +216,7 @@ const Page = async () => {
                   "Remote Travel",
                   "Cultural Geography",
                   "Walking and Exploration",
-                  "Remote and overlooked places"
+                  "Remote and overlooked places",
                 ],
                 subjectOf: [
                   {
@@ -224,9 +224,46 @@ const Page = async () => {
                     headline:
                       "James Merriman Visited 160 Countries Before He Realized That Wasn't the Point of Travel",
                     url: "https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/",
+                    author: {
+                      "@id": personId,
+                    },
+                    image: buildImageObject("/images/james-merriman.jpg", {
+                      baseUrl: config.baseUrl,
+                      width: 1200,
+                      height: 1600,
+                      name: "James Merriman",
+                      caption: "James Merriman",
+                      description: "Photo of James Merriman",
+                      licenseUrl: `${config.baseUrl}/licencing`,
+                      acquireLicensePage: `${config.baseUrl}/licencing`,
+                    }),
                     publisher: {
                       "@type": "Organization",
                       name: "Intrepid Times",
+                      url: "https://intrepidtimes.com/",
+                    },
+                  },
+                  {
+                    "@type": "Article",
+                    headline: "Meet James Merriman",
+                    url: "https://www.instagram.com/p/DZuR14hjPDF/",
+                    author: {
+                      "@id": personId,
+                    },
+                    image: buildImageObject("/images/james-merriman.jpg", {
+                      baseUrl: config.baseUrl,
+                      width: 1200,
+                      height: 1600,
+                      name: "James Merriman",
+                      caption: "James Merriman",
+                      description: "Photo of James Merriman",
+                      licenseUrl: `${config.baseUrl}/licencing`,
+                      acquireLicensePage: `${config.baseUrl}/licencing`,
+                    }),
+                    publisher: {
+                      "@type": "Organization",
+                      name: "Royal Geographical Society",
+                      url: "https://www.instagram.com/rgs_ibg",
                     },
                   },
                 ],
