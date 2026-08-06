@@ -98,7 +98,7 @@ const Page = async () => {
                 url: `${config.baseUrl}/publications`,
                 name: "Selected Publications | James Merriman",
                 description:
-                  "A selection of travel writing, reportage and fieldwork by British and Irish travel writer James Merriman, published in international magazines, guidebooks and national newspapers.",
+                  "A selection of travel writing, reportage and fieldwork by British & Irish travel writer James Merriman, published in international magazines, guidebooks and national newspapers.",
                 isPartOf: {
                   "@id": websiteId,
                 },
