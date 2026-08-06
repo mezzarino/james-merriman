@@ -350,8 +350,8 @@ const Page = async () => {
                 "@type": "NewsArticle",
                 "@id":
                   "https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers",
-                headline: "Readers' favourite travel trips inspired by a book",
-                name: "Readers' favourite travel trips inspired by a book",
+                headline: "Literary escapes: your favourite trips inspired by books",
+                name: "Literary escapes: your favourite trips inspired by books",
 
                 author: {
                   "@id": personId,
@@ -366,7 +366,7 @@ const Page = async () => {
                 },
                 about: {
                   "@type": "Thing",
-                  name: "Readers' favourite travel trips inspired by a book",
+                  name: "Literary escapes: your favourite trips inspired by books",
                 },
                 mainEntityOfPage: {
                   "@type": "WebPage",
@@ -479,7 +479,7 @@ const Page = async () => {
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">
-                Readers&apos; favourite travel trips inspired by a book
+                Literary escapes: your favourite trips inspired by books
               </h3>
 
               <p className="text-sm text-gray-600 mt-1">
