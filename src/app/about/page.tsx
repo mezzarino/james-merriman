@@ -96,6 +96,7 @@ const Page = async () => {
                 "@type": "ProfilePage",
                 "@id": `${config.baseUrl}/about#profilepage`,
                 url: `${config.baseUrl}/about`,
+                inLanguage: "en-GB",
                 name: "About James Merriman: Travel Writer and Photographer",
                 description:
                   "Personal background and fieldwork practice of a British & Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
@@ -119,6 +120,7 @@ const Page = async () => {
                 "@type": "AboutPage",
                 "@id": `${config.baseUrl}/about#aboutpage`,
                 url: `${config.baseUrl}/about`,
+                inLanguage: "en-GB",
                 name: "About James Merriman: Travel Writer and Photographer",
                 description:
                   "Personal background and fieldwork practice of a British & Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
@@ -296,6 +298,7 @@ const Page = async () => {
                 "@type": "WebSite",
                 "@id": `${config.baseUrl}#website`,
                 url: config.baseUrl,
+                inLanguage: "en-GB",
                 name: "James Merriman | Travel Writing and Photography",
               },
               {

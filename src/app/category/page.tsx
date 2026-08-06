@@ -57,6 +57,7 @@ export default async function Page() {
         "@type": "CollectionPage",
         "@id": `${config.baseUrl}/category#collectionpage`,
         url: `${config.baseUrl}/category`,
+        inLanguage: "en-GB",
         name: "Travel Writing Categories | James Merriman",
         description:
           "An index of travel writing and documentary photography by James Merriman, organised by themes including walking, culture and history.",

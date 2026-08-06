@@ -156,6 +156,7 @@ export default async function Page(props: {
         "@id": `${config.baseUrl}#website`,
         name: "James Merriman | Travel Writing and Photography",
         url: config.baseUrl,
+        inLanguage: "en-GB",
         publisher: {
           "@id": `${config.baseUrl}#organization`,
           "@type": "Organization",
@@ -173,6 +174,7 @@ export default async function Page(props: {
         "@type": "WebPage",
         "@id": `${currentPageUrl}#webpage`,
         url: currentPageUrl,
+        inLanguage: "en-GB",
         description:
           "Award-winning travel writer and photographer documenting culture, history and place in over 160 countries.",
         isPartOf: {
@@ -199,6 +201,7 @@ export default async function Page(props: {
         "@id": `${config.baseUrl}#blog`,
         name: "James Merriman – Travel Writing",
         url: config.baseUrl,
+        inLanguage: "en-GB",
         publisher: {
           "@id": `${config.baseUrl}#organization`,
           "@type": "Organization",

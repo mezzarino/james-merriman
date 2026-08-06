@@ -62,6 +62,7 @@ const Page = async () => {
                 "@type": "ContactPage",
                 "@id": `${config.baseUrl}/contact#contactpage`,
                 url: `${config.baseUrl}/contact`,
+                inLanguage: "en-GB",
                 name: "Contact James Merriman | Travel Writer and Photographer",
                 description:
                   "Contact information and social channels for British & Irish travel writer and photographer James Merriman.",
@@ -83,6 +84,7 @@ const Page = async () => {
                 "@id": personId,
                 name: "James Merriman",
                 url: personUrl,
+                inLanguage: "en-GB",
                 jobTitle: "Travel Writer and Photographer",
                 sameAs: personSameAs,
                 contactPoint: {

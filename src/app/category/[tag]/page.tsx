@@ -102,6 +102,7 @@ export default async function Page(props: {
     "@type": "CollectionPage",
     "@id": `${config.baseUrl}/category/${tag}#collectionpage`,
     url: `${config.baseUrl}/category/${tag}`,
+    inLanguage: "en-GB",
     name: `${label} – Travel Writing and Photography | James Merriman`,
     description,
     isPartOf: {
