@@ -122,6 +122,7 @@ export default async function Page(props: {
           "https://www.youtube.com/@jamesmerrimancouk",
           "https://medium.com/@mezzarino",
           "https://about.me/jamesmerriman",
+          "https://www.wikidata.org/wiki/Q140897679",
         ],
       },
 
@@ -157,6 +158,7 @@ export default async function Page(props: {
           "https://www.youtube.com/@jamesmerrimancouk",
           "https://medium.com/@mezzarino",
           "https://about.me/jamesmerriman",
+          "https://www.wikidata.org/wiki/Q140897679",
         ],
       },
 
