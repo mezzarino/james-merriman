@@ -5,7 +5,13 @@ import AccessibleAccordion from "@/components/AccessibleAccordion";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject } from "@/lib/structuredData";
+import {
+  buildImageObject,
+  organizationId,
+  personId,
+  personUrl,
+  websiteId,
+} from "@/lib/structuredData";
 
 /**
  * About page metadata
@@ -94,19 +100,19 @@ const Page = async () => {
                 description:
                   "Personal background and fieldwork practice of a British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 about: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/about#breadcrumb`,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                 },
               },
               {
@@ -117,10 +123,10 @@ const Page = async () => {
                 description:
                   "Personal background and fieldwork practice of a British and Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 primaryImageOfPage: buildImageObject("/images/james-merriman.jpg", {
                   baseUrl: config.baseUrl,
@@ -146,9 +152,9 @@ const Page = async () => {
               },
               {
                 "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@id": personId,
                 name: "James Merriman",
-                url: config.baseUrl,
+                url: personUrl,
                 mainEntityOfPage: {
                   "@type": "AboutPage",
                   "@id": `${config.baseUrl}/about#aboutpage`,
@@ -210,6 +216,7 @@ const Page = async () => {
                   "Remote Travel",
                   "Cultural Geography",
                   "Walking and Exploration",
+                  "Remote and overlooked places"
                 ],
                 subjectOf: [
                   {

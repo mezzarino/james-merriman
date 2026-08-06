@@ -5,7 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject } from "@/lib/structuredData";
+import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
 
 /**
  * Talks & Presentations page metadata
@@ -65,10 +65,10 @@ const Page = async () => {
                 description:
                   "Talks and illustrated presentations by British and Irish travel writer and photographer James Merriman, based on fieldwork and first-hand reporting.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 about: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 mainEntity: {
                   "@type": "ItemList",
@@ -102,7 +102,7 @@ const Page = async () => {
                 description:
                   "Illustrated talks and presentations on travel, geography and first-hand experience, delivered to specialist, academic and cultural audiences.",
                 provider: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                 },
                 areaServed: {
                   "@type": "Place",
@@ -159,9 +159,7 @@ const Page = async () => {
                 },
 
                 performer: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
+                  "@id": personId,
                 },
 
                 location: {
@@ -224,9 +222,7 @@ const Page = async () => {
                 },
 
                 performer: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
+                  "@id": personId,
                 },
 
                 location: {

@@ -5,7 +5,13 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject } from "@/lib/structuredData";
+import {
+  buildImageObject,
+  organizationId,
+  personId,
+  personUrl,
+  websiteId,
+} from "@/lib/structuredData";
 
 /**
  * Credentials page metadata
@@ -67,23 +73,23 @@ const Page = async () => {
                 description:
                   "Awards, professional memberships and field credentials of British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/credentials#breadcrumb`,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                 },
               },
               {
                 "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@id": personId,
                 name: "James Merriman",
-                url: config.baseUrl,
+                url: personUrl,
                 image: buildImageObject("/images/james-merriman.jpg", {
                   baseUrl: config.baseUrl,
                   width: 1200,
@@ -109,6 +115,7 @@ const Page = async () => {
                   "Remote Travel",
                   "Cultural Geography",
                   "Walking and Exploration",
+                  "Remote and overlooked places"
                 ],
                 affiliation: [
                   { "@type": "Organization", name: "Royal Geographical Society" },

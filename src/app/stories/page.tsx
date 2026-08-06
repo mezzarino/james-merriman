@@ -1,6 +1,7 @@
 import Script from "next/script";
 
 import { config } from "@/config";
+import { organizationId, personId } from "@/lib/structuredData";
 
 const stories = [
   {
@@ -67,10 +68,10 @@ export default function StoriesPage() {
                   "@id": "https://stories.jamesmerriman.co.uk/#website",
                 },
                 about: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                 },
                 breadcrumb: {
                   "@id": "https://stories.jamesmerriman.co.uk/#breadcrumb",

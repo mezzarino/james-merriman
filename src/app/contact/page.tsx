@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { organizationId, personId, personSameAs, personUrl, websiteId } from "@/lib/structuredData";
 
 /**
  * Contact page metadata
@@ -65,34 +66,25 @@ const Page = async () => {
                 description:
                   "Contact information and social channels for British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 mainEntity: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 breadcrumb: {
                   "@id": `${config.baseUrl}/contact#breadcrumb`,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                 },
               },
               {
                 "@type": "Person",
-                "@id": `${config.baseUrl}#person`,
+                "@id": personId,
                 name: "James Merriman",
-                url: config.baseUrl,
+                url: personUrl,
                 jobTitle: "Travel Writer and Photographer",
-                sameAs: [
-                  "https://x.com/mezzarino",
-                  "https://linkedin.com/in/jamesmerriman",
-                  "https://instagram.com/mezzarino",
-                  "https://mezzarino.substack.com",
-                  "https://www.youtube.com/@jamesmerrimancouk",
-                  "https://medium.com/@mezzarino",
-                  "https://about.me/jamesmerriman",
-                  "https://www.wikidata.org/wiki/Q140897679",
-                ],
+                sameAs: personSameAs,
                 contactPoint: {
                   "@type": "ContactPoint",
                   contactType: "Editorial enquiries",

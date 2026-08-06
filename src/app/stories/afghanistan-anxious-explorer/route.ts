@@ -105,7 +105,7 @@ export async function GET() {
           "url": "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg",
           "contentUrl": "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg",
           "creator": {
-            "@id": "https://www.jamesmerriman.co.uk#person"
+            "@id": "https://www.jamesmerriman.co.uk/about#james-merriman"
           },
           "creditText": "James Merriman",
           "copyrightNotice": "© James Merriman",
@@ -116,10 +116,7 @@ export async function GET() {
       "datePublished": "2026-05-19T09:00:00+00:00",
       "dateModified": "2026-05-19T09:00:00+00:00",
       "author": {
-        "@type": "Person",
-        "@id": "https://www.jamesmerriman.co.uk#person",
-        "name": "James Merriman",
-        "url": "https://www.jamesmerriman.co.uk"
+        "@id": "https://www.jamesmerriman.co.uk/about#james-merriman"
       },
       "publisher": {
         "@type": "Organization",

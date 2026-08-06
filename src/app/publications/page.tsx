@@ -5,7 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject } from "@/lib/structuredData";
+import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
 
 /**
  * Publications page metadata
@@ -100,13 +100,13 @@ const Page = async () => {
                 description:
                   "A selection of travel writing, reportage and fieldwork by British and Irish travel writer James Merriman, published in international magazines, guidebooks and national newspapers.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 about: {
-                  "@id": `${config.baseUrl}#person`,
+                  "@id": personId,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                   "@type": "Organization",
                   name: "James Merriman",
                 },
@@ -157,10 +157,7 @@ const Page = async () => {
                 name: "Buzkashi: the rules of the game",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -201,10 +198,7 @@ const Page = async () => {
                 name: "The Awakening of Leptis Magna",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -245,10 +239,7 @@ const Page = async () => {
                 name: "Eating My Way Around Nice",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -293,10 +284,7 @@ const Page = async () => {
                 headline: "My Tehran: Beyond the Headlines",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -331,10 +319,7 @@ const Page = async () => {
                 name: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -369,10 +354,7 @@ const Page = async () => {
                 name: "Readers' favourite travel trips inspired by a book",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -402,10 +384,7 @@ const Page = async () => {
                 name: "Readers' favourite beach bars in Europe",
 
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
 
                 image: featuredPublicationImage,
@@ -508,9 +487,9 @@ const Page = async () => {
               </p>
 
               <p className="mt-3">
-                A published contribution reflecting on readers&apos; favourite travel trips inspired by
-                a book, with a focus on place, memory and the journeys that linger after the final
-                page.
+                A published contribution reflecting on readers&apos; favourite travel trips inspired
+                by a book, with a focus on place, memory and the journeys that linger after the
+                final page.
               </p>
 
               <p className="mt-3">

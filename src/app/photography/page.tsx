@@ -9,7 +9,7 @@ import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
 import { getPhotos } from "@/lib/cloudinary";
 import { generateOGImage } from "@/lib/og";
-import { buildImageObject } from "@/lib/structuredData";
+import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
 import { Photo } from "@/types/photo";
 
 const ogImage = "/images/james-merriman-travel-writer.jpg";
@@ -76,16 +76,13 @@ const Page = async () => {
                 description:
                   "Travel and landscape photography portfolio by British and Irish travel writer and photographer James Merriman.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId,
                 },
                 author: {
-                  "@id": `${config.baseUrl}#person`,
-                  "@type": "Person",
-                  name: "James Merriman",
-                  url: config.baseUrl,
+                  "@id": personId,
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                   "@type": "Organization",
                   name: "James Merriman",
                 },
@@ -120,7 +117,7 @@ const Page = async () => {
                       creditText: "James Merriman",
                       copyrightNotice: "© James Merriman",
                       creator: {
-                        "@id": `${config.baseUrl}#person`,
+                        "@id": personId,
                       },
                       representativeOfPage: false,
                     }),

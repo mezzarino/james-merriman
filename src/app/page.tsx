@@ -9,7 +9,13 @@ import Script from "next/script";
 import { BlogPostList } from "@/components/BlogPostList";
 import { HomepageFilterBar } from "@/components/homepage/HomepageFilterBar";
 import { HomepagePagination } from "@/components/homepage/HomepagePagination";
-import { buildImageObject } from "@/lib/structuredData";
+import {
+  buildImageObject,
+  organizationId,
+  personId,
+  personSameAs,
+  personUrl,
+} from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 
 import { FullWidthHeader } from "../components/FullWidthHeader";
@@ -106,24 +112,15 @@ export default async function Page(props: {
       // ✅ Person (canonical entity)
       {
         "@type": "Person",
-        "@id": `${config.baseUrl}#person`,
+        "@id": personId,
         name: "James Merriman",
-        url: config.baseUrl,
+        url: personUrl,
         image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
         jobTitle: "Award-Winning Travel Writer and Photographer",
         worksFor: {
-          "@id": `${config.baseUrl}#organization`,
+          "@id": organizationId,
         },
-        sameAs: [
-          "https://x.com/mezzarino",
-          "https://linkedin.com/in/jamesmerriman",
-          "https://instagram.com/mezzarino",
-          "https://mezzarino.substack.com",
-          "https://www.youtube.com/@jamesmerrimancouk",
-          "https://medium.com/@mezzarino",
-          "https://about.me/jamesmerriman",
-          "https://www.wikidata.org/wiki/Q140897679",
-        ],
+        sameAs: personSameAs,
       },
 
       // ✅ Organisation
@@ -148,18 +145,9 @@ export default async function Page(props: {
           "@id": `${config.baseUrl}#logo`,
         },
         founder: {
-          "@id": `${config.baseUrl}#person`,
+          "@id": personId,
         },
-        sameAs: [
-          "https://x.com/mezzarino",
-          "https://linkedin.com/in/jamesmerriman",
-          "https://instagram.com/mezzarino",
-          "https://mezzarino.substack.com",
-          "https://www.youtube.com/@jamesmerrimancouk",
-          "https://medium.com/@mezzarino",
-          "https://about.me/jamesmerriman",
-          "https://www.wikidata.org/wiki/Q140897679",
-        ],
+        sameAs: personSameAs,
       },
 
       // ✅ WebSite
@@ -239,7 +227,7 @@ export default async function Page(props: {
         "@type": "ItemList",
         "@id": `${currentPageUrl}#latest-writing`,
         publisher: {
-          "@id": `${config.baseUrl}#organization`,
+          "@id": organizationId,
         },
         numberOfItems: result.posts.length,
         itemListElement: result.posts.map((post, index) => ({
@@ -256,10 +244,7 @@ export default async function Page(props: {
             dateModified: post.updatedAt || post.publishedAt || post.createdAt,
 
             author: {
-              "@id": `${config.baseUrl}#person`,
-              "@type": "Person",
-              name: "James Merriman",
-              url: config.baseUrl,
+              "@id": personId,
             },
 
             publisher: {
@@ -353,7 +338,8 @@ export default async function Page(props: {
             .
           </p>
           <p className="text-lg">
-            Recent recognition: <a
+            Recent recognition:{" "}
+            <a
               href="https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/"
               target="_blank"
               rel="noopener noreferrer"

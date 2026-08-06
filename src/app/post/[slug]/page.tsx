@@ -10,7 +10,7 @@ import { BlogContent } from "@/components/BlogContent";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
-import { buildImageObject } from "@/lib/structuredData";
+import { buildImageObject, personId, websiteId } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 import { buildVideoObjectFromHtml } from "@/lib/youtube";
 import type { LocationMetadata, PostMetadata, Review } from "@/types/post-metadata";
@@ -107,7 +107,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         "@id": `${config.baseUrl}/post/${slug}#webpage`,
         url: `${config.baseUrl}/post/${slug}`,
         name: title,
-        isPartOf: { "@id": `${config.baseUrl}#website` },
+        isPartOf: { "@id": websiteId },
         breadcrumb: { "@id": `${config.baseUrl}/post/${slug}#breadcrumb` },
         mainEntity: { "@id": `${config.baseUrl}/post/${slug}#article` },
         inLanguage: "en-GB",
@@ -138,7 +138,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
                   creditText: "James Merriman",
                   copyrightNotice: "© James Merriman",
                   creator: {
-                    "@id": `${config.baseUrl}#person`,
+                    "@id": personId,
                   },
                   representativeOfPage: true,
                 }),
@@ -152,10 +152,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
         dateModified: updatedAt ? new Date(updatedAt).toISOString() : undefined,
         author: {
-          "@id": `${config.baseUrl}#person`,
-          "@type": "Person",
-          name: "James Merriman",
-          url: config.baseUrl,
+          "@id": personId,
         },
         tdmReservation: {
           "@type": "TDMReservation",
@@ -167,7 +164,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         mainEntityOfPage: {
           "@id": `${config.baseUrl}/post/${slug}#webpage`,
         },
-        isPartOf: [{ "@id": `${config.baseUrl}#blog` }, { "@id": `${config.baseUrl}#website` }],
+        isPartOf: [{ "@id": `${config.baseUrl}#blog` }, { "@id": websiteId }],
         inLanguage: "en-GB",
         timeRequired: `PT${readingTime}M`,
         wordCount: result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length,
