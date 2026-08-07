@@ -35,4 +35,36 @@ describe("buildImageObject", () => {
       },
     });
   });
+
+  it("handles absolute URLs, protocol-relative URLs, and fallback values", () => {
+    const image = buildImageObject("https://cdn.example.com/photo.jpg", {
+      baseUrl: "https://www.example.com",
+      description: "Fallback description",
+      thumbnailUrl: "//cdn.example.com/thumb.jpg",
+      representativeOfPage: false,
+      copyrightNotice: "Custom notice",
+      creditText: "Custom credit",
+      creator: { "@type": "Person", name: "Example Creator", url: "https://creator.example" },
+    });
+
+    expect(image).toMatchObject({
+      url: "https://cdn.example.com/photo.jpg",
+      contentUrl: "https://cdn.example.com/photo.jpg",
+      description: "Fallback description",
+      thumbnailUrl: "https://cdn.example.com/thumb.jpg",
+      representativeOfPage: false,
+      copyrightNotice: "Custom notice",
+      creditText: "Custom credit",
+      creator: { name: "Example Creator" },
+    });
+  });
+
+  it("falls back to the caption when description is not provided", () => {
+    const image = buildImageObject("/images/example.jpg", {
+      baseUrl: "https://www.example.com",
+      caption: "Caption fallback",
+    });
+
+    expect(image.description).toBe("Caption fallback");
+  });
 });
