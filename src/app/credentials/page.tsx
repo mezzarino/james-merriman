@@ -188,7 +188,7 @@ const Page = async () => {
             <h2>Awards &amp; Nominations</h2>
             <ul>
               <li>
-                <strong>Winner</strong> - <em>Guardian Travel readers' tips competition</em> —
+                <strong>Winner</strong> - <em>Guardian Travel readers&apos; tips competition</em> —
                 recognising my work as an award-winning travel writer
               </li>
               <li>

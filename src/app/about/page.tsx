@@ -344,7 +344,7 @@ const Page = async () => {
               >
                 NomadMania
               </a>
-              , one of the world&rsquo;s largest travel communities. After a detailed review of
+              , one of the world&apos;s largest travel communities. After a detailed review of
               passport stamps, visas and supporting evidence, NomadMania verified my travel to more
               than 150 UN countries.
             </p>
@@ -356,12 +356,12 @@ const Page = async () => {
                 href="https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Guardian Travel readers' tips competition winning entry by James Merriman"
+                aria-label="Guardian Travel readers tips competition winning entry by James Merriman"
               >
-                Guardian Travel readers' tips competition
+                Guardian Travel readers&apos; tips competition
               </a>{" "}
-              with a tip inspired by Dervla Murphy's <em>A Place Apart</em>, reflecting my interest
-              in the depth of reporting and the long-term value of travel stories.
+              with a tip inspired by Dervla Murphy&apos;s <em>A Place Apart</em>, reflecting my
+              interest in the depth of reporting and the long-term value of travel stories.
             </p>
 
             <p>
