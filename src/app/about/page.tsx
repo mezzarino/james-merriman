@@ -9,6 +9,7 @@ import {
   buildImageObject,
   organizationId,
   personId,
+  personSameAs,
   personUrl,
   websiteId,
 } from "@/lib/structuredData";
@@ -202,17 +203,7 @@ const Page = async () => {
                   name: "United Kingdom",
                 },
                 knowsLanguage: ["en-GB"],
-                sameAs: [
-                  "https://x.com/mezzarino",
-                  "https://linkedin.com/in/jamesmerriman",
-                  "https://instagram.com/mezzarino",
-                  "https://mezzarino.substack.com",
-                  "https://www.youtube.com/@jamesmerrimancouk",
-                  "https://medium.com/@mezzarino",
-                  "https://about.me/jamesmerriman",
-                  "https://www.wikidata.org/wiki/Q140897679",
-                  "https://linktr.ee/mezzarino",
-                ],
+                sameAs: personSameAs,
                 knowsAbout: [
                   "Travel Writing",
                   "Documentary Photography",

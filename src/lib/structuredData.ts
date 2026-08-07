@@ -3,13 +3,16 @@ import { config } from "@/config";
 export const personId = `${config.baseUrl}/about#james-merriman`;
 export const personUrl = `${config.baseUrl}/about`;
 export const personSameAs = [
-  "https://www.wikidata.org/wiki/Q140897679",
+  "https://x.com/mezzarino",
   "https://linkedin.com/in/jamesmerriman",
   "https://instagram.com/mezzarino",
-  "https://x.com/mezzarino",
-  "https://www.youtube.com/@jamesmerrimancouk",
   "https://mezzarino.substack.com",
+  "https://www.youtube.com/@jamesmerrimancouk",
+  "https://medium.com/@mezzarino",
+  "https://about.me/jamesmerriman",
+  "https://www.wikidata.org/wiki/Q140897679",
   "https://linktr.ee/mezzarino",
+  "https://www.goodreads.com/mezzarino",
 ];
 export const websiteId = `${config.baseUrl}#website`;
 export const organizationId = `${config.baseUrl}#organization`;
