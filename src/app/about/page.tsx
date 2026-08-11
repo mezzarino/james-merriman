@@ -374,7 +374,7 @@ const Page = async () => {
               My work moves between remote island nations and post-conflict regions. I am primarily
               interested in how a specific geography dictates daily life. My writing relies on
               staying put and paying attention to the immediate surroundings. I document regional
-              food cultures and record the everyday conversations that give a location its actual
+              food cultures and record the everyday conversations that give a location its true
               character.
             </p>
             <p>
