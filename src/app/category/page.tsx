@@ -6,6 +6,7 @@ import Link from "next/link";
 import Script from "next/script";
 
 import { config } from "@/config";
+import { organizationId, websiteId } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 
 import { FullWidthHeader } from "../../components/FullWidthHeader";
@@ -53,6 +54,7 @@ export default async function Page() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      // ✅ Primary Document View Node
       {
         "@type": "CollectionPage",
         "@id": `${config.baseUrl}/category#collectionpage`,
@@ -62,27 +64,13 @@ export default async function Page() {
         description:
           "An index of travel writing and documentary photography by James Merriman, organised by themes including walking, culture and history.",
         isPartOf: {
-          "@id": `${config.baseUrl}#website`,
+          "@id": websiteId, // 🌟 Fixed: Restored global variable binding
         },
         publisher: {
-          "@id": `${config.baseUrl}#organization`,
-          "@type": "Organization",
-          name: "James Merriman",
+          "@id": organizationId, // 🌟 Fixed: Replaced hardcoded definition with global constant variable
         },
         mainEntity: {
-          "@type": "ItemList",
-          name: "Travel writing categories",
-          itemListElement: result.tags.map((tag, index) => ({
-            "@type": "ListItem",
-            position: index + 1,
-            item: {
-              "@type": "DefinedTerm",
-              "@id": `${config.baseUrl}/category/${tag.name}#term`,
-              name: tag.name.charAt(0).toUpperCase() + tag.name.slice(1),
-              url: `${config.baseUrl}/category/${tag.name}`,
-              inDefinedTermSet: `${config.baseUrl}/category`,
-            },
-          })),
+          "@id": `${config.baseUrl}/category#category-list`, // 🌟 Optimized: Relies on explicit ID linking
         },
         mainEntityOfPage: {
           "@id": `${config.baseUrl}/category#collectionpage`,
@@ -91,6 +79,26 @@ export default async function Page() {
           "@id": `${config.baseUrl}/category#breadcrumb`,
         },
       },
+
+      // ✅ Taxonomic Term Item List Block
+      {
+        "@type": "ItemList",
+        "@id": `${config.baseUrl}/category#category-list`,
+        name: "Travel writing categories",
+        itemListElement: result.tags.map((tag, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "DefinedTerm",
+            "@id": `${config.baseUrl}/category/${tag.name}#term`,
+            name: tag.name.charAt(0).toUpperCase() + tag.name.slice(1),
+            url: `${config.baseUrl}/category/${tag.name}`,
+            inDefinedTermSet: `${config.baseUrl}/category`,
+          },
+        })),
+      },
+
+      // ✅ Breadcrumb List Node
       {
         "@type": "BreadcrumbList",
         "@id": `${config.baseUrl}/category#breadcrumb`,

@@ -15,6 +15,7 @@ import {
   personId,
   personSameAs,
   personUrl,
+  websiteId,
 } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 
@@ -123,10 +124,10 @@ export default async function Page(props: {
         sameAs: personSameAs,
       },
 
-      // ✅ Organisation
+      // ✅ Organisation (The Publishing/Brand Entity)
       {
-        "@type": "Organization",
-        "@id": `${config.baseUrl}#organization`,
+        "@type": "PublishingBusiness",
+        "@id": organizationId,
         name: "James Merriman",
         url: config.baseUrl,
         logo: {
@@ -153,14 +154,12 @@ export default async function Page(props: {
       // ✅ WebSite
       {
         "@type": "WebSite",
-        "@id": `${config.baseUrl}#website`,
+        "@id": websiteId,
         name: "James Merriman | Travel Writing and Photography",
         url: config.baseUrl,
         inLanguage: "en-GB",
         publisher: {
-          "@id": `${config.baseUrl}#organization`,
-          "@type": "Organization",
-          name: "James Merriman",
+          "@id": organizationId,
         },
         potentialAction: {
           "@type": "SearchAction",
@@ -169,22 +168,22 @@ export default async function Page(props: {
         },
       },
 
-      // ✅ WebPage (homepage)
+      // ✅ ProfilePage (homepage)
       {
-        "@type": "WebPage",
+        "@type": "ProfilePage",
         "@id": `${currentPageUrl}#webpage`,
         url: currentPageUrl,
         inLanguage: "en-GB",
         description:
           "Award-winning travel writer and photographer documenting culture, history and place in over 160 countries.",
         isPartOf: {
-          "@id": `${config.baseUrl}#website`,
+          "@id": websiteId,
         },
         mainEntity: {
-          "@id": `${currentPageUrl}#latest-writing`,
+          "@id": personId,
         },
         publisher: {
-          "@id": `${config.baseUrl}#organization`,
+          "@id": organizationId,
         },
         breadcrumb: {
           "@id": `${currentPageUrl}#breadcrumb`,
@@ -203,15 +202,14 @@ export default async function Page(props: {
         url: config.baseUrl,
         inLanguage: "en-GB",
         publisher: {
-          "@id": `${config.baseUrl}#organization`,
-          "@type": "Organization",
-          name: "James Merriman",
+          "@id": organizationId,
         },
         isPartOf: {
-          "@id": `${config.baseUrl}#website`,
+          "@id": websiteId,
         },
       },
 
+      // ✅ Endorsement Quotation
       {
         "@type": "Quotation",
         "@id": `${currentPageUrl}#endorsement-thubron`,
@@ -221,7 +219,7 @@ export default async function Page(props: {
           name: "Colin Thubron",
         },
         isPartOf: {
-          "@id": `${currentPageUrl}#webpage`,
+          "@id": `${currentPageUrl}#webpage`, // 🌟 Optimized: Tied smoothly to the webpage node layout
         },
       },
 
@@ -251,11 +249,11 @@ export default async function Page(props: {
             },
 
             publisher: {
-              "@id": `${config.baseUrl}#organization`,
+              "@id": organizationId,
             },
 
             mainEntityOfPage: {
-              "@id": `${config.baseUrl}/post/${post.slug}`,
+              "@id": `${config.baseUrl}/post/${post.slug}#webpage`, // 🌟 Optimized: Matched standard entry schemas
             },
           },
         })),
@@ -273,7 +271,7 @@ export default async function Page(props: {
               name: `Latest Writing – Page ${page}`,
               url: currentPageUrl,
               isPartOf: {
-                "@id": `${config.baseUrl}#website`,
+                "@id": websiteId,
               },
               mainEntity: {
                 "@id": `${currentPageUrl}#latest-writing`,

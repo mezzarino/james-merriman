@@ -106,9 +106,7 @@ const Page = async () => {
                   "@id": personId,
                 },
                 publisher: {
-                  "@id": organizationId,
-                  "@type": "Organization",
-                  name: "James Merriman",
+                  "@id": organizationId, // 🌟 Fixed: Cleaned reference by ID pointer to maintain consistency across the graph
                 },
                 mainEntity: {
                   "@type": "ItemList",
@@ -177,6 +175,7 @@ const Page = async () => {
                   name: "Globe Magazine – Summer 2026",
                   isPartOf: {
                     "@type": "Periodical",
+                    "@id": "https://globetrotters.co.uk", // 🌟 Added: Explicit identifier tracks this as the same publication
                     name: "Globe Magazine",
                   },
                 },
@@ -218,6 +217,7 @@ const Page = async () => {
                   name: "Globe Magazine – Spring 2026",
                   isPartOf: {
                     "@type": "Periodical",
+                    "@id": "https://globetrotters.co.uk", // 🌟 Added: References the identical Periodical root identity
                     name: "Globe Magazine",
                   },
                 },
@@ -263,6 +263,7 @@ const Page = async () => {
                   name: "Globe Magazine – Winter 2025",
                   isPartOf: {
                     "@type": "Periodical",
+                    "@id": "https://globetrotters.co.uk", // 🌟 Added: References the identical Periodical root identity
                     name: "Globe Magazine",
                   },
                 },
@@ -291,6 +292,7 @@ const Page = async () => {
 
                 isPartOf: {
                   "@type": "Book",
+                  "@id": "https://bradtguides.com", // 🌟 Added: Explicit identifier anchors the parent book entity
                   name: "The Kindness of Strangers",
                   publisher: {
                     "@type": "Organization",
@@ -345,6 +347,7 @@ const Page = async () => {
                 },
                 url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
               },
+
               // ✅ NewsArticle (Guardian - award-winning piece)
               {
                 "@type": "NewsArticle",
@@ -361,9 +364,11 @@ const Page = async () => {
 
                 publisher: {
                   "@type": "Organization",
+                  "@id": "https://theguardian.com", // 🌟 Added: Explicit parent reference anchors the publisher identity
                   name: "The Guardian",
                   url: "https://www.theguardian.com/",
                 },
+                datePublished: "2026-07-31T00:00:00+00:00", // 🌟 Added: Restored the missing mandatory publication date field
                 about: {
                   "@type": "Thing",
                   name: "Literary escapes: your favourite trips inspired by books",
@@ -375,6 +380,7 @@ const Page = async () => {
                 },
                 url: "https://www.theguardian.com/travel/2026/jul/31/readers-favourite-travel-trips-inspired-by-a-book-writers",
               },
+
               // ✅ NewsArticle (Guardian)
               {
                 "@type": "NewsArticle",
@@ -391,6 +397,7 @@ const Page = async () => {
 
                 publisher: {
                   "@type": "Organization",
+                  "@id": "https://theguardian.com", // 🌟 Added: Maps directly to the uniform global Guardian identifier block
                   name: "The Guardian",
                   url: "https://www.theguardian.com/",
                 },

@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ✅ Core pages
     {
       url: config.baseUrl,
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 1.0,
     },
 
@@ -34,37 +34,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     {
       url: urlJoin(config.baseUrl, "publications"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "photography"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "credentials"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "contact"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "category"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.6,
     },
 
@@ -78,7 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ✅ Tags
     ...tagsResult.tags.map((tag) => ({
       url: urlJoin(config.baseUrl, "category", tag.name),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.5,
     })),
 
@@ -94,12 +94,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "licencing"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.4,
     },
     {
       url: urlJoin(config.baseUrl, "commissions"),
-      lastModified: new Date("2026-08-06"),
+      lastModified: new Date("2026-08-11"),
       priority: 0.4,
     },
   ];

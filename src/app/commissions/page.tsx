@@ -5,6 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { organizationId, personId, websiteId } from "@/lib/structuredData";
 
 /**
  * Commissions page metadata
@@ -57,6 +58,7 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              // ✅ WebPage Document Node
               {
                 "@type": "WebPage",
                 "@id": `${config.baseUrl}/commissions#webpage`,
@@ -65,10 +67,10 @@ const Page = async () => {
                 description:
                   "Information on commissioning travel writing, long-form features and documentary photography by British & Irish travel writer James Merriman.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId, // 🌟 Fixed: Restored global variable binding
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId, // 🌟 Fixed: Replaced hardcoded string block
                 },
                 mainEntity: {
                   "@id": `${config.baseUrl}/commissions#service`,
@@ -78,6 +80,8 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/commissions#breadcrumb`,
                 },
               },
+
+              // ✅ Service Node (Enriched with Authoritative Provider Linking)
               {
                 "@type": "Service",
                 "@id": `${config.baseUrl}/commissions#service`,
@@ -85,7 +89,10 @@ const Page = async () => {
                 description:
                   "Commissioned travel writing, long-form features and documentary photography projects developed through field research and on-the-ground reporting.",
                 provider: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId, // Identifies his business/brand entity
+                },
+                creator: {
+                  "@id": personId, // 🌟 Added: Hard-links the service directly to the individual human specialist
                 },
                 areaServed: {
                   "@type": "Place",
@@ -100,6 +107,8 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/commissions#webpage`,
                 },
               },
+
+              // ✅ Breadcrumb List Node
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/commissions#breadcrumb`,

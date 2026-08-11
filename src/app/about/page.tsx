@@ -93,30 +93,7 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
-              {
-                "@type": "ProfilePage",
-                "@id": `${config.baseUrl}/about#profilepage`,
-                url: `${config.baseUrl}/about`,
-                inLanguage: "en-GB",
-                name: "About James Merriman: Travel Writer and Photographer",
-                description:
-                  "Personal background and fieldwork practice of a British & Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
-                isPartOf: {
-                  "@id": websiteId,
-                },
-                mainEntity: {
-                  "@id": personId,
-                },
-                about: {
-                  "@id": personId,
-                },
-                breadcrumb: {
-                  "@id": `${config.baseUrl}/about#breadcrumb`,
-                },
-                publisher: {
-                  "@id": organizationId,
-                },
-              },
+              // ✅ AboutPage Node
               {
                 "@type": "AboutPage",
                 "@id": `${config.baseUrl}/about#aboutpage`,
@@ -150,29 +127,22 @@ const Page = async () => {
                   cssSelector: ["#about-intro"],
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
                 },
               },
+
+              // ✅ Person (Canonical Identity)
               {
                 "@type": "Person",
                 "@id": personId,
                 name: "James Merriman",
                 url: personUrl,
                 mainEntityOfPage: {
-                  "@type": "AboutPage",
-                  "@id": `${config.baseUrl}/about#aboutpage`,
+                  "@id": `${config.baseUrl}/about#aboutpage`, // 🌟 Restored: Backlinks the person to this About document cleanly
                 },
-                image: buildImageObject("/images/james-merriman.jpg", {
-                  baseUrl: config.baseUrl,
-                  width: 1200,
-                  height: 1600,
-                  name: "James Merriman",
-                  caption: "James Merriman in the field",
-                  description: "Portrait of travel writer and photographer James Merriman",
-                  licenseUrl: `${config.baseUrl}/licencing`,
-                  acquireLicensePage: `${config.baseUrl}/licencing`,
-                  representativeOfPage: true,
-                }),
+                image: {
+                  "@id": `${config.baseUrl}/about#aboutpage` + "-image", // Cleaned reference pointer to avoid indexing duplication
+                },
                 description:
                   "Award-winning British & Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
                 jobTitle: "Travel Writer and Photographer",
@@ -185,14 +155,23 @@ const Page = async () => {
                   },
                 },
                 worksFor: {
-                  "@id": `${config.baseUrl}#organization`,
-                  "@type": "Organization",
-                  name: "James Merriman",
+                  "@id": organizationId,
                 },
-                affiliation: {
-                  "@type": "Organization",
-                  name: "Royal Geographical Society",
-                },
+                affiliation: [
+                  {
+                    "@type": "Organization",
+                    name: "Royal Geographical Society",
+                  },
+                  {
+                    "@type": "Organization",
+                    name: "The Chartered Institute of Journalists",
+                  },
+                  {
+                    "@type": "Organization",
+                    name: "One Planet Journey",
+                    description: "Deep Travel Ambassador program",
+                  },
+                ],
                 award: [
                   "Winner – Guardian Travel readers' tips competition",
                   "Fellow of the Royal Geographical Society (FRGS)",
@@ -285,13 +264,17 @@ const Page = async () => {
                   },
                 ],
               },
+
+              // ✅ WebSite Reference Pointer Node
               {
                 "@type": "WebSite",
-                "@id": `${config.baseUrl}#website`,
+                "@id": websiteId,
                 url: config.baseUrl,
                 inLanguage: "en-GB",
                 name: "James Merriman | Travel Writing and Photography",
               },
+
+              // ✅ BreadcrumbList (Fully Reconstructed)
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/about#breadcrumb`,
@@ -300,7 +283,7 @@ const Page = async () => {
                     "@type": "ListItem",
                     position: 1,
                     name: "Home",
-                    item: `${config.baseUrl}`,
+                    item: `${config.baseUrl}/`,
                   },
                   {
                     "@type": "ListItem",

@@ -10,7 +10,7 @@ import { BlogContent } from "@/components/BlogContent";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
-import { buildImageObject, personId, websiteId } from "@/lib/structuredData";
+import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 import { buildVideoObjectFromHtml } from "@/lib/youtube";
 import type { LocationMetadata, PostMetadata, Review } from "@/types/post-metadata";
@@ -102,6 +102,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      // ✅ WebPage Document Node
       {
         "@type": "WebPage",
         "@id": `${config.baseUrl}/post/${slug}#webpage`,
@@ -112,6 +113,8 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         mainEntity: { "@id": `${config.baseUrl}/post/${slug}#article` },
         inLanguage: "en-GB",
       },
+
+      // ✅ BlogPosting Node
       {
         "@type": "BlogPosting",
         "@id": `${config.baseUrl}/post/${slug}#article`,
@@ -159,12 +162,14 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
           reservationRight: `${config.baseUrl}/licencing`,
         },
         publisher: {
-          "@id": `${config.baseUrl}#organization`,
+          "@id": organizationId, // 🌟 Fixed: Restored consistent use of your global constant variable
         },
         mainEntityOfPage: {
           "@id": `${config.baseUrl}/post/${slug}#webpage`,
         },
-        isPartOf: [{ "@id": `${config.baseUrl}#blog` }, { "@id": websiteId }],
+        isPartOf: {
+          "@id": `${config.baseUrl}#blog`, // 🌟 Optimized: Converted to a clean single reference block to prevent nesting loops
+        },
         inLanguage: "en-GB",
         timeRequired: `PT${readingTime}M`,
         wordCount: result.post.content.replace(/<[^>]+>/g, "").split(/\s+/).length,
@@ -214,12 +219,16 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
               }))
             : undefined,
       },
+
+      // ✅ Optional Video Object Node
       ...(videoObject
         ? [
             {
               ...videoObject,
               "@id": `${config.baseUrl}/post/${slug}#video`,
-              mainEntityOfPage: `${config.baseUrl}/post/${slug}`,
+              mainEntityOfPage: {
+                "@id": `${config.baseUrl}/post/${slug}#webpage`, // 🌟 Normalized to match primary page hash ID anchors
+              },
               isPartOf: {
                 "@id": `${config.baseUrl}/post/${slug}#webpage`,
               },

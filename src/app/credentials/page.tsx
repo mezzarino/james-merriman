@@ -66,10 +66,12 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              // ✅ Primary Document View Node
               {
                 "@type": "ProfilePage",
                 "@id": `${config.baseUrl}/credentials#profilepage`,
                 url: `${config.baseUrl}/credentials`,
+                inLanguage: "en-GB",
                 name: "Credentials | James Merriman",
                 description:
                   "Awards, professional memberships and field credentials of British & Irish travel writer and photographer James Merriman.",
@@ -86,6 +88,8 @@ const Page = async () => {
                   "@id": organizationId,
                 },
               },
+
+              // ✅ Person Node (Enriched with Deep Credential Tracking)
               {
                 "@type": "Person",
                 "@id": personId,
@@ -118,22 +122,36 @@ const Page = async () => {
                   "Walking and Exploration",
                   "Remote and overlooked places",
                 ],
+
+                // 🌟 Expanded Structural Credentials
+                hasCredential: [
+                  {
+                    "@type": "EducationalOccupationalCredential",
+                    name: "Fellow of the Royal Geographical Society (FRGS)",
+                    credentialCategory: "Professional Fellowship",
+                    recognizedBy: {
+                      "@type": "Organization",
+                      name: "Royal Geographical Society",
+                    },
+                  },
+                  {
+                    "@type": "EducationalOccupationalCredential",
+                    name: "NomadMania Verified Independent Travel (150+ UN Countries)",
+                    credentialCategory: "Independently Verified Achievement",
+                    recognizedBy: {
+                      "@type": "Organization",
+                      name: "NomadMania",
+                    },
+                  },
+                ],
+
                 affiliation: [
                   { "@type": "Organization", name: "Royal Geographical Society" },
-                  {
-                    "@type": "Organization",
-                    name: "The Chartered Institute of Journalists",
-                  },
-                  {
-                    "@type": "Organization",
-                    name: "International Travel Writers Alliance",
-                  },
+                  { "@type": "Organization", name: "The Chartered Institute of Journalists" },
+                  { "@type": "Organization", name: "International Travel Writers Alliance" },
                   { "@type": "Organization", name: "The Globetrotters Club" },
                   { "@type": "Organization", name: "TravMedia – United Kingdom" },
-                  {
-                    "@type": "Organization",
-                    name: "International Bank Note Society",
-                  },
+                  { "@type": "Organization", name: "International Bank Note Society" },
                 ],
                 award: [
                   "Winner – Guardian Travel readers' tips competition",
@@ -142,6 +160,8 @@ const Page = async () => {
                 ],
                 sameAs: personSameAs,
               },
+
+              // ✅ Breadcrumb List Node
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/credentials#breadcrumb`,

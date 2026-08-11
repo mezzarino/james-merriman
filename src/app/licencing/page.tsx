@@ -5,6 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
+import { organizationId, personId, websiteId } from "@/lib/structuredData";
 
 /**
  * Licencing page metadata
@@ -58,6 +59,7 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              // ✅ WebPage Document Node
               {
                 "@type": "WebPage",
                 "@id": `${config.baseUrl}/licencing#webpage`,
@@ -66,10 +68,10 @@ const Page = async () => {
                 description:
                   "Information on licencing documentary and travel photography by British & Irish travel writer and photographer James Merriman for editorial and commercial use.",
                 isPartOf: {
-                  "@id": `${config.baseUrl}#website`,
+                  "@id": websiteId, // 🌟 Fixed: Enforced consistent project variable usage
                 },
                 publisher: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId, // 🌟 Fixed: Swapped with your canonical global brand ID constant
                 },
                 mainEntity: {
                   "@id": `${config.baseUrl}/licencing#service`,
@@ -79,6 +81,8 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/licencing#breadcrumb`,
                 },
               },
+
+              // ✅ Service Node (Enriched with Authoritative Provider Mapping)
               {
                 "@type": "Service",
                 "@id": `${config.baseUrl}/licencing#service`,
@@ -86,7 +90,10 @@ const Page = async () => {
                 description:
                   "Licencing of documentary and travel photography for editorial and commercial use, including journalism, publications and selected commercial projects.",
                 provider: {
-                  "@id": `${config.baseUrl}#organization`,
+                  "@id": organizationId,
+                },
+                creator: {
+                  "@id": personId, // 🌟 Added: Explicitly links the licensing terms directly back to James as the original photographer
                 },
                 areaServed: {
                   "@type": "Place",
@@ -100,6 +107,8 @@ const Page = async () => {
                   "@id": `${config.baseUrl}/licencing#webpage`,
                 },
               },
+
+              // ✅ Breadcrumb List Node
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/licencing#breadcrumb`,

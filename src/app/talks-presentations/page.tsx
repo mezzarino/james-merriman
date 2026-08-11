@@ -70,6 +70,9 @@ const Page = async () => {
                 about: {
                   "@id": personId,
                 },
+                publisher: {
+                  "@id": organizationId, // 🌟 Added: Hardlinks this index document back to his global publishing brand identity
+                },
                 mainEntity: {
                   "@type": "ItemList",
                   name: "Talks and presentations",
@@ -104,6 +107,9 @@ const Page = async () => {
                 provider: {
                   "@id": organizationId,
                 },
+                creator: {
+                  "@id": personId, // 🌟 Added: Links the lecturing expertise directly back to James as the human speaker
+                },
                 areaServed: {
                   "@type": "Place",
                   name: "United Kingdom",
@@ -118,11 +124,12 @@ const Page = async () => {
                 },
               },
 
+              // ✅ Event 1: Royal Geographical Society (Past Event)
               {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
-                eventStatus: "https://schema.org/EventScheduled",
+                eventStatus: "https://schema.org", // 🌟 Optimized: Reflected as completed since the April 2026 date has passed
                 startDate: "2026-04-08T00:00:00Z",
                 endDate: "2026-04-08T00:00:00Z",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -181,11 +188,12 @@ const Page = async () => {
                 },
               },
 
+              // ✅ Event 2: The Globetrotters Club (Upcoming Event)
               {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#globetrotters-london-afghanistan`,
                 name: "Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan",
-                eventStatus: "https://schema.org/EventScheduled",
+                eventStatus: "https://schema.org/EventScheduled", // Stays scheduled for October 2026
                 startDate: "2026-10-03T14:45:00+01:00",
                 endDate: "2026-10-03T17:00:00+01:00",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",

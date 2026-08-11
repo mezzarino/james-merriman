@@ -9,7 +9,13 @@ import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
 import { getPhotos } from "@/lib/cloudinary";
 import { generateOGImage } from "@/lib/og";
-import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
+import {
+  buildImageObject,
+  organizationId,
+  personId,
+  personUrl,
+  websiteId,
+} from "@/lib/structuredData";
 import { Photo } from "@/types/photo";
 
 const ogImage = "/images/james-merriman-travel-writer.jpg";
@@ -68,6 +74,7 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              // ✅ Highly Specialized Portfolio Document Node
               {
                 "@type": "ImageGallery",
                 "@id": `${config.baseUrl}/photography#imagegallery`,
@@ -82,9 +89,7 @@ const Page = async () => {
                   "@id": personId,
                 },
                 publisher: {
-                  "@id": organizationId,
-                  "@type": "Organization",
-                  name: "James Merriman",
+                  "@id": organizationId, // 🌟 Fixed: Cleaned reference to your exported constant ID pointer
                 },
                 image: buildImageObject("/images/james-merriman-travel-writer.jpg", {
                   baseUrl: config.baseUrl,
@@ -129,6 +134,16 @@ const Page = async () => {
                   };
                 }),
               },
+
+              // ✅ Canonical Person Wrapper Pointer (Prevents Unresolved Reference Errors)
+              {
+                "@type": "Person",
+                "@id": personId,
+                name: "James Merriman",
+                url: personUrl,
+              },
+
+              // ✅ Breadcrumb List Node
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/photography#breadcrumb`,

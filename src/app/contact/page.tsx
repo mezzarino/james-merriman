@@ -58,6 +58,7 @@ const Page = async () => {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
+              // ✅ ContactPage Document Node
               {
                 "@type": "ContactPage",
                 "@id": `${config.baseUrl}/contact#contactpage`,
@@ -79,12 +80,13 @@ const Page = async () => {
                   "@id": organizationId,
                 },
               },
+
+              // ✅ Person Node (Cleaned of invalid properties)
               {
                 "@type": "Person",
                 "@id": personId,
                 name: "James Merriman",
                 url: personUrl,
-                inLanguage: "en-GB",
                 jobTitle: "Travel Writer and Photographer",
                 sameAs: personSameAs,
                 contactPoint: {
@@ -95,6 +97,8 @@ const Page = async () => {
                   email: "info@jamesmerriman.co.uk",
                 },
               },
+
+              // ✅ Breadcrumb List Node
               {
                 "@type": "BreadcrumbList",
                 "@id": `${config.baseUrl}/contact#breadcrumb`,

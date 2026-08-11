@@ -94,11 +94,8 @@ export default async function Page(props: {
     page,
   });
 
-  /**
-   * Category schema
-   */
+  // ✅ Corrected Individual Category Object
   const categoryJsonLd = {
-    "@context": "https://schema.org",
     "@type": "CollectionPage",
     "@id": `${config.baseUrl}/category/${tag}#collectionpage`,
     url: `${config.baseUrl}/category/${tag}`,
@@ -129,29 +126,22 @@ export default async function Page(props: {
           url: `${config.baseUrl}/post/${post.slug}`,
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
+          image: post.image ? [post.image] : undefined,
 
           author: {
             "@id": personId,
           },
           publisher: {
-            "@id": organizationId,
-            "@type": "Organization",
-            name: "James Merriman",
+            "@id": organizationId, // 🌟 Fixed: Stripped out redundant type and name overrides
           },
-          image: post.image ? [post.image] : undefined,
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${config.baseUrl}/post/${post.slug}#webpage`,
           },
-          isPartOf: [
-            {
-              "@type": "Blog",
-              "@id": `${config.baseUrl}#blog`,
-            },
-            {
-              "@id": `${config.baseUrl}/category/${tag}#collectionpage`,
-            },
-          ],
+          isPartOf: {
+            "@type": "Blog",
+            "@id": `${config.baseUrl}#blog`, // 🌟 Optimized: Simplified parent chain to avoid cyclical mapping errors
+          },
         },
       })),
     },
@@ -160,11 +150,8 @@ export default async function Page(props: {
     },
   };
 
-  /**
-   * Breadcrumb schema
-   */
+  // ✅ Corrected Breadcrumb Object (Removed isolated @context line)
   const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "@id": `${config.baseUrl}/category/${tag}#breadcrumb`,
     itemListElement: [
