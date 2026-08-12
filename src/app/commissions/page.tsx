@@ -88,12 +88,16 @@ const Page = async () => {
                 name: "Editorial Travel Writing and Documentary Photography",
                 description:
                   "Commissioned travel writing, long-form features and documentary photography projects developed through field research and on-the-ground reporting.",
-                provider: {
-                  "@id": organizationId, // Identifies his business/brand entity
-                },
-                creator: {
-                  "@id": personId, // 🌟 Added: Hard-links the service directly to the individual human specialist
-                },
+                provider: [
+                  {
+                    "@type": "Organization",
+                    "@id": organizationId,
+                  },
+                  {
+                    "@type": "Person",
+                    "@id": personId,
+                  },
+                ],
                 areaServed: {
                   "@type": "Place",
                   name: "Worldwide",

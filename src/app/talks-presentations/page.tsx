@@ -98,18 +98,23 @@ const Page = async () => {
                 },
               },
 
+              // ✅ Service Node
               {
                 "@type": "Service",
                 "@id": `${config.baseUrl}/talks-presentations#service`,
                 name: "Talks and Illustrated Presentations",
                 description:
                   "Illustrated talks and presentations on travel, geography and first-hand experience, delivered to specialist, academic and cultural audiences.",
-                provider: {
-                  "@id": organizationId,
-                },
-                creator: {
-                  "@id": personId, // 🌟 Added: Links the lecturing expertise directly back to James as the human speaker
-                },
+                provider: [
+                  {
+                    "@type": "Organization",
+                    "@id": organizationId,
+                  },
+                  {
+                    "@type": "Person",
+                    "@id": personId,
+                  },
+                ],
                 areaServed: {
                   "@type": "Place",
                   name: "United Kingdom",
@@ -129,15 +134,13 @@ const Page = async () => {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#rgs-south-west-afghanistan`,
                 name: "Travel in Afghanistan",
-                eventStatus: "https://schema.org", // 🌟 Optimized: Reflected as completed since the April 2026 date has passed
+                eventStatus: "https://schema.org/EventScheduled",
                 startDate: "2026-04-08T00:00:00Z",
                 endDate: "2026-04-08T00:00:00Z",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-
                 mainEntityOfPage: {
                   "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
                 },
-
                 offers: {
                   "@type": "Offer",
                   url: "https://www.rgs.org",
@@ -146,7 +149,6 @@ const Page = async () => {
                   availability: "https://schema.org/InStock",
                   validFrom: "2026-03-09T00:00:00Z",
                 },
-
                 image: buildImageObject("/images/james-merriman.jpg", {
                   baseUrl: config.baseUrl,
                   width: 1200,
@@ -158,17 +160,15 @@ const Page = async () => {
                   acquireLicensePage: `${config.baseUrl}/licencing`,
                   representativeOfPage: true,
                 }),
-
                 organizer: {
                   "@type": "Organization",
                   name: "Royal Geographical Society (South West)",
                   url: "https://www.rgs.org",
                 },
-
                 performer: {
+                  "@type": "Person",
                   "@id": personId,
                 },
-
                 location: {
                   "@type": "Place",
                   name: "Royal Geographical Society (South West)",
@@ -178,14 +178,14 @@ const Page = async () => {
                     addressCountry: "GB",
                   },
                 },
-
                 description:
                   "A 15-minute illustrated presentation reflecting on first-hand travel in Afghanistan, focusing on movement, public life, and everyday experiences beyond media narratives.",
-
-                about: {
-                  "@type": "Place",
-                  name: "Afghanistan",
-                },
+                about: [
+                  {
+                    "@type": "Thing",
+                    name: "Afghanistan",
+                  },
+                ],
               },
 
               // ✅ Event 2: The Globetrotters Club (Upcoming Event)
@@ -193,15 +193,13 @@ const Page = async () => {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#globetrotters-london-afghanistan`,
                 name: "Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan",
-                eventStatus: "https://schema.org/EventScheduled", // Stays scheduled for October 2026
+                eventStatus: "https://schema.org/EventScheduled",
                 startDate: "2026-10-03T14:45:00+01:00",
                 endDate: "2026-10-03T17:00:00+01:00",
                 eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-
                 mainEntityOfPage: {
                   "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
                 },
-
                 offers: {
                   "@type": "Offer",
                   url: "https://globetrotters.co.uk/blog/events/saturday-october-3-2026.html",
@@ -210,7 +208,6 @@ const Page = async () => {
                   availability: "https://schema.org/InStock",
                   validFrom: "2026-10-01T00:00:00+01:00",
                 },
-
                 image: buildImageObject("/images/james-merriman.jpg", {
                   baseUrl: config.baseUrl,
                   width: 1200,
@@ -222,17 +219,15 @@ const Page = async () => {
                   acquireLicensePage: `${config.baseUrl}/licencing`,
                   representativeOfPage: true,
                 }),
-
                 organizer: {
                   "@type": "Organization",
                   name: "The Globetrotters Club",
                   url: "https://globetrotters.co.uk/",
                 },
-
                 performer: {
+                  "@type": "Person",
                   "@id": personId,
                 },
-
                 location: {
                   "@type": "Place",
                   name: "The Church Of Scotland",
@@ -244,14 +239,14 @@ const Page = async () => {
                     addressCountry: "GB",
                   },
                 },
-
                 description:
                   "In this illustrated talk, James shares the story of a ten-day journey through Afghanistan in early 2026, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif during a period of heightened regional tension, with a focus on walking, public life and everyday encounters.",
-
-                about: {
-                  "@type": "Place",
-                  name: "Afghanistan",
-                },
+                about: [
+                  {
+                    "@type": "Thing",
+                    name: "Afghanistan",
+                  },
+                ],
               },
 
               {

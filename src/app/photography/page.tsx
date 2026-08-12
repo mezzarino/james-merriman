@@ -89,7 +89,7 @@ const Page = async () => {
                   "@id": personId,
                 },
                 publisher: {
-                  "@id": organizationId, // 🌟 Fixed: Cleaned reference to your exported constant ID pointer
+                  "@id": organizationId,
                 },
                 image: buildImageObject("/images/james-merriman-travel-writer.jpg", {
                   baseUrl: config.baseUrl,
@@ -127,10 +127,8 @@ const Page = async () => {
                       representativeOfPage: false,
                     }),
                     "@id": `${config.baseUrl}/photography/${photo.public_id}#image`,
-                    tdmReservation: {
-                      "@type": "TDMReservation",
-                      reservationRight: `${config.baseUrl}/licencing`,
-                    },
+
+                    usageInfo: `${config.baseUrl}/licencing`,
                   };
                 }),
               },

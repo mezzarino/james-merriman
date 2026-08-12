@@ -145,6 +145,7 @@ const Page = async () => {
                 knowsLanguage: ["en-GB"],
                 sameAs: personSameAs,
                 worksFor: {
+                  "@type": "Organization",
                   "@id": organizationId,
                 },
                 // 🔗 Links back to the specific About Document when crawled there
