@@ -1,18 +1,22 @@
 import { config } from "@/config";
 
-export const personId = `${config.baseUrl}/about#james-merriman`;
-export const personUrl = `${config.baseUrl}/about`;
+export const personId = `${config.baseUrl}#james-merriman`;
+export const personUrl = `${config.baseUrl}`;
 export const personSameAs = [
-  "https://x.com/mezzarino",
+  "https://www.wikidata.org/wiki/Q140897679",
+  "https://muckrack.com/mezzarino",
+  "https://travmedia.com/mezzarino",
+  "https://www.proudlyhuman.org/certified/james-merriman",
+  "https://nomadmania.com/profile/59142",
   "https://linkedin.com/in/jamesmerriman",
-  "https://instagram.com/mezzarino",
   "https://mezzarino.substack.com",
   "https://www.youtube.com/@jamesmerrimancouk",
+  "https://x.com/mezzarino",
+  "https://instagram.com/mezzarino",
   "https://medium.com/@mezzarino",
-  "https://about.me/jamesmerriman",
-  "https://www.wikidata.org/wiki/Q140897679",
-  "https://linktr.ee/mezzarino",
   "https://www.goodreads.com/mezzarino",
+  "https://about.me/jamesmerriman",
+  "https://linktr.ee/mezzarino",
 ];
 export const websiteId = `${config.baseUrl}#website`;
 export const organizationId = `${config.baseUrl}#organization`;

@@ -320,7 +320,7 @@ const Page = async () => {
             <p>
               My travel record has been independently verified by{" "}
               <a
-                href="https://nomadmania.com/"
+                href="https://nomadmania.com/profile/59142"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="James Merriman's travel record has been verified by NomadMania, one of the world's largest travel communities"
