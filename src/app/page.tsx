@@ -54,7 +54,7 @@ export async function generateMetadata({
   const description =
     "Award‑winning travel writer and photographer documenting remote, complex and overlooked destinations across the world.";
 
-  const ogImage = "/images/james-merriman-travel-writer.jpg";
+  const ogImage = `${config.baseUrl}/images/james-merriman-travel-writer.jpg`;
 
   return {
     title,
@@ -67,7 +67,14 @@ export async function generateMetadata({
       description,
       url: canonicalUrl,
       type: "website",
-      images: [{ url: ogImage, width: 1200, height: 630 }],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "James Merriman - Travel Writing and Documentary Photography",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
