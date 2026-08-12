@@ -110,18 +110,172 @@ export default async function Page(props: {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      // ✅ Person (canonical entity)
+      // ✅ Person (Canonical Entity)
       {
         "@type": "Person",
         "@id": personId,
         name: "James Merriman",
         url: personUrl,
         image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
+        description:
+          "Award-winning British & Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
         jobTitle: "Award-Winning Travel Writer and Photographer",
+        nationality: {
+          "@type": "Country",
+          name: "United Kingdom",
+        },
+        knowsLanguage: ["en-GB"],
+        sameAs: personSameAs,
         worksFor: {
           "@id": organizationId,
         },
-        sameAs: personSameAs,
+        // 🔗 Links back to the specific About Document when crawled there
+        mainEntityOfPage: {
+          "@id": `${config.baseUrl}/about#aboutpage`,
+        },
+        // 🛠️ Combined Occupation: Merges UK location + worldwide scope & qualifications
+        hasOccupation: {
+          "@type": "Occupation",
+          name: "Freelance Travel Writer and Photographer",
+          skills: ["Travel Writing", "Journalism", "Photography"],
+          occupationLocation: [
+            {
+              "@type": "Country",
+              name: "United Kingdom",
+            },
+            {
+              "@type": "Country",
+              name: "Worldwide",
+            },
+          ],
+          qualifications: [
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "Master of Arts in Nature and Travel Writing (In Progress)",
+              credentialCategory: "Master's Degree",
+              recognizedBy: {
+                "@type": "EducationalOrganization",
+                name: "Bath Spa University",
+                url: "https://bathspa.ac.uk",
+              },
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "The Craft of Travel Writing Certification",
+              credentialCategory: "Certification",
+              url: "https://intrepidtimes.com/certification/",
+              recognizedBy: {
+                "@type": "Organization",
+                name: "Intrepid Times",
+                url: "https://intrepidtimes.com",
+              },
+            },
+          ],
+        },
+        // 📰 Freelance Clients / Publishers
+        memberOf: [
+          { "@type": "Organization", name: "Lupine Travel" },
+          { "@type": "Organization", name: "Globetrotters Magazine" },
+          { "@type": "NewsMediaOrganization", name: "The Guardian" },
+        ],
+        // 🏛️ Professional Memberships & Fellowships
+        affiliation: [
+          {
+            "@type": "Organization",
+            name: "Royal Geographical Society",
+          },
+          {
+            "@type": "Organization",
+            name: "The Chartered Institute of Journalists",
+          },
+          {
+            "@type": "Organization",
+            name: "One Planet Journey",
+            description: "Deep Travel Ambassador program",
+          },
+        ],
+        // 🏆 Competitions and Industry Recognition
+        award: [
+          "Winner – Guardian Travel readers' tips competition",
+          "Fellow of the Royal Geographical Society (FRGS)",
+          "NomadMania Verified Travel to 150+ UN Countries",
+        ],
+        // 💡 Topics of Expertise
+        knowsAbout: [
+          "Travel Writing",
+          "Documentary Photography",
+          "Remote Travel",
+          "Cultural Geography",
+          "Walking and Exploration",
+          "Remote and overlooked places",
+        ],
+        // 🎙️ Media Appearances, Interviews, and Podcast Features
+        subjectOf: [
+          {
+            "@type": "Article",
+            headline:
+              "James Merriman Visited 160 Countries Before He Realized That Wasn't the Point of Travel",
+            url: "https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/",
+            author: { "@id": personId },
+            image: buildImageObject("/images/james-merriman.jpg", {
+              baseUrl: config.baseUrl,
+              width: 1200,
+              height: 1600,
+              name: "James Merriman",
+              caption: "James Merriman",
+              description: "Photo of James Merriman",
+              licenseUrl: `${config.baseUrl}/licencing`,
+              acquireLicensePage: `${config.baseUrl}/licencing`,
+            }),
+            publisher: {
+              "@type": "Organization",
+              name: "Intrepid Times",
+              url: "https://intrepidtimes.com/",
+            },
+          },
+          {
+            "@type": "Article",
+            headline: "Meet James Merriman",
+            url: "https://www.instagram.com/p/DZuR14hjPDF/",
+            author: { "@id": personId },
+            image: buildImageObject("/images/james-merriman.jpg", {
+              baseUrl: config.baseUrl,
+              width: 1200,
+              height: 1600,
+              name: "James Merriman",
+              caption: "James Merriman",
+              description: "Photo of James Merriman",
+              licenseUrl: `${config.baseUrl}/licencing`,
+              acquireLicensePage: `${config.baseUrl}/licencing`,
+            }),
+            publisher: {
+              "@type": "Organization",
+              name: "Royal Geographical Society",
+              url: "https://www.instagram.com/rgs_ibg",
+            },
+          },
+          {
+            "@type": "Article",
+            headline: "Before He Realized That Wasn't the Point of Travel",
+            url: "https://open.spotify.com/episode/1S1BHmBBuCzYJeWn4ihi22",
+            author: { "@id": personId },
+            image: buildImageObject("/images/james-merriman.jpg", {
+              baseUrl: config.baseUrl,
+              width: 1200,
+              height: 1600,
+              name: "James Merriman",
+              caption: "James Merriman",
+              description: "Photo of James Merriman",
+              licenseUrl: `${config.baseUrl}/licencing`,
+              acquireLicensePage: `${config.baseUrl}/licencing`,
+            }),
+            publisher: {
+              "@type": "Organization",
+              name: "The Travel Writing Podcast",
+              url: "https://open.spotify.com/show/4KcriU5MHy3s9smbaN660v",
+            },
+          },
+        ],
       },
 
       // ✅ Organisation (The Publishing/Brand Entity)
@@ -149,59 +303,6 @@ export default async function Page(props: {
           "@id": personId,
         },
         sameAs: personSameAs,
-        // Links you to your profession, qualifications, and freelance clients
-        hasOccupation: {
-          "@type": "Occupation",
-          name: "Freelance Travel Writer and Photographer",
-          estimatedSalary: [],
-          skills: "Travel Writing, Journalism, Photography",
-          // Your official Master's degree program
-          qualifications: [
-            {
-              "@type": "EducationalOccupationalCredential",
-              name: "Master of Arts in Nature and Travel Writing (In Progress)",
-              credentialCategory: "Master's Degree",
-              recognizedBy: {
-                "@type": "EducationalOrganization",
-                name: "Bath Spa University",
-                url: "https://bathspa.ac.uk",
-              },
-            },
-            {
-              "@type": "EducationalOccupationalCredential",
-              name: "The Craft of Travel Writing Certification",
-              credentialCategory: "Certification",
-              url: "https://intrepidtimes.com/certification/",
-              recognizedBy: {
-                "@type": "Organization",
-                name: "Intrepid Times",
-                url: "https://intrepidtimes.com",
-              },
-            },
-          ],
-          // Your physical operating location
-          occupationLocation: [
-            {
-              "@type": "Country",
-              name: "United Kingdom",
-            },
-          ],
-          // Lists the specific publishers you have written for
-          fieldsOfWork: [
-            {
-              "@type": "Organization",
-              name: "Lupine Travel",
-            },
-            {
-              "@type": "Organization",
-              name: "Globetrotters Magazine",
-            },
-            {
-              "@type": "NewsMediaOrganization",
-              name: "The Guardian",
-            },
-          ],
-        },
       },
 
       // ✅ WebSite
@@ -234,9 +335,6 @@ export default async function Page(props: {
         },
         mainEntity: {
           "@id": personId,
-        },
-        publisher: {
-          "@id": organizationId,
         },
         breadcrumb: {
           "@id": `${currentPageUrl}#breadcrumb`,
@@ -280,9 +378,6 @@ export default async function Page(props: {
       {
         "@type": "ItemList",
         "@id": `${currentPageUrl}#latest-writing`,
-        publisher: {
-          "@id": organizationId,
-        },
         numberOfItems: result.posts.length,
         itemListElement: result.posts.map((post, index) => ({
           "@type": "ListItem",
@@ -299,10 +394,6 @@ export default async function Page(props: {
 
             author: {
               "@id": personId,
-            },
-
-            publisher: {
-              "@id": organizationId,
             },
 
             mainEntityOfPage: {

@@ -126,37 +126,77 @@ const Page = async () => {
                   "@type": "SpeakableSpecification",
                   cssSelector: ["#about-intro"],
                 },
-                publisher: {
-                  "@id": organizationId,
-                },
               },
 
-              // ✅ Person (Canonical Identity)
+              // ✅ Person (Canonical Entity)
               {
                 "@type": "Person",
                 "@id": personId,
                 name: "James Merriman",
                 url: personUrl,
-                mainEntityOfPage: {
-                  "@id": `${config.baseUrl}/about#aboutpage`, // 🌟 Restored: Backlinks the person to this About document cleanly
-                },
-                image: {
-                  "@id": `${config.baseUrl}/about#aboutpage` + "-image", // Cleaned reference pointer to avoid indexing duplication
-                },
+                image: `${config.baseUrl}/images/james-merriman-travel-writer.jpg`,
                 description:
                   "Award-winning British & Irish travel writer and photographer documenting culture, geography and lived experience in over 160 countries.",
-                jobTitle: "Travel Writer and Photographer",
-                hasOccupation: {
-                  "@type": "Occupation",
-                  name: "Travel Writer",
-                  occupationLocation: {
-                    "@type": "Country",
-                    name: "Worldwide",
-                  },
+                jobTitle: "Award-Winning Travel Writer and Photographer",
+                nationality: {
+                  "@type": "Country",
+                  name: "United Kingdom",
                 },
+                knowsLanguage: ["en-GB"],
+                sameAs: personSameAs,
                 worksFor: {
                   "@id": organizationId,
                 },
+                // 🔗 Links back to the specific About Document when crawled there
+                mainEntityOfPage: {
+                  "@id": `${config.baseUrl}/about#aboutpage`,
+                },
+                // 🛠️ Combined Occupation: Merges UK location + worldwide scope & qualifications
+                hasOccupation: {
+                  "@type": "Occupation",
+                  name: "Freelance Travel Writer and Photographer",
+                  skills: ["Travel Writing", "Journalism", "Photography"],
+                  occupationLocation: [
+                    {
+                      "@type": "Country",
+                      name: "United Kingdom",
+                    },
+                    {
+                      "@type": "Country",
+                      name: "Worldwide",
+                    },
+                  ],
+                  qualifications: [
+                    {
+                      "@type": "EducationalOccupationalCredential",
+                      name: "Master of Arts in Nature and Travel Writing (In Progress)",
+                      credentialCategory: "Master's Degree",
+                      recognizedBy: {
+                        "@type": "EducationalOrganization",
+                        name: "Bath Spa University",
+                        url: "https://bathspa.ac.uk",
+                      },
+                    },
+                    {
+                      "@type": "EducationalOccupationalCredential",
+                      name: "The Craft of Travel Writing Certification",
+                      credentialCategory: "Certification",
+                      url: "https://intrepidtimes.com/certification/",
+                      recognizedBy: {
+                        "@type": "Organization",
+                        name: "Intrepid Times",
+                        url: "https://intrepidtimes.com",
+                      },
+                    },
+                  ],
+                },
+                // 📰 Freelance Clients / Publishers
+                memberOf: [
+                  { "@type": "Organization", name: "Lupine Travel" },
+                  { "@type": "Organization", name: "Globetrotters Magazine" },
+                  { "@type": "NewsMediaOrganization", name: "The Guardian" },
+                ],
+                // 🏛️ Professional Memberships & Fellowships
                 affiliation: [
                   {
                     "@type": "Organization",
@@ -172,17 +212,13 @@ const Page = async () => {
                     description: "Deep Travel Ambassador program",
                   },
                 ],
+                // 🏆 Competitions and Industry Recognition
                 award: [
                   "Winner – Guardian Travel readers' tips competition",
                   "Fellow of the Royal Geographical Society (FRGS)",
                   "NomadMania Verified Travel to 150+ UN Countries",
                 ],
-                nationality: {
-                  "@type": "Country",
-                  name: "United Kingdom",
-                },
-                knowsLanguage: ["en-GB"],
-                sameAs: personSameAs,
+                // 💡 Topics of Expertise
                 knowsAbout: [
                   "Travel Writing",
                   "Documentary Photography",
@@ -191,15 +227,14 @@ const Page = async () => {
                   "Walking and Exploration",
                   "Remote and overlooked places",
                 ],
+                // 🎙️ Media Appearances, Interviews, and Podcast Features
                 subjectOf: [
                   {
                     "@type": "Article",
                     headline:
                       "James Merriman Visited 160 Countries Before He Realized That Wasn't the Point of Travel",
                     url: "https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/",
-                    author: {
-                      "@id": personId,
-                    },
+                    author: { "@id": personId },
                     image: buildImageObject("/images/james-merriman.jpg", {
                       baseUrl: config.baseUrl,
                       width: 1200,
@@ -220,9 +255,7 @@ const Page = async () => {
                     "@type": "Article",
                     headline: "Meet James Merriman",
                     url: "https://www.instagram.com/p/DZuR14hjPDF/",
-                    author: {
-                      "@id": personId,
-                    },
+                    author: { "@id": personId },
                     image: buildImageObject("/images/james-merriman.jpg", {
                       baseUrl: config.baseUrl,
                       width: 1200,
@@ -243,9 +276,7 @@ const Page = async () => {
                     "@type": "Article",
                     headline: "Before He Realized That Wasn't the Point of Travel",
                     url: "https://open.spotify.com/episode/1S1BHmBBuCzYJeWn4ihi22",
-                    author: {
-                      "@id": personId,
-                    },
+                    author: { "@id": personId },
                     image: buildImageObject("/images/james-merriman.jpg", {
                       baseUrl: config.baseUrl,
                       width: 1200,
@@ -272,6 +303,9 @@ const Page = async () => {
                 url: config.baseUrl,
                 inLanguage: "en-GB",
                 name: "James Merriman | Travel Writing and Photography",
+                publisher: {
+                  "@id": organizationId,
+                },
               },
 
               // ✅ BreadcrumbList (Fully Reconstructed)

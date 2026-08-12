@@ -6,7 +6,7 @@ import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
 import { PostPagination } from "@/components/PostPagination";
-import { organizationId, personId, websiteId } from "@/lib/structuredData";
+import { personId, websiteId } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 
 import { FilterBar } from "../../../components/FilterBar";
@@ -130,9 +130,6 @@ export default async function Page(props: {
 
           author: {
             "@id": personId,
-          },
-          publisher: {
-            "@id": organizationId, // 🌟 Fixed: Stripped out redundant type and name overrides
           },
           mainEntityOfPage: {
             "@type": "WebPage",
