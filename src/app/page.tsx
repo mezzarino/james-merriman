@@ -126,7 +126,7 @@ export default async function Page(props: {
 
       // ✅ Organisation (The Publishing/Brand Entity)
       {
-        "@type": "PublishingBusiness",
+        "@type": "Organization",
         "@id": organizationId,
         name: "James Merriman",
         url: config.baseUrl,
@@ -149,6 +149,48 @@ export default async function Page(props: {
           "@id": personId,
         },
         sameAs: personSameAs,
+        // Links you to your profession, qualifications, and freelance clients
+        hasOccupation: {
+          "@type": "Occupation",
+          name: "Freelance Travel Writer and Photographer",
+          estimatedSalary: [],
+          skills: "Travel Writing, Journalism, Photography",
+          // Your official Master's degree program
+          qualifications: [
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "Master of Arts in Nature and Travel Writing (In Progress)",
+              credentialCategory: "Master's Degree",
+              recognizedBy: {
+                "@type": "EducationalOrganization",
+                name: "Bath Spa University",
+                url: "https://bathspa.ac.uk",
+              },
+            },
+          ],
+          // Your physical operating location
+          occupationLocation: [
+            {
+              "@type": "Country",
+              name: "United Kingdom",
+            },
+          ],
+          // Lists the specific publishers you have written for
+          fieldsOfWork: [
+            {
+              "@type": "Organization",
+              name: "Lupine Travel",
+            },
+            {
+              "@type": "Organization",
+              name: "Globetrotters Magazine",
+            },
+            {
+              "@type": "NewsMediaOrganization",
+              name: "The Guardian",
+            },
+          ],
+        },
       },
 
       // ✅ WebSite
