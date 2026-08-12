@@ -167,6 +167,17 @@ export default async function Page(props: {
                 url: "https://bathspa.ac.uk",
               },
             },
+            {
+              "@type": "EducationalOccupationalCredential",
+              name: "The Craft of Travel Writing Certification",
+              credentialCategory: "Certification",
+              url: "https://intrepidtimes.com/certification/",
+              recognizedBy: {
+                "@type": "Organization",
+                name: "Intrepid Times",
+                url: "https://intrepidtimes.com",
+              },
+            },
           ],
           // Your physical operating location
           occupationLocation: [
