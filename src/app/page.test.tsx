@@ -27,7 +27,7 @@ describe("generateMetadata", () => {
     expect(metadata.openGraph?.url).toBe(config.baseUrl);
     const twitterImages = metadata.twitter?.images;
     expect(Array.isArray(twitterImages) ? twitterImages[0] : twitterImages).toBe(
-      "/images/james-merriman-travel-writer.jpg",
+      "http://localhost:3000/images/james-merriman-travel-writer.jpg",
     );
   });
 
