@@ -4,7 +4,9 @@ export const personId = `${config.baseUrl}#james-merriman`;
 export const personUrl = `${config.baseUrl}`;
 export const personSameAs = [
   "https://www.wikidata.org/wiki/Q140897679",
+  "https://www.journalism.co.uk/james-merriman-fl-75/",
   "https://muckrack.com/mezzarino",
+  "https://www.travelwriters.org/writers/james-merriman-3",
   "https://travmedia.com/mezzarino",
   "https://www.proudlyhuman.org/certified/james-merriman",
   "https://nomadmania.com/profile/59142",
