@@ -39,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "talks-presentations"),
-      lastModified: new Date("2026-08-12"),
+      lastModified: new Date("2026-08-15"),
       priority: 0.8,
     },
     {

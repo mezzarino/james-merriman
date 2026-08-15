@@ -5,7 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
+import { buildImageObject, organizationId, person, personId, websiteId } from "@/lib/structuredData";
 
 /**
  * Talks & Presentations page metadata
@@ -67,9 +67,7 @@ const Page = async () => {
                 isPartOf: {
                   "@id": websiteId,
                 },
-                about: {
-                  "@id": personId,
-                },
+                about: person,
                 publisher: {
                   "@id": organizationId, // 🌟 Added: Hardlinks this index document back to his global publishing brand identity
                 },
