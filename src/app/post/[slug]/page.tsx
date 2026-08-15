@@ -141,7 +141,10 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
                   creditText: "James Merriman",
                   copyrightNotice: "© James Merriman",
                   creator: {
+                    "@type": "Person",
                     "@id": personId,
+                    name: "James Merriman",
+                    url: config.baseUrl,
                   },
                   representativeOfPage: true,
                 }),
@@ -155,7 +158,10 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
         datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
         dateModified: updatedAt ? new Date(updatedAt).toISOString() : undefined,
         author: {
+          "@type": "Person",
           "@id": personId,
+          name: "James Merriman",
+          url: config.baseUrl,
         },
         tdmReservation: {
           "@type": "TDMReservation",
