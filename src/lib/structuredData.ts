@@ -22,6 +22,12 @@ export const personSameAs = [
 ];
 export const websiteId = `${config.baseUrl}#website`;
 export const organizationId = `${config.baseUrl}#organization`;
+export const person = {
+  "@type": "Person" as const,
+  "@id": personId,
+  name: "James Merriman",
+  url: personUrl,
+};
 
 export interface ImageObjectOptions {
   baseUrl: string;

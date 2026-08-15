@@ -5,7 +5,7 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { organizationId, personId, websiteId } from "@/lib/structuredData";
+import { organizationId, person, websiteId } from "@/lib/structuredData";
 
 /**
  * Licencing page metadata
@@ -92,9 +92,7 @@ const Page = async () => {
                 provider: {
                   "@id": organizationId,
                 },
-                creator: {
-                  "@id": personId, // 🌟 Added: Explicitly links the licensing terms directly back to James as the original photographer
-                },
+                creator: person,
                 areaServed: {
                   "@type": "Place",
                   name: "Worldwide",

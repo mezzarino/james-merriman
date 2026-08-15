@@ -5,7 +5,13 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
+import {
+  buildImageObject,
+  organizationId,
+  person,
+  personId,
+  websiteId,
+} from "@/lib/structuredData";
 
 /**
  * Publications page metadata
@@ -154,9 +160,7 @@ const Page = async () => {
                 headline: "Buzkashi: the rules of the game",
                 name: "Buzkashi: the rules of the game",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 
@@ -196,9 +200,7 @@ const Page = async () => {
                 headline: "The Awakening of Leptis Magna",
                 name: "The Awakening of Leptis Magna",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 
@@ -238,9 +240,7 @@ const Page = async () => {
                 headline: "Eating My Way Around Nice",
                 name: "Eating My Way Around Nice",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 
@@ -284,9 +284,7 @@ const Page = async () => {
                 name: "My Tehran: Beyond the Headlines",
                 headline: "My Tehran: Beyond the Headlines",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 
@@ -320,9 +318,7 @@ const Page = async () => {
                 headline: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
                 name: "Afghanistan Adventure: Dust, Mountains and Buzkashi",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 
@@ -356,9 +352,7 @@ const Page = async () => {
                 headline: "Literary escapes: your favourite trips inspired by books",
                 name: "Literary escapes: your favourite trips inspired by books",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 
@@ -389,9 +383,7 @@ const Page = async () => {
                 headline: "Readers' favourite beach bars in Europe",
                 name: "Readers' favourite beach bars in Europe",
 
-                author: {
-                  "@id": personId,
-                },
+                author: person,
 
                 image: featuredPublicationImage,
 

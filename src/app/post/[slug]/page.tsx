@@ -10,7 +10,7 @@ import { BlogContent } from "@/components/BlogContent";
 import { config } from "@/config";
 import { getOgImageUrl } from "@/lib/ogImage";
 import { getReadingTimeFromHtml } from "@/lib/readingTime";
-import { buildImageObject, organizationId, personId, websiteId } from "@/lib/structuredData";
+import { buildImageObject, organizationId, person, websiteId } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 import { buildVideoObjectFromHtml } from "@/lib/youtube";
 import type { LocationMetadata, PostMetadata, Review } from "@/types/post-metadata";
@@ -140,12 +140,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
                   acquireLicensePage: `${config.baseUrl}/licencing`,
                   creditText: "James Merriman",
                   copyrightNotice: "© James Merriman",
-                  creator: {
-                    "@type": "Person",
-                    "@id": personId,
-                    name: "James Merriman",
-                    url: config.baseUrl,
-                  },
+                  creator: person,
                   representativeOfPage: true,
                 }),
                 tdmReservation: {
@@ -157,12 +152,7 @@ export default async function BlogPost(props: { params: Promise<Params> }) {
           : undefined,
         datePublished: publishedAt ? new Date(publishedAt).toISOString() : undefined,
         dateModified: updatedAt ? new Date(updatedAt).toISOString() : undefined,
-        author: {
-          "@type": "Person",
-          "@id": personId,
-          name: "James Merriman",
-          url: config.baseUrl,
-        },
+        author: person,
         tdmReservation: {
           "@type": "TDMReservation",
           reservationRight: `${config.baseUrl}/licencing`,

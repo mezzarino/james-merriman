@@ -16,7 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ✅ Core pages
     {
       url: config.baseUrl,
-      lastModified: new Date("2026-08-12"),
+      lastModified: new Date("2026-08-15"),
       priority: 1.0,
     },
 
@@ -44,12 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "photography"),
-      lastModified: new Date("2026-08-12"),
+      lastModified: new Date("2026-08-15"),
       priority: 0.8,
     },
     {
       url: urlJoin(config.baseUrl, "about"),
-      lastModified: new Date("2026-08-12"),
+      lastModified: new Date("2026-08-15"),
       priority: 0.8,
     },
     {
@@ -94,7 +94,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: urlJoin(config.baseUrl, "licencing"),
-      lastModified: new Date("2026-08-11"),
+      lastModified: new Date("2026-08-15"),
       priority: 0.4,
     },
     {

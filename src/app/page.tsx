@@ -12,6 +12,7 @@ import { HomepagePagination } from "@/components/homepage/HomepagePagination";
 import {
   buildImageObject,
   organizationId,
+  person,
   personId,
   personSameAs,
   personUrl,
@@ -224,7 +225,7 @@ export default async function Page(props: {
             headline:
               "James Merriman Visited 160 Countries Before He Realized That Wasn't the Point of Travel",
             url: "https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/",
-            author: { "@id": personId },
+            author: person,
             image: buildImageObject("/images/james-merriman.jpg", {
               baseUrl: config.baseUrl,
               width: 1200,
@@ -245,7 +246,7 @@ export default async function Page(props: {
             "@type": "Article",
             headline: "Meet James Merriman",
             url: "https://www.instagram.com/p/DZuR14hjPDF/",
-            author: { "@id": personId },
+            author: person,
             image: buildImageObject("/images/james-merriman.jpg", {
               baseUrl: config.baseUrl,
               width: 1200,
@@ -266,7 +267,7 @@ export default async function Page(props: {
             "@type": "Article",
             headline: "Before He Realized That Wasn't the Point of Travel",
             url: "https://open.spotify.com/episode/1S1BHmBBuCzYJeWn4ihi22",
-            author: { "@id": personId },
+            author: person,
             image: buildImageObject("/images/james-merriman.jpg", {
               baseUrl: config.baseUrl,
               width: 1200,
@@ -399,11 +400,7 @@ export default async function Page(props: {
             image: post.image ? [post.image] : undefined,
             datePublished: post.publishedAt || post.createdAt,
             dateModified: post.updatedAt || post.publishedAt || post.createdAt,
-
-            author: {
-              "@id": personId,
-            },
-
+            author: person,
             mainEntityOfPage: {
               "@id": `${config.baseUrl}/post/${post.slug}#webpage`, // 🌟 Optimized: Matched standard entry schemas
             },

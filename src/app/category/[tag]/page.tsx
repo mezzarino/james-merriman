@@ -6,7 +6,7 @@ import Script from "next/script";
 
 import { BlogPostList } from "@/components/BlogPostList";
 import { PostPagination } from "@/components/PostPagination";
-import { personId, websiteId } from "@/lib/structuredData";
+import { person, websiteId } from "@/lib/structuredData";
 import { wisp } from "@/lib/wisp";
 
 import { FilterBar } from "../../../components/FilterBar";
@@ -127,10 +127,7 @@ export default async function Page(props: {
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt || post.publishedAt || post.createdAt,
           image: post.image ? [post.image] : undefined,
-
-          author: {
-            "@id": personId,
-          },
+          author: person,
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${config.baseUrl}/post/${post.slug}#webpage`,

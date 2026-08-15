@@ -8,6 +8,7 @@ import { config } from "@/config";
 import {
   buildImageObject,
   organizationId,
+  person,
   personId,
   personSameAs,
   personUrl,
@@ -235,7 +236,7 @@ const Page = async () => {
                     headline:
                       "James Merriman Visited 160 Countries Before He Realized That Wasn't the Point of Travel",
                     url: "https://intrepidtimes.com/2026/07/james-merriman-visited-160-countries-before-he-realized-that-wasnt-the-point-of-travel/",
-                    author: { "@id": personId },
+                    author: person,
                     image: buildImageObject("/images/james-merriman.jpg", {
                       baseUrl: config.baseUrl,
                       width: 1200,
@@ -256,7 +257,7 @@ const Page = async () => {
                     "@type": "Article",
                     headline: "Meet James Merriman",
                     url: "https://www.instagram.com/p/DZuR14hjPDF/",
-                    author: { "@id": personId },
+                    author: person,
                     image: buildImageObject("/images/james-merriman.jpg", {
                       baseUrl: config.baseUrl,
                       width: 1200,
@@ -277,7 +278,7 @@ const Page = async () => {
                     "@type": "Article",
                     headline: "Before He Realized That Wasn't the Point of Travel",
                     url: "https://open.spotify.com/episode/1S1BHmBBuCzYJeWn4ihi22",
-                    author: { "@id": personId },
+                    author: person,
                     image: buildImageObject("/images/james-merriman.jpg", {
                       baseUrl: config.baseUrl,
                       width: 1200,

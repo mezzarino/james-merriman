@@ -12,6 +12,7 @@ import { generateOGImage } from "@/lib/og";
 import {
   buildImageObject,
   organizationId,
+  person,
   personId,
   personUrl,
   websiteId,
@@ -85,9 +86,7 @@ const Page = async () => {
                 isPartOf: {
                   "@id": websiteId,
                 },
-                author: {
-                  "@id": personId,
-                },
+                author: person,
                 publisher: {
                   "@id": organizationId,
                 },
@@ -121,9 +120,7 @@ const Page = async () => {
                       acquireLicensePage: `${config.baseUrl}/licencing`,
                       creditText: "James Merriman",
                       copyrightNotice: "© James Merriman",
-                      creator: {
-                        "@id": personId,
-                      },
+                      creator: person,
                       representativeOfPage: false,
                     }),
                     "@id": `${config.baseUrl}/photography/${photo.public_id}#image`,
