@@ -123,7 +123,7 @@ export async function GET() {
         "@id": "https://www.jamesmerriman.co.uk#james-merriman",
         "name": "James Merriman",
         "url": "https://www.jamesmerriman.co.uk"
-      }
+      },
       "publisher": {
         "@type": "Organization",
         "@id": "https://www.jamesmerriman.co.uk#organization",
