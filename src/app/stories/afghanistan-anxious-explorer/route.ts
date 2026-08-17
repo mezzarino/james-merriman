@@ -7,7 +7,7 @@ export async function GET() {
 <head>
   <meta charset="utf-8">
   <title>Afghanistan: The Anxious Explorer</title>
-  <link rel="canonical" href="https://www.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/" />
+  <link rel="canonical" href="https://stories.jamesmerriman.co.uk/afghanistan-anxious-explorer" />
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
   <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -106,9 +106,9 @@ export async function GET() {
           "contentUrl": "https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/cover.jpg",
           "creator": {
             "@type": "Person",
-           "@id": "https://www.jamesmerriman.co.uk#james-merriman",
+            "@id": "https://www.jamesmerriman.co.uk#james-merriman",
             "name": "James Merriman",
-            "url": "https://www.jamesmerriman.co.uk",
+            "url": "https://www.jamesmerriman.co.uk"
           },
           "creditText": "James Merriman",
           "copyrightNotice": "© James Merriman",
@@ -120,10 +120,10 @@ export async function GET() {
       "dateModified": "2026-05-19T09:00:00+00:00",
       "author": {
         "@type": "Person",
-          "@id": "https://www.jamesmerriman.co.uk#james-merriman",
-          "name": "James Merriman",
-          "url": "https://www.jamesmerriman.co.uk",
-      },
+        "@id": "https://www.jamesmerriman.co.uk#james-merriman",
+        "name": "James Merriman",
+        "url": "https://www.jamesmerriman.co.uk"
+      }
       "publisher": {
         "@type": "Organization",
         "@id": "https://www.jamesmerriman.co.uk#organization",
@@ -194,7 +194,7 @@ export async function GET() {
   Afghanistan
 </h1>
 
-<p animate-in="fade-in" animate-in-delay="0.2s" style="font-size: 1.3rem; opacity:0.9;">
+<p animate-in="fade-in" animate-in-delay="0.2" style="font-size: 1.3rem; opacity:0.9;">
   Nothing prepares you
 </p>
 
