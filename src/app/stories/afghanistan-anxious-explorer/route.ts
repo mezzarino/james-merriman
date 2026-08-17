@@ -108,7 +108,7 @@ export async function GET() {
             "@type": "Person",
            "@id": "https://www.jamesmerriman.co.uk#james-merriman",
             "name": "James Merriman",
-            "url": https://www.jamesmerriman.co.uk,
+            "url": "https://www.jamesmerriman.co.uk",
           },
           "creditText": "James Merriman",
           "copyrightNotice": "© James Merriman",
@@ -122,7 +122,7 @@ export async function GET() {
         "@type": "Person",
           "@id": "https://www.jamesmerriman.co.uk#james-merriman",
           "name": "James Merriman",
-          "url": https://www.jamesmerriman.co.uk,
+          "url": "https://www.jamesmerriman.co.uk",
       },
       "publisher": {
         "@type": "Organization",
