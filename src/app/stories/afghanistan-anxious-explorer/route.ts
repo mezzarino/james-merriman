@@ -48,14 +48,23 @@ export async function GET() {
       justify-content: flex-end;
     }
 
-.overlay {
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.85) 0%,
-    rgba(0,0,0,0.4) 50%,
-    rgba(0,0,0,0.05) 100%
-  );
-}
+    .overlay {
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.4) 50%,
+        rgba(0,0,0,0.05) 100%
+      );
+    }
+    
+    .cover-title { 
+      font-size: 2.5rem; 
+      font-weight: 700; 
+    }
+    .cover-subtitle { 
+      font-size: 1.3rem; 
+      opacity: 0.9; 
+    }
   </style>
   <meta name="description" content="A visual narrative of travel in Afghanistan by James Merriman.">
   <meta name="publisher" content="James Merriman">
@@ -190,11 +199,11 @@ export async function GET() {
     <!-- ✅ Text -->
     <amp-story-grid-layer template="vertical">
 
-<h1 animate-in="fade-in" style="font-size: 2.5rem; font-weight:700;">
+<h1 animate-in="fade-in" class="cover-title">
   Afghanistan
 </h1>
 
-<p animate-in="fade-in" animate-in-delay="0.2" style="font-size: 1.3rem; opacity:0.9;">
+<p animate-in="fade-in" animate-in-delay="0.2" class="cover-subtitle">
   Nothing prepares you
 </p>
 
@@ -274,13 +283,18 @@ ${[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
     <amp-img src="https://stories.jamesmerriman.co.uk/stories/afghanistan-anxious-explorer/images/13.jpg"
       width="720" height="1280" layout="responsive" alt="James Merriman in the mountains near Mazar-e-Sharif"></amp-img>
   </amp-story-grid-layer>
+  
   <amp-story-grid-layer template="fill">
     <div class="overlay"></div>
   </amp-story-grid-layer>
+  
   <amp-story-grid-layer template="vertical">
     <h2>Visit the website of James Merriman</h2>
-    <p><a href="https://www.jamesmerriman.co.uk" style="color:#fff;">Explore more →</a></p>
   </amp-story-grid-layer>
+
+  <amp-story-page-outlink layout="nodisplay">
+    <a href="https://www.jamesmerriman.co.uk">Explore more</a>
+  </amp-story-page-outlink>
 </amp-story-page>
 
 </amp-story>
