@@ -310,7 +310,40 @@ const Page = async () => {
                 url: "https://www.bradtguides.com/product/the-kindness-of-strangers/",
               },
 
-              // ✅ NewsArticle (Lupine Travel)
+              // ✅ NewsArticle (Lupine Travel - Libya)
+              {
+                "@type": "NewsArticle",
+                "@id": "https://lupinetravel.co.uk/libya-adventure-the-awakening-of-leptis-magna/",
+                headline: "Libya Adventure: The Awakening of Leptis Magna",
+                name: "Libya Adventure: The Awakening of Leptis Magna",
+
+                author: person,
+
+                image: featuredPublicationImage,
+
+                publisher: {
+                  "@type": "Organization",
+                  name: "Lupine Travel",
+                  url: "https://lupinetravel.co.uk/",
+                },
+                datePublished: "2026-08-21T00:00:00+00:00",
+                about: {
+                  "@type": "Place",
+                  name: "Libya",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "LY",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id":
+                    "https://lupinetravel.co.uk/libya-adventure-the-awakening-of-leptis-magna/",
+                },
+                url: "https://lupinetravel.co.uk/libya-adventure-the-awakening-of-leptis-magna/",
+              },
+
+              // ✅ NewsArticle (Lupine Travel - Afghanistan)
               {
                 "@type": "NewsArticle",
                 "@id":
@@ -441,6 +474,37 @@ const Page = async () => {
             </p>
 
             <h2 className="mt-12 text-2xl font-semibold">Websites &amp; online platforms</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">
+                Libya Adventure: The Awakening of Leptis Magna
+              </h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>Lupine Travel</em> · August 2026 · Published feature
+              </p>
+
+              <p className="mt-3">
+                Step into the ancient world at Leptis Magna, Libya&apos;s remarkable Roman city,
+                where towering ruins, history and adventure await beyond the crowds.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://lupinetravel.co.uk/libya-adventure-the-awakening-of-leptis-magna/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Read the article on Lupine Travel website"
+                >
+                  Read the article on Lupine Travel
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication remains the copyright of <em>Lupine Travel</em>.
+              </p>
+            </article>
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">
