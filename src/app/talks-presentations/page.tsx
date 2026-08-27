@@ -5,7 +5,13 @@ import Script from "next/script";
 import { FigureImage } from "@/components/FigureImage";
 import { FullWidthHeader } from "@/components/FullWidthHeader";
 import { config } from "@/config";
-import { buildImageObject, organizationId, person, personId, websiteId } from "@/lib/structuredData";
+import {
+  buildImageObject,
+  organizationId,
+  person,
+  personId,
+  websiteId,
+} from "@/lib/structuredData";
 
 /**
  * Talks & Presentations page metadata
