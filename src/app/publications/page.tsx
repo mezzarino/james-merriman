@@ -84,6 +84,11 @@ const publications = [
     external: true,
     url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
   },
+  {
+    id: "fodors-african-safari-planning",
+    external: true,
+    url: "https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong",
+  },
 ];
 
 const Page = async () => {
@@ -377,6 +382,33 @@ const Page = async () => {
                 url: "https://lupinetravel.co.uk/afghanistan-adventure-dust-mountains-and-buzkashi/",
               },
 
+              // ✅ NewsArticle (Fodors Safari)
+              {
+                "@type": "NewsArticle",
+                "@id":
+                  "https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong",
+                headline: "10 Ways You're Planning Your African Safari All Wrong",
+                name: "10 Ways You're Planning Your African Safari All Wrong",
+                author: person,
+                image: featuredPublicationImage,
+                publisher: {
+                  "@type": "Organization",
+                  "@id": "https://www.fodors.com",
+                  name: "Fodor's Travel",
+                  url: "https://www.fodors.com",
+                },
+                about: {
+                  "@type": "Thing",
+                  name: "African safari travel",
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id":
+                    "https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong",
+                },
+                url: "https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong",
+              },
+
               // ✅ NewsArticle (Guardian - award-winning piece)
               {
                 "@type": "NewsArticle",
@@ -474,6 +506,38 @@ const Page = async () => {
             </p>
 
             <h2 className="mt-12 text-2xl font-semibold">Websites &amp; online platforms</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">
+                10 Ways You're Planning Your African Safari All Wrong
+              </h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>Fodor's Travel</em> · 2026 · Featured contribution
+              </p>
+
+              <p className="mt-3">
+                A contribution to Fodor's Travel examining common misconceptions about planning an
+                African safari, drawing on first-hand experience across the continent to offer
+                practical advice on destinations, expectations and responsible travel.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Read the article on Fodor's Travel website"
+                >
+                  Read the article on Fodor&apos;s Travel
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication remains the copyright of <em>Fodor&apos;s Travel</em>.
+              </p>
+            </article>
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">

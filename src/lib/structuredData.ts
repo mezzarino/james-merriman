@@ -6,6 +6,7 @@ export const personSameAs = [
   "https://www.wikidata.org/wiki/Q140897679",
   "https://www.journalism.co.uk/james-merriman-fl-75/",
   "https://muckrack.com/mezzarino",
+  "https://www.fodors.com/news/author/james-merriman",
   "https://www.travelwriters.org/writers/james-merriman-3",
   "https://travmedia.com/mezzarino",
   "https://www.proudlyhuman.org/certified/james-merriman",
