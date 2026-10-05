@@ -12,6 +12,7 @@ import {
   personId,
   websiteId,
 } from "@/lib/structuredData";
+import { buildVideoObjectFromHtml } from "@/lib/youtube";
 
 /**
  * Talks & Presentations page metadata
@@ -51,6 +52,15 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+const presentationVideoUrl =
+  "https://www.youtube.com/embed/Kk835ZinAvA?si=nw9EEcWtCDuMhZAZ";
+
+const videoObject = await buildVideoObjectFromHtml(
+  `<iframe src="${presentationVideoUrl}"></iframe>`,
+  metadata.description as string,
+  "2026-10-03T14:45:00+01:00",
+);
 
 const Page = async () => {
   return (
@@ -192,7 +202,7 @@ const Page = async () => {
                 ],
               },
 
-              // ✅ Event 2: The Globetrotters Club (Upcoming Event)
+              // ✅ Event 2: The Globetrotters Club (Past Event)
               {
                 "@type": "Event",
                 "@id": `${config.baseUrl}/talks-presentations#globetrotters-london-afghanistan`,
@@ -232,6 +242,9 @@ const Page = async () => {
                   "@type": "Person",
                   "@id": personId,
                 },
+                video: {
+                  "@id": `${config.baseUrl}/talks-presentations#video`,
+                },
                 location: {
                   "@type": "Place",
                   name: "The Church Of Scotland",
@@ -252,6 +265,21 @@ const Page = async () => {
                   },
                 ],
               },
+
+              ...(videoObject
+                ? [
+                    {
+                      ...videoObject,
+                      "@id": `${config.baseUrl}/talks-presentations#video`,
+                      mainEntityOfPage: {
+                        "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
+                      },
+                      isPartOf: {
+                        "@id": `${config.baseUrl}/talks-presentations#collectionpage`,
+                      },
+                    },
+                  ]
+                : []),
 
               {
                 "@type": "BreadcrumbList",
@@ -293,7 +321,7 @@ const Page = async () => {
               first‑hand experience in lesser‑known and complex regions. Presentations combine
               narrative travel writing with geographic and cultural context.
             </p>
-            <h2>Upcoming talks</h2>
+            <h2>Recent talks</h2>
             <article>
               <h3>Globetrotters Club (London) - 3rd October 2026</h3>
               <p>
@@ -301,19 +329,17 @@ const Page = async () => {
                 this illustrated talk, James shares the story of a ten-day journey in early 2026
                 through Afghanistan, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif
                 during a period of heightened regional tension.on in Afghanistan, with a focus on
-                walking, public life, and everyday encounters.{" "}
-                <a
-                  href="https://globetrotters.co.uk/blog/events/saturday-october-3-2026.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Find out more and book tickets for the Globetrotters Club (London) - 3rd October 2026 event"
-                >
-                  Book tickets for this event here
-                </a>
-                .
+                walking, public life, and everyday encounters.
               </p>
+              <iframe
+                src="https://www.youtube.com/embed/Kk835ZinAvA?si=nw9EEcWtCDuMhZAZ"
+                title="James Merriman – Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                className="data-youtube-video absolute inset-0 w-full h-full"
+              />
             </article>
-            <h2>Recent talks</h2>
             <article>
               <h3>Royal Geographical Society (South West)</h3>
               <p>
