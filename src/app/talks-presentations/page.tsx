@@ -325,9 +325,9 @@ const Page = async () => {
               <h3>Globetrotters Club (London) - 3rd October 2026</h3>
               <p>
                 <strong>Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan</strong> — In
-                this illustrated talk, James shares the story of a ten-day journey in early 2026
+                this illustrated talk, James sharec the story of a ten-day journey in early 2026
                 through Afghanistan, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif
-                during a period of heightened regional tension.on in Afghanistan, with a focus on
+                during a period of heightened regional tension in Afghanistan, with a focus on
                 walking, public life, and everyday encounters.
               </p>
               <div className="relative w-full overflow-hidden rounded-lg">
@@ -342,7 +342,7 @@ const Page = async () => {
               </div>
             </article>
             <article>
-              <h3>Royal Geographical Society (South West)</h3>
+              <h3>Royal Geographical Society (South West) - 8th April 2026</h3>
               <p>
                 <strong>Travel in Afghanistan</strong> — Illustrated talk reflecting on first‑hand
                 travel and observation in Afghanistan, with a focus on walking, public life, and
