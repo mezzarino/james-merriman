@@ -65,6 +65,7 @@ const featuredPublicationImage = buildImageObject("/images/james-merriman-travel
 });
 
 const publications = [
+  { id: "warm-pastry-cold-rain-empty-pews" },
   { id: "buzkashi-the-rules-of-the-game" },
   { id: "awakening-of-leptis-magna" },
   { id: "eating-my-way-around-nice" },
@@ -156,6 +157,46 @@ const Page = async () => {
                     item: `${config.baseUrl}/publications`,
                   },
                 ],
+              },
+
+              // ✅ Article (Globe Magazine - Autumn 2026)
+              {
+                "@type": "Article",
+                "@id": `${config.baseUrl}/publications#warm-pastry-cold-rain-empty-pews`,
+                headline: "Warm pastry, cold rain and empty pews",
+                name: "Warm pastry, cold rain and empty pews",
+
+                author: person,
+
+                image: featuredPublicationImage,
+
+                publisher: {
+                  "@type": "Organization",
+                  name: "Globe Magazine",
+                  url: "https://globetrotters.co.uk/members/globe.html",
+                },
+                datePublished: "2026-10-03T00:00:00+00:00",
+                about: {
+                  "@type": "Place",
+                  name: "Lake Bled",
+                },
+                isPartOf: {
+                  "@type": "PublicationIssue",
+                  name: "Globe Magazine – Autumn 2026",
+                  isPartOf: {
+                    "@type": "Periodical",
+                    "@id": "https://globetrotters.co.uk", // 🌟 Added: Explicit identifier tracks this as the same publication
+                    name: "Globe Magazine",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@id": `${config.baseUrl}/publications#collectionpage`,
+                },
+                encoding: {
+                  "@type": "MediaObject",
+                  contentUrl: `${config.baseUrl}/publications/globe-magazine-autumn-2026.pdf`,
+                  encodingFormat: "application/pdf",
+                },
               },
 
               // ✅ Article (Globe Magazine - Summer 2026)
@@ -706,6 +747,37 @@ const Page = async () => {
             </article>
 
             <h2 className="mt-12 text-2xl font-semibold">Magazine writing</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">Warm pastry, cold rain and empty pews</h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>Globe Magazine</em> · Autumn 2026 · Commissioned feature
+              </p>
+
+              <p className="mt-3">
+                A personal narrative from Lake Bled featuring traditional kremšnita and the steep
+                Ojstrica climb. The trip takes an unexpected turn inside an empty stone church.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="/publications/globe-magazine-autumn-2026.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Download PDF excerpt of Warm pastry, cold rain and empty pews"
+                >
+                  Download PDF excerpt (Lake Bled)
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication and layout remain the copyright of <em>Globe Magazine</em>.
+                The PDF excerpt is shared for portfolio purposes. The blog version is an adapted
+                author’s cut.
+              </p>
+            </article>
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">Buzkashi: the rules of the game</h3>

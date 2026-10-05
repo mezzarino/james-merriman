@@ -53,8 +53,7 @@ export const metadata: Metadata = {
   },
 };
 
-const presentationVideoUrl =
-  "https://www.youtube.com/embed/Kk835ZinAvA?si=nw9EEcWtCDuMhZAZ";
+const presentationVideoUrl = "https://www.youtube.com/embed/Kk835ZinAvA?si=nw9EEcWtCDuMhZAZ";
 
 const videoObject = await buildVideoObjectFromHtml(
   `<iframe src="${presentationVideoUrl}"></iframe>`,
