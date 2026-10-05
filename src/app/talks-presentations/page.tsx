@@ -330,14 +330,16 @@ const Page = async () => {
                 during a period of heightened regional tension.on in Afghanistan, with a focus on
                 walking, public life, and everyday encounters.
               </p>
-              <iframe
-                src="https://www.youtube.com/embed/Kk835ZinAvA?si=nw9EEcWtCDuMhZAZ"
-                title="James Merriman – Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan"
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="data-youtube-video absolute inset-0 w-full h-full"
-              />
+              <div className="relative w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://www.youtube.com/embed/Kk835ZinAvA?si=nw9EEcWtCDuMhZAZ"
+                  title="James Merriman – Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="data-youtube-video block aspect-video w-full border-0"
+                />
+              </div>
             </article>
             <article>
               <h3>Royal Geographical Society (South West)</h3>
