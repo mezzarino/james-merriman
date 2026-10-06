@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import type { Viewport } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { headers } from "next/headers";
 
@@ -13,6 +14,12 @@ const fontSans = IBM_Plex_Sans({
   variable: "--font-sans",
   weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
 
 export async function generateMetadata() {
   const headersList = await headers();
