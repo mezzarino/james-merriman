@@ -324,10 +324,10 @@ const Page = async () => {
             <article>
               <h3>Globetrotters Club (London) - 3rd October 2026</h3>
               <p>
-                <strong>Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan</strong> — In
-                an illustrated talk, I shared the story of a ten-day journey in early 2026
-                through Afghanistan, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif
-                during a period of heightened regional tension in the country.
+                <strong>Scrums, Mountains and Tracer Fire – Ten Days in Afghanistan</strong> — In an
+                illustrated talk, I shared the story of a ten-day journey in early 2026 through
+                Afghanistan, travelling from Kabul to Herat, Bamyan and Mazar-e-Sharif during a
+                period of heightened regional tension in the country.
               </p>
               <div className="relative w-full overflow-hidden rounded-lg">
                 <iframe
