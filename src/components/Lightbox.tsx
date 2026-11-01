@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { getCldImageUrl } from "next-cloudinary";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
@@ -33,28 +32,8 @@ export const Lightbox = ({
 
   const cloudinaryLoader = useCallback(
     ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
-      return getCldImageUrl(
-        {
-          src,
-          width,
-          quality: quality ?? "auto",
-          format: "auto",
-          overlays: [
-            {
-              publicId: "james-merriman-watermark",
-              width: "1.5",
-              crop: "scale",
-              effects: [{ name: "opacity", value: 40 }],
-              position: { gravity: "center" },
-            },
-          ],
-        },
-        {
-          cloud: {
-            cloudName,
-          },
-        },
-      );
+      const safeQuality = quality ?? 80;
+      return `https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_${width},f_auto,q_${safeQuality}/${src}`;
     },
     [cloudName],
   );
@@ -180,15 +159,22 @@ export const Lightbox = ({
               }
               className="relative w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
-              <Image
-                loader={cloudinaryLoader}
-                src={`v${photo.version}/${photo.public_id}.${photo.format}`}
-                alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                loading="eager"
-                className="w-full h-auto object-contain rounded-lg"
-              />
+              <div className="relative">
+                <Image
+                  loader={cloudinaryLoader}
+                  src={`v${photo.version}/${photo.public_id}.${photo.format}`}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  loading="eager"
+                  className="w-full h-auto object-contain rounded-lg"
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-6 opacity-35 select-none">
+                  <span className="text-[10px] font-semibold tracking-[0.22em] text-white/90 drop-shadow-sm uppercase">
+                    James Merriman
+                  </span>
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

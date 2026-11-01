@@ -1,6 +1,5 @@
 "use client";
 
-import { getCldImageUrl } from "next-cloudinary";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -22,28 +21,8 @@ const cloudinaryLoader = ({
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   if (!cloudName) return src;
 
-  return getCldImageUrl(
-    {
-      src,
-      width,
-      quality: quality ?? "auto",
-      format: "auto",
-      overlays: [
-        {
-          publicId: "james-merriman-watermark",
-          width: "1.5",
-          crop: "scale",
-          effects: [{ name: "opacity", value: 40 }],
-          position: { gravity: "center" },
-        },
-      ],
-    },
-    {
-      cloud: {
-        cloudName,
-      },
-    },
-  );
+  const safeQuality = quality ?? 80;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_${width},f_auto,q_${safeQuality}/${src}`;
 };
 
 export const GalleryImage = ({ photo }: Props) => {
@@ -72,6 +51,11 @@ export const GalleryImage = ({ photo }: Props) => {
             loaded ? "opacity-100" : "opacity-0"
           }`}
         />
+        <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-3 opacity-35 select-none">
+          <span className="text-[10px] font-semibold tracking-[0.22em] text-white/90 drop-shadow-sm uppercase">
+            James Merriman
+          </span>
+        </div>
       </div>
 
       <figcaption className="mt-2 text-sm text-gray-600">{photo.alt}</figcaption>
