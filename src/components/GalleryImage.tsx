@@ -1,6 +1,7 @@
 "use client";
 
-import { CldImage } from "next-cloudinary";
+import { CldImage as OriginalCldImage } from "next-cloudinary";
+const CldImage = OriginalCldImage as any;
 import { useState } from "react";
 
 import { Photo } from "@/types/photo";

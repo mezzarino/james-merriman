@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
+import { CldImage as OriginalCldImage } from "next-cloudinary";
+const CldImage = OriginalCldImage as any;
 import { useCallback, useEffect, useState } from "react";
 
 import { Photo } from "@/types/photo";
