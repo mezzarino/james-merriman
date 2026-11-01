@@ -22,6 +22,7 @@ export const GalleryImage = ({ photo }: Props) => {
           <div className="absolute inset-0 bg-gray-200 animate-pulse motion-reduce:animate-none" />
         )}
 
+        // @ts-ignore : next-cloudinary type definitions are currently broken
         <CldImage
           src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
           preserveTransformations

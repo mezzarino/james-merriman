@@ -148,6 +148,7 @@ export const Lightbox = ({
               }
               className="relative w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
+              // @ts-ignore : next-cloudinary type definitions are currently broken
               <CldImage
                 src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
                 preserveTransformations
