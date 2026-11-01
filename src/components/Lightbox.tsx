@@ -2,7 +2,10 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { CldImage as OriginalCldImage } from "next-cloudinary";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CldImage = OriginalCldImage as any;
+
 import { useCallback, useEffect, useState } from "react";
 
 import { Photo } from "@/types/photo";
@@ -149,7 +152,6 @@ export const Lightbox = ({
               }
               className="relative w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
-              // @ts-ignore : next-cloudinary type definitions are currently broken
               <CldImage
                 src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
                 preserveTransformations
