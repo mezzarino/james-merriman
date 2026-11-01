@@ -1,11 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 import { Photo } from "@/types/photo";
 
 type Props = {
   photo: Photo;
+};
+
+const cloudinaryLoader = ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  if (!cloudName) return src;
+
+  const safeQuality = quality ?? 80;
+  return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,w_${width},q_${safeQuality},l_james-merriman-watermark,w_1.5,c_scale,e_opacity:40,g_center/${src}`;
 };
 
 export const GalleryImage = ({ photo }: Props) => {
@@ -21,14 +30,14 @@ export const GalleryImage = ({ photo }: Props) => {
           <div className="absolute inset-0 bg-gray-200 animate-pulse motion-reduce:animate-none" />
         )}
 
-        <img
-          src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
+        <Image
+          loader={cloudinaryLoader}
+          src={`v${photo.version}/${photo.public_id}.${photo.format}`}
           alt={photo.alt}
           width={photo.width}
           height={photo.height}
           sizes="(max-width: 768px) 100vw, 33vw"
           loading="lazy"
-          decoding="async"
           onLoad={() => setLoaded(true)}
           className={`w-full h-auto object-cover transition-opacity duration-300 ${
             loaded ? "opacity-100" : "opacity-0"
