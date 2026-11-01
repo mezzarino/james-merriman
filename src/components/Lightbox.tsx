@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import { useCallback, useEffect, useState } from "react";
 
 import { Photo } from "@/types/photo";
@@ -30,32 +30,21 @@ export const Lightbox = ({
 
   const [direction, setDirection] = useState<"next" | "prev" | null>(null);
 
-  const cloudinaryLoader = useCallback(
-    ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
-      const safeQuality = quality ?? 80;
-      return `https://res.cloudinary.com/${cloudName}/image/upload/c_limit,w_${width},f_auto,q_${safeQuality}/${src}`;
-    },
+  const buildUrl = useCallback(
+    (id: string, format?: string) =>
+      `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,q_auto/${id}.${format || "jpg"}`,
     [cloudName],
   );
 
-  const buildUrl = useCallback(
-    (p?: Photo) => {
-      if (!p) return "";
-      return cloudinaryLoader({
-        src: `v${p.version}/${p.public_id}.${p.format}`,
-        width: p.width,
-        quality: 80,
-      });
-    },
-    [cloudinaryLoader],
-  );
+  const buildBlurUrl = (id: string, format?: string) =>
+    `https://res.cloudinary.com/${cloudName}/image/upload/w_50,q_10,e_blur:1000/${id}.${format || "jpg"}`;
 
   // ✅ Smart preload (replaces <link preload>)
   useEffect(() => {
     const preload = (p?: Photo) => {
       if (!p) return;
       const img = new window.Image();
-      img.src = buildUrl(p);
+      img.src = buildUrl(p.public_id, p.format);
     };
 
     preload(nextPhoto);
@@ -159,22 +148,29 @@ export const Lightbox = ({
               }
               className="relative w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
-              <div className="relative">
-                <Image
-                  loader={cloudinaryLoader}
-                  src={`v${photo.version}/${photo.public_id}.${photo.format}`}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  loading="eager"
-                  className="w-full h-auto object-contain rounded-lg"
-                />
-                <div className="pointer-events-none absolute inset-0 flex items-end justify-end p-6 opacity-35 select-none">
-                  <span className="text-[10px] font-semibold tracking-[0.22em] text-white/90 drop-shadow-sm uppercase">
-                    James Merriman
-                  </span>
-                </div>
-              </div>
+              <CldImage
+                src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
+                preserveTransformations
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                placeholder="blur"
+                blurDataURL={buildBlurUrl(photo.public_id, photo.format)}
+                quality="auto"
+                format="auto"
+                loading="eager"
+                decoding="async"
+                overlays={[
+                  {
+                    publicId: "james-merriman-watermark",
+                    width: "1.5",
+                    crop: "scale",
+                    effects: [{ name: "opacity", value: 40 }],
+                    position: { gravity: "center" },
+                  },
+                ]}
+                className="w-full h-auto object-contain rounded-lg"
+              />
             </motion.div>
           </AnimatePresence>
         </div>
