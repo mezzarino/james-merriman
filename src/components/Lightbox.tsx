@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
 import { useCallback, useEffect, useState } from "react";
 
 import { Photo } from "@/types/photo";
@@ -148,27 +147,13 @@ export const Lightbox = ({
               }
               className="relative w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
             >
-              <CldImage
+              <img
                 src={`https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`}
-                preserveTransformations
                 alt={photo.alt}
                 width={photo.width}
                 height={photo.height}
-                placeholder="blur"
-                blurDataURL={buildBlurUrl(photo.public_id, photo.format)}
-                quality="auto"
-                format="auto"
                 loading="eager"
                 decoding="async"
-                overlays={[
-                  {
-                    publicId: "james-merriman-watermark",
-                    width: "1.5",
-                    crop: "scale",
-                    effects: [{ name: "opacity", value: 40 }],
-                    position: { gravity: "center" },
-                  },
-                ]}
                 className="w-full h-auto object-contain rounded-lg"
               />
             </motion.div>
