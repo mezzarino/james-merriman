@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { getCldImageUrl } from "next-cloudinary";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
@@ -32,8 +33,28 @@ export const Lightbox = ({
 
   const cloudinaryLoader = useCallback(
     ({ src, width, quality }: { src: string; width: number; quality?: number }) => {
-      const safeQuality = quality ?? 80;
-      return `https://res.cloudinary.com/${cloudName}/image/upload/f_auto,w_${width},q_${safeQuality},l_james-merriman-watermark,w_1.5,c_scale,e_opacity:40,g_center/${src}`;
+      return getCldImageUrl(
+        {
+          src,
+          width,
+          quality: quality ?? "auto",
+          format: "auto",
+          overlays: [
+            {
+              publicId: "james-merriman-watermark",
+              width: "1.5",
+              crop: "scale",
+              effects: [{ name: "opacity", value: 40 }],
+              position: { gravity: "center" },
+            },
+          ],
+        },
+        {
+          cloud: {
+            cloudName,
+          },
+        },
+      );
     },
     [cloudName],
   );
