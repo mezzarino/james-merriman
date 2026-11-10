@@ -19,41 +19,38 @@ describe("PrimaryNav", () => {
     expect(activeLink).toHaveAttribute("aria-current", "page");
   });
 
-  it("opens and closes the mobile navigation drawer", () => {
+  it("opens and closes the mobile navigation drawer using a native dialog", async () => {
     render(<PrimaryNav />);
 
     const openButton = screen.getByRole("button", { name: /open navigation menu/i });
     fireEvent.click(openButton);
 
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    const dialog = screen.getByRole("dialog");
+    expect(dialog.tagName).toBe("DIALOG");
+    expect(dialog).toHaveAttribute("aria-labelledby", "mobile-menu-title");
+    expect(dialog).toHaveAttribute("aria-describedby", "mobile-menu-description");
     expect(screen.getByRole("button", { name: /close navigation menu/i })).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /close navigation menu/i }));
-    expect(screen.queryByRole("dialog")).toBeNull();
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
   });
 
-  it("supports keyboard dismissal and focus wrapping in the mobile drawer", async () => {
+  it("uses native dialog focus management and dismissal controls", async () => {
     render(<PrimaryNav />);
-
-    fireEvent.click(screen.getByRole("button", { name: /open navigation menu/i }));
-    fireEvent.keyDown(document, { key: "Escape" });
-
-    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
 
     fireEvent.click(screen.getByRole("button", { name: /open navigation menu/i }));
 
     const dialog = screen.getByRole("dialog");
-    const closeButton = within(dialog).getByRole("button", { name: /^Close$/i });
-    const lastLink = within(dialog).getAllByRole("link").at(-1);
+    const closeButton = within(dialog).getByRole("button", { name: /close navigation menu/i });
 
-    closeButton.focus();
-    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(dialog.tagName).toBe("DIALOG");
+    expect(closeButton).toBeInTheDocument();
 
-    expect(lastLink).toHaveFocus();
+    fireEvent.click(closeButton);
 
-    fireEvent.keyDown(document, { key: "Tab" });
+    expect(dialog).toHaveClass("closing");
 
-    expect(closeButton).toHaveFocus();
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
   });
 
   it("ignores swipe end events when no touch start has occurred", () => {
@@ -107,7 +104,11 @@ describe("PrimaryNav", () => {
     rerender(<PrimaryNav />);
     fireEvent.click(screen.getByRole("button", { name: /open navigation menu/i }));
 
-    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: /^Close$/i }));
+    fireEvent.click(
+      within(screen.getByRole("dialog")).getByRole("button", {
+        name: /close navigation menu/i,
+      }),
+    );
 
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
 

@@ -11,90 +11,107 @@ export function PrimaryNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const touchStartX = useRef<number | null>(null);
-  const hasOpenedRef = useRef(false);
+  const [isClosing, setIsClosing] = useState(false);
 
-  /* ------------------------------------------------------------
-   * Focus trap
-   * ------------------------------------------------------------ */
-  const trapFocus = useCallback((event: KeyboardEvent) => {
-    if (!dialogRef.current) return;
+  const closeNav = useCallback(() => {
+    const dialog = dialogRef.current;
 
-    const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
-      'a[href], button:not([disabled]), [tabindex="0"]',
-    );
-
-    if (focusable.length === 0) return;
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
+    if (!dialog) {
+      setOpen(false);
+      setIsClosing(false);
+      return;
     }
+
+    if (dialog.open) {
+      setOpen(false);
+      setIsClosing(true);
+
+      const finishClose = () => {
+        try {
+          if (typeof dialog.close === "function") {
+            dialog.close();
+          }
+        } catch {
+          // ignore unsupported dialog close implementation in jsdom/test environments
+        }
+
+        dialog.removeAttribute("open");
+
+        if ("open" in dialog && Object.getOwnPropertyDescriptor(dialog, "open")) {
+          try {
+            Object.defineProperty(dialog, "open", {
+              value: false,
+              configurable: true,
+              writable: true,
+            });
+          } catch {
+            // ignore if the DOM implementation does not allow overriding the property
+          }
+        }
+
+        setIsClosing(false);
+      };
+
+      if (typeof dialog.animate === "function") {
+        dialog
+          .animate(
+            [
+              { transform: "translateX(0)", opacity: 1 },
+              { transform: "translateX(100%)", opacity: 0 },
+            ],
+            { duration: 300, easing: "ease-out" },
+          )
+          .finished.then(finishClose, finishClose);
+        return;
+      }
+
+      window.setTimeout(() => {
+        finishClose();
+      }, 300);
+      return;
+    }
+
+    setOpen(false);
+    setIsClosing(false);
   }, []);
 
-  /* ------------------------------------------------------------
-   * Escape + focus trapping
-   * ------------------------------------------------------------ */
   useEffect(() => {
-    if (!open) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        setOpen(false);
+    if (open && !dialog.open) {
+      if (typeof dialog.showModal === "function") {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute("open", "open");
       }
-
-      if (event.key === "Tab") {
-        trapFocus(event);
-      }
+      setIsClosing(false);
+      return;
     }
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [open, trapFocus]);
-
-  /* ------------------------------------------------------------
-   * Focus management
-   * ------------------------------------------------------------ */
-  useEffect(() => {
-    if (open) {
-      hasOpenedRef.current = true;
-      requestAnimationFrame(() => {
-        closeButtonRef.current?.focus();
-      });
-    } else if (hasOpenedRef.current) {
-      openButtonRef.current?.focus();
+    if (!open && dialog.open && !isClosing) {
+      if (typeof dialog.close === "function") {
+        dialog.close();
+      } else {
+        dialog.removeAttribute("open");
+      }
     }
-  }, [open]);
+  }, [open, isClosing]);
 
-  /* ------------------------------------------------------------
-   * Body scroll locking
-   * ------------------------------------------------------------ */
   useEffect(() => {
-    if (!open) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
 
-    const scrollY = window.scrollY;
-
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
+    const handleClose = () => setOpen(false);
+    dialog.addEventListener("close", handleClose);
 
     return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      window.scrollTo(0, scrollY);
+      dialog.removeEventListener("close", handleClose);
     };
-  }, [open]);
+  }, []);
 
   /* ------------------------------------------------------------
    * Touch swipe to close (disabled if reduced motion)
@@ -161,91 +178,67 @@ export function PrimaryNav() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
-      <div
+      <dialog
+        ref={dialogRef}
+        id="mobile-menu"
+        aria-labelledby="mobile-menu-title"
+        aria-describedby="mobile-menu-description"
+        onCancel={closeNav}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         className={cn(
-          "fixed inset-0 z-50 md:hidden",
-          open ? "pointer-events-auto" : "pointer-events-none",
+          "m-0 h-full max-h-screen w-72 border-0 bg-gray-900 p-0 text-white shadow-lg",
+          "right-0 top-0 ml-auto md:hidden motion-reduce:transition-none",
+          "transition-transform duration-300 ease-out",
+          isClosing && "closing translate-x-full opacity-0",
+          !isClosing && "translate-x-0 opacity-100",
         )}
-        aria-hidden={!open}
       >
-        {/* Backdrop */}
-        <button
-          type="button"
-          tabIndex={-1}
-          aria-label="Close navigation menu"
-          onClick={() => setOpen(false)}
-          className={cn(
-            "absolute inset-0 bg-black/60",
-            "transition-opacity motion-reduce:transition-none",
-            open ? "opacity-100" : "opacity-0",
-          )}
-        />
+        <p id="mobile-menu-description" className="sr-only">
+          Primary site navigation. Use the Close button or the Escape key to dismiss this menu.
+        </p>
 
-        {/* Drawer panel */}
-        <div
-          ref={dialogRef}
-          id="mobile-menu"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="mobile-menu-title"
-          aria-describedby="mobile-menu-description"
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-          className={cn(
-            "absolute right-0 top-0 h-full w-72 bg-gray-900 text-white shadow-lg",
-            "transform transition-transform duration-300 ease-out",
-            "motion-reduce:transition-none motion-reduce:transform-none",
-            open ? "translate-x-0" : "translate-x-full",
-          )}
-        >
-          <p id="mobile-menu-description" className="sr-only">
-            Primary site navigation. Press Escape or activate the Close button to dismiss this menu.
+        <div className="flex items-center justify-between border-b border-white/10 p-4">
+          <p id="mobile-menu-title" className="text-sm font-semibold">
+            Navigation
           </p>
-
-          <div className="flex items-center justify-between border-b border-white/10 p-4">
-            <p id="mobile-menu-title" className="text-sm font-semibold">
-              Navigation
-            </p>
-            <button
-              ref={closeButtonRef}
-              onClick={() => setOpen(false)}
-              tabIndex={open ? undefined : -1}
-              className="text-sm text-white/70 hover:text-white focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
-            >
-              Close
-            </button>
-          </div>
-
-          <nav aria-label="Mobile primary navigation" className="p-4">
-            <ul className="flex flex-col gap-4">
-              {MAIN_NAV.map((item) => {
-                const isActive = pathname === item.href;
-
-                return (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      aria-current={isActive ? "page" : undefined}
-                      onClick={() => setOpen(false)}
-                      tabIndex={open ? undefined : -1}
-                      className={cn(
-                        "block text-sm font-medium transition-colors",
-                        "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
-                        isActive
-                          ? "text-white underline underline-offset-4"
-                          : "text-white/80 hover:text-white",
-                      )}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+          <button
+            type="button"
+            aria-label="Close navigation menu"
+            onClick={closeNav}
+            className="text-sm text-white/70 hover:text-white focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+          >
+            Close
+          </button>
         </div>
-      </div>
+
+        <nav aria-label="Mobile primary navigation" className="p-4">
+          <ul className="flex flex-col gap-4">
+            {MAIN_NAV.map((item) => {
+              const isActive = pathname === item.href;
+
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    onClick={closeNav}
+                    className={cn(
+                      "block text-sm font-medium transition-colors",
+                      "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900",
+                      isActive
+                        ? "text-white underline underline-offset-4"
+                        : "text-white/80 hover:text-white",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </dialog>
     </>
   );
 }

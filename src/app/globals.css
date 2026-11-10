@@ -159,6 +159,39 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  dialog {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+  }
+
+  dialog:not([open]) {
+    display: none;
+  }
+
+  dialog:modal {
+    overscroll-behavior: contain;
+  }
+
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+
+  dialog.closing {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    dialog:modal,
+    dialog::backdrop {
+      transition: none;
+    }
+  }
 }
 
 @layer utilities {
