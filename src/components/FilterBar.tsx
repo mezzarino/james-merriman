@@ -4,36 +4,10 @@ import { Search, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { KeyboardEvent } from "react";
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { config } from "../config";
 import { cn } from "../lib/utils";
-
-/* -------------------------------------------
- * External store: prefers-reduced-motion
- * -----------------------------------------*/
-function subscribeReducedMotion(callback: () => void) {
-  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  mediaQuery.addEventListener("change", callback);
-  return () => mediaQuery.removeEventListener("change", callback);
-}
-
-function getReducedMotionSnapshot() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-function getReducedMotionServerSnapshot() {
-  // Server has no preference → assume reduced motion
-  return true;
-}
-
-function usePrefersReducedMotion() {
-  return useSyncExternalStore(
-    subscribeReducedMotion,
-    getReducedMotionSnapshot,
-    getReducedMotionServerSnapshot,
-  );
-}
 
 /* -------------------------------------------
  * Component
@@ -61,17 +35,10 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
   );
 
   /* -------------------------------------------
-   * Reduced motion (useSyncExternalStore)
-   * -----------------------------------------*/
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const enableSmoothScroll = !prefersReducedMotion;
-
-  /* -------------------------------------------
    * Refs
    * -----------------------------------------*/
   const inputRef = useRef<HTMLInputElement>(null);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const categoryRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   const setCategoryRef = useCallback(
@@ -80,43 +47,6 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
     },
     [],
   );
-
-  /* -------------------------------------------
-   * Auto-scroll active category
-   * -----------------------------------------*/
-  useEffect(() => {
-    const el = categoryRefs.current[active];
-    if (!el) return;
-
-    el.scrollIntoView({
-      behavior: enableSmoothScroll ? "smooth" : "auto",
-      inline: "center",
-      block: "nearest",
-    });
-  }, [active, enableSmoothScroll]);
-
-  /* -------------------------------------------
-   * Scroll hint animation (first visit)
-   * -----------------------------------------*/
-  useEffect(() => {
-    if (!enableSmoothScroll) return;
-
-    const hasSeenHint = localStorage.getItem("filterbar-scroll-hint");
-    if (hasSeenHint) return;
-
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const runHint = async () => {
-      await new Promise((r) => setTimeout(r, 400));
-      container.scrollBy({ left: 40, behavior: "smooth" });
-      await new Promise((r) => setTimeout(r, 350));
-      container.scrollBy({ left: -40, behavior: "smooth" });
-      localStorage.setItem("filterbar-scroll-hint", "true");
-    };
-
-    runHint();
-  }, [enableSmoothScroll]);
 
   /* -------------------------------------------
    * Focus input when search opens
@@ -205,7 +135,6 @@ export const FilterBar = ({ className, active }: BlogNavigationBarProps) => {
             <div className="pointer-events-none absolute right-0 top-0 h-full w-6 bg-linear-to-l from-white to-transparent sm:hidden" />
 
             <div
-              ref={scrollContainerRef}
               role="tablist"
               aria-label="Blog categories"
               className="

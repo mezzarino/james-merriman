@@ -140,46 +140,16 @@ describe("FilterBar", () => {
     expect(pushMock).toHaveBeenCalledWith("/");
   });
 
-  it("moves focus between category tabs with arrow keys and animates scroll hints", async () => {
-    vi.useFakeTimers();
-
+  it("does not auto-scroll the page when the active category is rendered", () => {
+    const scrollIntoViewSpy = vi
+      .spyOn(HTMLElement.prototype, "scrollIntoView")
+      .mockImplementation(() => {});
     const scrollBySpy = vi.spyOn(HTMLElement.prototype, "scrollBy").mockImplementation(() => {});
-
-    vi.spyOn(window, "matchMedia").mockImplementation((query: string): MediaQueryList => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
-      addListener: vi.fn(),
-      removeListener: vi.fn(),
-      dispatchEvent: vi.fn(),
-    }));
 
     render(<FilterBar active="latest" />);
 
-    const tabs = screen.getAllByRole("tab");
-    tabs[0].focus();
-
-    fireEvent.keyDown(tabs[0], { key: "ArrowRight" });
-    expect(tabs[1]).toHaveFocus();
-
-    await act(async () => {
-      vi.advanceTimersByTime(400);
-      await vi.runOnlyPendingTimersAsync();
-      vi.advanceTimersByTime(350);
-      await vi.runOnlyPendingTimersAsync();
-    });
-
-    expect(scrollBySpy).toHaveBeenCalledWith({
-      left: 40,
-      behavior: "smooth",
-    });
-
-    expect(scrollBySpy).toHaveBeenCalledWith({
-      left: -40,
-      behavior: "smooth",
-    });
+    expect(scrollIntoViewSpy).not.toHaveBeenCalled();
+    expect(scrollBySpy).not.toHaveBeenCalled();
   });
 
   it("has no basic accessibility violations", async () => {
