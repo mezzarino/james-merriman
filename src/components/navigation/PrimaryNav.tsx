@@ -189,9 +189,7 @@ export function PrimaryNav() {
         className={cn(
           "m-0 h-full max-h-screen w-72 border-0 bg-gray-900 p-0 text-white shadow-lg",
           "right-0 top-0 ml-auto md:hidden motion-reduce:transition-none",
-          "transition-transform duration-300 ease-out",
-          isClosing && "closing translate-x-full opacity-0",
-          !isClosing && "translate-x-0 opacity-100",
+          isClosing && "closing",
         )}
       >
         <p id="mobile-menu-description" className="sr-only">
