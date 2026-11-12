@@ -1,5 +1,5 @@
-export const dynamic = "force-dynamic";
-export const revalidate = 60;
+export const instant = false;
+export const prefetch = "partial";
 
 import { Metadata } from "next";
 import Link from "next/link";

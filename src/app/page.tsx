@@ -1,10 +1,10 @@
-export const revalidate = 60; // 1 minute
-export const runtime = "nodejs";
-
 import { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import Script from "next/script";
+
+export const instant = false;
+export const prefetch = "partial";
 
 import { BlogPostList } from "@/components/BlogPostList";
 import { HomepageFilterBar } from "@/components/homepage/HomepageFilterBar";

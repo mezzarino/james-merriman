@@ -1,4 +1,5 @@
-export const revalidate = 60; // 1 minute
+export const instant = false;
+export const prefetch = "partial";
 
 import { Metadata } from "next";
 import { redirect } from "next/navigation";

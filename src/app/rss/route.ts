@@ -1,6 +1,3 @@
-export const dynamic = "auto";
-export const revalidate = 3600; // 1 hour
-
 import { NextResponse } from "next/server";
 import RSS, { ItemOptions } from "rss";
 import urlJoin from "url-join";

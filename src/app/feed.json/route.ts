@@ -1,6 +1,3 @@
-export const dynamic = "auto";
-export const revalidate = 3600;
-
 import { NextResponse } from "next/server";
 import urlJoin from "url-join";
 

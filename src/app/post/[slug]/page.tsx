@@ -1,6 +1,5 @@
-export const revalidate = 60;
-export const dynamic = "force-dynamic";
-export const runtime = "nodejs";
+export const instant = false;
+export const prefetch = "partial";
 
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";

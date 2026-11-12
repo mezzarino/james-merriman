@@ -4,6 +4,8 @@ import type { Viewport } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { headers } from "next/headers";
 
+export const instant = false;
+
 import { ConsentProvider } from "@/components/analytics/ConsentContext";
 
 import LayoutWrapper from "./LayoutWrapper";

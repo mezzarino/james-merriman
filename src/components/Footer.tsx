@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { Rss } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +12,12 @@ import { Button } from "./ui/button";
 import { SocialLinks } from "./ui/social-links";
 
 export const Footer = () => {
+  const [year, setYear] = useState<number>(2026);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="container mx-auto my-8 max-w-6xl px-4 border-t border-border/50">
       {/* ✅ Logo */}
@@ -89,7 +98,7 @@ export const Footer = () => {
           </Button>
 
           <span>
-            © {config.organization} {new Date().getFullYear()}
+            © {config.organization} {year}
           </span>
         </div>
       </div>

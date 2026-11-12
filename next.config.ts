@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
+
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [320, 375, 384, 640, 768, 1024],

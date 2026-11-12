@@ -18,7 +18,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
         >
           <article className="wrap-break-word group content-visibility-auto">
             {/* Featured image */}
-            <Link href={`/post/${post.slug}`} prefetch={false}>
+            <Link href={`/post/${post.slug}`}>
               <AspectRatio ratio={16 / 9} className="relative w-full rounded-lg overflow-hidden">
                 {post.image ? (
                   <Image
@@ -53,7 +53,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
             {/* Post content */}
             <div className="grid grid-cols-1 gap-3 mt-4">
               <h3 className="font-sans font-semibold tracking-tighter text-primary text-2xl md:text-3xl">
-                <Link href={`/post/${post.slug}`} prefetch={false}>
+                <Link href={`/post/${post.slug}`}>
                   {post.title}
                 </Link>
               </h3>
