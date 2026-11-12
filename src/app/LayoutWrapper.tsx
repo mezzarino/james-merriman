@@ -2,35 +2,10 @@
 
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { Footer } from "@/components/Footer";
 import ReadingProgress from "@/components/ui/readingProgress";
-
-function PageTransition({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    setIsReady(false);
-    const frame = requestAnimationFrame(() => setIsReady(true));
-    return () => cancelAnimationFrame(frame);
-  }, [pathname]);
-
-  return (
-    <div
-      key={pathname}
-      className={[
-        "page-transition",
-        isReady ? "page-transition-ready" : "page-transition-entering",
-      ].join(" ")}
-    >
-      {children}
-    </div>
-  );
-}
 
 export default function LayoutWrapper({
   children,
@@ -52,7 +27,7 @@ export default function LayoutWrapper({
 
           <ReadingProgress />
 
-          <PageTransition>{children}</PageTransition>
+          {children}
 
           <Footer />
           <SpeedInsights />
