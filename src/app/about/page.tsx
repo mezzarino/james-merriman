@@ -190,6 +190,17 @@ const Page = async () => {
                         url: "https://intrepidtimes.com",
                       },
                     },
+                    {
+                      "@type": "EducationalOccupationalCredential",
+                      name: "Travel writing short course",
+                      credentialCategory: "Certification",
+                      url: "https://www.open.ac.uk/courses/short-courses/axs002/",
+                      recognizedBy: {
+                        "@type": "Organization",
+                        name: "The Open University",
+                        url: "https://www.open.ac.uk",
+                      },
+                    },
                   ],
                 },
                 // 📰 Freelance Clients / Publishers
@@ -197,6 +208,8 @@ const Page = async () => {
                   { "@type": "Organization", name: "Lupine Travel" },
                   { "@type": "Organization", name: "Globetrotters Magazine" },
                   { "@type": "NewsMediaOrganization", name: "The Guardian" },
+                  { "@type": "NewsMediaOrganization", name: "Fodors" },
+                  { "@type": "NewsMediaOrganization", name: "adventure.com" },
                 ],
                 // 🏛️ Professional Memberships & Fellowships
                 affiliation: [

@@ -90,6 +90,11 @@ const publications = [
     external: true,
     url: "https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong",
   },
+  {
+    id: "adventure-sao-tome-principe-rocas-plantations-community-tourism",
+    external: true,
+    url: "https://adventure.com/sao-tome-principe-rocas-plantations-community-tourism/",
+  },
 ];
 
 const Page = async () => {
@@ -450,6 +455,39 @@ const Page = async () => {
                 url: "https://www.fodors.com/world/africa-and-middle-east/experiences/news/photos/10-ways-youre-planning-your-african-safari-all-wrong",
               },
 
+              // ✅ NewsArticle (Adventure.com - São Tomé & Príncipe)
+              {
+                "@type": "NewsArticle",
+                "@id":
+                  "https://adventure.com/sao-tome-principe-rocas-plantations-community-tourism/",
+                headline:
+                  "How local communities of São Tomé and Príncipe are finding a new future on former Portuguese colonial plantations",
+                name: "How local communities of São Tomé and Príncipe are finding a new future on former Portuguese colonial plantations",
+                author: person,
+                image: featuredPublicationImage,
+                publisher: {
+                  "@type": "Organization",
+                  "@id": "https://adventure.com",
+                  name: "Adventure.com",
+                  url: "https://adventure.com/",
+                },
+                datePublished: "2026-11-11T00:00:00+00:00",
+                about: {
+                  "@type": "Place",
+                  name: "São Tomé and Príncipe",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "ST",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id":
+                    "https://adventure.com/sao-tome-principe-rocas-plantations-community-tourism/",
+                },
+                url: "https://adventure.com/sao-tome-principe-rocas-plantations-community-tourism/",
+              },
+
               // ✅ NewsArticle (Guardian - award-winning piece)
               {
                 "@type": "NewsArticle",
@@ -547,6 +585,39 @@ const Page = async () => {
             </p>
 
             <h2 className="mt-12 text-2xl font-semibold">Websites &amp; online platforms</h2>
+
+            <article className="mb-10">
+              <h3 className="text-xl font-semibold">
+                How local communities of São Tomé and Príncipe are finding a new future on former
+                Portuguese colonial plantations
+              </h3>
+
+              <p className="text-sm text-gray-600 mt-1">
+                <em>Adventure.com</em> · November 2026 · Published feature
+              </p>
+
+              <p className="mt-3">
+                A reported feature on São Tomé and Príncipe exploring how former plantation estates,
+                cacao livelihoods and community-led tourism are reshaping the islands&apos; colonial
+                legacy into a more accountable future.
+              </p>
+
+              <p className="mt-3">
+                <a
+                  href="https://adventure.com/sao-tome-principe-rocas-plantations-community-tourism/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                  aria-label="Read the feature on Adventure.com"
+                >
+                  Read the feature on Adventure.com
+                </a>
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                © Original publication remains the copyright of <em>Adventure.com</em>.
+              </p>
+            </article>
 
             <article className="mb-10">
               <h3 className="text-xl font-semibold">

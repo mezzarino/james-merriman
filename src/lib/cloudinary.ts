@@ -5,8 +5,8 @@ import { Photo } from "@/types/photo";
 
 const hasCloudinaryConfig = Boolean(
   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ||
-    process.env.CLOUDINARY_CLOUD_NAME ||
-    process.env.CLOUDINARY_API_KEY,
+  process.env.CLOUDINARY_CLOUD_NAME ||
+  process.env.CLOUDINARY_API_KEY,
 );
 
 cloudinary.config({

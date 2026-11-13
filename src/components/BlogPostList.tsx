@@ -53,9 +53,7 @@ export const BlogPostList = ({ posts }: { posts: GetPostsResult["posts"] }) => {
             {/* Post content */}
             <div className="grid grid-cols-1 gap-3 mt-4">
               <h3 className="font-sans font-semibold tracking-tighter text-primary text-2xl md:text-3xl">
-                <Link href={`/post/${post.slug}`}>
-                  {post.title}
-                </Link>
+                <Link href={`/post/${post.slug}`}>{post.title}</Link>
               </h3>
 
               <div className="prose lg:prose-lg leading-relaxed md:text-lg line-clamp-4 text-muted-foreground">
