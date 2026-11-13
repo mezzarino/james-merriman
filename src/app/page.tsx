@@ -186,6 +186,8 @@ export default async function Page(props: {
           { "@type": "Organization", name: "Lupine Travel" },
           { "@type": "Organization", name: "Globetrotters Magazine" },
           { "@type": "NewsMediaOrganization", name: "The Guardian" },
+          { "@type": "NewsMediaOrganization", name: "Fodor's" },
+          { "@type": "NewsMediaOrganization", name: "adventure.com" },
         ],
         // 🏛️ Professional Memberships & Fellowships
         affiliation: [
@@ -542,9 +544,9 @@ export default async function Page(props: {
 
           <p>
             My writing and photography have appeared in UK and international publications, including{" "}
-            <em>The Guardian</em>, <em>Globe Magazine</em> and <em>Bradt Guides</em>. These
-            commissioned pieces sit alongside long-form projects developed through repeated journeys
-            and sustained research. A selection of published work can be found on the{" "}
+            <em>adventure.com</em>, <em>The Guardian</em>, <em>Fodors</em> and <em>Bradt Guides</em>
+            . These commissioned pieces sit alongside long-form projects developed through repeated
+            journeys and sustained research. A selection of published work can be found on the{" "}
             <Link href="/publications">publications</Link> page.
           </p>
 
